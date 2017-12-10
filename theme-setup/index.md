@@ -2,7 +2,7 @@
 layout: page
 title: Theme Setup
 excerpt: "Instructions on how to install and customize the Jekyll theme So Simple."
-modified: 2016-09-12T08:42:37-04:00
+modified: 2016-09-12T08:44:33-04:00
 image:
   feature: so-simple-sample-image-6.jpg
   credit: WeGraphics
@@ -287,7 +287,6 @@ Feature and thumbnail images are used by [Open Graph](https://developers.faceboo
 Here's an example of a tweet with Twitter Cards enabled.
 
 ![Twitter Card summary large image screenshot]({{ site.url }}/images/twitter-card-summary-large-image.jpg)
-
 
 ---
 

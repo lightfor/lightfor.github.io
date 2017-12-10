@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Sample Articles
-excerpt: "An archive of articles sorted by date."
+title: 文章
+excerpt: "文章"
 search_omit: true
 ---
 

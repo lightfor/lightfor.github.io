@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Search"
+title: "搜索"
 date: 
 modified:
 excerpt:
@@ -13,8 +13,8 @@ sitemap: false
 <!-- Search form -->
 <form method="get" action="{{ site.url }}/search/" data-search-form class="simple-search">
   <label for="q">Search {{ site.title }} for:</label>
-  <input type="search" name="q" id="q" placeholder="What are you looking for?" data-search-input id="goog-wm-qt" autofocus />
-  <input type="submit" value="Search" id="goog-wm-sb" />
+  <input type="search" name="q" id="q" placeholder="请输入搜索关键字" data-search-input id="goog-wm-qt" autofocus />
+  <input type="submit" value="搜索" id="goog-wm-sb" />
 </form>
 
 <!-- Search results placeholder -->

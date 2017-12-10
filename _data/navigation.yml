@@ -1,16 +1,19 @@
 # Site navigation links
 
-- title: About
+- title: 首页
+  url: /
+
+- title: 关于
   url: /about/
 
-- title: Articles
+- title: 文章
   url: /articles/
 
-- title: Blog
+- title: 博客
   url: /blog/
 
-- title: Tags
+- title: 标签
   url: /tags/
 
-- title: Search
+- title: 搜索
   url: /search/

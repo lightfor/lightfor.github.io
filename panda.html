@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大熊猫名录</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f0eb; color: #333; padding: 2rem; }
+  h1 { text-align: center; font-size: 1.8rem; margin-bottom: 0.4rem; color: #4a3728; }
+  .subtitle { text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .search-wrap { display: flex; justify-content: center; margin-bottom: 1.2rem; }
+  #search { width: 100%; max-width: 400px; padding: 0.5rem 1rem; border: 1px solid #d4c5b0; border-radius: 20px; font-size: 1rem; outline: none; background: #fff; }
+  #search:focus { border-color: #8b5e3c; }
+  .table-wrap { overflow-x: auto; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  table { width: 100%; border-collapse: collapse; background: #fff; min-width: 760px; }
+  thead tr { background: #6b4226; color: #fff; }
+  th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; white-space: nowrap; }
+  td { padding: 0.55rem 0.8rem; border-bottom: 1px solid #f0e8df; white-space: nowrap; vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #fdf6ef; }
+  .female { color: #c0576a; }
+  .male { color: #3a7abf; }
+  .alias { color: #888; font-size: 0.85rem; }
+  .count { text-align: center; color: #888; font-size: 0.85rem; margin-top: 0.8rem; }
+  .avatar { width: 120px; height: 120px; border-radius: 8px; object-fit: cover; background: #e8ddd3; display: block; }
+  .avatar-placeholder { width: 120px; height: 120px; border-radius: 8px; background: #e8ddd3; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+</style>
+</head>
+<body>
+<h1>🐼 大熊猫名录</h1>
+<p class="subtitle">共 <span id="total"></span> 只</p>
+<div class="search-wrap">
+  <input id="search" type="search" placeholder="搜索姓名、别名、动物园…">
+</div>
+<div class="table-wrap">
+  <table id="tbl">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>照片</th>
+        <th>姓名</th>
+        <th>别名</th>
+        <th>动物园</th>
+        <th>展馆</th>
+        <th>性别</th>
+        <th>母亲</th>
+        <th>父亲</th>
+        <th>生日</th>
+        <th>谱系号</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+<p class="count">显示 <span id="shown"></span> / <span id="total2"></span> 条</p>
+
+<script>
+// [name, alias, zoo, hall, gender, mother, father, birthday, pedigree, imgFile]
+const data = [
+  ["萌萌","北二胖, 北动影后","北京动物园","亚运馆","雌性","英英","灵灵","2006/09/13","","mengmeng.png"],
+  ["丫丫","","北京动物园","不展出","雌性","乐乐","","2000/08/03","320","yaya.png"],
+  ["古古","保安队长, 古大爷","北京动物园","不展出","雄性","盼盼","唐唐","1999/09/25","","gugu.png"],
+  ["萌大","","北京动物园","亚运馆","雄性","萌萌","勇勇","2013/08/22","","mengda.png"],
+  ["萌二","","北京动物园","亚运馆","雄性","萌萌","勇勇","2013/08/22","","menger.png"],
+  ["点点","","北京动物园","亚运馆","雌性","瑛华","","2015/06/20","","dandan.png"],
+  ["萌兰","么么, 西直门三太子","北京动物园","奥运馆","雄性","萌萌","美兰","2015/07/04","","menglan.png"],
+  ["福星","胖大海","北京动物园","奥运馆","雄性","瑛华","芦芦","2017/06/25","","fuxing.png"],
+  ["萌宝","","北京动物园","奥运馆","雌性","萌萌","美兰","2018/05/23","","mengbao.png"],
+  ["萌玉","","北京动物园","奥运馆","雌性","萌萌","美兰","2018/05/23","","mengyu.png"],
+  ["白天","","北京动物园","亚运馆","雌性","小白兔","芦芦","2018/08/20","","baitian.png"],
+  ["喜乐","八里台二公主","天津动物园","","雌性","","","2013/07/24","",""],
+  ["格格","八里台大公主","天津动物园","","雌性","","","2003/09/06","",""],
+  ["妙音","","大连动物园","","雌性","格格","","2010/08/09","",""],
+  ["小馨","","","","雌性","","","","",""],
+  ["高高","","","","雄性","","","","",""],
+  ["金虎","","大连动物园","","雄性","","","","",""],
+  ["飞云","","大连动物园","","雄性","","","","",""],
+  ["庆庆","","重庆动物园","","雌性","","","","",""],
+  ["重重","","重庆动物园","","雄性","","","","",""],
+  ["双双","","重庆动物园","","雄性","","","","",""],
+  ["喜喜","","重庆动物园","","雌性","","","","",""],
+  ["莽仔","","重庆动物园","","雌性","","","","",""],
+  ["莽星星","","重庆动物园","","","莽仔","","","",""],
+  ["莽辰辰","","重庆动物园","","","莽仔","","","",""],
+  ["莽灿灿","","重庆动物园","","","莽仔","","","",""],
+  ["兰香","","重庆动物园","","","","","","",""],
+  ["二顺","","重庆动物园","","","","","","",""],
+  ["渝可","","重庆动物园","","","","","","",""],
+  ["渝爱","","重庆动物园","","","","","","",""],
+  ["良月","","重庆动物园","","","","","","",""],
+];
+
+const tbody = document.getElementById('tbody');
+const totalEl = document.getElementById('total');
+const total2El = document.getElementById('total2');
+const shownEl = document.getElementById('shown');
+
+totalEl.textContent = data.length;
+total2El.textContent = data.length;
+
+function avatarCell(name, imgFile) {
+  if (imgFile) {
+    return `<td><img class="avatar" src="images/pandas/${imgFile}" alt="${name}" onerror="this.outerHTML='<div class=\\'avatar-placeholder\\'>🐼</div>'"></td>`;
+  }
+  return `<td><div class="avatar-placeholder">🐼</div></td>`;
+}
+
+function render(rows) {
+  tbody.innerHTML = rows.map((r, i) => {
+    const genderClass = r[4] === '雌性' ? 'female' : r[4] === '雄性' ? 'male' : '';
+    return `<tr>
+      <td>${i + 1}</td>
+      ${avatarCell(r[0], r[9])}
+      <td><strong>${r[0]}</strong></td>
+      <td class="alias">${r[1]}</td>
+      <td>${r[2]}</td>
+      <td>${r[3]}</td>
+      <td class="${genderClass}">${r[4]}</td>
+      <td>${r[5]}</td>
+      <td>${r[6]}</td>
+      <td>${r[7]}</td>
+      <td>${r[8]}</td>
+    </tr>`;
+  }).join('');
+  shownEl.textContent = rows.length;
+}
+
+render(data);
+
+document.getElementById('search').addEventListener('input', function() {
+  const q = this.value.trim().toLowerCase();
+  if (!q) { render(data); return; }
+  const filtered = data.filter(r => r.some(cell => cell.toLowerCase().includes(q)));
+  render(filtered);
+});
+</script>
+</body>
+</html>

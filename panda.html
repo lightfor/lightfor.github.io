@@ -6,25 +6,46 @@
 <title>大熊猫名录</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f0eb; color: #333; padding: 2rem; }
-  h1 { text-align: center; font-size: 1.8rem; margin-bottom: 0.4rem; color: #4a3728; }
-  .subtitle { text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 1.5rem; }
-  .search-wrap { display: flex; justify-content: center; margin-bottom: 1.2rem; }
+  body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f0eb; color: #333; padding: 1rem; }
+  h1 { text-align: center; font-size: 1.6rem; margin-bottom: 0.3rem; color: #4a3728; }
+  .subtitle { text-align: center; color: #888; font-size: 0.85rem; margin-bottom: 1rem; }
+  .search-wrap { display: flex; justify-content: center; margin-bottom: 1rem; }
   #search { width: 100%; max-width: 400px; padding: 0.5rem 1rem; border: 1px solid #d4c5b0; border-radius: 20px; font-size: 1rem; outline: none; background: #fff; }
   #search:focus { border-color: #8b5e3c; }
+  .count { text-align: center; color: #888; font-size: 0.82rem; margin-bottom: 1rem; }
+
+  /* Desktop: table */
   .table-wrap { overflow-x: auto; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-  table { width: 100%; border-collapse: collapse; background: #fff; min-width: 760px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; min-width: 700px; }
   thead tr { background: #6b4226; color: #fff; }
-  th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; white-space: nowrap; }
-  td { padding: 0.55rem 0.8rem; border-bottom: 1px solid #f0e8df; white-space: nowrap; vertical-align: middle; }
+  th { padding: 0.65rem 0.8rem; text-align: left; font-weight: 600; white-space: nowrap; }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid #f0e8df; white-space: nowrap; vertical-align: middle; }
   tbody tr:last-child td { border-bottom: none; }
   tbody tr:hover { background: #fdf6ef; }
   .female { color: #c0576a; }
   .male { color: #3a7abf; }
-  .alias { color: #888; font-size: 0.85rem; }
-  .count { text-align: center; color: #888; font-size: 0.85rem; margin-top: 0.8rem; }
-  .avatar { width: 120px; height: 120px; border-radius: 8px; object-fit: cover; background: #e8ddd3; display: block; }
-  .avatar-placeholder { width: 120px; height: 120px; border-radius: 8px; background: #e8ddd3; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .alias { color: #888; font-size: 0.82rem; }
+  .avatar { width: 80px; height: 80px; border-radius: 6px; object-fit: cover; display: block; }
+  .avatar-placeholder { width: 80px; height: 80px; border-radius: 6px; background: #e8ddd3; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+
+  /* Mobile: cards */
+  .cards-wrap { display: none; }
+  .panda-card { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 0.9rem; display: flex; gap: 0.9rem; align-items: flex-start; margin-bottom: 0.8rem; }
+  .panda-card img, .panda-card .card-avatar-ph { width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+  .card-avatar-ph { background: #e8ddd3; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+  .card-info { flex: 1; min-width: 0; }
+  .card-name { font-size: 1.1rem; font-weight: 700; color: #4a3728; }
+  .card-alias { font-size: 0.8rem; color: #888; margin-bottom: 0.3rem; }
+  .card-meta { font-size: 0.82rem; color: #555; line-height: 1.7; }
+  .card-meta span { margin-right: 0.6rem; }
+  .tag-female { color: #c0576a; }
+  .tag-male { color: #3a7abf; }
+
+  @media (max-width: 680px) {
+    body { padding: 0.75rem; }
+    .table-wrap { display: none; }
+    .cards-wrap { display: block; }
+  }
 </style>
 </head>
 <body>
@@ -33,27 +54,23 @@
 <div class="search-wrap">
   <input id="search" type="search" placeholder="搜索姓名、别名、动物园…">
 </div>
+<p class="count">显示 <span id="shown"></span> / <span id="total2"></span> 条</p>
+
+<!-- Desktop table -->
 <div class="table-wrap">
   <table id="tbl">
     <thead>
       <tr>
-        <th>#</th>
-        <th>照片</th>
-        <th>姓名</th>
-        <th>别名</th>
-        <th>动物园</th>
-        <th>展馆</th>
-        <th>性别</th>
-        <th>母亲</th>
-        <th>父亲</th>
-        <th>生日</th>
-        <th>谱系号</th>
+        <th>#</th><th>照片</th><th>姓名</th><th>别名</th><th>动物园</th>
+        <th>展馆</th><th>性别</th><th>母亲</th><th>父亲</th><th>生日</th><th>谱系号</th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
   </table>
 </div>
-<p class="count">显示 <span id="shown"></span> / <span id="total2"></span> 条</p>
+
+<!-- Mobile cards -->
+<div class="cards-wrap" id="cards"></div>
 
 <script>
 // [name, alias, zoo, hall, gender, mother, father, birthday, pedigree, imgFile]
@@ -92,6 +109,7 @@ const data = [
 ];
 
 const tbody = document.getElementById('tbody');
+const cardsEl = document.getElementById('cards');
 const totalEl = document.getElementById('total');
 const total2El = document.getElementById('total2');
 const shownEl = document.getElementById('shown');
@@ -99,30 +117,48 @@ const shownEl = document.getElementById('shown');
 totalEl.textContent = data.length;
 total2El.textContent = data.length;
 
-function avatarCell(name, imgFile) {
-  if (imgFile) {
-    return `<td><img class="avatar" src="images/pandas/${imgFile}" alt="${name}" onerror="this.outerHTML='<div class=\\'avatar-placeholder\\'>🐼</div>'"></td>`;
-  }
-  return `<td><div class="avatar-placeholder">🐼</div></td>`;
+function avatarImg(name, imgFile, cls) {
+  if (imgFile) return `<img class="${cls}" src="images/pandas/${imgFile}" alt="${name}" onerror="this.outerHTML='<div class=\\'card-avatar-ph\\'>🐼</div>'">`;
+  return `<div class="card-avatar-ph">🐼</div>`;
 }
 
 function render(rows) {
+  // Table
   tbody.innerHTML = rows.map((r, i) => {
-    const genderClass = r[4] === '雌性' ? 'female' : r[4] === '雄性' ? 'male' : '';
+    const gc = r[4] === '雌性' ? 'female' : r[4] === '雄性' ? 'male' : '';
+    const avImg = r[9] ? `<img class="avatar" src="images/pandas/${r[9]}" alt="${r[0]}" onerror="this.outerHTML='<div class=\\'avatar-placeholder\\'>🐼</div>'">` : `<div class="avatar-placeholder">🐼</div>`;
     return `<tr>
-      <td>${i + 1}</td>
-      ${avatarCell(r[0], r[9])}
+      <td>${i+1}</td><td>${avImg}</td>
       <td><strong>${r[0]}</strong></td>
       <td class="alias">${r[1]}</td>
-      <td>${r[2]}</td>
-      <td>${r[3]}</td>
-      <td class="${genderClass}">${r[4]}</td>
-      <td>${r[5]}</td>
-      <td>${r[6]}</td>
-      <td>${r[7]}</td>
-      <td>${r[8]}</td>
+      <td>${r[2]}</td><td>${r[3]}</td>
+      <td class="${gc}">${r[4]}</td>
+      <td>${r[5]}</td><td>${r[6]}</td>
+      <td>${r[7]}</td><td>${r[8]}</td>
     </tr>`;
   }).join('');
+
+  // Cards
+  cardsEl.innerHTML = rows.map((r, i) => {
+    const gc = r[4] === '雌性' ? 'tag-female' : r[4] === '雄性' ? 'tag-male' : '';
+    const av = r[9] ? `<img src="images/pandas/${r[9]}" alt="${r[0]}" style="width:80px;height:80px;border-radius:8px;object-fit:cover;flex-shrink:0;" onerror="this.outerHTML='<div class=\\'card-avatar-ph\\'>🐼</div>'">` : `<div class="card-avatar-ph">🐼</div>`;
+    const parts = [];
+    if (r[2]) parts.push(`📍 ${r[2]}${r[3] ? ' · '+r[3] : ''}`);
+    if (r[4]) parts.push(`<span class="${gc}">${r[4]}</span>`);
+    if (r[7]) parts.push(`🎂 ${r[7]}`);
+    if (r[5]) parts.push(`母: ${r[5]}`);
+    if (r[6]) parts.push(`父: ${r[6]}`);
+    if (r[8]) parts.push(`谱系: ${r[8]}`);
+    return `<div class="panda-card">
+      ${av}
+      <div class="card-info">
+        <div class="card-name">${r[0]}</div>
+        ${r[1] ? `<div class="card-alias">${r[1]}</div>` : ''}
+        <div class="card-meta">${parts.map(p=>`<span>${p}</span>`).join('')}</div>
+      </div>
+    </div>`;
+  }).join('');
+
   shownEl.textContent = rows.length;
 }
 

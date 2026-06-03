@@ -122,7 +122,7 @@ totalEl.textContent = data.length;
 total2El.textContent = data.length;
 
 function avatarImg(name, imgFile, cls) {
-  if (imgFile) return `<img class="${cls}" src="images/pandas/${imgFile}" alt="${name}" onerror="this.outerHTML='<div class=\\'card-avatar-ph\\'>🐼</div>'">`;
+  if (imgFile) return `<img class="${cls}" src="images/pandas/${imgFile}" alt="${name}" loading="lazy" onerror="this.outerHTML='<div class=\\'card-avatar-ph\\'>🐼</div>'">`;
   return `<div class="card-avatar-ph">🐼</div>`;
 }
 
@@ -130,7 +130,7 @@ function render(rows) {
   // Table
   tbody.innerHTML = rows.map((r, i) => {
     const gc = r[4] === '雌性' ? 'female' : r[4] === '雄性' ? 'male' : '';
-    const avImg = r[9] ? `<img class="avatar" src="images/pandas/${r[9]}" alt="${r[0]}" onerror="this.outerHTML='<div class=\\'avatar-placeholder\\'>🐼</div>'">` : `<div class="avatar-placeholder">🐼</div>`;
+    const avImg = r[9] ? `<img class="avatar" src="images/pandas/${r[9]}" alt="${r[0]}" loading="lazy" onerror="this.outerHTML='<div class=\\'avatar-placeholder\\'>🐼</div>'">` : `<div class="avatar-placeholder">🐼</div>`;
     return `<tr>
       <td>${i+1}</td><td>${avImg}</td>
       <td><strong>${r[0]}</strong></td>
@@ -145,7 +145,7 @@ function render(rows) {
   // Cards
   cardsEl.innerHTML = rows.map((r, i) => {
     const gc = r[4] === '雌性' ? 'tag-female' : r[4] === '雄性' ? 'tag-male' : '';
-    const av = r[9] ? `<img src="images/pandas/${r[9]}" alt="${r[0]}" style="width:80px;height:80px;border-radius:8px;object-fit:cover;flex-shrink:0;" onerror="this.outerHTML='<div class=\\'card-avatar-ph\\'>🐼</div>'">` : `<div class="card-avatar-ph">🐼</div>`;
+    const av = r[9] ? `<img src="images/pandas/${r[9]}" alt="${r[0]}" loading="lazy" style="width:80px;height:80px;border-radius:8px;object-fit:cover;flex-shrink:0;" onerror="this.outerHTML='<div class=\\'card-avatar-ph\\'>🐼</div>'">` : `<div class="card-avatar-ph">🐼</div>`;
     const parts = [];
     if (r[2]) parts.push(`📍 ${r[2]}${r[3] ? ' · '+r[3] : ''}`);
     if (r[4]) parts.push(`<span class="${gc}">${r[4]}</span>`);

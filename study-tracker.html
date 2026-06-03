@@ -1116,7 +1116,6 @@
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', async function() {
-            await loadDetailContent();
             renderCurriculum();
             initializeTooltips();
         });
@@ -1130,9 +1129,13 @@
             let currentTrigger = null;
             let hideTimeout = null;
 
-            function showTooltip(trigger, detail) {
+            async function showTooltip(trigger) {
                 clearTimeout(hideTimeout);
                 currentTrigger = trigger;
+                const key = trigger.getAttribute('data-detail-key');
+                await loadDetailContent();
+                const detail = detailContent?.[currentSubject]?.[key];
+                if (!detail) return;
                 tooltip.innerHTML = `<h3>${detail.title}</h3>${detail.content}`;
                 tooltip.style.display = 'block';
                 positionTooltipNearTrigger(tooltip, trigger);
@@ -1148,13 +1151,8 @@
             document.addEventListener('mouseover', function(e) {
                 const trigger = e.target.closest('.tooltip-trigger');
                 if (trigger) {
-                    const key = trigger.getAttribute('data-detail-key');
-                    const detail = detailContent?.[currentSubject]?.[key];
-                    if (detail) {
-                        showTooltip(trigger, detail);
-                    }
+                    showTooltip(trigger);
                 } else if (e.target.closest('.detail-tooltip')) {
-                    // Mouse entered the tooltip itself — keep it open
                     clearTimeout(hideTimeout);
                 }
             });

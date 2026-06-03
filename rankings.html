@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏 & 影视数据中心</title>
+    <link rel="stylesheet" href="rankings.css">
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <nav class="nav">
+        <span class="nav-title">📊 游戏 & 影视数据中心</span>
+        <button class="nav-tab active" onclick="switchView('home')">🏠 首页</button>
+        <div class="nav-dropdown" id="movies-dropdown">
+            <button class="nav-tab nav-dropdown-btn" onclick="toggleMoviesDropdown(event)" id="movies-dropdown-btn">🎬 电影 ▾</button>
+            <div class="nav-dropdown-menu" id="movies-dropdown-menu">
+                <button class="nav-dropdown-item" onclick="switchView('top250'); closeAllDropdowns()">🎬 豆瓣Top250</button>
+                <button class="nav-dropdown-item" onclick="switchView('imdb-top250'); closeAllDropdowns()">🎬 IMDb Top250</button>
+            </div>
+        </div>
+        <div class="nav-dropdown" id="games-dropdown">
+            <button class="nav-tab nav-dropdown-btn" onclick="toggleGamesDropdown(event)" id="games-dropdown-btn">🎮 游戏 ▾</button>
+            <div class="nav-dropdown-menu" id="games-dropdown-menu">
+                <button class="nav-dropdown-item" onclick="switchView('mc-3ds-games'); closeAllDropdowns()">🏆 MC 3DS</button>
+                <button class="nav-dropdown-item" onclick="switchView('mc-nds-games'); closeAllDropdowns()">🎮 MC NDS</button>
+                <button class="nav-dropdown-item" onclick="switchView('mc-gba-games'); closeAllDropdowns()">🕹️ MC GBA</button>
+                <button class="nav-dropdown-item" onclick="switchView('mc-psp-games'); closeAllDropdowns()">🎮 MC PSP</button>
+                <button class="nav-dropdown-item" onclick="switchView('mc-ps1-games'); closeAllDropdowns()">🕹️ MC PS1</button>
+                <button class="nav-dropdown-item" onclick="switchView('mc-ps2-games'); closeAllDropdowns()">🎮 MC PS2</button>
+            </div>
+        </div>
+        <div class="nav-dropdown" id="books-dropdown">
+            <button class="nav-tab nav-dropdown-btn" onclick="toggleBooksDropdown(event)" id="books-dropdown-btn">📖 书籍 ▾</button>
+            <div class="nav-dropdown-menu" id="books-dropdown-menu">
+                <button class="nav-dropdown-item" onclick="switchView('best-books-ever'); closeAllDropdowns()">📚 Best Books Ever</button>
+            </div>
+        </div>
+        <div class="nav-dropdown" id="music-dropdown">
+            <button class="nav-tab nav-dropdown-btn" onclick="toggleMusicDropdown(event)" id="music-dropdown-btn">🎵 音乐 ▾</button>
+            <div class="nav-dropdown-menu" id="music-dropdown-menu">
+                <button class="nav-dropdown-item" onclick="switchView('billboard-global'); closeAllDropdowns()">🎵 Billboard Global 200</button>
+            </div>
+        </div>
+        <a class="nav-tab" href="index.html" style="text-decoration:none;">🏠 主页</a>
+    </nav>
+
+    <!-- ── Home ── -->
+    <div id="view-home" class="view active">
+        <div class="home-wrap">
+            <div class="home-header">
+                <h1>📊 游戏 & 影视数据中心</h1>
+                <p>选择您要查看的数据类型</p>
+            </div>
+            <div class="cards">
+                <div class="card" onclick="switchView('top250')">
+                    <div class="card-icon">🎬</div>
+                    <h2>Top 250 电影</h2>
+                    <p>豆瓣电影排行榜前250名，包含评分、评价人数、导演、主演等详细信息</p>
+                    <span class="card-badge">查看榜单 →</span>
+                </div>
+                <div class="card" onclick="switchView('imdb-top250')">
+                    <div class="card-icon">🎬</div>
+                    <h2>IMDb Top 250</h2>
+                    <p>IMDb电影排行榜前250名，包含评分、评价人数、时长、分级等详细信息</p>
+                    <span class="card-badge">查看榜单 →</span>
+                </div>
+                <div class="card" onclick="switchView('mc-3ds-games')">
+                    <div class="card-icon">🏆</div>
+                    <h2>MC 3DS榜单</h2>
+                    <p>Metacritic 3DS游戏榜单，含媒体评分、用户评分、类型、ESRB分级等详细信息</p>
+                    <span class="card-badge">查看榜单 →</span>
+                </div>
+                <div class="card" onclick="switchView('mc-nds-games')">
+                    <div class="card-icon">🎮</div>
+                    <h2>MC NDS榜单</h2>
+                    <p>Metacritic NDS游戏榜单，含媒体评分、用户评分、类型、ESRB分级等详细信息</p>
+                    <span class="card-badge">查看榜单 →</span>
+                </div>
+                <div class="card" onclick="switchView('mc-gba-games')">
+                    <div class="card-icon">🕹️</div>
+                    <h2>MC GBA榜单</h2>
+                    <p>Metacritic GBA游戏榜单，含媒体评分、用户评分、类型、ESRB分级等详细信息</p>
+                    <span class="card-badge">查看榜单 →</span>
+                </div>
+                <div class="card" onclick="switchView('mc-psp-games')">
+                    <div class="card-icon">🎮</div>
+                    <h2>MC PSP榜单</h2>
+                    <p>Metacritic PSP游戏榜单，含媒体评分、用户评分、类型、ESRB分级等详细信息</p>
+                    <span class="card-badge">查看榜单 →</span>
+                </div>
+                <div class="card" onclick="switchView('mc-ps1-games')">
+                    <div class="card-icon">🕹️</div>
+                    <h2>MC PS1榜单</h2>
+                    <p>Metacritic PS1游戏榜单，含媒体评分、用户评分、类型、ESRB分级等详细信息</p>
+                    <span class="card-badge">查看榜单 →</span>
+                </div>
+                <div class="card" onclick="switchView('mc-ps2-games')">
+                    <div class="card-icon">🎮</div>
+                    <h2>MC PS2榜单</h2>
+                    <p>Metacritic PS2游戏榜单，含媒体评分、用户评分、类型、ESRB分级等详细信息</p>
+                    <span class="card-badge">查看榜单 →</span>
+                </div>
+                <div class="card" onclick="switchView('best-books-ever')">
+                    <div class="card-icon">📚</div>
+                    <h2>Best Books Ever</h2>
+                    <p>Goodreads最受欢迎书单，含平均评分、评价人数、票数等详细信息</p>
+                    <span class="card-badge">查看榜单 →</span>
+                </div>
+                <div class="card" onclick="switchView('billboard-global')">
+                    <div class="card-icon">🎵</div>
+                    <h2>Billboard Global 200</h2>
+                    <p>Billboard全球音乐排行榜，含排名、上周排名、峰值排名、在榜周数等数据</p>
+                    <span class="card-badge">查看榜单 →</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Top250 ── -->
+    <div id="view-top250" class="view">
+        <div class="container">
+            <div class="header">
+                <h1>豆瓣电影Top250 - 数据筛选表</h1>
+                <p>支持多维度筛选和排序，方便查找和对比电影数据 <a href="https://movie.douban.com/top250" target="_blank">豆瓣Top250</a></p>
+            </div>
+            <div class="filters">
+                <div id="top250-activeFiltersInfo" class="active-filters" style="display:none;">
+                    <strong>当前筛选条件：</strong><span id="top250-activeFiltersText"></span>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">基本信息筛选</div>
+                    <div class="filter-row">
+                        <div class="filter-group" style="grid-column: span 2;">
+                            <label>电影名称 <span class="count" id="top250-titleCount">250</span></label>
+                            <input type="text" id="top250-searchTitle" placeholder="搜索电影名称...">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">评分筛选 <span class="count" id="top250-ratingFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="top250-ratingFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">年份筛选 <span class="count" id="top250-yearFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="top250-yearFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">评价人数筛选 <span class="count" id="top250-voteCountFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="top250-voteCountFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">可播放状态筛选 <span class="count" id="top250-playableFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="top250-playableFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">地区筛选 <span class="count" id="top250-countryFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="top250-countryFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">类型筛选 <span class="count" id="top250-genreFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="top250-genreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">导演筛选 <span class="count" id="top250-directorFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="top250-directorFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">主演筛选 <span class="count" id="top250-starringFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="top250-starringFilter"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="pages.top250.applyFilters()">应用筛选</button>
+                    <button class="btn btn-secondary" onclick="pages.top250.resetFilters()">重置筛选</button>
+                    <button class="btn btn-secondary" onclick="pages.top250.exportFiltered()">导出CSV</button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-value" id="top250-totalCount">250</div><div class="stat-label">总电影数</div></div>
+                <div class="stat-item"><div class="stat-value" id="top250-filteredCount">250</div><div class="stat-label">筛选结果</div></div>
+                <div class="stat-item"><div class="stat-value" id="top250-avgRating">-</div><div class="stat-label">平均评分</div></div>
+                <div class="stat-item"><div class="stat-value" id="top250-yearRange">-</div><div class="stat-label">年份范围</div></div>
+            </div>
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table><thead id="top250-tableHead"></thead><tbody id="top250-tableBody"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── IMDb Top250 ── -->
+    <div id="view-imdb-top250" class="view">
+        <div class="container">
+            <div class="header">
+                <h1>IMDb电影Top250 - 数据筛选表</h1>
+                <p>支持多维度筛选和排序，方便查找和对比电影数据 <a href="https://www.imdb.com/chart/top/" target="_blank">IMDb Top 250</a></p>
+            </div>
+            <div class="filters">
+                <div id="imdb250-activeFiltersInfo" class="active-filters" style="display:none;">
+                    <strong>当前筛选条件：</strong><span id="imdb250-activeFiltersText"></span>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">基本信息筛选</div>
+                    <div class="filter-row">
+                        <div class="filter-group" style="grid-column: span 2;">
+                            <label>电影名称 <span class="count" id="imdb250-titleCount">250</span></label>
+                            <input type="text" id="imdb250-searchTitle" placeholder="搜索电影名称...">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">评分筛选 <span class="count" id="imdb250-ratingFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="imdb250-ratingFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">年份筛选 <span class="count" id="imdb250-yearFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="imdb250-yearFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">评价人数筛选 <span class="count" id="imdb250-voteCountFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="imdb250-voteCountFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">类型筛选 <span class="count" id="imdb250-genreFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="imdb250-genreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">分级筛选 <span class="count" id="imdb250-certificateFilterCount" style="background:#28a745;">250</span></div>
+                    <div class="checkbox-filter" id="imdb250-certificateFilter"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="pages['imdb-top250'].applyFilters()">应用筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['imdb-top250'].resetFilters()">重置筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['imdb-top250'].exportFiltered()">导出CSV</button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-value" id="imdb250-totalCount">250</div><div class="stat-label">总电影数</div></div>
+                <div class="stat-item"><div class="stat-value" id="imdb250-filteredCount">250</div><div class="stat-label">筛选结果</div></div>
+                <div class="stat-item"><div class="stat-value" id="imdb250-avgRating">-</div><div class="stat-label">平均评分</div></div>
+                <div class="stat-item"><div class="stat-value" id="imdb250-yearRange">-</div><div class="stat-label">年份范围</div></div>
+            </div>
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table><thead id="imdb250-tableHead"></thead><tbody id="imdb250-tableBody"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── MC 3DS Games ── -->
+    <div id="view-mc-3ds-games" class="view">
+        <div class="container">
+            <div class="header">
+                <h1>Metacritic 3DS 游戏榜单</h1>
+                <p>媒体评分、用户评分、类型、ESRB分级等多维度筛选 <a href="https://www.metacritic.com/browse/game/3ds/" target="_blank">Metacritic 3DS</a></p>
+            </div>
+            <div class="filters">
+                <div id="mc3ds-activeFiltersInfo" class="active-filters" style="display:none;">
+                    <strong>当前筛选条件：</strong><span id="mc3ds-activeFiltersText"></span>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">基本信息筛选</div>
+                    <div class="filter-row">
+                        <div class="filter-group" style="grid-column: span 2;">
+                            <label>游戏名称 <span class="count" id="mc3ds-titleCount">0</span></label>
+                            <input type="text" id="mc3ds-searchTitle" placeholder="搜索游戏名称...">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体评分筛选 <span class="count" id="mc3ds-criticScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mc3ds-criticScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">用户评分筛选 <span class="count" id="mc3ds-userScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mc3ds-userScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体口碑筛选 <span class="count" id="mc3ds-sentimentFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mc3ds-sentimentFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">年份筛选 <span class="count" id="mc3ds-yearFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mc3ds-yearFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">类型筛选 <span class="count" id="mc3ds-genreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mc3ds-genreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">ESRB分级筛选 <span class="count" id="mc3ds-esrbFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mc3ds-esrbFilter"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="pages['mc-3ds-games'].applyFilters()">应用筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-3ds-games'].resetFilters()">重置筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-3ds-games'].exportFiltered()">导出CSV</button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-value" id="mc3ds-totalCount">0</div><div class="stat-label">总游戏数</div></div>
+                <div class="stat-item"><div class="stat-value" id="mc3ds-filteredCount">0</div><div class="stat-label">筛选结果</div></div>
+                <div class="stat-item"><div class="stat-value" id="mc3ds-avgRating">-</div><div class="stat-label">平均媒体评分</div></div>
+                <div class="stat-item"><div class="stat-value" id="mc3ds-yearRange">-</div><div class="stat-label">年份范围</div></div>
+            </div>
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table><thead id="mc3ds-tableHead"></thead><tbody id="mc3ds-tableBody"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── MC NDS Games ── -->
+    <div id="view-mc-nds-games" class="view">
+        <div class="container">
+            <div class="header">
+                <h1>Metacritic NDS 游戏榜单</h1>
+                <p>媒体评分、用户评分、类型、ESRB分级等多维度筛选 <a href="https://www.metacritic.com/browse/game/ds/" target="_blank">Metacritic NDS</a></p>
+            </div>
+            <div class="filters">
+                <div id="mcnds-activeFiltersInfo" class="active-filters" style="display:none;">
+                    <strong>当前筛选条件：</strong><span id="mcnds-activeFiltersText"></span>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">基本信息筛选</div>
+                    <div class="filter-row">
+                        <div class="filter-group" style="grid-column: span 2;">
+                            <label>游戏名称 <span class="count" id="mcnds-titleCount">0</span></label>
+                            <input type="text" id="mcnds-searchTitle" placeholder="搜索游戏名称...">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体评分筛选 <span class="count" id="mcnds-criticScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcnds-criticScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">用户评分筛选 <span class="count" id="mcnds-userScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcnds-userScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体口碑筛选 <span class="count" id="mcnds-sentimentFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcnds-sentimentFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">年份筛选 <span class="count" id="mcnds-yearFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcnds-yearFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">类型筛选 <span class="count" id="mcnds-genreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcnds-genreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">ESRB分级筛选 <span class="count" id="mcnds-esrbFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcnds-esrbFilter"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="pages['mc-nds-games'].applyFilters()">应用筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-nds-games'].resetFilters()">重置筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-nds-games'].exportFiltered()">导出CSV</button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-value" id="mcnds-totalCount">0</div><div class="stat-label">总游戏数</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcnds-filteredCount">0</div><div class="stat-label">筛选结果</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcnds-avgRating">-</div><div class="stat-label">平均媒体评分</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcnds-yearRange">-</div><div class="stat-label">年份范围</div></div>
+            </div>
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table><thead id="mcnds-tableHead"></thead><tbody id="mcnds-tableBody"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── MC GBA Games ── -->
+    <div id="view-mc-gba-games" class="view">
+        <div class="container">
+            <div class="header">
+                <h1>Metacritic GBA 游戏榜单</h1>
+                <p>媒体评分、用户评分、类型、ESRB分级等多维度筛选 <a href="https://www.metacritic.com/browse/game/game-boy-advance/" target="_blank">Metacritic GBA</a></p>
+            </div>
+            <div class="filters">
+                <div id="mcgba-activeFiltersInfo" class="active-filters" style="display:none;">
+                    <strong>当前筛选条件：</strong><span id="mcgba-activeFiltersText"></span>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">基本信息筛选</div>
+                    <div class="filter-row">
+                        <div class="filter-group" style="grid-column: span 2;">
+                            <label>游戏名称 <span class="count" id="mcgba-titleCount">0</span></label>
+                            <input type="text" id="mcgba-searchTitle" placeholder="搜索游戏名称...">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体评分筛选 <span class="count" id="mcgba-criticScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcgba-criticScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">用户评分筛选 <span class="count" id="mcgba-userScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcgba-userScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体口碑筛选 <span class="count" id="mcgba-sentimentFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcgba-sentimentFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">年份筛选 <span class="count" id="mcgba-yearFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcgba-yearFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">类型筛选 <span class="count" id="mcgba-genreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcgba-genreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">ESRB分级筛选 <span class="count" id="mcgba-esrbFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcgba-esrbFilter"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="pages['mc-gba-games'].applyFilters()">应用筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-gba-games'].resetFilters()">重置筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-gba-games'].exportFiltered()">导出CSV</button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-value" id="mcgba-totalCount">0</div><div class="stat-label">总游戏数</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcgba-filteredCount">0</div><div class="stat-label">筛选结果</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcgba-avgRating">-</div><div class="stat-label">平均媒体评分</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcgba-yearRange">-</div><div class="stat-label">年份范围</div></div>
+            </div>
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table><thead id="mcgba-tableHead"></thead><tbody id="mcgba-tableBody"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── MC PSP Games ── -->
+    <div id="view-mc-psp-games" class="view">
+        <div class="container">
+            <div class="header">
+                <h1>Metacritic PSP 游戏榜单</h1>
+                <p>媒体评分、用户评分、类型、ESRB分级等多维度筛选 <a href="https://www.metacritic.com/browse/game/psp/" target="_blank">Metacritic PSP</a></p>
+            </div>
+            <div class="filters">
+                <div id="mcpsp-activeFiltersInfo" class="active-filters" style="display:none;">
+                    <strong>当前筛选条件：</strong><span id="mcpsp-activeFiltersText"></span>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">基本信息筛选</div>
+                    <div class="filter-row">
+                        <div class="filter-group" style="grid-column: span 2;">
+                            <label>游戏名称 <span class="count" id="mcpsp-titleCount">0</span></label>
+                            <input type="text" id="mcpsp-searchTitle" placeholder="搜索游戏名称...">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体评分筛选 <span class="count" id="mcpsp-criticScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcpsp-criticScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">用户评分筛选 <span class="count" id="mcpsp-userScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcpsp-userScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体口碑筛选 <span class="count" id="mcpsp-sentimentFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcpsp-sentimentFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">年份筛选 <span class="count" id="mcpsp-yearFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcpsp-yearFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">类型筛选 <span class="count" id="mcpsp-genreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcpsp-genreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">ESRB分级筛选 <span class="count" id="mcpsp-esrbFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcpsp-esrbFilter"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="pages['mc-psp-games'].applyFilters()">应用筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-psp-games'].resetFilters()">重置筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-psp-games'].exportFiltered()">导出CSV</button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-value" id="mcpsp-totalCount">0</div><div class="stat-label">总游戏数</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcpsp-filteredCount">0</div><div class="stat-label">筛选结果</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcpsp-avgRating">-</div><div class="stat-label">平均媒体评分</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcpsp-yearRange">-</div><div class="stat-label">年份范围</div></div>
+            </div>
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table><thead id="mcpsp-tableHead"></thead><tbody id="mcpsp-tableBody"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── MC PS1 Games ── -->
+    <div id="view-mc-ps1-games" class="view">
+        <div class="container">
+            <div class="header">
+                <h1>Metacritic PS1 游戏榜单</h1>
+                <p>媒体评分、用户评分、类型、ESRB分级等多维度筛选 <a href="https://www.metacritic.com/browse/game/playstation/" target="_blank">Metacritic PS1</a></p>
+            </div>
+            <div class="filters">
+                <div id="mcps1-activeFiltersInfo" class="active-filters" style="display:none;">
+                    <strong>当前筛选条件：</strong><span id="mcps1-activeFiltersText"></span>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">基本信息筛选</div>
+                    <div class="filter-row">
+                        <div class="filter-group" style="grid-column: span 2;">
+                            <label>游戏名称 <span class="count" id="mcps1-titleCount">0</span></label>
+                            <input type="text" id="mcps1-searchTitle" placeholder="搜索游戏名称...">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体评分筛选 <span class="count" id="mcps1-criticScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcps1-criticScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">用户评分筛选 <span class="count" id="mcps1-userScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcps1-userScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体口碑筛选 <span class="count" id="mcps1-sentimentFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcps1-sentimentFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">年份筛选 <span class="count" id="mcps1-yearFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcps1-yearFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">类型筛选 <span class="count" id="mcps1-genreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcps1-genreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">ESRB分级筛选 <span class="count" id="mcps1-esrbFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcps1-esrbFilter"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="pages['mc-ps1-games'].applyFilters()">应用筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-ps1-games'].resetFilters()">重置筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-ps1-games'].exportFiltered()">导出CSV</button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-value" id="mcps1-totalCount">0</div><div class="stat-label">总游戏数</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcps1-filteredCount">0</div><div class="stat-label">筛选结果</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcps1-avgRating">-</div><div class="stat-label">平均媒体评分</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcps1-yearRange">-</div><div class="stat-label">年份范围</div></div>
+            </div>
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table><thead id="mcps1-tableHead"></thead><tbody id="mcps1-tableBody"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── MC PS2 Games ── -->
+    <div id="view-mc-ps2-games" class="view">
+        <div class="container">
+            <div class="header">
+                <h1>Metacritic PS2 游戏榜单</h1>
+                <p>媒体评分、用户评分、类型、ESRB分级等多维度筛选 <a href="https://www.metacritic.com/browse/game/playstation-2/" target="_blank">Metacritic PS2</a></p>
+            </div>
+            <div class="filters">
+                <div id="mcps2-activeFiltersInfo" class="active-filters" style="display:none;">
+                    <strong>当前筛选条件：</strong><span id="mcps2-activeFiltersText"></span>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">搜索</div>
+                    <div class="filter-row">
+                        <div class="filter-group" style="grid-column: span 2;">
+                            <label>游戏名称 <span class="count" id="mcps2-titleCount">0</span></label>
+                            <input type="text" id="mcps2-searchTitle" placeholder="搜索游戏名称...">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体评分筛选 <span class="count" id="mcps2-criticScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcps2-criticScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">用户评分筛选 <span class="count" id="mcps2-userScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcps2-userScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体口碑筛选 <span class="count" id="mcps2-sentimentFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcps2-sentimentFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">年份筛选 <span class="count" id="mcps2-yearFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcps2-yearFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">类型筛选 <span class="count" id="mcps2-genreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcps2-genreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">ESRB分级筛选 <span class="count" id="mcps2-esrbFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcps2-esrbFilter"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="pages['mc-ps2-games'].applyFilters()">应用筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-ps2-games'].resetFilters()">重置筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-ps2-games'].exportFiltered()">导出CSV</button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-value" id="mcps2-totalCount">0</div><div class="stat-label">总游戏数</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcps2-filteredCount">0</div><div class="stat-label">筛选结果</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcps2-avgRating">-</div><div class="stat-label">平均媒体评分</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcps2-yearRange">-</div><div class="stat-label">年份范围</div></div>
+            </div>
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table><thead id="mcps2-tableHead"></thead><tbody id="mcps2-tableBody"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Best Books Ever ── -->
+    <div id="view-best-books-ever" class="view">
+        <div class="container">
+            <div class="header">
+                <h1>Best Books Ever - 数据筛选表</h1>
+                <p>Goodreads最受欢迎书单，支持多维度筛选和排序 <a href="https://www.goodreads.com/list/show/1.Best_Books_Ever" target="_blank">Goodreads Best Books Ever</a></p>
+            </div>
+            <div class="filters">
+                <div id="bbe-activeFiltersInfo" class="active-filters" style="display:none;">
+                    <strong>当前筛选条件：</strong><span id="bbe-activeFiltersText"></span>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">基本信息筛选</div>
+                    <div class="filter-row">
+                        <div class="filter-group" style="grid-column: span 2;">
+                            <label>书名 <span class="count" id="bbe-titleCount">0</span></label>
+                            <input type="text" id="bbe-searchTitle" placeholder="搜索书名...">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">平均评分筛选 <span class="count" id="bbe-ratingFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="bbe-ratingFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">评价人数筛选 <span class="count" id="bbe-voteCountFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="bbe-voteCountFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">作者筛选 <span class="count" id="bbe-directorFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="bbe-directorFilter"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="pages['best-books-ever'].applyFilters()">应用筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['best-books-ever'].resetFilters()">重置筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['best-books-ever'].exportFiltered()">导出CSV</button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-value" id="bbe-totalCount">0</div><div class="stat-label">总书数</div></div>
+                <div class="stat-item"><div class="stat-value" id="bbe-filteredCount">0</div><div class="stat-label">筛选结果</div></div>
+                <div class="stat-item"><div class="stat-value" id="bbe-avgRating">-</div><div class="stat-label">平均评分</div></div>
+                <div class="stat-item"><div class="stat-value" id="bbe-yearRange">-</div><div class="stat-label">排名范围</div></div>
+            </div>
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table><thead id="bbe-tableHead"></thead><tbody id="bbe-tableBody"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Billboard Global 200 ── -->
+    <div id="view-billboard-global" class="view">
+        <div class="container">
+            <div class="header">
+                <h1>Billboard Global 200 - 数据筛选表</h1>
+                <p>支持多维度筛选和排序，方便查找和对比音乐排行榜数据 <a href="https://www.billboard.com/charts/billboard-global-200/" target="_blank">Billboard Global 200</a></p>
+            </div>
+            <div class="filters">
+                <div id="billboard-activeFiltersInfo" class="active-filters" style="display:none;">
+                    <strong>当前筛选条件：</strong><span id="billboard-activeFiltersText"></span>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">基本信息筛选</div>
+                    <div class="filter-row">
+                        <div class="filter-group" style="grid-column: span 2;">
+                            <label>曲目名称 <span class="count" id="billboard-titleCount">0</span></label>
+                            <input type="text" id="billboard-searchTitle" placeholder="搜索曲目名称...">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">在榜周数筛选 <span class="count" id="billboard-voteCountFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="billboard-voteCountFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">艺术家筛选 <span class="count" id="billboard-directorFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="billboard-directorFilter"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="pages['billboard-global'].applyFilters()">应用筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['billboard-global'].resetFilters()">重置筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['billboard-global'].exportFiltered()">导出CSV</button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-value" id="billboard-totalCount">0</div><div class="stat-label">总曲目数</div></div>
+                <div class="stat-item"><div class="stat-value" id="billboard-filteredCount">0</div><div class="stat-label">筛选结果</div></div>
+                <div class="stat-item"><div class="stat-value" id="billboard-avgRating">-</div><div class="stat-label">平均在榜周数</div></div>
+                <div class="stat-item"><div class="stat-value" id="billboard-yearRange">-</div><div class="stat-label">峰值排名1的曲目</div></div>
+            </div>
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table><thead id="billboard-tableHead"></thead><tbody id="billboard-tableBody"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="rankings.js"></script>
+</body>
+</html>

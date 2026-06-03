@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>耗材追踪</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", -apple-system, sans-serif;
+            background: #f5f0eb;
+            min-height: 100vh;
+            padding: 1rem;
+            color: #333;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .header { text-align: center; padding: 1.5rem 0 1rem; }
+
+        .header h1 {
+            font-size: clamp(1.4rem, 5vw, 2rem);
+            color: #4a3728;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .header p { color: #999; font-size: 0.85rem; }
+
+        /* Device tabs */
+        .device-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .device-tab {
+            padding: 8px 20px;
+            background: #fff;
+            border: 2px solid #e0d5c8;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .device-tab:hover {
+            border-color: #8b5e3c;
+            color: #4a3728;
+            transform: translateY(-1px);
+        }
+
+        .device-tab.active {
+            background: #6b4226;
+            border-color: #6b4226;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(107,66,38,0.25);
+        }
+
+        /* Cards grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e8ddd3;
+            border-radius: 14px;
+            padding: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #2d1f14;
+        }
+
+        .card-device {
+            font-size: 0.78rem;
+            color: #aaa;
+            margin-top: 2px;
+        }
+
+        /* Status badge */
+        .status-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .status-ok      { background: #e8f5e9; color: #388e3c; }
+        .status-soon    { background: #fff8e1; color: #f57f17; }
+        .status-expired { background: #fce4ec; color: #c62828; }
+
+        /* Info rows */
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid #f5ede6;
+            font-size: 0.85rem;
+        }
+
+        .info-row:last-child { border-bottom: none; }
+
+        .info-label { color: #aaa; }
+        .info-value { font-weight: 600; color: #333; }
+
+        /* Progress bar */
+        .progress-wrap { margin: 12px 0 4px; }
+
+        .progress-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.73rem;
+            color: #bbb;
+            margin-bottom: 5px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #f0e8df;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+
+        .fill-ok      { background: linear-gradient(90deg, #66bb6a, #a5d6a7); }
+        .fill-soon    { background: linear-gradient(90deg, #ffa726, #ffcc80); }
+        .fill-expired { background: linear-gradient(90deg, #ef5350, #ef9a9a); }
+
+        /* Summary bar */
+        .summary {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+            justify-content: center;
+        }
+
+        .summary-item {
+            background: #fff;
+            border: 1px solid #e8ddd3;
+            border-radius: 12px;
+            padding: 10px 18px;
+            text-align: center;
+            min-width: 110px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+
+        .summary-num {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .summary-label {
+            font-size: 0.72rem;
+            color: #aaa;
+            margin-top: 2px;
+        }
+
+        .hidden { display: none; }
+
+        /* Toggle controls */
+        .view-controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .toggle-btn, .settings-btn {
+            padding: 6px 14px;
+            background: #fff;
+            border: 1px solid #d4c5b0;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            color: #888;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .toggle-btn:hover, .settings-btn:hover {
+            border-color: #8b5e3c;
+            color: #4a3728;
+        }
+
+        .toggle-btn.off {
+            opacity: 0.45;
+            text-decoration: line-through;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal-overlay.open { display: flex; }
+
+        .modal {
+            background: #fff;
+            border: 1px solid #e8ddd3;
+            border-radius: 18px;
+            padding: 24px;
+            min-width: 280px;
+            max-width: 360px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        }
+
+        .modal h2 {
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+            color: #4a3728;
+        }
+
+        .modal-device-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .modal-device-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 7px 10px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .modal-device-row:hover { background: #f5f0eb; }
+
+        .modal-device-row input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: #6b4226;
+        }
+
+        .modal-device-label {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 8px 18px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .modal-btn-cancel {
+            background: #f5f0eb;
+            border: 1px solid #d4c5b0;
+            color: #888;
+        }
+        .modal-btn-cancel:hover { background: #ede5db; color: #555; }
+
+        .modal-btn-save {
+            background: #6b4226;
+            border: none;
+            color: #fff;
+        }
+        .modal-btn-save:hover { background: #8b5e3c; }
+
+        /* Editable fields */
+        .editable {
+            cursor: pointer;
+            border-bottom: 1px dashed #d4c5b0;
+            transition: border-color 0.2s;
+        }
+        .editable:hover { border-color: #8b5e3c; color: #8b5e3c; }
+
+        .inline-edit {
+            background: #f5f0eb;
+            border: 1px solid #8b5e3c;
+            border-radius: 6px;
+            color: #333;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            width: 120px;
+            outline: none;
+        }
+
+        .renew-btn {
+            margin-top: 10px;
+            width: 100%;
+            padding: 8px;
+            background: #f5f0eb;
+            border: 1px solid #d4c5b0;
+            border-radius: 8px;
+            color: #6b4226;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .renew-btn:hover {
+            background: #ede5db;
+            border-color: #8b5e3c;
+        }
+
+        /* Delete card button */
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 22px;
+            height: 22px;
+            background: #fce4ec;
+            border: 1px solid #f8bbd9;
+            border-radius: 6px;
+            color: #c62828;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            line-height: 1;
+        }
+        .delete-btn:hover {
+            background: #f44336;
+            border-color: #f44336;
+            color: #fff;
+        }
+
+        .card { position: relative; }
+
+        /* Add consumable button */
+        .add-consumable-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px;
+            background: #faf7f4;
+            border: 2px dashed #d4c5b0;
+            border-radius: 14px;
+            color: #bbb;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .add-consumable-btn:hover {
+            background: #f5f0eb;
+            border-color: #8b5e3c;
+            color: #6b4226;
+        }
+
+        /* Add consumable modal */
+        .modal-form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+
+        .form-row { display: flex; flex-direction: column; gap: 4px; }
+
+        .form-label { font-size: 0.78rem; color: #aaa; }
+
+        .form-input {
+            background: #f5f0eb;
+            border: 1px solid #d4c5b0;
+            border-radius: 8px;
+            color: #333;
+            font-size: 0.9rem;
+            padding: 7px 10px;
+            outline: none;
+            transition: border-color 0.2s;
+            width: 100%;
+            font-family: inherit;
+        }
+        .form-input:focus { border-color: #8b5e3c; }
+        .form-input::placeholder { color: #ccc; }
+
+        .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #888;
+            font-size: 0.82rem;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: #4a3728; }
+
+        @media (max-width: 480px) {
+            .cards-grid { grid-template-columns: 1fr; }
+            .view-controls { gap: 6px; }
+            .toggle-btn, .settings-btn { font-size: 0.75rem; padding: 5px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <a class="back-link" href="index.html">← 返回首页</a>
+        <h1>耗材追踪</h1>
+        <p>Consumable replacement tracker — start date · lifespan · cost per day</p>
+    </div>
+
+    <div class="view-controls">
+        <button class="toggle-btn" id="toggleDevices" onclick="toggleSection('devices')">设备标签</button>
+        <button class="toggle-btn" id="toggleSummary" onclick="toggleSection('summary')">统计概览</button>
+        <button class="settings-btn" onclick="openSettings()">⚙ 设备管理</button>
+        <button class="settings-btn" onclick="exportData()">↑ 导出</button>
+        <button class="settings-btn" onclick="importData()">↓ 导入</button>
+    </div>
+    <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="handleImportFile(event)">
+    <div class="device-tabs" id="deviceTabs"></div>
+
+    <!-- Settings modal -->
+    <div class="modal-overlay" id="settingsModal" onclick="handleOverlayClick(event)">
+        <div class="modal">
+            <h2>⚙ 选择要显示的设备</h2>
+            <div class="modal-device-list" id="modalDeviceList"></div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-cancel" onclick="closeSettings()">取消</button>
+                <button class="modal-btn modal-btn-save" onclick="saveSettings()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add consumable modal -->
+    <div class="modal-overlay" id="addConsumableModal" onclick="handleAddOverlayClick(event)">
+        <div class="modal" style="max-width:400px">
+            <h2>＋ 添加耗材</h2>
+            <div class="modal-form">
+                <div class="form-row">
+                    <label class="form-label">耗材名称 *</label>
+                    <input class="form-input" id="acName" placeholder="例：HEPA滤芯">
+                </div>
+                <div class="form-row">
+                    <label class="form-label">图标（emoji）</label>
+                    <input class="form-input" id="acIcon" placeholder="🔵" maxlength="4">
+                </div>
+                <div class="form-row-2">
+                    <div class="form-row">
+                        <label class="form-label" id="acStartDateLabel">开始日期 *</label>
+                        <input class="form-input" id="acStartDate" type="date">
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" id="acDaysLabel">使用周期（天）*</label>
+                        <input class="form-input" id="acDays" type="number" min="1" placeholder="180">
+                    </div>
+                </div>
+                <div class="form-row" id="acPriceRow">
+                    <label class="form-label">单价（¥）</label>
+                    <input class="form-input" id="acPrice" type="number" min="0" step="0.01" placeholder="99">
+                </div>
+            </div>
+            <div id="acError" style="color:#c62828;font-size:0.8rem;margin-bottom:12px;display:none"></div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-cancel" onclick="closeAddConsumable()">取消</button>
+                <button class="modal-btn modal-btn-save" onclick="confirmAddConsumable()">添加</button>
+            </div>
+        </div>
+    </div>
+    <div class="summary" id="summary"></div>
+    <div class="cards-grid" id="cardsGrid"></div>
+</div>
+
+<script>
+// ─── DATA ──────────────────────────────────────────────────────────────────
+const devices = [
+    {
+        id: "all",
+        name: "全部",
+        icon: "📋",
+    },
+    {
+        id: "fresh-air",
+        name: "新风机",
+        icon: "🌬️",
+        consumables: [
+            { name: "新风滤芯 G4", icon: "🔵", startDate: "2025-03-01", days: 180, price: 89,  color: "#5b8dee" },
+            { name: "新风滤芯 H13", icon: "🟣", startDate: "2025-03-01", days: 365, price: 159, color: "#ab78d8" },
+            { name: "活性炭滤网",   icon: "⚫", startDate: "2025-03-01", days: 90,  price: 49,  color: "#78909c" },
+        ]
+    },
+    {
+        id: "air-purifier",
+        name: "空气净化器",
+        icon: "💨",
+        consumables: [
+            { name: "净化器滤芯 HEPA", icon: "🟢", startDate: "2025-01-15", days: 180, price: 199, color: "#4caf7d" },
+            { name: "净化器前置滤网",   icon: "🟡", startDate: "2025-01-15", days: 30,  price: 29,  color: "#e8a020" },
+            { name: "除甲醛滤芯",       icon: "🟠", startDate: "2025-04-01", days: 365, price: 249, color: "#e07020" },
+        ]
+    },
+    {
+        id: "water-purifier",
+        name: "净水器",
+        icon: "💧",
+        consumables: [
+            { name: "前置滤芯 PP棉",  icon: "🔵", startDate: "2025-02-01", days: 90,  price: 39,  color: "#29b6f6" },
+            { name: "活性炭滤芯",     icon: "⚫", startDate: "2025-02-01", days: 180, price: 89,  color: "#607d8b" },
+            { name: "RO反渗透膜",     icon: "🟤", startDate: "2024-09-01", days: 730, price: 399, color: "#a1887f" },
+            { name: "后置椰壳炭芯",   icon: "🟢", startDate: "2025-02-01", days: 365, price: 79,  color: "#66bb6a" },
+        ]
+    },
+    {
+        id: "printer",
+        name: "打印机",
+        icon: "🖨️",
+        consumables: [
+            { name: "黑色墨盒", icon: "⚫", startDate: "2025-05-01", days: 120, price: 85,  color: "#546e7a" },
+            { name: "彩色墨盒", icon: "🌈", startDate: "2025-05-01", days: 180, price: 199, color: "#ab47bc" },
+        ]
+    },
+    {
+        id: "robot-vacuum",
+        name: "扫地机器人",
+        icon: "🤖",
+        consumables: [
+            { name: "主刷",     icon: "🔴", startDate: "2025-04-10", days: 180, price: 69,  color: "#ef5350" },
+            { name: "边刷",     icon: "🟠", startDate: "2025-04-10", days: 90,  price: 29,  color: "#ff7043" },
+            { name: "滤网",     icon: "🟡", startDate: "2025-04-10", days: 60,  price: 25,  color: "#e8a020" },
+            { name: "尘袋",     icon: "🟤", startDate: "2025-05-01", days: 30,  price: 39,  color: "#8d6e63" },
+        ]
+    },
+    {
+        id: "humidifier",
+        name: "加湿器",
+        icon: "🌊",
+        consumables: [
+            { name: "水过滤棉",   icon: "🔵", startDate: "2025-04-01", days: 90,  price: 35, color: "#26c6da" },
+            { name: "银离子杀菌棒", icon: "⚪", startDate: "2025-01-01", days: 365, price: 59, color: "#90a4ae" },
+        ]
+    },
+    {
+        id: "water-heater",
+        name: "热水器",
+        icon: "🔥",
+        consumables: [
+            { name: "镁棒阳极",   icon: "🔘", startDate: "2024-06-01", days: 730, price: 129, color: "#78909c" },
+            { name: "进水过滤芯", icon: "🔵", startDate: "2025-01-01", days: 180, price: 49,  color: "#42a5f5" },
+        ]
+    },
+    {
+        id: "housework",
+        name: "家务",
+        icon: "🏠",
+        type: "housework",
+        consumables: [
+            { name: "拖地",     icon: "🧹", startDate: "2026-05-15", days: 3,   price: 0, color: "#4db6ac" },
+            { name: "吸尘",     icon: "🌀", startDate: "2026-05-17", days: 3,   price: 0, color: "#7986cb" },
+            { name: "擦桌椅",   icon: "🪑", startDate: "2026-05-10", days: 7,   price: 0, color: "#a1887f" },
+            { name: "洗床单被套", icon: "🛏️", startDate: "2026-05-01", days: 14, price: 0, color: "#4fc3f7" },
+            { name: "清洁马桶", icon: "🚽", startDate: "2026-05-12", days: 7,   price: 0, color: "#81c784" },
+            { name: "清洁浴室", icon: "🚿", startDate: "2026-05-08", days: 14,  price: 0, color: "#64b5f6" },
+            { name: "擦窗户",   icon: "🪟", startDate: "2026-04-01", days: 30,  price: 0, color: "#e8a020" },
+            { name: "整理冰箱", icon: "🧊", startDate: "2026-05-01", days: 30,  price: 0, color: "#80cbc4" },
+            { name: "清洁厨房油烟机", icon: "🍳", startDate: "2026-04-15", days: 30, price: 0, color: "#ffb74d" },
+            { name: "洗衣机清洁", icon: "🫧", startDate: "2026-04-01", days: 30, price: 0, color: "#ce93d8" },
+        ]
+    },
+];
+
+// ─── DEVICE VISIBILITY ─────────────────────────────────────────────────────
+const HIDDEN_KEY = "consumable-tracker-hidden-devices";
+
+function loadHiddenDevices() {
+    try { return new Set(JSON.parse(localStorage.getItem(HIDDEN_KEY) || "[]")); }
+    catch { return new Set(); }
+}
+
+function saveHiddenDevices(set) {
+    localStorage.setItem(HIDDEN_KEY, JSON.stringify([...set]));
+}
+
+let hiddenDevices = loadHiddenDevices();
+
+function visibleDevices() {
+    return devices.filter(d => d.id === "all" || !hiddenDevices.has(d.id));
+}
+
+function openSettings() {
+    const list = document.getElementById("modalDeviceList");
+    list.innerHTML = devices
+        .filter(d => d.id !== "all")
+        .map(d => `
+            <label class="modal-device-row">
+                <input type="checkbox" value="${d.id}" ${!hiddenDevices.has(d.id) ? "checked" : ""}>
+                <span class="modal-device-label">${d.icon} ${d.name}</span>
+            </label>
+        `).join("");
+    document.getElementById("settingsModal").classList.add("open");
+}
+
+function closeSettings() {
+    document.getElementById("settingsModal").classList.remove("open");
+}
+
+function handleOverlayClick(e) {
+    if (e.target === document.getElementById("settingsModal")) closeSettings();
+}
+
+function saveSettings() {
+    const checks = document.querySelectorAll("#modalDeviceList input[type=checkbox]");
+    hiddenDevices = new Set();
+    checks.forEach(cb => { if (!cb.checked) hiddenDevices.add(cb.value); });
+    saveHiddenDevices(hiddenDevices);
+    closeSettings();
+    if (hiddenDevices.has(activeDevice)) activeDevice = "all";
+    renderTabs();
+    selectDevice(activeDevice);
+}
+
+// ─── CUSTOM CONSUMABLES STORAGE ────────────────────────────────────────────
+const CUSTOM_KEY    = "consumable-tracker-custom";
+const DELETED_KEY   = "consumable-tracker-deleted";
+
+const CARD_COLORS = ["#5b8dee","#ab78d8","#4caf7d","#e8a020","#e07020","#29b6f6","#ef5350","#ff7043","#ab47bc","#26c6da"];
+
+function loadCustom() {
+    try { return JSON.parse(localStorage.getItem(CUSTOM_KEY) || "{}"); }
+    catch { return {}; }
+}
+
+function loadDeleted() {
+    try { return new Set(JSON.parse(localStorage.getItem(DELETED_KEY) || "[]")); }
+    catch { return new Set(); }
+}
+
+function saveCustom(data) { localStorage.setItem(CUSTOM_KEY, JSON.stringify(data)); }
+function saveDeleted(set) { localStorage.setItem(DELETED_KEY, JSON.stringify([...set])); }
+
+let deletedConsumables = loadDeleted();
+
+function applyCustomConsumables() {
+    const custom = loadCustom();
+    Object.entries(custom).forEach(([deviceId, list]) => {
+        const device = devices.find(d => d.id === deviceId);
+        if (!device) return;
+        list.forEach(c => {
+            if (!device.consumables.find(x => x.name === c.name)) {
+                device.consumables.push(c);
+            }
+        });
+    });
+    devices.forEach(d => {
+        if (!d.consumables) return;
+        d.consumables = d.consumables.filter(c => !deletedConsumables.has(`${d.id}::${c.name}`));
+    });
+}
+
+function addCustomConsumable(deviceId, consumable) {
+    const data = loadCustom();
+    if (!data[deviceId]) data[deviceId] = [];
+    data[deviceId].push(consumable);
+    saveCustom(data);
+}
+
+function deleteConsumable(deviceId, name) {
+    deletedConsumables.add(`${deviceId}::${name}`);
+    saveDeleted(deletedConsumables);
+    const data = loadCustom();
+    if (data[deviceId]) {
+        data[deviceId] = data[deviceId].filter(c => c.name !== name);
+        saveCustom(data);
+    }
+    const device = devices.find(d => d.id === deviceId);
+    if (device) device.consumables = device.consumables.filter(c => c.name !== name);
+    const overrides = loadOverrides();
+    delete overrides[`${deviceId}::${name}`];
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(overrides));
+    selectDevice(activeDevice);
+}
+
+// ─── ADD CONSUMABLE MODAL ───────────────────────────────────────────────────
+let addConsumableTargetDevice = null;
+
+function openAddConsumable(deviceId) {
+    addConsumableTargetDevice = deviceId;
+    const isHW = deviceId === "housework";
+    document.getElementById("acName").value = "";
+    document.getElementById("acIcon").value = "";
+    document.getElementById("acStartDate").value = todayStr();
+    document.getElementById("acDays").value = "";
+    document.getElementById("acPrice").value = "";
+    document.getElementById("acError").style.display = "none";
+    document.getElementById("acStartDateLabel").textContent = isHW ? "上次完成日期 *" : "开始日期 *";
+    document.getElementById("acDaysLabel").textContent = isHW ? "间隔周期（天）*" : "使用周期（天）*";
+    document.getElementById("acPriceRow").style.display = isHW ? "none" : "";
+    document.querySelector("#addConsumableModal h2").textContent = isHW ? "＋ 添加家务" : "＋ 添加耗材";
+    document.getElementById("addConsumableModal").classList.add("open");
+    setTimeout(() => document.getElementById("acName").focus(), 50);
+}
+
+function closeAddConsumable() {
+    document.getElementById("addConsumableModal").classList.remove("open");
+}
+
+function handleAddOverlayClick(e) {
+    if (e.target === document.getElementById("addConsumableModal")) closeAddConsumable();
+}
+
+function confirmAddConsumable() {
+    const name      = document.getElementById("acName").value.trim();
+    const icon      = document.getElementById("acIcon").value.trim() || "🔵";
+    const startDate = document.getElementById("acStartDate").value;
+    const days      = parseInt(document.getElementById("acDays").value, 10);
+    const price     = parseFloat(document.getElementById("acPrice").value) || 0;
+    const errEl     = document.getElementById("acError");
+
+    if (!name) { errEl.textContent = "请输入耗材名称"; errEl.style.display = "block"; return; }
+    if (!startDate) { errEl.textContent = "请选择开始日期"; errEl.style.display = "block"; return; }
+    if (!days || days < 1) { errEl.textContent = "请输入有效的使用周期"; errEl.style.display = "block"; return; }
+
+    const device = devices.find(d => d.id === addConsumableTargetDevice);
+    if (device && device.consumables.find(c => c.name === name)) {
+        errEl.textContent = "该设备已有同名耗材"; errEl.style.display = "block"; return;
+    }
+
+    const color = CARD_COLORS[Math.floor(Math.random() * CARD_COLORS.length)];
+    const consumable = { name, icon, startDate, days, price, color };
+
+    addCustomConsumable(addConsumableTargetDevice, consumable);
+    if (device) device.consumables.push(consumable);
+    deletedConsumables.delete(`${addConsumableTargetDevice}::${name}`);
+    saveDeleted(deletedConsumables);
+
+    closeAddConsumable();
+    selectDevice(activeDevice);
+}
+
+// ─── STORAGE ───────────────────────────────────────────────────────────────
+const STORAGE_KEY = "consumable-tracker-overrides";
+
+function loadOverrides() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); }
+    catch { return {}; }
+}
+
+function saveOverride(deviceId, consumableName, field, value) {
+    const data = loadOverrides();
+    const key = `${deviceId}::${consumableName}`;
+    if (!data[key]) data[key] = {};
+    data[key][field] = value;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function applyOverrides() {
+    const data = loadOverrides();
+    devices.forEach(d => {
+        if (!d.consumables) return;
+        d.consumables.forEach(c => {
+            const key = `${d.id}::${c.name}`;
+            if (data[key]) {
+                if (data[key].startDate) c.startDate = data[key].startDate;
+                if (data[key].price !== undefined) c.price = Number(data[key].price);
+                if (data[key].days !== undefined) c.days = Number(data[key].days);
+            }
+        });
+    });
+}
+
+// ─── HELPERS ───────────────────────────────────────────────────────────────
+function parseDate(s) {
+    const [y, m, d] = s.split("-").map(Number);
+    return new Date(y, m - 1, d);
+}
+
+function today() {
+    const n = new Date();
+    return new Date(n.getFullYear(), n.getMonth(), n.getDate());
+}
+
+function addDays(date, n) {
+    const d = new Date(date);
+    d.setDate(d.getDate() + n);
+    return d;
+}
+
+function fmtDate(date) {
+    return date.toLocaleDateString("zh-CN", { year: "numeric", month: "2-digit", day: "2-digit" });
+}
+
+function getStatus(pct) {
+    if (pct >= 1)   return "expired";
+    if (pct >= 0.8) return "soon";
+    return "ok";
+}
+
+function allConsumables() {
+    return devices
+        .filter(d => d.id !== "all" && !hiddenDevices.has(d.id))
+        .flatMap(d => d.consumables.map(c => ({ ...c, deviceName: d.name, deviceId: d.id })));
+}
+
+// ─── RENDER ────────────────────────────────────────────────────────────────
+let activeDevice = "all";
+
+function renderTabs() {
+    const wrap = document.getElementById("deviceTabs");
+    wrap.innerHTML = visibleDevices().map(d => `
+        <div class="device-tab${d.id === activeDevice ? " active" : ""}"
+             onclick="selectDevice('${d.id}')">
+            ${d.icon} ${d.name}
+        </div>
+    `).join("");
+}
+
+function renderSummary(items) {
+    const t = today();
+    let ok = 0, soon = 0, expired = 0, totalCostPerDay = 0;
+    const isHouseworkOnly = items.length > 0 && items.every(c => c.deviceId === "housework");
+    items.forEach(c => {
+        const start = parseDate(c.startDate);
+        const elapsed = Math.floor((t - start) / 86400000);
+        const pct = elapsed / c.days;
+        const s = getStatus(pct);
+        if (s === "ok")        ok++;
+        else if (s === "soon") soon++;
+        else                   expired++;
+        totalCostPerDay += c.price / c.days;
+    });
+
+    const labels = isHouseworkOnly
+        ? { ok: "已完成", soon: "快到了", expired: "待做", cost: null }
+        : { ok: "正常", soon: "即将到期 (≤20%)", expired: "已过期", cost: "日均总耗材费" };
+
+    document.getElementById("summary").innerHTML = `
+        <div class="summary-item">
+            <div class="summary-num" style="color:#388e3c">${ok}</div>
+            <div class="summary-label">${labels.ok}</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-num" style="color:#f57f17">${soon}</div>
+            <div class="summary-label">${labels.soon}</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-num" style="color:#c62828">${expired}</div>
+            <div class="summary-label">${labels.expired}</div>
+        </div>
+        ${labels.cost ? `<div class="summary-item">
+            <div class="summary-num" style="color:#6b4226">¥${totalCostPerDay.toFixed(2)}</div>
+            <div class="summary-label">${labels.cost}</div>
+        </div>` : ""}
+    `;
+}
+
+function renderCards(items) {
+    const t = today();
+    document.getElementById("cardsGrid").innerHTML = items.map(c => {
+        const isHousework = c.deviceId === "housework" || c.type === "housework";
+        const start   = parseDate(c.startDate);
+        const end     = addDays(start, c.days);
+        const elapsed = Math.floor((t - start) / 86400000);
+        const daysLeft = Math.max(0, c.days - elapsed);
+        const pct     = Math.min(1, elapsed / c.days);
+        const status  = getStatus(pct);
+        const costPerDay = c.price > 0 ? (c.price / c.days).toFixed(2) : null;
+
+        const badgeClass = `status-${status}`;
+        const fillClass  = `fill-${status}`;
+        const badgeText  = isHousework
+            ? (status === "expired" ? "待做" : status === "soon" ? "快到了" : "已做")
+            : (status === "expired" ? "已过期" : status === "soon" ? "即将到期" : "正常");
+
+        const deviceLabel = c.deviceName ? `<div class="card-device">${c.deviceName}</div>` : "";
+        const renewLabel = isHousework ? "✅ 已完成（重置为今天）" : "🔄 已更换（重置为今天）";
+        const progressLabel = isHousework
+            ? `<span>距上次 ${elapsed} 天</span>`
+            : `<span>已用 ${elapsed} 天</span>`;
+
+        const statusColor = status === 'expired' ? '#c62828' : status === 'soon' ? '#f57f17' : '#388e3c';
+
+        const infoRows = isHousework ? `
+            <div class="info-row">
+                <span class="info-label">上次完成</span>
+                <span class="info-value editable"
+                      onclick="editField(this, '${c.deviceId}', '${c.name}', 'startDate', '${c.startDate}')"
+                      title="点击编辑">${fmtDate(start)}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">间隔周期</span>
+                <span class="info-value editable"
+                      onclick="editField(this, '${c.deviceId}', '${c.name}', 'days', '${c.days}')"
+                      title="点击编辑">每 ${c.days} 天</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">下次计划</span>
+                <span class="info-value" style="color:${statusColor}">${fmtDate(end)}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">${status === 'expired' ? '已逾期' : '还剩'}</span>
+                <span class="info-value" style="color:${status !== 'ok' ? statusColor : 'inherit'}">${status === 'expired' ? (elapsed - c.days) + ' 天' : daysLeft + ' 天'}</span>
+            </div>` : `
+            <div class="info-row">
+                <span class="info-label">开始日期</span>
+                <span class="info-value editable"
+                      onclick="editField(this, '${c.deviceId}', '${c.name}', 'startDate', '${c.startDate}')"
+                      title="点击编辑">${fmtDate(start)}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">使用周期</span>
+                <span class="info-value editable"
+                      onclick="editField(this, '${c.deviceId}', '${c.name}', 'days', '${c.days}')"
+                      title="点击编辑">${c.days} 天</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">到期日期</span>
+                <span class="info-value" style="color:${status !== 'ok' ? statusColor : 'inherit'}">${fmtDate(end)}</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">剩余天数</span>
+                <span class="info-value">${daysLeft} 天</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">单价</span>
+                <span class="info-value editable"
+                      onclick="editField(this, '${c.deviceId}', '${c.name}', 'price', '${c.price}')"
+                      title="点击编辑">¥${c.price}</span>
+            </div>
+            ${costPerDay ? `<div class="info-row">
+                <span class="info-label">日均费用</span>
+                <span class="info-value" style="color:#6b4226">¥${costPerDay} / 天</span>
+            </div>` : ""}`;
+
+        return `
+        <div class="card">
+            <button class="delete-btn" onclick="deleteConsumable('${c.deviceId}', '${c.name}')" title="删除">×</button>
+            <div class="card-header">
+                <div class="card-icon" style="background:${c.color}22;color:${c.color}">
+                    ${c.icon}
+                </div>
+                <div>
+                    <div class="card-title">${c.name}</div>
+                    ${deviceLabel}
+                </div>
+                <span class="status-badge ${badgeClass}">${badgeText}</span>
+            </div>
+
+            <div class="progress-wrap">
+                <div class="progress-meta">
+                    ${progressLabel}
+                    <span>${Math.round(pct * 100)}%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill ${fillClass}" style="width:${Math.round(pct*100)}%"></div>
+                </div>
+            </div>
+
+            ${infoRows}
+            <button class="renew-btn" onclick="renewConsumable('${c.deviceId}', '${c.name}')">
+                ${renewLabel}
+            </button>
+        </div>`;
+    }).join("");
+}
+
+function selectDevice(id) {
+    activeDevice = id;
+    renderTabs();
+
+    const items = id === "all"
+        ? allConsumables()
+        : devices.find(d => d.id === id)?.consumables.map(c => ({ ...c, deviceName: null, deviceId: id })) ?? [];
+
+    renderSummary(items);
+    renderCards(items);
+
+    const grid = document.getElementById("cardsGrid");
+    if (id !== "all") {
+        const btn = document.createElement("button");
+        btn.className = "add-consumable-btn";
+        btn.innerHTML = id === "housework" ? `＋ 添加家务` : `＋ 添加耗材`;
+        btn.onclick = () => openAddConsumable(id);
+        grid.appendChild(btn);
+    }
+}
+
+// ─── INTERACTIONS ──────────────────────────────────────────────────────────
+function todayStr() {
+    const n = new Date();
+    const y = n.getFullYear();
+    const m = String(n.getMonth() + 1).padStart(2, "0");
+    const d = String(n.getDate()).padStart(2, "0");
+    return `${y}-${m}-${d}`;
+}
+
+function editField(span, deviceId, name, field, current) {
+    if (span.querySelector("input")) return;
+    const input = document.createElement("input");
+    input.className = "inline-edit";
+    input.type = field === "startDate" ? "date" : "number";
+    input.value = current;
+    if (field === "price") { input.min = "0"; input.step = "0.01"; }
+    if (field === "days") { input.min = "1"; input.step = "1"; }
+    span.textContent = "";
+    span.appendChild(input);
+    input.focus();
+
+    function commit() {
+        const val = input.value.trim();
+        if (!val) { selectDevice(activeDevice); return; }
+        if (field === "startDate" && !/^\d{4}-\d{2}-\d{2}$/.test(val)) {
+            selectDevice(activeDevice); return;
+        }
+        saveOverride(deviceId, name, field, (field === "price" || field === "days") ? Number(val) : val);
+        applyOverrides();
+        selectDevice(activeDevice);
+    }
+
+    input.addEventListener("blur", commit);
+    input.addEventListener("keydown", e => {
+        if (e.key === "Enter") { input.blur(); }
+        if (e.key === "Escape") { selectDevice(activeDevice); }
+    });
+}
+
+function renewConsumable(deviceId, name) {
+    saveOverride(deviceId, name, "startDate", todayStr());
+    applyOverrides();
+    selectDevice(activeDevice);
+}
+
+// ─── IMPORT / EXPORT ───────────────────────────────────────────────────────
+function exportData() {
+    const payload = {
+        version: 1,
+        exportedAt: new Date().toISOString(),
+        overrides: JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"),
+        custom: JSON.parse(localStorage.getItem(CUSTOM_KEY) || "{}"),
+        deleted: JSON.parse(localStorage.getItem(DELETED_KEY) || "[]"),
+        hiddenDevices: JSON.parse(localStorage.getItem(HIDDEN_KEY) || "[]"),
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `consumable-tracker-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function importData() {
+    document.getElementById("importFileInput").click();
+}
+
+function handleImportFile(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    event.target.value = "";
+    const reader = new FileReader();
+    reader.onload = e => {
+        try {
+            const payload = JSON.parse(e.target.result);
+            if (!payload.version) throw new Error("Invalid file");
+            if (payload.overrides)     localStorage.setItem(STORAGE_KEY, JSON.stringify(payload.overrides));
+            if (payload.custom)        localStorage.setItem(CUSTOM_KEY, JSON.stringify(payload.custom));
+            if (payload.deleted)       localStorage.setItem(DELETED_KEY, JSON.stringify(payload.deleted));
+            if (payload.hiddenDevices) localStorage.setItem(HIDDEN_KEY, JSON.stringify(payload.hiddenDevices));
+            hiddenDevices = loadHiddenDevices();
+            deletedConsumables = loadDeleted();
+            location.reload();
+        } catch {
+            alert("导入失败：文件格式无效");
+        }
+    };
+    reader.readAsText(file);
+}
+
+// ─── TOGGLE ────────────────────────────────────────────────────────────────
+const sectionMap = {
+    devices: { el: "deviceTabs", btn: "toggleDevices" },
+    summary: { el: "summary",    btn: "toggleSummary"  },
+};
+
+function toggleSection(key) {
+    const { el, btn } = sectionMap[key];
+    const elem = document.getElementById(el);
+    const button = document.getElementById(btn);
+    const hidden = elem.classList.toggle("hidden");
+    button.classList.toggle("off", hidden);
+}
+
+// ─── INIT ──────────────────────────────────────────────────────────────────
+applyCustomConsumables();
+applyOverrides();
+selectDevice("all");
+</script>
+</body>
+</html>

@@ -457,7 +457,7 @@
         // Load curriculum data from JSON file (cached)
         async function loadCurriculumData(subject) {
             if (curriculumCache[subject]) return curriculumCache[subject];
-            const response = await fetch(`data/${subject}-curriculum.json`);
+            const response = await fetch(`data/curriculum/${subject}-curriculum.json`);
             const json = await response.json();
             curriculumCache[subject] = json;
             return json;
@@ -470,7 +470,7 @@
 
         async function loadDetailContent() {
             if (detailContent) return detailContent;
-            const response = await fetch('data/detail-content.json');
+            const response = await fetch('data/curriculum/detail-content.json');
             detailContent = await response.json();
             return detailContent;
         }

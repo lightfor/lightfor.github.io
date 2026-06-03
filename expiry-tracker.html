@@ -514,100 +514,7 @@
 
 <script>
 // ─── DATA ──────────────────────────────────────────────────────────────────
-const devices = [
-    {
-        id: "all",
-        name: "全部",
-        icon: "📋",
-    },
-    {
-        id: "fresh-air",
-        name: "新风机",
-        icon: "🌬️",
-        consumables: [
-            { name: "新风滤芯 G4", icon: "🔵", startDate: "2025-03-01", days: 180, price: 89,  color: "#5b8dee" },
-            { name: "新风滤芯 H13", icon: "🟣", startDate: "2025-03-01", days: 365, price: 159, color: "#ab78d8" },
-            { name: "活性炭滤网",   icon: "⚫", startDate: "2025-03-01", days: 90,  price: 49,  color: "#78909c" },
-        ]
-    },
-    {
-        id: "air-purifier",
-        name: "空气净化器",
-        icon: "💨",
-        consumables: [
-            { name: "净化器滤芯 HEPA", icon: "🟢", startDate: "2025-01-15", days: 180, price: 199, color: "#4caf7d" },
-            { name: "净化器前置滤网",   icon: "🟡", startDate: "2025-01-15", days: 30,  price: 29,  color: "#e8a020" },
-            { name: "除甲醛滤芯",       icon: "🟠", startDate: "2025-04-01", days: 365, price: 249, color: "#e07020" },
-        ]
-    },
-    {
-        id: "water-purifier",
-        name: "净水器",
-        icon: "💧",
-        consumables: [
-            { name: "前置滤芯 PP棉",  icon: "🔵", startDate: "2025-02-01", days: 90,  price: 39,  color: "#29b6f6" },
-            { name: "活性炭滤芯",     icon: "⚫", startDate: "2025-02-01", days: 180, price: 89,  color: "#607d8b" },
-            { name: "RO反渗透膜",     icon: "🟤", startDate: "2024-09-01", days: 730, price: 399, color: "#a1887f" },
-            { name: "后置椰壳炭芯",   icon: "🟢", startDate: "2025-02-01", days: 365, price: 79,  color: "#66bb6a" },
-        ]
-    },
-    {
-        id: "printer",
-        name: "打印机",
-        icon: "🖨️",
-        consumables: [
-            { name: "黑色墨盒", icon: "⚫", startDate: "2025-05-01", days: 120, price: 85,  color: "#546e7a" },
-            { name: "彩色墨盒", icon: "🌈", startDate: "2025-05-01", days: 180, price: 199, color: "#ab47bc" },
-        ]
-    },
-    {
-        id: "robot-vacuum",
-        name: "扫地机器人",
-        icon: "🤖",
-        consumables: [
-            { name: "主刷",     icon: "🔴", startDate: "2025-04-10", days: 180, price: 69,  color: "#ef5350" },
-            { name: "边刷",     icon: "🟠", startDate: "2025-04-10", days: 90,  price: 29,  color: "#ff7043" },
-            { name: "滤网",     icon: "🟡", startDate: "2025-04-10", days: 60,  price: 25,  color: "#e8a020" },
-            { name: "尘袋",     icon: "🟤", startDate: "2025-05-01", days: 30,  price: 39,  color: "#8d6e63" },
-        ]
-    },
-    {
-        id: "humidifier",
-        name: "加湿器",
-        icon: "🌊",
-        consumables: [
-            { name: "水过滤棉",   icon: "🔵", startDate: "2025-04-01", days: 90,  price: 35, color: "#26c6da" },
-            { name: "银离子杀菌棒", icon: "⚪", startDate: "2025-01-01", days: 365, price: 59, color: "#90a4ae" },
-        ]
-    },
-    {
-        id: "water-heater",
-        name: "热水器",
-        icon: "🔥",
-        consumables: [
-            { name: "镁棒阳极",   icon: "🔘", startDate: "2024-06-01", days: 730, price: 129, color: "#78909c" },
-            { name: "进水过滤芯", icon: "🔵", startDate: "2025-01-01", days: 180, price: 49,  color: "#42a5f5" },
-        ]
-    },
-    {
-        id: "housework",
-        name: "家务",
-        icon: "🏠",
-        type: "housework",
-        consumables: [
-            { name: "拖地",     icon: "🧹", startDate: "2026-05-15", days: 3,   price: 0, color: "#4db6ac" },
-            { name: "吸尘",     icon: "🌀", startDate: "2026-05-17", days: 3,   price: 0, color: "#7986cb" },
-            { name: "擦桌椅",   icon: "🪑", startDate: "2026-05-10", days: 7,   price: 0, color: "#a1887f" },
-            { name: "洗床单被套", icon: "🛏️", startDate: "2026-05-01", days: 14, price: 0, color: "#4fc3f7" },
-            { name: "清洁马桶", icon: "🚽", startDate: "2026-05-12", days: 7,   price: 0, color: "#81c784" },
-            { name: "清洁浴室", icon: "🚿", startDate: "2026-05-08", days: 14,  price: 0, color: "#64b5f6" },
-            { name: "擦窗户",   icon: "🪟", startDate: "2026-04-01", days: 30,  price: 0, color: "#e8a020" },
-            { name: "整理冰箱", icon: "🧊", startDate: "2026-05-01", days: 30,  price: 0, color: "#80cbc4" },
-            { name: "清洁厨房油烟机", icon: "🍳", startDate: "2026-04-15", days: 30, price: 0, color: "#ffb74d" },
-            { name: "洗衣机清洁", icon: "🫧", startDate: "2026-04-01", days: 30, price: 0, color: "#ce93d8" },
-        ]
-    },
-];
+let devices = [];
 
 // ─── DEVICE VISIBILITY ─────────────────────────────────────────────────────
 const HIDDEN_KEY = "consumable-tracker-hidden-devices";
@@ -1130,9 +1037,14 @@ function toggleSection(key) {
 }
 
 // ─── INIT ──────────────────────────────────────────────────────────────────
-applyCustomConsumables();
-applyOverrides();
-selectDevice("all");
+fetch('data/devices/devices.json')
+    .then(r => r.json())
+    .then(json => {
+        devices = json;
+        applyCustomConsumables();
+        applyOverrides();
+        selectDevice("all");
+    });
 </script>
 </body>
 </html>

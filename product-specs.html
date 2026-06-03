@@ -182,9 +182,9 @@
 
     async function loadData() {
         const [cats, specs, prods] = await Promise.all([
-            fetch('data/product-categories.json').then(r => r.json()),
-            fetch('data/product-spec-definitions.json').then(r => r.json()),
-            fetch('data/products.json').then(r => r.json())
+            fetch('data/products/product-categories.json').then(r => r.json()),
+            fetch('data/products/product-spec-definitions.json').then(r => r.json()),
+            fetch('data/products/products.json').then(r => r.json())
         ]);
         categories = cats;
         specDefinitions = specs;

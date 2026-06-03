@@ -489,7 +489,7 @@ const pages = {
             { key: 'quote',       label: '短评',     sortable: true },
             { key: 'playable',    label: '可播放',   sortable: true }
         ],
-        'data/douban-top250-movies.json', '豆瓣Top250'),
+        'data/rankings/douban-top250-movies.json', '豆瓣Top250'),
 
     'imdb-top250': createPage('imdb250', 'imdb-top250',
         [
@@ -503,7 +503,7 @@ const pages = {
             { key: 'genres',      label: '类型',     sortable: false, className: 'genre' },
             { key: 'plot',        label: '简介',     sortable: false }
         ],
-        'data/imdb-top250-movies.json', 'IMDb Top250',
+        'data/rankings/imdb-top250-movies.json', 'IMDb Top250',
         {
             defaultSort: { col: 0, dir: 'asc' },
             extraState: { selectedCertificates: [] },
@@ -571,7 +571,7 @@ const pages = {
             { key: 'esrbRating',    label: 'ESRB分级', sortable: true },
             { key: 'description',   label: '简介',     sortable: false }
         ],
-        'data/mc-3ds-games.json', 'MC 3DS榜单',
+        'data/rankings/mc-3ds-games.json', 'MC 3DS榜单',
         {
             defaultSort: { col: 3, dir: 'desc' },
             extraState: {
@@ -676,7 +676,7 @@ const pages = {
             { key: 'esrbRating',    label: 'ESRB分级', sortable: true },
             { key: 'description',   label: '简介',     sortable: false }
         ],
-        'data/mc-nds-games.json', 'MC NDS榜单',
+        'data/rankings/mc-nds-games.json', 'MC NDS榜单',
         {
             defaultSort: { col: 3, dir: 'desc' },
             extraState: {
@@ -781,7 +781,7 @@ const pages = {
             { key: 'esrbRating',    label: 'ESRB分级', sortable: true },
             { key: 'description',   label: '简介',     sortable: false }
         ],
-        'data/mc-gba-games.json', 'MC GBA榜单',
+        'data/rankings/mc-gba-games.json', 'MC GBA榜单',
         {
             defaultSort: { col: 3, dir: 'desc' },
             extraState: {
@@ -885,7 +885,7 @@ const pages = {
             { key: 'esrbRating',    label: 'ESRB分级', sortable: true },
             { key: 'description',   label: '简介',     sortable: false }
         ],
-        'data/mc-psp-games.json', 'MC PSP榜单',
+        'data/rankings/mc-psp-games.json', 'MC PSP榜单',
         {
             defaultSort: { col: 3, dir: 'desc' },
             extraState: {
@@ -989,7 +989,7 @@ const pages = {
             { key: 'esrbRating',    label: 'ESRB分级', sortable: true },
             { key: 'description',   label: '简介',     sortable: false }
         ],
-        'data/mc-ps1-games.json', 'MC PS1榜单',
+        'data/rankings/mc-ps1-games.json', 'MC PS1榜单',
         {
             defaultSort: { col: 3, dir: 'desc' },
             extraState: {
@@ -1092,7 +1092,7 @@ const pages = {
             { key: 'votesCount',   label: '票数',     sortable: true },
             { key: 'score',        label: '分数',     sortable: true }
         ],
-        'data/best-books-ever.json', 'Best Books Ever',
+        'data/rankings/best-books-ever.json', 'Best Books Ever',
         {
             defaultSort: { col: 0, dir: 'asc' },
             buildStatic(source) {
@@ -1162,7 +1162,7 @@ const pages = {
             { key: 'peakPosition',  label: '峰值排名', sortable: true },
             { key: 'weeksOnChart',  label: '在榜周数', sortable: true }
         ],
-        'data/billboard-global.json', 'Billboard Global 200',
+        'data/rankings/billboard-global.json', 'Billboard Global 200',
         {
             defaultSort: { col: 0, dir: 'asc' },
             buildStatic(source) {
@@ -1221,7 +1221,7 @@ const pages = {
             { key: 'esrbRating',    label: 'ESRB分级', sortable: true },
             { key: 'description',   label: '简介',     sortable: false }
         ],
-        'data/mc-ps2-games.json', 'MC PS2榜单',
+        'data/rankings/mc-ps2-games.json', 'MC PS2榜单',
         {
             defaultSort: { col: 3, dir: 'desc' },
             extraState: {

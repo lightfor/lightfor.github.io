@@ -75,87 +75,44 @@
 <div class="cards-wrap" id="cards"></div>
 
 <script>
-// [name, alias, zoo, hall, gender, mother, father, birthday, pedigree, imgFile]
-const data = [
-  ["萌萌","北二胖, 北动影后","北京动物园","亚运馆","雌性","英英","灵灵","2006/09/13","","mengmeng.png"],
-  ["丫丫","","北京动物园","不展出","雌性","乐乐","","2000/08/03","320","yaya.png"],
-  ["古古","保安队长, 古大爷","北京动物园","不展出","雄性","盼盼","唐唐","1999/09/25","","gugu.png"],
-  ["萌大","","北京动物园","亚运馆","雄性","萌萌","勇勇","2013/08/22","","mengda.png"],
-  ["萌二","","北京动物园","亚运馆","雄性","萌萌","勇勇","2013/08/22","","menger.png"],
-  ["点点","","北京动物园","亚运馆","雌性","瑛华","","2015/06/20","","dandan.png"],
-  ["萌兰","么么, 西直门三太子","北京动物园","奥运馆","雄性","萌萌","美兰","2015/07/04","","menglan.png"],
-  ["福星","胖大海","北京动物园","奥运馆","雄性","瑛华","芦芦","2017/06/25","","fuxing.png"],
-  ["萌宝","","北京动物园","奥运馆","雌性","萌萌","美兰","2018/05/23","","mengbao.png"],
-  ["萌玉","","北京动物园","奥运馆","雌性","萌萌","美兰","2018/05/23","","mengyu.png"],
-  ["白天","","北京动物园","亚运馆","雌性","小白兔","芦芦","2018/08/20","","baitian.png"],
-  ["喜乐","八里台二公主","天津动物园","","雌性","","","2013/07/24","",""],
-  ["格格","八里台大公主","天津动物园","","雌性","","","2003/09/06","",""],
-  ["妙音","","大连动物园","","雌性","格格","","2010/08/09","",""],
-  ["小馨","","","","雌性","","","","",""],
-  ["高高","","","","雄性","","","","",""],
-  ["金虎","","大连动物园","","雄性","","","","",""],
-  ["飞云","","大连动物园","","雄性","","","","",""],
-  ["庆庆","","重庆动物园","","雌性","","","","",""],
-  ["重重","","重庆动物园","","雄性","","","","",""],
-  ["双双","","重庆动物园","","雄性","","","","",""],
-  ["喜喜","","重庆动物园","","雌性","","","","",""],
-  ["莽仔","","重庆动物园","","雌性","","","","",""],
-  ["莽星星","","重庆动物园","","","莽仔","","","",""],
-  ["莽辰辰","","重庆动物园","","","莽仔","","","",""],
-  ["莽灿灿","","重庆动物园","","","莽仔","","","",""],
-  ["兰香","","重庆动物园","","","","","","",""],
-  ["二顺","","重庆动物园","","","","","","",""],
-  ["渝可","","重庆动物园","","","","","","",""],
-  ["渝爱","","重庆动物园","","","","","","",""],
-  ["良月","","重庆动物园","","","","","","",""],
-];
-
 const tbody = document.getElementById('tbody');
 const cardsEl = document.getElementById('cards');
 const totalEl = document.getElementById('total');
 const total2El = document.getElementById('total2');
 const shownEl = document.getElementById('shown');
 
-totalEl.textContent = data.length;
-total2El.textContent = data.length;
-
-function avatarImg(name, imgFile, cls) {
-  if (imgFile) return `<img class="${cls}" src="images/pandas/${imgFile}" alt="${name}" loading="lazy" onerror="this.outerHTML='<div class=\\'card-avatar-ph\\'>🐼</div>'">`;
-  return `<div class="card-avatar-ph">🐼</div>`;
-}
+let data = [];
 
 function render(rows) {
-  // Table
   tbody.innerHTML = rows.map((r, i) => {
-    const gc = r[4] === '雌性' ? 'female' : r[4] === '雄性' ? 'male' : '';
-    const avImg = r[9] ? `<img class="avatar" src="images/pandas/${r[9]}" alt="${r[0]}" loading="lazy" onerror="this.outerHTML='<div class=\\'avatar-placeholder\\'>🐼</div>'">` : `<div class="avatar-placeholder">🐼</div>`;
+    const gc = r.gender === '雌性' ? 'female' : r.gender === '雄性' ? 'male' : '';
+    const avImg = r.img ? `<img class="avatar" src="images/pandas/${r.img}" alt="${r.name}" loading="lazy" onerror="this.outerHTML='<div class=\\'avatar-placeholder\\'>🐼</div>'">` : `<div class="avatar-placeholder">🐼</div>`;
     return `<tr>
       <td>${i+1}</td><td>${avImg}</td>
-      <td><strong>${r[0]}</strong></td>
-      <td class="alias">${r[1]}</td>
-      <td>${r[2]}</td><td>${r[3]}</td>
-      <td class="${gc}">${r[4]}</td>
-      <td>${r[5]}</td><td>${r[6]}</td>
-      <td>${r[7]}</td><td>${r[8]}</td>
+      <td><strong>${r.name}</strong></td>
+      <td class="alias">${r.alias}</td>
+      <td>${r.zoo}</td><td>${r.hall}</td>
+      <td class="${gc}">${r.gender}</td>
+      <td>${r.mother}</td><td>${r.father}</td>
+      <td>${r.birthday}</td><td>${r.pedigree}</td>
     </tr>`;
   }).join('');
 
-  // Cards
-  cardsEl.innerHTML = rows.map((r, i) => {
-    const gc = r[4] === '雌性' ? 'tag-female' : r[4] === '雄性' ? 'tag-male' : '';
-    const av = r[9] ? `<img src="images/pandas/${r[9]}" alt="${r[0]}" loading="lazy" style="width:80px;height:80px;border-radius:8px;object-fit:cover;flex-shrink:0;" onerror="this.outerHTML='<div class=\\'card-avatar-ph\\'>🐼</div>'">` : `<div class="card-avatar-ph">🐼</div>`;
+  cardsEl.innerHTML = rows.map(r => {
+    const gc = r.gender === '雌性' ? 'tag-female' : r.gender === '雄性' ? 'tag-male' : '';
+    const av = r.img ? `<img src="images/pandas/${r.img}" alt="${r.name}" loading="lazy" style="width:80px;height:80px;border-radius:8px;object-fit:cover;flex-shrink:0;" onerror="this.outerHTML='<div class=\\'card-avatar-ph\\'>🐼</div>'">` : `<div class="card-avatar-ph">🐼</div>`;
     const parts = [];
-    if (r[2]) parts.push(`📍 ${r[2]}${r[3] ? ' · '+r[3] : ''}`);
-    if (r[4]) parts.push(`<span class="${gc}">${r[4]}</span>`);
-    if (r[7]) parts.push(`🎂 ${r[7]}`);
-    if (r[5]) parts.push(`母: ${r[5]}`);
-    if (r[6]) parts.push(`父: ${r[6]}`);
-    if (r[8]) parts.push(`谱系: ${r[8]}`);
+    if (r.zoo) parts.push(`📍 ${r.zoo}${r.hall ? ' · '+r.hall : ''}`);
+    if (r.gender) parts.push(`<span class="${gc}">${r.gender}</span>`);
+    if (r.birthday) parts.push(`🎂 ${r.birthday}`);
+    if (r.mother) parts.push(`母: ${r.mother}`);
+    if (r.father) parts.push(`父: ${r.father}`);
+    if (r.pedigree) parts.push(`谱系: ${r.pedigree}`);
     return `<div class="panda-card">
       ${av}
       <div class="card-info">
-        <div class="card-name">${r[0]}</div>
-        ${r[1] ? `<div class="card-alias">${r[1]}</div>` : ''}
+        <div class="card-name">${r.name}</div>
+        ${r.alias ? `<div class="card-alias">${r.alias}</div>` : ''}
         <div class="card-meta">${parts.map(p=>`<span>${p}</span>`).join('')}</div>
       </div>
     </div>`;
@@ -164,12 +121,19 @@ function render(rows) {
   shownEl.textContent = rows.length;
 }
 
-render(data);
+fetch('data/pandas/pandas.json')
+  .then(r => r.json())
+  .then(json => {
+    data = json;
+    totalEl.textContent = data.length;
+    total2El.textContent = data.length;
+    render(data);
+  });
 
 document.getElementById('search').addEventListener('input', function() {
   const q = this.value.trim().toLowerCase();
   if (!q) { render(data); return; }
-  const filtered = data.filter(r => r.some(cell => cell.toLowerCase().includes(q)));
+  const filtered = data.filter(r => Object.values(r).some(v => String(v).toLowerCase().includes(q)));
   render(filtered);
 });
 </script>

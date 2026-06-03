@@ -41,6 +41,9 @@
   .tag-female { color: #c0576a; }
   .tag-male { color: #3a7abf; }
 
+  .back-link { display: inline-flex; align-items: center; gap: 4px; color: #888; font-size: 0.82rem; text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
+  .back-link:hover { color: #4a3728; }
+
   @media (max-width: 680px) {
     body { padding: 0.75rem; }
     .table-wrap { display: none; }
@@ -49,6 +52,7 @@
 </style>
 </head>
 <body>
+<a class="back-link" href="index.html">← 返回首页</a>
 <h1>🐼 大熊猫名录</h1>
 <p class="subtitle">共 <span id="total"></span> 只</p>
 <div class="search-wrap">

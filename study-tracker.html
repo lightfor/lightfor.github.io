@@ -420,12 +420,15 @@
             margin-bottom: 6px;
             line-height: 1.6;
         }
+
+        .back-link { display: inline-flex; align-items: center; gap: 4px; color: rgba(255,255,255,0.7); font-size: 0.82rem; text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
+        .back-link:hover { color: #fff; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <a href="index.html" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9em;display:inline-block;margin-bottom:8px;">← 返回首页</a>
+            <a class="back-link" href="index.html">← 返回首页</a>
             <h1>📚 学习进度追踪系统</h1>
             <p>记录不同学科的学习情况，掌握程度一目了然</p>
             <div class="subject-tabs">

@@ -1,0 +1,232 @@
+{
+  "subject": "typescript",
+  "curriculumData": [
+    {
+      "grade": "一、基础类型注解",
+      "emoji": "🏷️",
+      "semesters": [
+        {
+          "title": "原始类型与特殊类型",
+          "topics": [
+            { "category": "boolean / number / string", "details": "let isDone: boolean; let count: number; let name: string — 三种最基础的原始类型注解" },
+            { "category": "数组与元组", "details": "number[] 或 Array<number>；元组固定长度且类型可不同：[string, number]" },
+            { "category": "枚举 enum", "details": "一组命名常量。enum Color { Red, Green, Blue }，支持数字或字符串值" },
+            { "category": "any / unknown", "details": "any 逃逸类型检查；unknown 是安全的 any，使用前必须类型收窄" },
+            { "category": "void / never / null / undefined", "details": "void 用于无返回值函数；never 用于永远不返回的函数；null/undefined 是自身类型" },
+            { "category": "object", "details": "declare function create(o: object | null): void — 非原始类型" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "二、类型推断",
+      "emoji": "🔍",
+      "semesters": [
+        {
+          "title": "自动推断与上下文推断",
+          "topics": [
+            { "category": "赋值推断", "details": "let s = 'hi' 推断为 string；const arr = [1,2,3] 推断为 number[]，可省略注解" },
+            { "category": "上下文推断", "details": "window.onmousedown = (e) => {} 中 e 被推断为 MouseEvent，根据使用场景自动推断参数类型" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "三、接口与类型别名",
+      "emoji": "📐",
+      "semesters": [
+        {
+          "title": "描述对象形状",
+          "topics": [
+            { "category": "interface", "details": "interface User { name: string; age: number; readonly id: number; email?: string; [key: string]: any }" },
+            { "category": "type 别名", "details": "type Point = { x: number; y: number }；type ID = string | number — 可描述联合、元组等" },
+            { "category": "interface vs type", "details": "interface 可被继承和声明合并；type 不行，但 type 可描述联合、元组等复杂形状" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "四、联合类型与交叉类型",
+      "emoji": "🔀",
+      "semesters": [
+        {
+          "title": "组合类型",
+          "topics": [
+            { "category": "联合 |", "details": "let value: string | number — 值可以是几种类型之一" },
+            { "category": "交叉 &", "details": "type C = A & B — 合并多个类型的所有属性，结果同时满足两个类型" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "五、字面量类型",
+      "emoji": "💬",
+      "semesters": [
+        {
+          "title": "精确的值类型",
+          "topics": [
+            { "category": "字符串/数字字面量", "details": "let dir: 'north' | 'south' | 'east' | 'west'；type Dice = 1|2|3|4|5|6" },
+            { "category": "as const", "details": "const colors = ['red','green'] as const — 收窄为只读字面量元组类型" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "六、函数类型",
+      "emoji": "⚙️",
+      "semesters": [
+        {
+          "title": "参数与返回值类型",
+          "topics": [
+            { "category": "函数类型表达式", "details": "let myAdd: (x: number, y: number) => number" },
+            { "category": "可选与默认参数", "details": "function buildName(first: string, last?: string)；function multiply(n: number, m = 2)" },
+            { "category": "剩余参数", "details": "function sum(...nums: number[]): number" },
+            { "category": "函数重载", "details": "多个调用签名声明，最后一个是实现签名。function getLength(v: string): number; function getLength(v: any[]): number;" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "七、类型守卫与窄化",
+      "emoji": "🛡️",
+      "semesters": [
+        {
+          "title": "类型收窄",
+          "topics": [
+            { "category": "typeof 收窄", "details": "if (typeof id === 'string') { ... } — 条件块中 TypeScript 自动收窄类型" },
+            { "category": "自定义类型谓词", "details": "function isString(x: unknown): x is string { return typeof x === 'string'; }" },
+            { "category": "in 运算符", "details": "if ('name' in obj) { ... } — 检查属性是否存在" },
+            { "category": "instanceof / 相等收窄", "details": "if (error instanceof TypeError) { ... }；if (x === undefined) { ... }" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "八、泛型",
+      "emoji": "🧬",
+      "semesters": [
+        {
+          "title": "复用且保持类型信息",
+          "topics": [
+            { "category": "泛型函数", "details": "function identity<T>(arg: T): T { return arg; } — 显式指定或类型推断" },
+            { "category": "泛型约束", "details": "function loggingIdentity<T extends { length: number }>(arg: T): T" },
+            { "category": "泛型接口与类", "details": "interface GenericIdentityFn<T> { (arg: T): T }；class GenericNumber<T> { zeroValue: T; add: ... }" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "九、枚举",
+      "emoji": "📋",
+      "semesters": [
+        {
+          "title": "命名常量集合",
+          "topics": [
+            { "category": "数字枚举", "details": "enum Direction { Up = 1, Down, Left, Right } — 自动递增，支持反向映射" },
+            { "category": "字符串枚举", "details": "enum ResponseStatus { Success = 'SUCCESS', Fail = 'FAIL' } — 无反向映射，调试友好" },
+            { "category": "常量枚举 const enum", "details": "const enum Color { Red, Green, Blue } — 编译时内联，无运行时枚举对象" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十、类与可见性",
+      "emoji": "🏛️",
+      "semesters": [
+        {
+          "title": "访问修饰符与继承",
+          "topics": [
+            { "category": "访问修饰符", "details": "private（仅类内部）、protected（子类可见）、public（默认，所有人可见）、readonly" },
+            { "category": "静态成员与继承", "details": "static count = 0；class Dog extends Animal { ... }；super() 调用父类构造器" },
+            { "category": "抽象类", "details": "abstract class BaseLogger { abstract log(msg: string): void; } — 不可实例化，子类必须实现抽象方法" },
+            { "category": "参数属性", "details": "class Pony { constructor(public name: string, private age: number) {} } — 构造器中直接声明并赋值" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十一、类型体操进阶",
+      "emoji": "🧩",
+      "semesters": [
+        {
+          "title": "常用类型运算符",
+          "topics": [
+            { "category": "keyof / typeof", "details": "keyof Person → 'name' | 'age'；typeof point → { x: number; y: number } — 获取键或值的类型" },
+            { "category": "索引访问类型 T[K]", "details": "type AgeType = Person['age'] → number" },
+            { "category": "条件类型", "details": "type IsString<T> = T extends string ? 'yes' : 'no'；内置：Exclude, Extract, NonNullable, ReturnType, Parameters, Awaited" },
+            { "category": "映射类型", "details": "{ [P in keyof T]?: T[P] }；内置工具：Partial, Required, Readonly, Pick, Omit, Record" },
+            { "category": "infer 推断", "details": "type ElementType<T> = T extends (infer U)[] ? U : T — 在条件类型中声明推断变量" },
+            { "category": "模板字面量类型", "details": "type LocalizedGreeting = `greeting_${Lang}` — 结合映射类型生成复杂字符串类型" },
+            { "category": "satisfies 运算符", "details": "const palette = { ... } satisfies Record<string, ...> — 验证约束但保留更窄的推断类型" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十二、命名空间与模块",
+      "emoji": "📦",
+      "semesters": [
+        {
+          "title": "ES 模块系统",
+          "topics": [
+            { "category": "ES 模块 import/export", "details": "export function add(x, y)；import { add } from './math'；export default class Calculator" },
+            { "category": "类型导入", "details": "import type { User } from './user' — 仅用于编译时，不产生运行时代码" },
+            { "category": "命名空间 namespace", "details": "namespace Utility { export function log(msg) {} } — 较少使用，用于全局代码组织或声明文件" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十三、声明文件 (.d.ts)",
+      "emoji": "📄",
+      "semesters": [
+        {
+          "title": "为非 TS 代码提供类型",
+          "topics": [
+            { "category": "declare 声明", "details": "declare var globalConfig: { apiUrl: string }；declare function fetchData(id: number): Promise<any>" },
+            { "category": "模块声明", "details": "declare module '*.css' { const content: { [className: string]: string }; export default content; }" },
+            { "category": "环境声明", "details": "declare namespace, declare module — 为全局或第三方代码提供类型描述" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十四、tsconfig.json 核心选项",
+      "emoji": "⚙️",
+      "semesters": [
+        {
+          "title": "编译行为与严格程度",
+          "topics": [
+            { "category": "target / module", "details": "target: 'ES2020' 编译目标；module: 'ESNext' 模块系统" },
+            { "category": "strict 严格模式", "details": "strict: true 总开关，包含 noImplicitAny、strictNullChecks、strictFunctionTypes 等" },
+            { "category": "代码质量选项", "details": "noUnusedLocals、noUnusedParameters — 检测未使用变量和参数" },
+            { "category": "路径与兼容性", "details": "outDir/rootDir 设置输出目录；esModuleInterop 便于导入 CommonJS；skipLibCheck 跳过库类型检查" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十五、阅读 TS 代码的通用思路",
+      "emoji": "📖",
+      "semesters": [
+        {
+          "title": "系统分析方法",
+          "topics": [
+            { "category": "识别类型来源", "details": "看接口/类型别名定义，推导泛型实参" },
+            { "category": "跟随函数签名", "details": "理解参数和返回值的约束，重载顺序" },
+            { "category": "关注窄化", "details": "if/switch、类型守卫决定了分支内的具体类型" },
+            { "category": "查看映射/条件类型", "details": "复杂类型工具最终会被 TS 展开，鼠标悬停可查看展开结果" },
+            { "category": "利用声明文件", "details": "外部库的类型都定义在 .d.ts 中，快速跳转了解 API 结构" },
+            { "category": "编译器报错即文档", "details": "利用编辑器报错反向推导期望的类型，理解设计意图" }
+          ]
+        }
+      ]
+    }
+  ],
+  "coreBlocks": [
+    { "title": "类型系统", "description": "结构化类型（鸭子类型）、类型推断、联合/交叉类型，让代码在保留灵活性的同时获得静态检查" },
+    { "title": "泛型与类型体操", "description": "泛型函数/类、条件类型、映射类型、infer，构建可复用且类型安全的抽象" },
+    { "title": "类型守卫与窄化", "description": "typeof/instanceof/in/自定义谓词在分支中自动收窄类型，让联合类型安全使用" },
+    { "title": "工程配置 tsconfig", "description": "strict 模式、target/module 选项、路径映射，决定项目的类型检查严格程度与编译输出" }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "subject": "java",
+  "curriculumData": [
+    {
+      "grade": "一、基础语法与结构",
+      "emoji": "🏗️",
+      "semesters": [
+        {
+          "title": "代码的骨架",
+          "topics": [
+            { "category": "标识符与关键字", "details": "class, interface, enum, @interface, package, import 是代码组织的基本单元" },
+            { "category": "数据类型 - 基本类型", "details": "byte, short, int, long, float, double, char, boolean —— 决定了运算规则与内存行为" },
+            { "category": "数据类型 - 引用类型", "details": "类、接口、数组、枚举 —— 存放的是对象的引用（地址）" },
+            { "category": "变量", "details": "局部变量、成员变量、静态变量，作用域和生命周期直接影响逻辑可见性" },
+            { "category": "运算符", "details": "算术、关系、逻辑（短路与非短路& |）、位运算、三元? :、instanceof（类型检查）" },
+            { "category": "流程控制", "details": "if-else, switch, for(;;), for-each, while, do-while，以及break, continue, return" },
+            { "category": "数组", "details": "声明、初始化、多维数组。注意length是属性不是方法" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "二、面向对象核心",
+      "emoji": "🎯",
+      "semesters": [
+        {
+          "title": "理解设计意图",
+          "topics": [
+            { "category": "类与对象", "details": "类是蓝图，new创建对象，构造器负责初始化状态" },
+            { "category": "封装", "details": "private/protected/public控制访问权限；通过getter/setter理解数据流向" },
+            { "category": "继承", "details": "extends，单继承。子类拥有父类的非私有成员，方法重写@Override可改变行为" },
+            { "category": "多态", "details": "父类引用指向子类对象；调用方法时执行的是实际对象的重写方法（动态绑定）" },
+            { "category": "抽象类与接口", "details": "抽象类abstract可含状态，接口interface定义能力（Java 8+可有default方法）" },
+            { "category": "内部类", "details": "成员内部类、静态嵌套类、局部内部类、匿名内部类（常见于事件处理）" },
+            { "category": "枚举", "details": "enum是特殊的类，可带构造器、方法、实现接口，常量是public static final的实例" },
+            { "category": "记录类", "details": "record (Java 14+) 不可变数据载体，自动生成构造器、equals/hashCode/toString" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "三、异常机制",
+      "emoji": "⚠️",
+      "semesters": [
+        {
+          "title": "跟踪错误与稳定逻辑",
+          "topics": [
+            { "category": "try-catch-finally", "details": "finally总会执行（哪怕try中有return），常用于关闭资源" },
+            { "category": "throw与throws", "details": "throw抛出异常对象，throws声明可能抛出的受检异常" },
+            { "category": "异常体系 - Throwable", "details": "Error：严重问题（如OutOfMemoryError），不强制处理" },
+            { "category": "异常体系 - Exception", "details": "受检异常（如IOException）：必须显示处理或声明抛出" },
+            { "category": "运行时异常", "details": "RuntimeException及其子类：不强制处理，通常由编程逻辑错误引起（如NullPointerException）" },
+            { "category": "try-with-resources", "details": "Java 7+：自动关闭AutoCloseable资源，括号内声明即可，省略finally关流代码" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "四、常用核心类库",
+      "emoji": "📦",
+      "semesters": [
+        {
+          "title": "看懂API调用链",
+          "topics": [
+            { "category": "java.lang - Object", "details": "所有类的超类，equals()、hashCode()、toString()、getClass()等，理解其默认实现与重写约定" },
+            { "category": "java.lang - String", "details": "不可变对象，StringBuilder/StringBuffer可变，+拼接底层是用StringBuilder" },
+            { "category": "java.lang - 包装类", "details": "Integer, Double等，自动装箱/拆箱，缓存机制（Integer缓存-128~127，影响==比较）" },
+            { "category": "java.lang - 其他", "details": "Math、System（System.out, System.currentTimeMillis()）、Thread" },
+            { "category": "java.util - 集合框架", "details": "工具与数据结构的大本营（见下文专门章节）" },
+            { "category": "java.util - 日期时间", "details": "Date/Calendar（老旧）、java.time（Java 8+推荐，如LocalDate, Instant, Duration, DateTimeFormatter）" },
+            { "category": "java.util - 其他工具", "details": "Random、Scanner、Optional（避免空指针的容器）" },
+            { "category": "java.io/java.nio - 字节流", "details": "InputStream/OutputStream" },
+            { "category": "java.io/java.nio - 字符流", "details": "Reader/Writer" },
+            { "category": "java.io/java.nio - 缓冲流", "details": "BufferedReader/Writer" },
+            { "category": "java.io/java.nio - 文件操作", "details": "File, Files, Path, Paths（NIO.2常用读写和文件操作）" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "五、集合框架",
+      "emoji": "🗂️",
+      "semesters": [
+        {
+          "title": "业务逻辑数据容器",
+          "topics": [
+            { "category": "List接口", "details": "ArrayList（基于数组随机快）、LinkedList（插入删除快）—— 有序可重复" },
+            { "category": "Set接口", "details": "HashSet（无序）、LinkedHashSet（保持插入顺序）、TreeSet（红黑树排序）—— 不可重复" },
+            { "category": "Map接口", "details": "HashMap（无序允许null键值）、LinkedHashMap、TreeMap（键排序）、ConcurrentHashMap（线程安全分段锁）" },
+            { "category": "Queue/Deque接口", "details": "LinkedList、PriorityQueue（按优先级排序）、ArrayDeque —— 队列/双端队列" },
+            { "category": "equals和hashCode", "details": "当对象作为HashMap的键或HashSet元素时，两者必须一致重写" },
+            { "category": "Collections工具类", "details": "排序、不可变集合、线程安全包装" },
+            { "category": "Iterator与ListIterator", "details": "遍历时删除需用iterator.remove()，否则ConcurrentModificationException" },
+            { "category": "泛型保障类型安全", "details": "读代码时注意尖括号内的类型约束" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "六、泛型",
+      "emoji": "🔍",
+      "semesters": [
+        {
+          "title": "看懂尖括号里的设计",
+          "topics": [
+            { "category": "泛型类/接口/方法", "details": "List<String> list = new ArrayList<>();" },
+            { "category": "类型擦除", "details": "编译后泛型信息被擦除，运行时List<Integer>和List<String>是同一个Class。这解释了为何不能instanceof List<String>" },
+            { "category": "通配符 - ? extends T", "details": "上界，生产者：只能读不能写（set无效）" },
+            { "category": "通配符 - ? super T", "details": "下界，消费者：可以添加T及其子类，但读出来是Object" },
+            { "category": "通配符 - ?", "details": "无界通配符：表示未知类型，常用于简单遍历" },
+            { "category": "类型限定", "details": "<T extends Comparable<T>> 表示T必须实现Comparable接口" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "七、注解与反射",
+      "emoji": "✨",
+      "semesters": [
+        {
+          "title": "理解框架背后的魔法",
+          "topics": [
+            { "category": "内置注解", "details": "@Override, @Deprecated, @SuppressWarnings, @FunctionalInterface" },
+            { "category": "元注解", "details": "@Retention(保留策略：源码/类文件/运行时)、@Target(目标：方法/字段等)、@Inherited、@Documented" },
+            { "category": "自定义注解", "details": "public @interface MyAnno {}，可定义成员（类似方法）" },
+            { "category": "反射 - 获取Class", "details": "Class<?> clazz = obj.getClass(); / Class.forName(\"全限定名\");" },
+            { "category": "反射 - 获取成员", "details": "获取构造器、方法、字段（getDeclaredFields(), getMethods()等）" },
+            { "category": "反射 - 动态调用", "details": "method.invoke(obj, args)，破坏封装setAccessible(true)" },
+            { "category": "框架应用", "details": "许多框架（Spring、JUnit）通过读取运行时注解进行依赖注入、测试等" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "八、函数式编程 (Java 8+)",
+      "emoji": "λ",
+      "semesters": [
+        {
+          "title": "现代代码的标志",
+          "topics": [
+            { "category": "Lambda表达式", "details": "(params) -> expression 或 { statements; }，本质是函数式接口（只有一个抽象方法的接口）的实例" },
+            { "category": "函数式接口 - Predicate", "details": "boolean test(T t) 过滤/判断" },
+            { "category": "函数式接口 - Function", "details": "R apply(T t) 转换" },
+            { "category": "函数式接口 - Consumer", "details": "void accept(T t) 消耗" },
+            { "category": "函数式接口 - Supplier", "details": "T get() 供应" },
+            { "category": "其他函数式接口", "details": "BiFunction, UnaryOperator等" },
+            { "category": "方法引用", "details": "String::valueOf、System.out::println、ArrayList::new，更简洁" },
+            { "category": "Stream API - 创建流", "details": "collection.stream(), Stream.of(), IntStream.range()" },
+            { "category": "Stream API - 中间操作", "details": "filter, map, flatMap, distinct, sorted, peek, limit, skip（惰性）" },
+            { "category": "Stream API - 终端操作", "details": "collect(Collectors.toList()), forEach, reduce, count, anyMatch, findFirst（触发计算）" },
+            { "category": "map与flatMap区别", "details": "一对一变一对一，一对多合并" },
+            { "category": "Optional", "details": "容器对象，可能非空。方法链：map, flatMap, filter, ifPresent, orElse, orElseGet, orElseThrow。避免深层嵌套if (obj!=null)" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "九、多线程与并发",
+      "emoji": "🧵",
+      "semesters": [
+        {
+          "title": "理解执行顺序与共享数据",
+          "topics": [
+            { "category": "创建线程", "details": "继承Thread或实现Runnable/Callable。Callable可返回值，配合Future" },
+            { "category": "线程池", "details": "ExecutorService (通过Executors工厂创建)，提交任务submit()，避免显式创建线程" },
+            { "category": "synchronized", "details": "方法或代码块：互斥锁，持有同一对象锁的线程串行执行" },
+            { "category": "volatile", "details": "保证变量可见性，禁止指令重排，但不保证原子性（如i++）" },
+            { "category": "Lock与ReentrantLock", "details": "显示的锁，tryLock、可中断等高级功能" },
+            { "category": "Atomic类", "details": "AtomicInteger, AtomicReference等，基于CAS实现无锁线程安全" },
+            { "category": "线程协调工具", "details": "CountDownLatch, CyclicBarrier, Semaphore, Phaser" },
+            { "category": "ThreadLocal", "details": "线程局部变量，各线程有自己的副本，常用于保存上下文（如数据库连接、用户会话）" },
+            { "category": "并发集合", "details": "ConcurrentHashMap、CopyOnWriteArrayList、BlockingQueue (生产-消费者模式)等" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十、输入输出流与序列化",
+      "emoji": "📤",
+      "semesters": [
+        {
+          "title": "IO与持久化",
+          "topics": [
+            { "category": "装饰器模式", "details": "new BufferedInputStream(new FileInputStream(file))，层层包装功能" },
+            { "category": "对象序列化", "details": "实现Serializable接口（标记接口），ObjectOutputStream/ObjectInputStream读写" },
+            { "category": "serialVersionUID", "details": "控制版本兼容" },
+            { "category": "transient关键字", "details": "字段不参与序列化" },
+            { "category": "字符编码", "details": "Reader/Writer涉及编码，常见UTF-8, ISO-8859-1，乱码根源在此" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十一、JVM基本内存模型",
+      "emoji": "🧠",
+      "semesters": [
+        {
+          "title": "深入逻辑背后",
+          "topics": [
+            { "category": "堆（Heap）", "details": "存放对象实例、数组，GC主要区域" },
+            { "category": "方法区（元空间）", "details": "存放类信息、常量、静态变量、即时编译器编译后的代码" },
+            { "category": "虚拟机栈", "details": "每个线程私有，每个方法执行时创建栈帧，包含局部变量表、操作数栈。理解递归调用深度、栈溢出StackOverflowError" },
+            { "category": "本地方法栈", "details": "为Native方法服务" },
+            { "category": "程序计数器", "details": "线程私有，指示下一条字节码指令" },
+            { "category": "对象引用分布", "details": "理解对象引用在栈/堆的分布，以及==比较的是引用地址还是内容，根源于此" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十二、其他关键特性",
+      "emoji": "🆕",
+      "semesters": [
+        {
+          "title": "新特性速查",
+          "topics": [
+            { "category": "模块系统 (Java 9+)", "details": "module-info.java 声明模块依赖与导出，影响包的可见性" },
+            { "category": "switch表达式 (Java 14+)", "details": "可用->箭头，可返回值，yield关键字" },
+            { "category": "文本块 (Text Blocks)", "details": "\"\"\" ... \"\"\" 多行字符串，避免大量转义" },
+            { "category": "密封类 (Sealed Classes, Java 17)", "details": "sealed / permits 控制哪些类可以继承，增强了模式匹配的确定性" },
+            { "category": "模式匹配", "details": "instanceof 后直接绑定变量 o instanceof String s && s.length()>0" },
+            { "category": "代数数据类型", "details": "记录类、密封类、模式匹配结合，常用于构建ADT，代码逻辑更函数式" }
+          ]
+        }
+      ]
+    }
+  ],
+  "coreBlocks": [
+    { "title": "阅读代码的方法", "description": "先看类声明→再扫字段→看构造器→分析方法签名→进入方法体→关注线程模型→查看异常处理→注意Java版本" },
+    { "title": "面向对象思维", "description": "封装、继承、多态三大特性，理解设计模式和架构意图" },
+    { "title": "函数式编程", "description": "Lambda、Stream API、Optional，现代Java代码的标志" },
+    { "title": "并发编程", "description": "多线程、同步机制、并发集合，理解执行顺序与共享数据" }
+  ]
+}

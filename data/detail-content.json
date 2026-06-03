@@ -1,0 +1,48 @@
+{
+  "python": {
+    "arithmetic": {
+      "title": "算术运算符 //, %, **",
+      "content": "<p><strong>//（整除）</strong>：返回除法的<strong>整数部分</strong>（向下取整）。</p><pre>7 // 2  # 结果是 3（而不是 3.5）</pre><p><strong>%（取模/余数）</strong>：返回除法的<strong>余数</strong>。</p><pre>7 % 2  # 结果是 1</pre><p><strong>**（幂运算）</strong>：返回<strong>次方</strong>计算结果。</p><pre>2 ** 3  # 结果是 8（即 2 的 3 次方）</pre><p><strong>常见应用：</strong></p><ul><li><code>//</code> 和 <code>%</code> 常配合使用，如分离一个数的十位与个位：<code>87 // 10 = 8</code>，<code>87 % 10 = 7</code></li><li>判断奇偶数：<code>num % 2 == 0</code> 为偶数</li><li><code>**</code> 用于计算平方、立方等</li></ul>"
+    },
+    "negative-index": {
+      "title": "负索引 [-1]",
+      "content": "<p>在 Python 中，<code>[-1]</code> 代表<strong>序列（如字符串、列表、元组）的最后一个元素</strong>。</p><p>它是<strong>负索引</strong>的用法，从右边开始计数：</p><ul><li><code>-1</code> → 最后一个元素</li><li><code>-2</code> → 倒数第二个</li><li><code>-3</code> → 倒数第三个</li></ul><pre>lst = [10, 20, 30, 40]\nprint(lst[-1])   # 输出 40\nprint(lst[-2])   # 输出 30\n\ntext = \"Python\"\nprint(text[-1])  # 输出 'n'</pre><p><strong>优点</strong>：不需要知道序列长度就能直接访问末尾元素，相当于 <code>lst[len(lst)-1]</code> 的简洁写法。</p>"
+    },
+    "symmetric-diff": {
+      "title": "集合的对称差集 ^",
+      "content": "<p><strong>^（对称差集）</strong>：返回<strong>属于其中一个集合，但不同时属于两个集合的元素</strong>。</p><pre>set1 = {1, 2, 3, 4}\nset2 = {3, 4, 5, 6}\nresult = set1 ^ set2\nprint(result)  # 输出 {1, 2, 5, 6}</pre><p><strong>图解</strong>：去掉交集 <code>{3, 4}</code>，保留两边独有的元素。</p><p><strong>与差集的区别：</strong></p><ul><li><strong>差集（<code>-</code>）</strong>：结果<strong>分方向</strong>。<code>A - B = {1, 2}</code>（只在 A 中）</li><li><strong>对称差（<code>^</code>）</strong>：结果<strong>不分方向</strong>。<code>A ^ B = {1, 2, 5, 6}</code>（两边的差集合并）</li></ul><p><strong>一句话总结</strong>：差集只要左边有而右边没有的；对称差只要两边不共有的（不管左右，只要独占就算）。</p>"
+    },
+    "f-string": {
+      "title": "f-string 格式化字符串",
+      "content": "<p><code>f\"\"</code>（f-string）是 Python 3.6+ 推荐使用的字符串格式化方法，<strong>特点是在字符串前加 <code>f</code>，用 <code>{}</code> 直接嵌入变量或表达式</strong>。</p><pre>name = \"张三\"\nage = 25\nprint(f\"我叫{name}，今年{age}岁\")  # 输出：我叫张三，今年25岁</pre><p><strong>常用特性：</strong></p><ul><li><strong>嵌入表达式</strong>：<code>f\"{a} + {b} = {a + b}\"</code></li><li><strong>调用方法</strong>：<code>f\"大写：{text.upper()}\"</code></li><li><strong>格式化数字</strong>：<code>f\"{pi:.2f}\"</code>（保留2位小数），<code>f\"{1000000:,}\"</code>（千位分隔符）</li><li><strong>控制宽度和对齐</strong>：<code>f\"{name:&gt;10}\"</code>（右对齐），<code>f\"{name:&lt;10}\"</code>（左对齐）</li></ul><p><strong>大括号转义</strong>：想输出花括号本身，使用双写 <code>{{</code> 或 <code>}}</code></p>"
+    },
+    "r-string": {
+      "title": "原始字符串 r\"\"",
+      "content": "<p><strong>r\"\"（原始字符串）</strong>：反斜杠 <code>\\</code> 不再作为转义字符，而是<strong>普通字符</strong>。</p><p><strong>典型场景</strong>：正则表达式、文件路径（Windows）</p><pre># 普通字符串：\\n 被解释为换行\nprint(\"C:\\new\\file.txt\")  # 输出分行乱掉\n\n# 原始字符串：\\n 就是两个普通字符\nprint(r\"C:\\new\\file.txt\")  # 输出 C:\\new\\file.txt\n\n# 正则表达式常用\nimport re\npattern = r\"\\d+\\.\\d+\"  # 匹配数字.数字，无需双写反斜杠</pre><p><strong>注意</strong>：原始字符串不能以反斜杠 <code>\\</code> 结尾（除非转义）。</p>"
+    },
+    "strip": {
+      "title": "strip() 字符串方法",
+      "content": "<p><code>strip()</code> 是 Python 字符串的一个方法，用于<strong>移除字符串首尾两端的指定字符</strong>（默认移除空白字符）。</p><pre>text = \"  Hello World  \\n\"\nprint(text.strip())   # 输出 \"Hello World\"（移除空格、换行等）</pre><p><strong>三种变体：</strong></p><ul><li><code>strip()</code>：移除<strong>两端</strong>指定字符</li><li><code>lstrip()</code>：仅移除<strong>左侧</strong>（开头）指定字符</li><li><code>rstrip()</code>：仅移除<strong>右侧</strong>（结尾）指定字符</li></ul><pre>text = \"###Hello###\"\nprint(text.strip('#'))   # 输出 \"Hello\"\n\n# 移除多种字符\ntext = \"  \\t**Hello**  \"\nprint(text.strip(' *\\t'))   # 输出 \"Hello\"</pre><p><strong>注意</strong>：<code>strip()</code> 不会修改原字符串（字符串不可变），而是<strong>返回一个新字符串</strong>。</p>"
+    },
+    "tuple": {
+      "title": "元组 tuple",
+      "content": "<p><strong>tuple（元组）</strong>是 Python 中一种<strong>不可变</strong>的有序序列。</p><p><strong>核心特性：</strong></p><ul><li><strong>不可变</strong>：创建后不能增删改元素，比列表更安全，适合固定数据</li><li><strong>有序</strong>：元素按写入顺序存储，能通过索引访问（从 0 开始）</li><li><strong>可包含任意类型</strong>：数字、字符串、甚至另一个元组</li></ul><pre># 常用写法\nt1 = (1, 2, 3)      # 标准元组\nt2 = 1, 2, 3        # 省略括号（打包）\nt3 = (1,)           # 单元素元组！逗号必须有\nt4 = ()             # 空元组\n\n# 访问元素\nprint(t1[0])        # 输出 1\n# t1[0] = 0         # 错误！不可修改</pre><p><strong>元组 vs 列表：</strong></p><ul><li><strong>可变性</strong>：元组不可变，列表可变（最本质区别）</li><li><strong>语法</strong>：元组用 <code>(1, 2)</code>，列表用 <code>[1, 2]</code>。单元素元组必须加逗号 <code>(1,)</code></li><li><strong>性能</strong>：元组创建和访问更快，占用内存更小</li><li><strong>方法</strong>：元组只有 <code>count()</code> 和 <code>index()</code>；列表有十几种方法</li><li><strong>使用场景</strong>：需要安全不变的常量用元组，需要频繁修改的集合用列表</li></ul><pre># 列表 ↔ 元组 互转\nlst = [1, 2, 3]\ntup = tuple(lst)     # 列表 → 元组\nlst2 = list(tup)     # 元组 → 列表</pre><p><strong>常见应用：</strong></p><ul><li>函数返回<strong>多个值</strong>（本质是返回元组）</li><li>字典的<strong>键</strong>（列表不能当键，元组可以）</li><li>记录<strong>不应改变</strong>的数据，如坐标点 <code>(x, y)</code></li></ul>"
+    },
+    "b-string": {
+      "title": "字节字符串 b\"\"",
+      "content": "<p><strong>b\"\"（字节字符串）</strong>生成<strong>字节序列</strong>（bytes）而不是字符串（str）。每个元素是 0-255 的整数。</p><p><strong>典型场景</strong>：网络传输、文件二进制读写、加密处理</p><pre># 普通字符串\ntext = \"Hello\"  # 类型: str\nprint(text[0])  # 输出 'H'（字符）\n\n# 字节字符串\ndata = b\"Hello\"  # 类型: bytes\nprint(data[0])   # 输出 72（'H' 的 ASCII 码）\n\n# 编解码转换\ntext = \"中文\"\nbyte_data = text.encode(\"utf-8\")  # str → bytes\nnew_text = byte_data.decode(\"utf-8\")  # bytes → str</pre><p><strong>r\"\" 与 b\"\" 对比：</strong></p><ul><li><code>r\"\"</code>：类型是 <code>str</code>，反斜杠不转义，用于正则和文件路径</li><li><code>b\"\"</code>：类型是 <code>bytes</code>，元素是整数（0-255），用于网络和二进制</li></ul>"
+    },
+    "match": {
+      "title": "match 结构模式匹配",
+      "content": "<p><code>match</code> 是 Python 3.10 引入的<strong>结构模式匹配</strong>语句，功能类似 switch-case，但<strong>能解构复杂数据类型</strong>。</p><pre>match value:\n    case 模式1:\n        执行代码\n    case 模式2:\n        执行代码\n    case _:  # 下划线是通配符，类似 default\n        执行代码</pre><p><strong>解构列表/元组：</strong></p><pre>point = (3, 5)\nmatch point:\n    case (0, 0):\n        print(\"原点\")\n    case (x, 0):\n        print(f\"X轴上的点，x={x}\")\n    case (0, y):\n        print(f\"Y轴上的点，y={y}\")\n    case (x, y):\n        print(f\"普通点：({x},{y})\")</pre><p><strong>添加条件守卫（if）：</strong></p><pre>match num:\n    case n if n > 0:\n        print(\"正数\")\n    case n if n &lt; 0:\n        print(\"负数\")\n    case 0:\n        print(\"零\")</pre><p><strong>注意</strong>：<code>match</code> 是 Python 3.10+ 的特性，旧版本需升级或使用 <code>if-elif</code>。</p>"
+    },
+    "iterable": {
+      "title": "可迭代对象 Iterable",
+      "content": "<p><strong>可迭代对象</strong>就是可以使用 <code>for</code> 循环<strong>逐个取出元素</strong>的对象。</p><p><strong>常见的可迭代对象：</strong></p><ul><li>列表 <code>[1, 2, 3]</code></li><li>字符串 <code>\"Python\"</code>（逐个字符）</li><li>元组 <code>(1, 2, 3)</code></li><li>字典 <code>{\"a\": 1, \"b\": 2}</code>（遍历键）</li><li>文件对象（逐行读取）</li><li><code>range</code>、生成器等</li></ul><pre># 手动模拟 for 循环\nmy_list = [1, 2, 3]\niterator = iter(my_list)    # 获取迭代器\nprint(next(iterator))       # 1\nprint(next(iterator))       # 2\nprint(next(iterator))       # 3\n# print(next(iterator))     # 抛出 StopIteration</pre><p>可迭代对象必须实现 <code>__iter__()</code> 方法，返回一个<strong>迭代器</strong>。<code>for</code> 循环会自动调用这个方法。</p><p><strong>哪些对象不是可迭代的？</strong></p><ul><li>数字（整数、浮点数）</li><li>布尔值</li><li>None</li></ul>"
+    },
+    "getitem": {
+      "title": "__getitem__ 实现迭代",
+      "content": "<p>实现了 <code>__getitem__</code> 方法的对象<strong>也属于可迭代对象</strong>，它是 Python 中一种更早的迭代协议（在 <code>__iter__</code> 出现之前）。</p><p><strong>核心原理</strong>：<code>for</code> 循环遇到没有 <code>__iter__</code> 的对象时，会退而求其次，尝试调用 <code>__getitem__</code>，<strong>按索引 0, 1, 2... 依次取值</strong>，直到捕获 <code>IndexError</code> 异常为止。</p><pre>class MyNumbers:\n    def __init__(self, max_num):\n        self.max = max_num\n\n    def __getitem__(self, index):\n        if index >= self.max:\n            raise IndexError  # 停止迭代的信号\n        return index * 10\n\n# 可以直接 for 循环\nfor num in MyNumbers(5):\n    print(num)  # 输出: 0, 10, 20, 30, 40</pre><p><strong>__iter__ vs __getitem__：</strong></p><ul><li><strong>__iter__</strong>：优先级更高（优先检查），更标准，自定义迭代逻辑</li><li><strong>__getitem__</strong>：降级方案，按顺序索引取值，天然支持随机访问 <code>obj[5]</code></li></ul><p><strong>总结</strong>：<code>__getitem__</code> 是实现迭代的「老旧但有效」的方式，现代 Python 推荐优先实现 <code>__iter__</code>。</p>"
+    }
+  }
+}

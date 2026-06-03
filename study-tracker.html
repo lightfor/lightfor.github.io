@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习进度 - Lightfor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f0eb;
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #4a3728;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: clamp(1.4rem, 5vw, 2rem);
+            margin-bottom: 10px;
+        }
+
+        .subject-tabs {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .subject-tab {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid transparent;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            min-height: 44px;
+        }
+
+        .subject-tab:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .subject-tab.active {
+            background: white;
+            color: #4a3728;
+            border-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .header p {
+            font-size: 1em;
+            opacity: 0.85;
+            margin-top: 10px;
+        }
+
+        .action-buttons-top {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .action-btn {
+            background: #6b4c36;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 140px;
+            height: 48px;
+            line-height: 1;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 55, 40, 0.35);
+            background: #7a5640;
+        }
+
+        .btn-export {
+            background: #2e7d5e;
+        }
+
+        .btn-export:hover {
+            background: #38936e;
+            box-shadow: 0 4px 12px rgba(46, 125, 94, 0.35);
+        }
+
+        .btn-import {
+            background: #b5651d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-import:hover {
+            background: #c97428;
+            box-shadow: 0 4px 12px rgba(181, 101, 29, 0.35);
+        }
+
+        .btn-reset {
+            background: #a0522d;
+        }
+
+        .btn-reset:hover {
+            background: #b5622e;
+            box-shadow: 0 4px 12px rgba(160, 82, 45, 0.35);
+        }
+
+        .btn-import input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            height: 28px;
+            border-radius: 14px;
+            margin-top: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            background: #8b6347;
+            height: 100%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .grade-section {
+            margin-bottom: 30px;
+            border: 1px solid #e8e0d8;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .grade-section:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .grade-header {
+            background: #4a3728;
+            color: white;
+            padding: 18px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .grade-header h2 {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grade-stats {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .semester {
+            padding: 20px;
+            border-bottom: 1px solid #e8e0d8;
+        }
+
+        .semester:last-child {
+            border-bottom: none;
+        }
+
+        .semester-title {
+            font-size: 1.15em;
+            color: #4a3728;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .topic-list {
+            list-style: none;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #faf8f5;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .topic-item:hover {
+            background: #f0ebe4;
+            transform: translateX(4px);
+        }
+
+        .topic-item.mastered {
+            background: #e8f4ec;
+            border-left: 4px solid #28a745;
+        }
+
+        .checkbox-wrapper {
+            margin-right: 12px;
+            padding-top: 2px;
+        }
+
+        .topic-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #28a745;
+        }
+
+        .topic-content {
+            flex: 1;
+        }
+
+        .topic-category {
+            font-weight: 600;
+            color: #3d2b1f;
+            margin-bottom: 5px;
+        }
+
+        .topic-details {
+            color: #6c757d;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .summary-section {
+            background: #f0e8df;
+            padding: 28px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border: 1px solid #ddd0c4;
+        }
+
+        .summary-section h2 {
+            color: #4a3728;
+            margin-bottom: 20px;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+        }
+
+        .core-blocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+        }
+
+        .core-block {
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        }
+
+        .core-block h3 {
+            color: #4a3728;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .core-block p {
+            color: #6c757d;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(400px); opacity: 0; }
+        }
+
+        @media (max-width: 680px) {
+            .header h1 { font-size: 1.4rem; }
+            .subject-tab { padding: 8px 14px; font-size: 0.9em; }
+            .content { padding: 15px; }
+            .grade-header h2 { font-size: 1.1rem; }
+        }
+
+        /* Tooltip styles */
+        .tooltip-container {
+            position: relative;
+            cursor: help;
+        }
+
+        .tooltip-trigger {
+            color: #6b4c36;
+            font-weight: 600;
+            border-bottom: 2px dotted #6b4c36;
+            cursor: help;
+            transition: all 0.2s ease;
+        }
+
+        .tooltip-trigger:hover {
+            color: #4a3728;
+            border-bottom-color: #4a3728;
+            background: rgba(107, 76, 54, 0.08);
+        }
+
+        .detail-tooltip {
+            position: fixed;
+            background: white;
+            border: 2px solid #6b4c36;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            max-width: 500px;
+            max-height: 70vh;
+            overflow-y: auto;
+            z-index: 10000;
+            display: none;
+            animation: tooltipFadeIn 0.2s ease;
+        }
+
+        @keyframes tooltipFadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .detail-tooltip h3 {
+            color: #4a3728;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            border-bottom: 2px solid #6b4c36;
+            padding-bottom: 8px;
+        }
+
+        .detail-tooltip p {
+            color: #495057;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .detail-tooltip code {
+            background: #faf8f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #a0522d;
+            font-size: 0.9em;
+        }
+
+        .detail-tooltip pre {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 12px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 10px 0;
+            font-size: 0.85em;
+        }
+
+        .detail-tooltip ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .detail-tooltip li {
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9em;display:inline-block;margin-bottom:8px;">← 返回首页</a>
+            <h1>📚 学习进度追踪系统</h1>
+            <p>记录不同学科的学习情况，掌握程度一目了然</p>
+            <div class="subject-tabs">
+                <button class="subject-tab active" onclick="switchSubject('math')">📐 数学</button>
+                <button class="subject-tab" onclick="switchSubject('java')">☕ Java编程</button>
+                <button class="subject-tab" onclick="switchSubject('python')">🐍 Python编程</button>
+                <button class="subject-tab" onclick="switchSubject('go')">🐹 Go编程</button>
+                <button class="subject-tab" onclick="switchSubject('typescript')">🔷 TypeScript</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="overallProgress">0%</div>
+            </div>
+            <div class="action-buttons-top">
+                <button class="action-btn btn-export" onclick="exportProgress()">📥 导出数据</button>
+                <label class="action-btn btn-import">
+                    📤 导入数据
+                    <input type="file" accept=".json" onchange="importProgress(event)">
+                </label>
+                <button class="action-btn btn-reset" onclick="resetProgress()">🔄 重置当前科目</button>
+            </div>
+        </div>
+
+        <div class="content" id="content">
+            <!-- Content will be dynamically generated -->
+        </div>
+    </div>
+
+    <script>
+        // Current subject
+        let currentSubject = 'math';
+
+        // Cache for loaded curriculum data
+        const curriculumCache = {};
+
+        // Load curriculum data from JSON file (cached)
+        async function loadCurriculumData(subject) {
+            if (curriculumCache[subject]) return curriculumCache[subject];
+            const response = await fetch(`data/${subject}-curriculum.json`);
+            const json = await response.json();
+            curriculumCache[subject] = json;
+            return json;
+        }
+
+        // Detail tooltip content — loaded once from data/detail-content.json
+        // Structure: { subject: { key: { title, content } } }
+        // Add new tooltips by editing that file under the appropriate subject key.
+        let detailContent = null;
+
+        async function loadDetailContent() {
+            if (detailContent) return detailContent;
+            const response = await fetch('data/detail-content.json');
+            detailContent = await response.json();
+            return detailContent;
+        }
+
+        // Curriculum data loaded from data/*-curriculum.json via loadCurriculumData()
+
+        // Storage keys for different subjects
+        const STORAGE_KEYS = {
+            math: 'math_learning_progress',
+            java: 'java_learning_progress',
+            python: 'python_learning_progress',
+            go: 'go_learning_progress',
+            typescript: 'typescript_learning_progress'
+        };
+        
+        // Enhanced Persistent Storage with Backup/Export
+        class PersistentStorage {
+            constructor(key) {
+                this.key = key;
+            }
+        
+            load() {
+                const saved = localStorage.getItem(this.key);
+                return saved ? JSON.parse(saved) : {};
+            }
+        
+            save(data) {
+                localStorage.setItem(this.key, JSON.stringify(data));
+            }
+
+            // Export data as downloadable JSON file
+            exportData() {
+                const data = this.load();
+                const dataStr = JSON.stringify(data, null, 2);
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                const date = new Date().toISOString().split('T')[0];
+                a.download = `${this.key}_${date}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                // Show success message
+                this.showMessage('数据导出成功！', 'success');
+            }
+
+            // Import data from JSON file
+            importData(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        try {
+                            const data = JSON.parse(e.target.result);
+                            this.save(data);
+                            resolve(data);
+                        } catch (error) {
+                            reject(new Error('文件格式错误，请上传有效的JSON文件'));
+                        }
+                    };
+                    reader.onerror = () => reject(new Error('文件读取失败'));
+                    reader.readAsText(file);
+                });
+            }
+
+            // Show temporary message
+            showMessage(text, type = 'info') {
+                const messageDiv = document.createElement('div');
+                messageDiv.textContent = text;
+                messageDiv.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 15px 25px;
+                    background: ${type === 'success' ? '#4caf50' : type === 'error' ? '#f44336' : '#2196f3'};
+                    color: white;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    z-index: 10000;
+                    font-size: 14px;
+                    animation: slideIn 0.3s ease;
+                `;
+                document.body.appendChild(messageDiv);
+                
+                setTimeout(() => {
+                    messageDiv.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => document.body.removeChild(messageDiv), 300);
+                }, 2000);
+            }
+        }
+
+        // Initialize persistent storage
+        function getCurrentStorage() {
+            return new PersistentStorage(STORAGE_KEYS[currentSubject]);
+        }
+
+        // Load progress from localStorage
+        function loadProgress() {
+            return getCurrentStorage().load();
+        }
+
+        // Save progress to localStorage
+        function saveProgress(progress) {
+            getCurrentStorage().save(progress);
+        }
+
+        // Generate unique ID for each topic
+        function generateTopicId(gradeIndex, semesterIndex, topicIndex) {
+            return `g${gradeIndex}_s${semesterIndex}_t${topicIndex}`;
+        }
+
+        // Get current curriculum data (async, loaded from JSON)
+        async function getCurrentCurriculumData() {
+            const json = await loadCurriculumData(currentSubject);
+            return json.curriculumData;
+        }
+
+        // Get current core blocks (async, loaded from JSON)
+        async function getCurrentCoreBlocks() {
+            const json = await loadCurriculumData(currentSubject);
+            return json.coreBlocks;
+        }
+
+        // Render the curriculum
+        async function renderCurriculum() {
+            const content = document.getElementById('content');
+            const progress = loadProgress();
+            const curriculumData = await getCurrentCurriculumData();
+            const coreBlocks = await getCurrentCoreBlocks();
+            
+            let html = '';
+            let totalTopics = 0;
+            let masteredTopics = 0;
+
+            curriculumData.forEach((grade, gradeIndex) => {
+                html += `
+                    <div class="grade-section">
+                        <div class="grade-header">
+                            <h2>${grade.emoji} ${grade.grade}</h2>
+                            <div class="grade-stats" id="gradeStats_${gradeIndex}">0/0</div>
+                        </div>
+                `;
+
+                grade.semesters.forEach((semester, semesterIndex) => {
+                    html += `
+                        <div class="semester">
+                            <div class="semester-title">${semester.title}</div>
+                            <ul class="topic-list">
+                    `;
+
+                    semester.topics.forEach((topic, topicIndex) => {
+                        const topicId = generateTopicId(gradeIndex, semesterIndex, topicIndex);
+                        const isMastered = progress[topicId] || false;
+                        totalTopics++;
+                        if (isMastered) masteredTopics++;
+
+                        html += `
+                            <li class="topic-item ${isMastered ? 'mastered' : ''}" id="topic_${topicId}">
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" 
+                                           class="topic-checkbox" 
+                                           id="${topicId}" 
+                                           ${isMastered ? 'checked' : ''}
+                                           onchange="toggleTopic('${topicId}')">
+                                </div>
+                                <div class="topic-content">
+                                    <div class="topic-category">${topic.category}</div>
+                                    <div class="topic-details">${topic.details}</div>
+                                </div>
+                            </li>
+                        `;
+                    });
+
+                    html += `
+                            </ul>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+
+                // Add stage-specific summary after each grade section
+                if (currentSubject === 'math') {
+                    if (gradeIndex <= 5) {
+                        // Primary school summary (grades 1-6)
+                        if (gradeIndex === 5) {
+                            html += `
+                                <div class="summary-section">
+                                    <h2>💡 小学数学四大核心板块</h2>
+                                    <p style="margin-bottom: 20px; color: #6c757d;">小学数学主要围绕四大板块展开，所有知识都在为它们打基础：</p>
+                                    <div class="core-blocks">
+                            `;
+
+                            coreBlocks.forEach(block => {
+                                html += `
+                                    <div class="core-block">
+                                        <h3>${block.title}</h3>
+                                        <p>${block.description}</p>
+                                    </div>
+                                `;
+                            });
+
+                            html += `
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    } else if (gradeIndex <= 8) {
+                        // Junior high school summary (grades 7-9)
+                        if (gradeIndex === 8) {
+                            html += `
+                                <div class="summary-section">
+                                    <h2>🎯 初中数学核心模块</h2>
+                                    <p style="margin-bottom: 20px; color: #6c757d;">初中数学是承上启下的关键阶段，主要包括以下核心模块：</p>
+                                    <div class="core-blocks">
+                                        <div class="core-block">
+                                            <h3>代数与函数</h3>
+                                            <p>一元一次方程、二元一次方程组、不等式、一次函数、二次函数、反比例函数等</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>几何与图形</h3>
+                                            <p>三角形、四边形、圆、相似、全等、勾股定理、锐角三角函数等</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>统计与概率</h3>
+                                            <p>数据的收集与整理、统计分析、概率初步、随机事件等</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>数与式</h3>
+                                            <p>有理数、实数、整式、分式、二次根式、因式分解等</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    } else if (gradeIndex <= 11) {
+                        // High school summary (grades 10-12)
+                        if (gradeIndex === 11) {
+                            html += `
+                                <div class="summary-section">
+                                    <h2>🚀 高中数学核心体系</h2>
+                                    <p style="margin-bottom: 20px; color: #6c757d;">高中数学构建完整的数学体系，为高考和大学学习奠定基础：</p>
+                                    <div class="core-blocks">
+                                        <div class="core-block">
+                                            <h3>函数与导数</h3>
+                                            <p>集合与逻辑、函数概念与性质、指数对数函数、三角函数、数列、导数及其应用</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>几何与向量</h3>
+                                            <p>平面向量、空间向量、立体几何、解析几何（直线、圆、圆锥曲线）</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>概率与统计</h3>
+                                            <p>计数原理、随机变量及其分布、成对数据的统计分析、回归分析</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>代数与复数</h3>
+                                            <p>不等式、复数、算法初步、推理与证明等</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    } else if (gradeIndex <= 23) {
+                        // Advanced math summary (chapters 1-12, gradeIndex 12-23)
+                        if (gradeIndex === 23) {
+                            html += `
+                                <div class="summary-section">
+                                    <h2>∫ 高等数学核心要点</h2>
+                                    <p style="margin-bottom: 20px; color: #6c757d;">掌握以上体系，就能系统地理解并应用大学数学的核心工具：</p>
+                                    <div class="core-blocks">
+                                        <div class="core-block">
+                                            <h3>极限与连续</h3>
+                                            <p>ε-δ/ε-N 语言、等价无穷小替换、两个重要极限、间断点分类，是微积分全部内容的基石</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>一元微积分</h3>
+                                            <p>链式法则、洛必达、泰勒展开、牛顿-莱布尼茨公式，掌握求导与积分的全套方法</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>多元微积分</h3>
+                                            <p>偏导、全微分、链式树形图、三大积分公式（格林/高斯/斯托克斯），维度从一到三的自然延伸</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>级数与微分方程</h3>
+                                            <p>幂级数收敛域与展开、傅里叶级数、常微分方程特征根法，分析学的核心工具</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    } else if (gradeIndex <= 29) {
+                        // Linear algebra summary (gradeIndex 24-29)
+                        if (gradeIndex === 29) {
+                            html += `
+                                <div class="summary-section">
+                                    <h2>🔢 线性代数核心要点</h2>
+                                    <p style="margin-bottom: 20px; color: #6c757d;">从计算到理论：把握等价/相似/合同三大关系，理解线性结构的本质：</p>
+                                    <div class="core-blocks">
+                                        <div class="core-block">
+                                            <h3>行列式与矩阵</h3>
+                                            <p>行列式计算技巧、矩阵运算、求逆（初等变换+伴随）、分块矩阵，是后续所有内容的计算基础</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>秩与线性方程组</h3>
+                                            <p>矩阵的秩决定方程组解的结构：r(A)=r(A,b) 有解、等于 n 唯一解；基础解系含 n-r 个向量</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>特征值与对角化</h3>
+                                            <p>特征方程求特征值、施密特正交化、实对称矩阵必可正交对角化，是二次型化标准形的核心工具</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>二次型与正定性</h3>
+                                            <p>xᵀAx 与对称矩阵一一对应；正交变换法/配方法化标准形；惯性定理；正定⟺特征值全正⟺顺序主子式全正</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    } else if (gradeIndex <= 38) {
+                        // Probability & statistics summary (gradeIndex 30-38)
+                        if (gradeIndex === 38) {
+                            html += `
+                                <div class="summary-section">
+                                    <h2>🎲 概率论与数理统计核心要点</h2>
+                                    <p style="margin-bottom: 20px; color: #6c757d;">从随机现象的描述到统计推断，掌握以下四条主线：</p>
+                                    <div class="core-blocks">
+                                        <div class="core-block">
+                                            <h3>概率模型</h3>
+                                            <p>古典/几何概型、条件概率、全概率与贝叶斯公式、伯努利模型，是建立随机思维的基础</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>随机变量与分布</h3>
+                                            <p>常见离散/连续分布、分布函数、多维联合分布与边缘分布、卷积公式，掌握各分布的期望和方差</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>极限定理</h3>
+                                            <p>切比雪夫不等式、大数定律（频率稳定性）、中心极限定理（大样本近似正态），是统计推断的理论依据</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>统计推断</h3>
+                                            <p>三大抽样分布（χ²/t/F）、矩估计与极大似然估计、区间估计、假设检验（Z/t/χ²/F），公式选择取决于已知/未知方差</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    } else {
+                        // Discrete mathematics summary (gradeIndex 39-42)
+                        if (gradeIndex === curriculumData.length - 1) {
+                            html += `
+                                <div class="summary-section">
+                                    <h2>🧮 离散数学核心要点</h2>
+                                    <p style="margin-bottom: 20px; color: #6c757d;">计算机科学的数学语言：逻辑、结构、图与代数，四大板块构成完整体系：</p>
+                                    <div class="core-blocks">
+                                        <div class="core-block">
+                                            <h3>数理逻辑</h3>
+                                            <p>命题与谓词逻辑、真值表、等值演算、范式、推理规则，是形式化表达与证明的基础语言</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>集合、关系与函数</h3>
+                                            <p>容斥原理、关系闭包（Warshall算法）、等价关系↔集合划分、偏序与哈斯图、满射/单射/双射</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>图论</h3>
+                                            <p>握手定理、欧拉图（一笔画）、哈密顿图、平面图（欧拉公式 n-m+r=2）、最小生成树（Prim/Kruskal）、哈夫曼编码</p>
+                                        </div>
+                                        <div class="core-block">
+                                            <h3>组合计数与代数系统</h3>
+                                            <p>鸽巢原理、二项式定理、生成函数；群（半群→独异点→群）、环、域、格与布尔代数</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    }
+                } else if (currentSubject === 'java') {
+                    // Java summary at the end
+                    if (gradeIndex === curriculumData.length - 1) {
+                        html += `
+                            <div class="summary-section">
+                                <h2>☕ Java学习核心要点</h2>
+                                <p style="margin-bottom: 20px; color: #6c757d;">掌握这些知识点，你就能像编译器一样"执行"代码逻辑：</p>
+                                <div class="core-blocks">
+                        `;
+
+                        coreBlocks.forEach(block => {
+                            html += `
+                                <div class="core-block">
+                                    <h3>${block.title}</h3>
+                                    <p>${block.description}</p>
+                                </div>
+                            `;
+                        });
+
+                        html += `
+                                </div>
+                            </div>
+                        `;
+                    }
+                } else if (currentSubject === 'python') {
+                    // Python summary at the end
+                    if (gradeIndex === curriculumData.length - 1) {
+                        html += `
+                            <div class="summary-section">
+                                <h2>🐍 Python学习核心要点</h2>
+                                <p style="margin-bottom: 20px; color: #6c757d;">掌握这些知识点，你就能写出Pythonic的代码：</p>
+                                <div class="core-blocks">
+                        `;
+
+                        coreBlocks.forEach(block => {
+                            html += `
+                                <div class="core-block">
+                                    <h3>${block.title}</h3>
+                                    <p>${block.description}</p>
+                                </div>
+                            `;
+                        });
+
+                        html += `
+                                </div>
+                            </div>
+                        `;
+                    }
+                } else if (currentSubject === 'go') {
+                    // Go summary at the end
+                    if (gradeIndex === curriculumData.length - 1) {
+                        html += `
+                            <div class="summary-section">
+                                <h2>🐹 Go学习核心要点</h2>
+                                <p style="margin-bottom: 20px; color: #6c757d;">掌握以上知识，就已覆盖绝大部分Go生产代码的核心逻辑：</p>
+                                <div class="core-blocks">
+                        `;
+
+                        coreBlocks.forEach(block => {
+                            html += `
+                                <div class="core-block">
+                                    <h3>${block.title}</h3>
+                                    <p>${block.description}</p>
+                                </div>
+                            `;
+                        });
+
+                        html += `
+                                </div>
+                            </div>
+                        `;
+                    }
+                } else if (currentSubject === 'typescript') {
+                    // TypeScript summary at the end
+                    if (gradeIndex === curriculumData.length - 1) {
+                        html += `
+                            <div class="summary-section">
+                                <h2>🔷 TypeScript学习核心要点</h2>
+                                <p style="margin-bottom: 20px; color: #6c757d;">掌握以上知识体系，就能系统性地分析和理解任意 TypeScript 代码的设计意图与静态类型逻辑：</p>
+                                <div class="core-blocks">
+                        `;
+
+                        coreBlocks.forEach(block => {
+                            html += `
+                                <div class="core-block">
+                                    <h3>${block.title}</h3>
+                                    <p>${block.description}</p>
+                                </div>
+                            `;
+                        });
+
+                        html += `
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+            });
+
+            content.innerHTML = html;
+            updateOverallProgress(totalTopics, masteredTopics);
+            updateGradeStats();
+        }
+
+        // Toggle topic mastery status
+        function toggleTopic(topicId) {
+            const progress = loadProgress();
+            progress[topicId] = !progress[topicId];
+            saveProgress(progress);
+
+            // Update UI
+            const topicElement = document.getElementById(`topic_${topicId}`);
+            if (progress[topicId]) {
+                topicElement.classList.add('mastered');
+            } else {
+                topicElement.classList.remove('mastered');
+            }
+
+            // Update statistics
+            updateStatistics();
+        }
+
+        // Update overall progress bar
+        function updateOverallProgress(total, mastered) {
+            const percentage = total > 0 ? Math.round((mastered / total) * 100) : 0;
+            const progressFill = document.getElementById('overallProgress');
+            progressFill.style.width = `${percentage}%`;
+            progressFill.textContent = `${percentage}% (${mastered}/${total})`;
+        }
+
+        // Update grade-level statistics
+        async function updateGradeStats() {
+            const progress = loadProgress();
+            const curriculumData = await getCurrentCurriculumData();
+            
+            curriculumData.forEach((grade, gradeIndex) => {
+                let gradeTotal = 0;
+                let gradeMastered = 0;
+
+                grade.semesters.forEach((semester, semesterIndex) => {
+                    semester.topics.forEach((topic, topicIndex) => {
+                        const topicId = generateTopicId(gradeIndex, semesterIndex, topicIndex);
+                        gradeTotal++;
+                        if (progress[topicId]) gradeMastered++;
+                    });
+                });
+
+                const statsElement = document.getElementById(`gradeStats_${gradeIndex}`);
+                if (statsElement) {
+                    statsElement.textContent = `${gradeMastered}/${gradeTotal}`;
+                }
+            });
+        }
+
+        // Update all statistics
+        async function updateStatistics() {
+            const progress = loadProgress();
+            const curriculumData = await getCurrentCurriculumData();
+            let totalTopics = 0;
+            let masteredTopics = 0;
+
+            curriculumData.forEach((grade, gradeIndex) => {
+                grade.semesters.forEach((semester, semesterIndex) => {
+                    semester.topics.forEach((topic, topicIndex) => {
+                        totalTopics++;
+                        const topicId = generateTopicId(gradeIndex, semesterIndex, topicIndex);
+                        if (progress[topicId]) masteredTopics++;
+                    });
+                });
+            });
+
+            updateOverallProgress(totalTopics, masteredTopics);
+            updateGradeStats();
+        }
+
+        // Reset all progress for current subject
+        function resetProgress() {
+            let subjectName;
+            if (currentSubject === 'math') subjectName = '数学';
+            else if (currentSubject === 'java') subjectName = 'Java';
+            else if (currentSubject === 'python') subjectName = 'Python';
+            else if (currentSubject === 'go') subjectName = 'Go';
+            else if (currentSubject === 'typescript') subjectName = 'TypeScript';
+            
+            if (confirm(`确定要重置${subjectName}的所有学习进度吗？此操作不可恢复。`)) {
+                getCurrentStorage().save({});
+                renderCurriculum();
+                getCurrentStorage().showMessage('进度已重置', 'info');
+            }
+        }
+
+        // Export progress data for all subjects
+        function exportProgress() {
+            const allData = {};
+            for (const [subject, key] of Object.entries(STORAGE_KEYS)) {
+                allData[subject] = new PersistentStorage(key).load();
+            }
+            const dataStr = JSON.stringify(allData, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            const date = new Date().toISOString().split('T')[0];
+            a.download = `learning_progress_all_${date}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            getCurrentStorage().showMessage('所有科目数据导出成功！', 'success');
+        }
+
+        // Import progress data for all subjects
+        function importProgress(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    // Support both all-subjects format and legacy single-subject format
+                    const isAllSubjects = Object.keys(data).some(k => k in STORAGE_KEYS);
+                    if (isAllSubjects) {
+                        for (const [subject, key] of Object.entries(STORAGE_KEYS)) {
+                            if (data[subject]) new PersistentStorage(key).save(data[subject]);
+                        }
+                    } else {
+                        getCurrentStorage().save(data);
+                    }
+                    renderCurriculum();
+                    getCurrentStorage().showMessage('数据导入成功！', 'success');
+                } catch (err) {
+                    getCurrentStorage().showMessage('文件格式错误，请上传有效的JSON文件', 'error');
+                }
+            };
+            reader.onerror = () => getCurrentStorage().showMessage('文件读取失败', 'error');
+            reader.readAsText(file);
+
+            // Clear file input
+            event.target.value = '';
+        }
+
+        // Switch between subjects
+        function switchSubject(subject) {
+            currentSubject = subject;
+            
+            // Update tab styles
+            document.querySelectorAll('.subject-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Re-render curriculum
+            renderCurriculum();
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', async function() {
+            await loadDetailContent();
+            renderCurriculum();
+            initializeTooltips();
+        });
+
+        // Initialize tooltip functionality
+        function initializeTooltips() {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'detail-tooltip';
+            document.body.appendChild(tooltip);
+
+            let currentTrigger = null;
+            let hideTimeout = null;
+
+            function showTooltip(trigger, detail) {
+                clearTimeout(hideTimeout);
+                currentTrigger = trigger;
+                tooltip.innerHTML = `<h3>${detail.title}</h3>${detail.content}`;
+                tooltip.style.display = 'block';
+                positionTooltipNearTrigger(tooltip, trigger);
+            }
+
+            function hideTooltip() {
+                hideTimeout = setTimeout(() => {
+                    tooltip.style.display = 'none';
+                    currentTrigger = null;
+                }, 200);
+            }
+
+            document.addEventListener('mouseover', function(e) {
+                const trigger = e.target.closest('.tooltip-trigger');
+                if (trigger) {
+                    const key = trigger.getAttribute('data-detail-key');
+                    const detail = detailContent?.[currentSubject]?.[key];
+                    if (detail) {
+                        showTooltip(trigger, detail);
+                    }
+                } else if (e.target.closest('.detail-tooltip')) {
+                    // Mouse entered the tooltip itself — keep it open
+                    clearTimeout(hideTimeout);
+                }
+            });
+
+            document.addEventListener('mouseout', function(e) {
+                const trigger = e.target.closest('.tooltip-trigger');
+                if (trigger) {
+                    // Only hide if mouse is not moving into the tooltip
+                    if (!e.relatedTarget?.closest('.detail-tooltip')) {
+                        hideTooltip();
+                    }
+                } else if (e.target.closest('.detail-tooltip')) {
+                    // Mouse left the tooltip — hide if not returning to trigger
+                    if (!e.relatedTarget?.closest('.tooltip-trigger')) {
+                        hideTooltip();
+                    }
+                }
+            });
+        }
+
+        // Position tooltip near the trigger element (fixed, not following mouse)
+        function positionTooltipNearTrigger(tooltip, trigger) {
+            const triggerRect = trigger.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            // Show tooltip first so we can measure its dimensions
+            const tooltipRect = tooltip.getBoundingClientRect();
+
+            // Default: position below the trigger, aligned left
+            let left = triggerRect.left;
+            let top = triggerRect.bottom + 6;
+
+            // Flip horizontally if it overflows the right edge
+            if (left + tooltipRect.width > viewportWidth - 10) {
+                left = Math.max(10, triggerRect.right - tooltipRect.width);
+            }
+            if (left < 10) left = 10;
+
+            // If the tooltip overflows the bottom, position above the trigger
+            if (top + tooltipRect.height > viewportHeight - 10) {
+                top = triggerRect.top - tooltipRect.height - 6;
+            }
+            if (top < 10) top = 10;
+
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+        }
+    </script>
+</body>
+</html>

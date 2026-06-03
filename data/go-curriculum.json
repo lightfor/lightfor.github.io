@@ -1,0 +1,214 @@
+{
+  "subject": "go",
+  "curriculumData": [
+    {
+      "grade": "一、程序基本结构",
+      "emoji": "🏗️",
+      "semesters": [
+        {
+          "title": "包声明与入口",
+          "topics": [
+            { "category": "包声明", "details": "每个文件必须声明包，main包生成可执行文件" },
+            { "category": "import", "details": "导入标准库或第三方包，路径最后一个元素是包名" },
+            { "category": "导出规则", "details": "大写开头：公开（exported），可在包外访问；小写开头：私有（unexported），仅包内可见" },
+            { "category": "程序入口", "details": "func main() 是程序入口，在 main 包中定义" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "二、变量与常量",
+      "emoji": "📦",
+      "semesters": [
+        {
+          "title": "声明方式",
+          "topics": [
+            { "category": "var 声明", "details": "var x int = 10（显式类型）；var y = \"hello\"（类型推导）" },
+            { "category": "短声明", "details": "z := 3.14，仅函数内可用" },
+            { "category": "常量", "details": "const Pi = 3.1415，不可修改" },
+            { "category": "零值", "details": "数值：0；布尔：false；字符串：\"\"；指针/slice/map/channel/interface/函数：nil" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "三、基本类型与复合类型",
+      "emoji": "🔢",
+      "semesters": [
+        {
+          "title": "基本类型",
+          "topics": [
+            { "category": "基本类型速览", "details": "bool, string, int, int8~int64, uint, uint8~uint64, float32, float64, complex64, complex128, byte(=uint8), rune(=int32)" },
+            { "category": "数组", "details": "固定长度，值类型。var arr [3]int = [3]int{1, 2, 3}；arr[0] = 10" },
+            { "category": "切片", "details": "动态数组，引用底层数组。s := []int{1,2,3}；append追加；make([]int, 5, 10)预分配；s[1:3]切割。修改会影响原数据" },
+            { "category": "Map", "details": "m := map[string]int{\"a\":1}；v, ok := m[\"c\"]（键不存在时ok=false）；delete(m, \"a\")删除键" },
+            { "category": "结构体", "details": "值类型。type Person struct { Name string; Age int }；p := Person{\"Alice\", 30}；通过字段名访问p.Name" },
+            { "category": "指针", "details": "x := 5；p := &x（*int类型）；*p = 10（解引用修改值）。结构体字段通过指针访问仍用点号：p.Age 等同于 (*p).Age" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "四、控制流",
+      "emoji": "🔄",
+      "semesters": [
+        {
+          "title": "条件与循环",
+          "topics": [
+            { "category": "if/else", "details": "标准条件分支；支持带短语句：if val, ok := m[\"key\"]; ok { fmt.Println(val) }" },
+            { "category": "for循环", "details": "Go只有for。经典：for i:=0; i<10; i++；while风格：for condition {}；无限：for {}；range遍历：for index, value := range slice {}" },
+            { "category": "range", "details": "遍历slice/array获取索引和值副本；遍历map获取key/value；遍历字符串获取rune；遍历channel直到关闭。不需要的值用_忽略" },
+            { "category": "switch", "details": "默认不穿透。switch expression { case val1: ... default: }；无表达式switch等同if-else；类型switch：switch v := x.(type) { case int: ... }" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "五、函数",
+      "emoji": "ƒ(x)",
+      "semesters": [
+        {
+          "title": "函数定义与特性",
+          "topics": [
+            { "category": "基本定义", "details": "func add(a, b int) int { return a + b }；多返回值：func div(a, b int) (int, error) {...}" },
+            { "category": "命名返回值", "details": "func split(sum int) (x, y int) { x = sum*4/9; y = sum-x; return }，裸返回直接使用命名值" },
+            { "category": "变长参数", "details": "func sum(nums ...int) int {}，nums在函数内作为切片使用" },
+            { "category": "函数作为值/闭包", "details": "fn := func(s string) bool { return len(s) > 3 }，函数是一等公民" },
+            { "category": "defer", "details": "函数返回前按LIFO顺序执行，用于资源释放。f, _ := os.Open(\"file\"); defer f.Close()" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "六、方法（接收者）",
+      "emoji": "🎯",
+      "semesters": [
+        {
+          "title": "值接收者与指针接收者",
+          "topics": [
+            { "category": "值接收者", "details": "func (c Counter) Value() int { return c.n }，操作副本，不会修改原值" },
+            { "category": "指针接收者", "details": "func (c *Counter) Inc() { c.n++ }，可修改原值" },
+            { "category": "自动转换", "details": "调用时编译器根据需要自动取地址或解引用。c.Value() 或 c.Inc() 都能正常工作" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "七、接口（隐式实现）",
+      "emoji": "🔌",
+      "semesters": [
+        {
+          "title": "接口定义与使用",
+          "topics": [
+            { "category": "接口定义", "details": "type Greeter interface { Greet() string }，定义行为契约" },
+            { "category": "隐式实现", "details": "只要类型实现了接口所有方法，就自动满足接口，无需显式声明" },
+            { "category": "空接口", "details": "interface{} 可接收任何值（Go 1.18+建议用 any 别名）" },
+            { "category": "类型断言", "details": "v, ok := g.(Human)，ok为false时断言失败但不panic" },
+            { "category": "接口底层", "details": "接口底层是 (动态类型, 动态值) 二元组，空接口的静态类型是 interface{}" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "八、错误处理",
+      "emoji": "⚠️",
+      "semesters": [
+        {
+          "title": "错误处理模式",
+          "topics": [
+            { "category": "error接口", "details": "内置接口：type error interface { Error() string }，用于表示错误状态" },
+            { "category": "错误判断", "details": "if val, err := doSomething(); err != nil { // 处理错误 }，显式检查每个可能的错误" },
+            { "category": "创建错误", "details": "errors.New(\"msg\") 简单文本；fmt.Errorf(\"context: %w\", err) 包装错误保留原始信息" },
+            { "category": "错误解包", "details": "errors.Is(err, target) 检查错误链中是否有target；errors.As(err, &target) 提取特定类型的错误" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "九、Panic 与 Recover",
+      "emoji": "🚨",
+      "semesters": [
+        {
+          "title": "异常机制",
+          "topics": [
+            { "category": "panic", "details": "用于不可恢复错误，中止当前goroutine的正常执行。一般业务代码不主动panic" },
+            { "category": "recover", "details": "仅在defer函数中有效，可捕获panic并恢复正常执行。defer func() { if r := recover(); r != nil { ... } }()" },
+            { "category": "使用场景", "details": "panic通常在确实无法继续的情况下使用；业务逻辑优先使用error返回值" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十、并发（核心）",
+      "emoji": "🧵",
+      "semesters": [
+        {
+          "title": "goroutine与channel",
+          "topics": [
+            { "category": "goroutine", "details": "go func(msg string) { fmt.Println(msg) }(\"hello\")，轻量级并发单元。主goroutine退出则程序结束" },
+            { "category": "channel", "details": "ch := make(chan int) 无缓冲同步阻塞；make(chan int, 5) 缓冲通道。ch <- 42 发送，v := <-ch 接收，close(ch) 关闭（由发送方关闭）" },
+            { "category": "单向通道", "details": "func sendOnly(ch chan<- int)；func recvOnly(ch <-chan int)，用于函数签名约束语义" },
+            { "category": "select", "details": "多路通道监听。无default时阻塞直到某个case可用；多个case同时就绪时随机选一个；default实现非阻塞" },
+            { "category": "context", "details": "context.WithCancel / WithTimeout / WithDeadline / WithValue，传递取消信号、超时、值。通过调用链控制goroutine生命周期" },
+            { "category": "sync.WaitGroup", "details": "wg.Add(2)；go func() { defer wg.Done(); }()；wg.Wait() 等待所有goroutine完成" },
+            { "category": "sync.Mutex", "details": "mu.Lock() / mu.Unlock() 互斥锁。sync.RWMutex 读写锁，sync.Once 只执行一次" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十一、泛型（Go 1.18+）",
+      "emoji": "🔍",
+      "semesters": [
+        {
+          "title": "泛型语法",
+          "topics": [
+            { "category": "泛型函数", "details": "func Sum[T int | float64](a, b T) T { return a + b }，方括号内声明类型参数" },
+            { "category": "泛型类型", "details": "type Slice[T any] []T，定义可复用的泛型数据结构" },
+            { "category": "类型约束接口", "details": "type Number interface { int | float64 }，约束类型参数必须满足的条件" },
+            { "category": "识别泛型", "details": "看到方括号加类型参数，就是在使用泛型" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十二、包与模块",
+      "emoji": "📁",
+      "semesters": [
+        {
+          "title": "包管理",
+          "topics": [
+            { "category": "包导入", "details": "import 导入路径，最后一个元素是包名。可用别名：import f \"fmt\"" },
+            { "category": "go.mod", "details": "模块定义文件，声明 module example.com/mymod，导入路径以此为前缀" },
+            { "category": "init函数", "details": "init() 在包初始化时自动执行，常用于注册驱动等。每个文件可有多个init函数" }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十三、常见模式速查",
+      "emoji": "📋",
+      "semesters": [
+        {
+          "title": "惯用写法",
+          "topics": [
+            { "category": "显式错误传播", "details": "if err != nil { return ... }，Go的核心错误处理模式" },
+            { "category": "资源释放", "details": "defer f.Close()，确保资源释放即使函数提前返回" },
+            { "category": "开启并发", "details": "go handler()，开启并发任务" },
+            { "category": "goroutine通信", "details": "ch := make(chan T)，协程间同步通信" },
+            { "category": "上下文取消", "details": "select + case <-ctx.Done()，监听上下文取消信号" },
+            { "category": "预分配切片", "details": "s := make([]int, 0, cap)，预分配容量以避免扩容" },
+            { "category": "编译期接口校验", "details": "var _ Interface = (*Type)(nil)，确保Type实现了Interface" },
+            { "category": "阅读代码顺序", "details": "①看包声明和import→②找类型定义(struct/interface)→③看函数签名→④追踪控制流和错误分支→⑤标识并发成分(go/channel/select/sync)" }
+          ]
+        }
+      ]
+    }
+  ],
+  "coreBlocks": [
+    { "title": "并发模型", "description": "goroutine + channel + select，CSP模型。通过通信共享内存，而非通过共享内存通信" },
+    { "title": "接口与组合", "description": "隐式接口实现、结构体嵌入组合，优先组合而非继承" },
+    { "title": "错误处理", "description": "显式错误返回值，if err != nil 是代码分岔点，errors.Is/As用于错误解包" },
+    { "title": "内存与指针", "description": "值类型vs引用类型，指针语义，切片底层数组共享，理解逃逸分析" }
+  ]
+}

@@ -1,0 +1,495 @@
+{
+  "subject": "python",
+  "curriculumData": [
+    {
+      "grade": "一、基础语法与执行模型",
+      "emoji": "🏗️",
+      "semesters": [
+        {
+          "title": "Python核心概念",
+          "topics": [
+            {
+              "category": "缩进",
+              "details": "Python用缩进表示代码块（通常4空格），缩进错误会导致IndentationError"
+            },
+            {
+              "category": "注释",
+              "details": "#单行注释；三个引号'''或\"\"\"多行字符串可用作文档字符串（docstring）"
+            },
+            {
+              "category": "语句与表达式",
+              "details": "所有表达式都有返回值，赋值是语句，分号可分隔多条语句但极少用"
+            },
+            {
+              "category": "动态类型、强类型",
+              "details": "变量是对象的引用，对象才有类型，变量可随时指向不同类型"
+            },
+            {
+              "category": "一切皆对象",
+              "details": "函数、类、模块、异常等都是对象，可以赋值、传参、作为返回值"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "二、内建数据类型与操作",
+      "emoji": "📦",
+      "semesters": [
+        {
+          "title": "基础数据类型",
+          "topics": [
+            {
+              "category": "数字",
+              "details": "int（任意精度）、float（双精度）、complex（复数）。算术：+ - * / <span class='tooltip-trigger' data-detail-key='arithmetic'>// % **</span>"
+            },
+            {
+              "category": "布尔与None",
+              "details": "True、False（首字母大写），None表示空"
+            },
+            {
+              "category": "序列类型",
+              "details": "list、tuple、str、bytes、bytearray。索引[0]、<span class='tooltip-trigger' data-detail-key='negative-index'>[-1]</span>，切片[start:stop:step]"
+            },
+            {
+              "category": "可变vs不可变",
+              "details": "不可变：int,float,bool,str,tuple,bytes,frozenset；可变：list,dict,set,bytearray"
+            },
+            {
+              "category": "列表",
+              "details": "[1,2]；方法：append,extend,insert,remove,pop,sort（原地），sorted()返回新列表"
+            },
+            {
+              "category": "元组",
+              "details": "<span class='tooltip-trigger' data-detail-key='tuple'>tuple</span>：(1,2)，单元素须加逗号(1,)；常用于不可变记录"
+            },
+            {
+              "category": "字典",
+              "details": "{\"key\":value}；键必须是可哈希的。方法：get,items,keys,values,update。Python3.7+保持插入顺序"
+            },
+            {
+              "category": "集合",
+              "details": "{1,2}，无序且元素唯一。支持交集&、并集|、差集-、<span class='tooltip-trigger' data-detail-key='symmetric-diff'>对称差^</span>"
+            },
+            {
+              "category": "字符串",
+              "details": "<span class='tooltip-trigger' data-detail-key='f-string'>f\"\"格式化</span>，<span class='tooltip-trigger' data-detail-key='r-string'>r\"\"原始串</span>，<span class='tooltip-trigger' data-detail-key='b-string'>b\"\"字节串</span>。方法：split,join,replace,<span class='tooltip-trigger' data-detail-key='strip'>strip</span>,startswith,endswith,find等"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "三、控制流",
+      "emoji": "🔄",
+      "semesters": [
+        {
+          "title": "条件与循环",
+          "topics": [
+            {
+              "category": "条件语句",
+              "details": "if/elif/else。真值测试：False,None,零值,空序列/集合视为假"
+            },
+            {
+              "category": "for循环",
+              "details": "for i in iterable: — 遍历任何可迭代对象"
+            },
+            {
+              "category": "while循环",
+              "details": "while condition: — 满足条件时执行"
+            },
+            {
+              "category": "循环控制",
+              "details": "break终止循环，continue跳过本次，else子句在循环正常结束（非break）时执行"
+            },
+            {
+              "category": "match语句",
+              "details": "<span class='tooltip-trigger' data-detail-key='match'>match</span>：Python3.10+结构模式匹配，可解构元组、列表、字典、类实例等"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "四、可迭代对象、迭代器与生成器",
+      "emoji": "♾️",
+      "semesters": [
+        {
+          "title": "迭代机制",
+          "topics": [
+            {
+              "category": "可迭代对象",
+              "details": "<span class='tooltip-trigger' data-detail-key='iterable'>可迭代对象</span>：任何能返回迭代器的对象（实现<span class='tooltip-trigger' data-detail-key='getitem'>__iter__或__getitem__</span>）"
+            },
+            {
+              "category": "迭代器",
+              "details": "实现__next__和__iter__。iter(x)获取迭代器，next(it)取值，耗尽抛出StopIteration"
+            },
+            {
+              "category": "生成器函数",
+              "details": "函数含yield关键字即成生成器函数，返回生成器对象（也是迭代器）"
+            },
+            {
+              "category": "yield与yield from",
+              "details": "yield暂停并返回值，yield from委派到子迭代器"
+            },
+            {
+              "category": "生成器表达式",
+              "details": "(x for x in range(10) if x%2==0)，惰性求值"
+            },
+            {
+              "category": "内置迭代工具",
+              "details": "range、enumerate、zip、map、filter、reversed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "五、函数",
+      "emoji": "ƒ(x)",
+      "semesters": [
+        {
+          "title": "函数定义与使用",
+          "topics": [
+            {
+              "category": "函数定义",
+              "details": "def name(params):"
+            },
+            {
+              "category": "参数类型",
+              "details": "位置实参、默认参数（定义时求值一次）、关键字实参func(a=1)"
+            },
+            {
+              "category": "可变参数",
+              "details": "*args收集多余位置参数为元组，**kwargs收集多余关键字参数为字典"
+            },
+            {
+              "category": "特殊参数",
+              "details": "强制关键字参数（*后面）、仅限位置参数（Python3.8+，/之前）"
+            },
+            {
+              "category": "解包",
+              "details": "*seq将序列解包为位置实参，**dict将字典解包为关键字实参"
+            },
+            {
+              "category": "返回值",
+              "details": "return可返回多个值（打包为元组）。无返回语句时返回None"
+            },
+            {
+              "category": "作用域与闭包",
+              "details": "LEGB规则：Local→Enclosing→Global→Built-in。global声明全局变量，nonlocal声明外层函数变量"
+            },
+            {
+              "category": "匿名函数",
+              "details": "lambda x: x+1，只能包含一个表达式"
+            },
+            {
+              "category": "装饰器",
+              "details": "@decorator等价于func=decorator(func)。装饰器可以是函数或类，可带参数"
+            },
+            {
+              "category": "类型提示",
+              "details": "def f(x:int)->str: 不影响运行时，只作标注，可通过__annotations__查看"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "六、面向对象",
+      "emoji": "🎯",
+      "semesters": [
+        {
+          "title": "类与对象",
+          "topics": [
+            {
+              "category": "类定义与实例化",
+              "details": "class A:，a=A()"
+            },
+            {
+              "category": "__init__方法",
+              "details": "初始化方法（不是构造器，构造是__new__），self指代实例"
+            },
+            {
+              "category": "实例属性vs类属性",
+              "details": "类属性定义在类体内被所有实例共享；实例属性在__init__中通过self.xxx定义"
+            },
+            {
+              "category": "方法类型",
+              "details": "实例方法、类方法（@classmethod，第一参数cls）、静态方法（@staticmethod，无隐式首参）"
+            },
+            {
+              "category": "继承",
+              "details": "class B(A):，多重继承class C(A,B):。MRO可用C.mro()查看，默认C3线性化"
+            },
+            {
+              "category": "super()",
+              "details": "按照MRO调用下一个类的方法"
+            },
+            {
+              "category": "魔术方法-生命周期",
+              "details": "__new__,__init__,__del__"
+            },
+            {
+              "category": "魔术方法-表示",
+              "details": "__repr__（开发者友好）、__str__（用户友好）"
+            },
+            {
+              "category": "魔术方法-运算重载",
+              "details": "__add__,__eq__,__lt__等"
+            },
+            {
+              "category": "魔术方法-容器模拟",
+              "details": "__len__,__getitem__,__setitem__,__contains__"
+            },
+            {
+              "category": "魔术方法-其他",
+              "details": "__call__（让实例像函数调用）、__enter__/__exit__（上下文管理）、属性管理（__getattr__等）"
+            },
+            {
+              "category": "property",
+              "details": "@property将方法变成属性访问，可定义getter/setter/deleter"
+            },
+            {
+              "category": "数据类",
+              "details": "@dataclass（Python3.7+）自动生成__init__、__repr__、__eq__等"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "七、异常处理",
+      "emoji": "⚠️",
+      "semesters": [
+        {
+          "title": "异常机制",
+          "topics": [
+            {
+              "category": "基本结构",
+              "details": "try-except-else-finally。finally无论是否异常都执行"
+            },
+            {
+              "category": "抛出异常",
+              "details": "raise SomeError(\"msg\")，raise不带参数可重新抛出当前异常"
+            },
+            {
+              "category": "异常层级",
+              "details": "BaseException→Exception→具体异常。自定义异常继承自Exception"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "八、模块与包",
+      "emoji": "📁",
+      "semesters": [
+        {
+          "title": "模块化编程",
+          "topics": [
+            {
+              "category": "模块",
+              "details": "一个.py文件就是一个模块"
+            },
+            {
+              "category": "导入方式",
+              "details": "import module、from module import name、from module import *（不推荐）"
+            },
+            {
+              "category": "包",
+              "details": "含__init__.py的目录（Python3.3+可缺省，但建议保留）"
+            },
+            {
+              "category": "相对导入",
+              "details": ".module在同包中使用"
+            },
+            {
+              "category": "主程序判断",
+              "details": "if __name__ == \"__main__\": 在直接运行该文件时执行"
+            },
+            {
+              "category": "命名空间",
+              "details": "每个模块有独立全局符号表"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "九、I/O与上下文管理器",
+      "emoji": "📄",
+      "semesters": [
+        {
+          "title": "文件操作",
+          "topics": [
+            {
+              "category": "文件打开",
+              "details": "with open(\"path\",\"r\",encoding=\"utf-8\") as f: content=f.read()"
+            },
+            {
+              "category": "文件模式",
+              "details": "r/w/a/x，加上b（二进制）或+（读写）"
+            },
+            {
+              "category": "with语句",
+              "details": "确保进入时调用__enter__，离开时（含异常）调用__exit__。常用于文件锁、资源释放、事务等"
+            },
+            {
+              "category": "contextlib模块",
+              "details": "@contextmanager通过生成器快速编写上下文管理器"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十、常用标准库",
+      "emoji": "🛠️",
+      "semesters": [
+        {
+          "title": "标准库速查",
+          "topics": [
+            {
+              "category": "os/pathlib",
+              "details": "目录、文件路径操作"
+            },
+            {
+              "category": "sys",
+              "details": "解释器相关，sys.argv、sys.path、sys.exit、sys.stdin/stdout/stderr"
+            },
+            {
+              "category": "re",
+              "details": "正则表达式"
+            },
+            {
+              "category": "json/pickle",
+              "details": "序列化与反序列化"
+            },
+            {
+              "category": "datetime/time",
+              "details": "时间日期处理"
+            },
+            {
+              "category": "collections",
+              "details": "namedtuple,deque,defaultdict,Counter,OrderedDict等"
+            },
+            {
+              "category": "itertools",
+              "details": "无限迭代器、组合迭代器（product,permutations,combinations）、chain、groupby等"
+            },
+            {
+              "category": "functools",
+              "details": "reduce,partial,lru_cache,wraps（保留被装饰函数元信息）"
+            },
+            {
+              "category": "typing",
+              "details": "类型提示工具，List,Dict,Optional,Union,Callable等"
+            },
+            {
+              "category": "argparse",
+              "details": "命令行参数解析"
+            },
+            {
+              "category": "logging",
+              "details": "日志系统"
+            },
+            {
+              "category": "unittest/pytest",
+              "details": "单元测试（第三方pytest使用更广）"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十一、高级特性",
+      "emoji": "🚀",
+      "semesters": [
+        {
+          "title": "进阶知识",
+          "topics": [
+            {
+              "category": "元类",
+              "details": "类的类，type是默认元类，class A(metaclass=Meta):可控制类的创建过程"
+            },
+            {
+              "category": "描述符",
+              "details": "实现__get__、__set__、__delete__的对象，用于控制属性访问（property、classmethod、staticmethod均基于描述符）"
+            },
+            {
+              "category": "协程与异步I/O",
+              "details": "async def、await、asyncio模块。事件循环、异步生成器、异步上下文管理器"
+            },
+            {
+              "category": "装饰器工厂",
+              "details": "带参数的装饰器，外层函数接收参数返回真正的装饰器"
+            },
+            {
+              "category": "线程与进程",
+              "details": "threading、multiprocessing、concurrent.futures模块"
+            },
+            {
+              "category": "内存管理与弱引用",
+              "details": "__del__、weakref模块，循环引用影响垃圾回收"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade": "十二、理解代码逻辑的实用方法",
+      "emoji": "💡",
+      "semesters": [
+        {
+          "title": "代码阅读技巧",
+          "topics": [
+            {
+              "category": "从入口开始",
+              "details": "找到if __name__ == \"__main__\":或脚本顶层的调用语句"
+            },
+            {
+              "category": "追踪函数/类定义",
+              "details": "阅读def和class，看参数、返回值类型提示和文档字符串"
+            },
+            {
+              "category": "关注数据流",
+              "details": "变量从何而来，经过哪些转换（推导式、map/filter、生成器）后去往何处"
+            },
+            {
+              "category": "画调用图",
+              "details": "装饰器、闭包、回调、多重继承会影响执行流，必要时用纸笔或IDE工具理清链路"
+            },
+            {
+              "category": "识别惯用法",
+              "details": "如用上下文管理器打开文件，用enumerate同时取索引，try/except处理边界情况等"
+            },
+            {
+              "category": "使用REPL和调试器",
+              "details": "在python交互环境或pdb中逐步执行，观察变量变化"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "coreBlocks": [
+    {
+      "title": "Pythonic思维",
+      "description": "简洁优雅、可读性强、利用语言特性（推导式、生成器、装饰器等）"
+    },
+    {
+      "title": "动态类型理解",
+      "description": "变量是引用、鸭子类型、EAFP原则（先做后问）而非LBYL"
+    },
+    {
+      "title": "迭代与生成器",
+      "description": "惰性求值、内存效率、链式处理数据流"
+    },
+    {
+      "title": "面向对象与元编程",
+      "description": "魔术方法定制行为、描述符控制属性、元类控制类创建"
+    }
+  ]
+}

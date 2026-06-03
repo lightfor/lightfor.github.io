@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人物关系 — Lightfor</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="shared.css">
+<style>
+  body { padding: 1.5rem 1rem; max-width: 960px; margin: 0 auto; }
+
+  .page-header { margin-bottom: 1.5rem; }
+  .page-header h1 { margin-bottom: 0.3rem; }
+  .page-header p { color: #888; font-size: 0.88rem; }
+
+  /* Universe tabs */
+  .universe-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .tab-btn {
+    padding: 0.45rem 1rem; border-radius: 20px; border: 1.5px solid #c8a97a;
+    background: #fff; color: #7a5c3a; font-size: 0.88rem; cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .tab-btn.active { background: #7a5c3a; color: #fff; }
+
+  /* Universe panel */
+  .universe { display: none; }
+  .universe.active { display: block; }
+
+  .universe-meta { margin-bottom: 1.2rem; }
+  .universe-meta h2 { font-size: 1.2rem; color: #4a3728; margin-bottom: 0.25rem; }
+  .universe-meta p { font-size: 0.85rem; color: #888; }
+
+  /* Filter bar */
+  .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+  .filter-bar input {
+    flex: 1; min-width: 160px; padding: 0.4rem 0.8rem; border-radius: 20px;
+    border: 1.5px solid #d4c4b0; background: #fff; font-size: 0.88rem; outline: none;
+  }
+  .filter-bar input:focus { border-color: #c8a97a; }
+  .tag-filter { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .tag-btn {
+    padding: 0.3rem 0.75rem; border-radius: 14px; border: 1px solid #d4c4b0;
+    background: #fff; color: #888; font-size: 0.8rem; cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .tag-btn.active { background: #c8a97a; color: #fff; border-color: #c8a97a; }
+
+  /* People grid */
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .person-card {
+    background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    overflow: hidden; cursor: pointer; transition: box-shadow 0.2s, transform 0.2s;
+    border-top: 3px solid #c8a97a;
+  }
+  .person-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.12); transform: translateY(-2px); }
+  .person-card.hidden { display: none; }
+
+  .card-head {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.9rem 1rem 0.6rem;
+  }
+  .avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; flex-shrink: 0;
+    background: #f5f0eb;
+  }
+  .card-name h3 { font-size: 1rem; color: #4a3728; }
+  .card-name .alias { font-size: 0.78rem; color: #aaa; margin-top: 1px; }
+
+  .card-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; padding: 0 1rem 0.5rem; }
+  .tag {
+    padding: 0.18rem 0.55rem; border-radius: 10px; font-size: 0.73rem;
+    background: #f0e8dc; color: #7a5c3a;
+  }
+  .tag.red    { background: #fde8e8; color: #c0392b; }
+  .tag.pink   { background: #fde8f3; color: #a0397a; }
+  .tag.blue   { background: #e8f0fd; color: #2b5fc0; }
+  .tag.green  { background: #e8fde8; color: #2b8c3a; }
+  .tag.gray   { background: #eeeeee; color: #666; }
+  .tag.gold   { background: #fef9e8; color: #a07a10; }
+
+  .card-body { padding: 0 1rem 0.9rem; font-size: 0.83rem; color: #666; line-height: 1.6; }
+
+  /* Detail modal */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.45); z-index: 100;
+    align-items: center; justify-content: center; padding: 1rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: #fff; border-radius: 16px; max-width: 520px; width: 100%;
+    max-height: 85vh; overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  }
+  .modal-header {
+    padding: 1.2rem 1.2rem 0.8rem;
+    border-bottom: 1px solid #f0e8dc;
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .modal-header h2 { font-size: 1.2rem; color: #4a3728; }
+  .modal-header .sub { font-size: 0.82rem; color: #aaa; }
+  .close-btn {
+    background: none; border: none; font-size: 1.3rem; color: #aaa;
+    cursor: pointer; padding: 0; line-height: 1;
+  }
+  .close-btn:hover { color: #4a3728; }
+  .modal-body { padding: 1rem 1.2rem 1.4rem; }
+  .modal-section { margin-bottom: 1rem; }
+  .modal-section h4 { font-size: 0.82rem; color: #c8a97a; font-weight: 600; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .modal-section p { font-size: 0.88rem; color: #555; line-height: 1.7; }
+  .rel-list { list-style: none; }
+  .rel-list li { font-size: 0.85rem; color: #555; padding: 0.3rem 0; border-bottom: 1px solid #f5f0eb; display: flex; gap: 0.5rem; }
+  .rel-list li:last-child { border-bottom: none; }
+  .rel-name { color: #4a3728; font-weight: 600; min-width: 70px; }
+  .rel-type { color: #c8a97a; font-size: 0.78rem; }
+
+  /* No results */
+  .no-results { color: #bbb; font-size: 0.9rem; padding: 2rem 0; text-align: center; display: none; }
+
+  @media (max-width: 480px) {
+    .people-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page-header">
+  <a class="back-link" href="index.html">← 返回首页</a>
+  <h1>人物关系</h1>
+  <p>经典作品人物档案与关系图谱</p>
+</div>
+
+<div class="universe-tabs" id="universeTabs"></div>
+
+<div id="universeContainer"></div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalBox">
+    <div class="modal-header">
+      <div>
+        <h2 id="modalName"></h2>
+        <div class="sub" id="modalAlias"></div>
+      </div>
+      <button class="close-btn" id="closeModal">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const UNIVERSES = [
+  {
+    id: "hongloumeng",
+    name: "红楼梦",
+    desc: "清·曹雪芹著。四大家族兴衰，大观园儿女情长。",
+    people: [
+      {
+        id: "jia_baoyu",
+        name: "贾宝玉",
+        alias: "字怡红，小名宝玉",
+        avatar: "🪨",
+        tags: [{ label: "主角", cls: "red" }, { label: "荣国府", cls: "gold" }, { label: "男", cls: "blue" }],
+        brief: "衔玉而生，荣国府嫡孙。厌恶仕途经济，钟情诗词情趣，与众女儿情谊深厚。",
+        detail: "贾政与王夫人之子，衔玉出生。住怡红院，被称「怡红公子」。天性纯良，蔑视功名利禄，与林黛玉青梅竹马，最终因家族安排娶薛宝钗，黛玉含恨而逝，宝玉出家为僧。",
+        relations: [
+          { name: "林黛玉", type: "青梅竹马·挚爱" },
+          { name: "薛宝钗", type: "妻（金玉良缘）" },
+          { name: "贾政", type: "父" },
+          { name: "王夫人", type: "母" },
+          { name: "贾母", type: "祖母" },
+          { name: "史湘云", type: "表妹·好友" },
+          { name: "王熙凤", type: "堂嫂" },
+        ]
+      },
+      {
+        id: "lin_daiyu",
+        name: "林黛玉",
+        alias: "字颦颦，潇湘妃子",
+        avatar: "🌸",
+        tags: [{ label: "主角", cls: "red" }, { label: "十二钗正册", cls: "pink" }, { label: "女", cls: "pink" }],
+        brief: "绛珠仙草转世，才情横溢，敏感多愁。与宝玉木石前盟，泪尽而逝。",
+        detail: "林如海与贾敏之女，幼年丧母后寄居荣国府。住潇湘馆，才思敏捷，诗词冠绝大观园。体弱多病，性情孤傲敏感。与贾宝玉两情相悦，却因「金玉良缘」之说与薛宝钗的竞争中含恨离世。",
+        relations: [
+          { name: "贾宝玉", type: "木石前盟·挚爱" },
+          { name: "贾母", type: "外祖母" },
+          { name: "林如海", type: "父（已故）" },
+          { name: "薛宝钗", type: "竞争者·表姐妹" },
+          { name: "紫鹃", type: "贴身丫鬟" },
+        ]
+      },
+      {
+        id: "xue_baochai",
+        name: "薛宝钗",
+        alias: "蘅芜君，宝姐姐",
+        avatar: "🌿",
+        tags: [{ label: "主角", cls: "red" }, { label: "十二钗正册", cls: "pink" }, { label: "女", cls: "pink" }],
+        brief: "薛家大小姐，端庄贤淑，博学多才。金锁与宝玉玉石相配，成就金玉良缘。",
+        detail: "薛姨妈之女，薛蟠之妹。随母入住荣国府梨香院，后搬至蘅芜苑。性格稳重大方，处世圆滑，深得王夫人赏识。最终嫁予贾宝玉，但宝玉出家，独守空闺。",
+        relations: [
+          { name: "贾宝玉", type: "夫（金玉良缘）" },
+          { name: "林黛玉", type: "竞争者·表姐妹" },
+          { name: "薛蟠", type: "兄" },
+          { name: "薛姨妈", type: "母" },
+          { name: "王夫人", type: "姨母" },
+          { name: "莺儿", type: "贴身丫鬟" },
+        ]
+      },
+      {
+        id: "wang_xifeng",
+        name: "王熙凤",
+        alias: "凤姐，琏二奶奶",
+        avatar: "🦚",
+        tags: [{ label: "十二钗正册", cls: "pink" }, { label: "荣国府", cls: "gold" }, { label: "女", cls: "pink" }],
+        brief: "荣国府实际掌权者，精明强干，喜弄权术。机关算尽，聪明反被聪明误。",
+        detail: "王家出身，嫁贾琏。协理宁国府秦氏丧事，展现超强管理才能。泼辣狡黠，心狠手辣，暗中包揽诉讼、放高利贷。后因多行不义，身败名裂，「一从二令三人木，哭向金陵事更哀」。",
+        relations: [
+          { name: "贾琏", type: "夫" },
+          { name: "贾宝玉", type: "堂叔（小）" },
+          { name: "王夫人", type: "姑母" },
+          { name: "贾母", type: "祖婆婆" },
+          { name: "平儿", type: "贴身丫鬟" },
+          { name: "尤二姐", type: "丈夫小妾（被害死）" },
+        ]
+      },
+      {
+        id: "jia_mu",
+        name: "贾母",
+        alias: "老祖宗，史太君",
+        avatar: "👵",
+        tags: [{ label: "荣国府", cls: "gold" }, { label: "女", cls: "pink" }, { label: "长辈", cls: "gray" }],
+        brief: "荣国府最高权威，疼爱宝玉与黛玉。史家出身，阅历深厚，晚年家道渐衰。",
+        detail: "荣国公贾代善之妻，贾赦、贾政之母，林黛玉的外祖母。地位尊崇，诸事以她为尊。极爱宝玉，对黛玉疼若亲孙。大观园众多欢乐皆由她主持。家族败落时与众人天人永隔。",
+        relations: [
+          { name: "贾宝玉", type: "嫡孙（最疼）" },
+          { name: "林黛玉", type: "外孙女" },
+          { name: "贾政", type: "次子" },
+          { name: "贾赦", type: "长子" },
+          { name: "王熙凤", type: "孙媳妇" },
+        ]
+      },
+      {
+        id: "shi_xiangyun",
+        name: "史湘云",
+        alias: "云丫头，枕霞旧友",
+        avatar: "🌊",
+        tags: [{ label: "十二钗正册", cls: "pink" }, { label: "女", cls: "pink" }, { label: "史家", cls: "gray" }],
+        brief: "豪爽爱笑，才华横溢，常着男装。与宝玉情谊深厚，命运多舛。",
+        detail: "保龄侯史鼐之侄女，幼年父母双亡，寄养于叔叔家。性格开朗豪迈，不拘小节，爱穿男装。诗才出众，与宝玉交好。嫁给卫若兰，丈夫早逝，孤苦伶仃。",
+        relations: [
+          { name: "贾宝玉", type: "表兄·好友" },
+          { name: "贾母", type: "外祖母辈亲戚" },
+          { name: "林黛玉", type: "诗社好友" },
+          { name: "薛宝钗", type: "诗社好友" },
+        ]
+      },
+      {
+        id: "jia_yuanchun",
+        name: "贾元春",
+        alias: "元妃，大小姐",
+        avatar: "👑",
+        tags: [{ label: "十二钗正册", cls: "pink" }, { label: "荣国府", cls: "gold" }, { label: "女", cls: "pink" }],
+        brief: "贾政之女，入宫封贤德妃，省亲大观园风光一时，却在深宫寂寞薨逝。",
+        detail: "贾政与王夫人长女，宝玉之姐，曾为宝玉启蒙。入宫为女史，后晋封贤德妃。元妃省亲修建大观园，令家族风光无两。然深宫如海，最终病逝，家族失去靠山，由盛转衰。",
+        relations: [
+          { name: "贾宝玉", type: "弟（亲自启蒙）" },
+          { name: "贾政", type: "父" },
+          { name: "王夫人", type: "母" },
+        ]
+      },
+      {
+        id: "jia_tanchun",
+        name: "贾探春",
+        alias: "三姑娘，蕉下客",
+        avatar: "🌴",
+        tags: [{ label: "十二钗正册", cls: "pink" }, { label: "荣国府", cls: "gold" }, { label: "女", cls: "pink" }],
+        brief: "庶出却志气高远，管家才能不输凤姐，远嫁和亲，「才自精明志自高，生于末世运偏消」。",
+        detail: "贾政之庶女，赵姨娘所生，宝玉同父异母之妹。性格刚烈，有治家之才，曾短暂代凤姐管理大观园，推行改革。自视甚高，因庶出而深感屈辱。最终远嫁他乡。",
+        relations: [
+          { name: "贾宝玉", type: "同父异母兄" },
+          { name: "贾政", type: "父" },
+          { name: "赵姨娘", type: "生母" },
+          { name: "王夫人", type: "嫡母" },
+        ]
+      },
+      {
+        id: "qin_keqing",
+        name: "秦可卿",
+        alias: "兼美，可儿",
+        avatar: "🌙",
+        tags: [{ label: "十二钗正册", cls: "pink" }, { label: "宁国府", cls: "gold" }, { label: "女", cls: "pink" }],
+        brief: "宁国府贾蓉之妻，美貌体弱。托梦王熙凤警示家族命运，病逝引发重大葬礼。",
+        detail: "贾蓉之妻，公公贾珍之媳。外貌兼具黛玉之袅娜、宝钗之丰满，\"兼美\"之名由此而来。身体虚弱，后病逝。临终托梦王熙凤，嘱其未雨绸缪，预言贾家衰败。",
+        relations: [
+          { name: "贾蓉", type: "夫" },
+          { name: "贾珍", type: "公公" },
+          { name: "王熙凤", type: "托梦警示" },
+        ]
+      },
+      {
+        id: "miaoyu",
+        name: "妙玉",
+        alias: "槛外人",
+        avatar: "⛩️",
+        tags: [{ label: "十二钗正册", cls: "pink" }, { label: "女", cls: "pink" }, { label: "出家人", cls: "gray" }],
+        brief: "带发修行的尼姑，孤傲清高，寄居栊翠庵。洁癖极重，却对宝玉暗藏情愫。",
+        detail: "官宦之女，因病出家，寄居大观园栊翠庵。性格孤僻清高，不喜俗人。对宝玉态度特殊，曾以自己珍藏的杯子给宝玉用茶。后贾府败落，被强盗掳走，不知所终。",
+        relations: [
+          { name: "贾宝玉", type: "暗慕（单向）" },
+          { name: "林黛玉", type: "以腊梅相赠" },
+          { name: "贾母", type: "奉茶接待" },
+        ]
+      },
+      {
+        id: "xiren",
+        name: "袭人",
+        alias: "花袭人，珍珠",
+        avatar: "🌺",
+        tags: [{ label: "女", cls: "pink" }, { label: "丫鬟", cls: "gray" }, { label: "怡红院", cls: "gold" }],
+        brief: "宝玉首席大丫鬟，温柔稳重，实为半个姨娘。宝玉出家后嫁给蒋玉菡。",
+        detail: "原名珍珠，宝玉取名\"袭人\"（花气袭人知昼暖）。温婉体贴，对宝玉忠心耿耿，曾向王夫人进言管教宝玉。宝玉出家后，嫁给蒋玉菡，得以善终。",
+        relations: [
+          { name: "贾宝玉", type: "主子·亲近" },
+          { name: "晴雯", type: "同为大丫鬟（有竞争）" },
+          { name: "王夫人", type: "曾密报" },
+        ]
+      },
+      {
+        id: "qingwen",
+        name: "晴雯",
+        alias: "晴雯儿",
+        avatar: "⚡",
+        tags: [{ label: "女", cls: "pink" }, { label: "丫鬟", cls: "gray" }, { label: "怡红院", cls: "gold" }],
+        brief: "宝玉最爱丫鬟，容貌出众，性格刚烈。因遭王夫人嫌恶被撵出，含冤病逝，宝玉作《芙蓉女儿诔》祭之。",
+        detail: "怡红院丫鬟，容貌风流，针线活出色，曾病中补孔雀裘。性格直爽高傲，口角犀利，不善逢迎。被王夫人以\"狐媚\"之名赶出，在贫病中死去。宝玉将其比作芙蓉花神。",
+        relations: [
+          { name: "贾宝玉", type: "主子（深情厚谊）" },
+          { name: "袭人", type: "同为大丫鬟" },
+          { name: "王夫人", type: "被其驱逐" },
+        ]
+      },
+    ]
+  }
+];
+
+// ─── Render ───────────────────────────────────────────────────────────────
+
+function tagHTML(tags) {
+  return tags.map(t => `<span class="tag ${t.cls||''}">${t.label}</span>`).join('');
+}
+
+function buildUniverseHTML(u) {
+  const cards = u.people.map(p => `
+    <div class="person-card" data-id="${p.id}" data-universe="${u.id}" data-search="${p.name}${p.alias}${p.brief}${p.tags.map(t=>t.label).join('')}">
+      <div class="card-head">
+        <div class="avatar">${p.avatar}</div>
+        <div class="card-name">
+          <h3>${p.name}</h3>
+          <div class="alias">${p.alias}</div>
+        </div>
+      </div>
+      <div class="card-tags">${tagHTML(p.tags)}</div>
+      <div class="card-body">${p.brief}</div>
+    </div>
+  `).join('');
+
+  // collect unique tag labels
+  const allTags = [...new Set(u.people.flatMap(p => p.tags.map(t => t.label)))];
+  const tagBtns = allTags.map(t => `<button class="tag-btn" data-tag="${t}">${t}</button>`).join('');
+
+  return `
+    <div class="universe ${u.id === UNIVERSES[0].id ? 'active' : ''}" id="u-${u.id}">
+      <div class="universe-meta">
+        <h2>${u.name}</h2>
+        <p>${u.desc}</p>
+      </div>
+      <div class="filter-bar">
+        <input type="text" placeholder="搜索人物…" class="search-input" data-universe="${u.id}">
+        <div class="tag-filter">${tagBtns}</div>
+      </div>
+      <div class="people-grid" id="grid-${u.id}">${cards}</div>
+      <div class="no-results" id="no-${u.id}">没有符合条件的人物</div>
+    </div>
+  `;
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────
+
+const tabsEl = document.getElementById('universeTabs');
+const containerEl = document.getElementById('universeContainer');
+
+UNIVERSES.forEach(u => {
+  const btn = document.createElement('button');
+  btn.className = 'tab-btn' + (u.id === UNIVERSES[0].id ? ' active' : '');
+  btn.textContent = u.name;
+  btn.dataset.universe = u.id;
+  tabsEl.appendChild(btn);
+  containerEl.innerHTML += buildUniverseHTML(u);
+});
+
+// ─── Tab switching ────────────────────────────────────────────────────────
+
+tabsEl.addEventListener('click', e => {
+  const btn = e.target.closest('.tab-btn');
+  if (!btn) return;
+  const uid = btn.dataset.universe;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.universe === uid));
+  document.querySelectorAll('.universe').forEach(u => u.classList.toggle('active', u.id === 'u-' + uid));
+});
+
+// ─── Search + tag filter ──────────────────────────────────────────────────
+
+function applyFilters(uid) {
+  const input = document.querySelector(`.search-input[data-universe="${uid}"]`);
+  const activeTags = [...document.querySelectorAll(`#u-${uid} .tag-btn.active`)].map(b => b.dataset.tag);
+  const q = input.value.trim().toLowerCase();
+  const cards = document.querySelectorAll(`#grid-${uid} .person-card`);
+  let visible = 0;
+  cards.forEach(card => {
+    const matchSearch = !q || card.dataset.search.includes(q);
+    const matchTag = activeTags.length === 0 || activeTags.every(tag => card.dataset.search.includes(tag));
+    const show = matchSearch && matchTag;
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  document.getElementById('no-' + uid).style.display = visible === 0 ? 'block' : 'none';
+}
+
+document.addEventListener('input', e => {
+  if (e.target.classList.contains('search-input')) applyFilters(e.target.dataset.universe);
+});
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.tag-btn');
+  if (!btn) return;
+  btn.classList.toggle('active');
+  const uid = btn.closest('.universe').id.replace('u-', '');
+  applyFilters(uid);
+});
+
+// ─── Modal ────────────────────────────────────────────────────────────────
+
+const overlay = document.getElementById('modalOverlay');
+const modalName = document.getElementById('modalName');
+const modalAlias = document.getElementById('modalAlias');
+const modalBody = document.getElementById('modalBody');
+
+function openModal(uid, pid) {
+  const universe = UNIVERSES.find(u => u.id === uid);
+  const person = universe.people.find(p => p.id === pid);
+  if (!person) return;
+
+  modalName.textContent = person.name;
+  modalAlias.textContent = person.alias;
+
+  const relHTML = person.relations.map(r => `
+    <li><span class="rel-name">${r.name}</span><span class="rel-type">${r.type}</span></li>
+  `).join('');
+
+  modalBody.innerHTML = `
+    <div class="modal-section">
+      <h4>简介</h4>
+      <p>${person.detail}</p>
+    </div>
+    <div class="modal-section">
+      <h4>标签</h4>
+      <div style="display:flex;gap:.4rem;flex-wrap:wrap">${tagHTML(person.tags)}</div>
+    </div>
+    ${person.relations.length ? `
+    <div class="modal-section">
+      <h4>主要关系</h4>
+      <ul class="rel-list">${relHTML}</ul>
+    </div>` : ''}
+  `;
+  overlay.classList.add('open');
+}
+
+document.getElementById('universeContainer').addEventListener('click', e => {
+  const card = e.target.closest('.person-card');
+  if (!card) return;
+  openModal(card.dataset.universe, card.dataset.id);
+});
+
+document.getElementById('closeModal').addEventListener('click', () => overlay.classList.remove('open'));
+overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') overlay.classList.remove('open'); });
+</script>
+</body>
+</html>

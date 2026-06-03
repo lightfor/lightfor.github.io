@@ -1,0 +1,131 @@
+{
+    "phone": [
+        {
+            "category": "处理器",
+            "specs": [
+                { "key": "cpu", "label": "CPU" },
+                { "key": "display_chip", "label": "独立显示芯片" },
+                { "key": "game_fps", "label": "游戏帧率" }
+            ]
+        },
+        {
+            "category": "屏幕",
+            "specs": [
+                { "key": "screen_size", "label": "屏幕尺寸" },
+                { "key": "screen_type", "label": "屏幕类型" },
+                { "key": "resolution", "label": "分辨率" },
+                { "key": "refresh_rate", "label": "刷新率" }
+            ]
+        },
+        {
+            "category": "续航与充电",
+            "specs": [
+                { "key": "battery", "label": "电池容量" },
+                { "key": "wired_charging", "label": "有线快充" },
+                { "key": "wireless_charging", "label": "无线充电" }
+            ]
+        },
+        {
+            "category": "影像系统",
+            "specs": [
+                { "key": "front_camera", "label": "前置摄像头" },
+                { "key": "main_camera", "label": "后置主摄" },
+                { "key": "ultra_wide", "label": "超广角" },
+                { "key": "telephoto", "label": "长焦镜头" }
+            ]
+        },
+        {
+            "category": "音频",
+            "specs": [
+                { "key": "speaker", "label": "扬声器" }
+            ]
+        },
+        {
+            "category": "散热系统",
+            "specs": [
+                { "key": "cooling", "label": "散热方式" }
+            ]
+        }
+    ],
+    "tablet": [
+        {
+            "category": "处理器",
+            "specs": [
+                { "key": "chip", "label": "芯片" },
+                { "key": "cpu_cores", "label": "CPU核心" },
+                { "key": "gpu", "label": "GPU" },
+                { "key": "npu", "label": "NPU/AI引擎" }
+            ]
+        },
+        {
+            "category": "屏幕",
+            "specs": [
+                { "key": "screen_size", "label": "屏幕尺寸" },
+                { "key": "screen_type", "label": "屏幕类型" },
+                { "key": "resolution", "label": "分辨率" },
+                { "key": "refresh_rate", "label": "刷新率" },
+                { "key": "brightness", "label": "峰值亮度" },
+                { "key": "eye_care", "label": "护眼认证" }
+            ]
+        },
+        {
+            "category": "存储",
+            "specs": [
+                { "key": "ram", "label": "运行内存" },
+                { "key": "storage", "label": "存储空间" },
+                { "key": "storage_expansion", "label": "存储扩展" }
+            ]
+        },
+        {
+            "category": "影像系统",
+            "specs": [
+                { "key": "front_camera", "label": "前置摄像头" },
+                { "key": "rear_camera", "label": "后置摄像头" },
+                { "key": "video", "label": "视频拍摄" }
+            ]
+        },
+        {
+            "category": "续航与充电",
+            "specs": [
+                { "key": "battery", "label": "电池容量" },
+                { "key": "charging", "label": "有线充电" },
+                { "key": "reverse_charging", "label": "反向充电" }
+            ]
+        },
+        {
+            "category": "音频",
+            "specs": [
+                { "key": "speaker", "label": "扬声器" },
+                { "key": "microphone", "label": "麦克风" },
+                { "key": "audio_format", "label": "音频格式" }
+            ]
+        },
+        {
+            "category": "连接与网络",
+            "specs": [
+                { "key": "wifi", "label": "Wi-Fi" },
+                { "key": "bluetooth", "label": "蓝牙" },
+                { "key": "cellular", "label": "蜂窝网络" },
+                { "key": "usb", "label": "USB接口" },
+                { "key": "biometric", "label": "生物识别" }
+            ]
+        },
+        {
+            "category": "配件与生态",
+            "specs": [
+                { "key": "stylus", "label": "手写笔" },
+                { "key": "keyboard", "label": "键盘" },
+                { "key": "ecosystem", "label": "生态协同" }
+            ]
+        },
+        {
+            "category": "机身",
+            "specs": [
+                { "key": "material", "label": "材质" },
+                { "key": "weight", "label": "重量" },
+                { "key": "thickness", "label": "厚度" },
+                { "key": "colors", "label": "配色" }
+            ]
+        }
+    ]
+}

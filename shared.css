@@ -1,0 +1,22 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f5f0eb;
+    color: #333;
+    min-height: 100vh;
+}
+
+h1 { font-size: clamp(1.4rem, 5vw, 2rem); color: #4a3728; }
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #888;
+    font-size: 0.82rem;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+}
+.back-link:hover { color: #4a3728; }

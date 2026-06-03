@@ -5,25 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>产品规格对比</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="shared.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
-            font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #f5f0eb;
-            min-height: 100vh;
             padding: 20px;
-            color: #333;
         }
 
         .container { max-width: 1200px; margin: 0 auto; }
 
         .header { text-align: center; padding: 30px 0; }
-
-        .header h1 {
-            font-size: clamp(1.4rem, 5vw, 2rem);
-            color: #4a3728;
-        }
 
         .category-tabs {
             display: flex;
@@ -154,9 +144,6 @@
 
         .tips   { text-align: center; color: #999; margin-top: 14px; font-size: 0.88rem; }
         .footer { text-align: center; padding: 20px; color: #bbb; font-size: 0.82rem; }
-
-        .back-link { display: inline-flex; align-items: center; gap: 4px; color: #888; font-size: 0.82rem; text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
-        .back-link:hover { color: #4a3728; }
 
         @media (max-width: 680px) {
             .category-tab { padding: 10px 18px; font-size: 0.9rem; }

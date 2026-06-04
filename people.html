@@ -101,6 +101,13 @@ svg#graph.panning { cursor:grabbing; }
   #detail { width:100%; border-left:none; border-top:1px solid #3a2010; top:auto; height:58vh; transform:translateY(100%); }
   #detail.open { transform:translateY(0); }
   .legend { display:none; }
+  .header { padding:0.35rem 0.6rem; gap:0.4rem; }
+  .header h1 { font-size:0.82rem; }
+  .hright { margin-left:0; width:100%; justify-content:flex-end; }
+  .u-tabs { flex-wrap:wrap; }
+  .u-tab { padding:0.2rem 0.55rem; font-size:0.72rem; }
+  .ctrl-btn { padding:0.18rem 0.5rem; font-size:0.68rem; }
+  .search-wrap input { width:100px; font-size:0.72rem; }
 }
 
 /* tag palette */
@@ -423,7 +430,12 @@ const UNIVERSES = [{
 // Branch order (left to right)
 const BRANCH_ORDER = ["jia-ning","jia-she","jia-zheng","jia-rong","lin","shi","miao","wang","xue"];
 const GEN_Y_FRAC   = [0.07, 0.22, 0.42, 0.65, 0.83]; // up to gen 4
-const NODE_R = { ghost:12, normal:22, key:28 };
+function getNodeR() {
+  return window.innerWidth <= 680
+    ? { ghost:8, normal:14, key:18 }
+    : { ghost:12, normal:22, key:28 };
+}
+let NODE_R = getNodeR();
 
 // Key people (larger nodes)
 const KEY_PEOPLE = new Set(["jbaoyu","ldaiyu","xbaochai","wxifeng","jmu","sxiangyun","qkeqing"]);
@@ -455,10 +467,11 @@ function calcPositions(people, W, H) {
     }
   });
 
-  const PAD_X = 70, PAD_Y = 60;
+  const PAD_X = Math.min(70, W * 0.05), PAD_Y = 60;
   const usableW = W - PAD_X * 2;
   const totalSlots = BRANCH_ORDER.reduce((s,b) => s + Math.max(branchWidth[b]||0, 1), 0);
-  const slotW = usableW / totalSlots;
+  const minSlotW = (NODE_R.key + 10) * 2;   // at least diameter + gap
+  const slotW = Math.max(usableW / totalSlots, minSlotW);
 
   // branch start x
   let cursor = PAD_X;
@@ -470,7 +483,9 @@ function calcPositions(people, W, H) {
 
   // gen y
   const maxGen = Math.max(...people.map(p=>p.gen));
-  const usableH = H - PAD_Y * 2;
+  const minGenStep = (NODE_R.key + 14) * 2;
+  const naturalH = H - PAD_Y * 2;
+  const genStep = maxGen <= 0 ? naturalH : Math.max(naturalH / maxGen, minGenStep);
 
   const positions = {};
   people.forEach(p => {
@@ -481,11 +496,10 @@ function calcPositions(people, W, H) {
     const bw = Math.max(branchWidth[b]||0, 1) * slotW;
     const xStep = bw / (n + 1);
     const x = branchStartX[b] + xStep * (idx + 1);
-    const yFrac = maxGen <= 0 ? 0.5 : p.gen / maxGen;
-    const y = PAD_Y + yFrac * usableH;
+    const y = PAD_Y + p.gen * genStep;
     positions[p.id] = { x, y };
   });
-  return positions;
+  return { positions, PAD_Y, genStep };
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -522,10 +536,12 @@ let mainG, edgeG, nodeG;
 //  RENDER
 // ═══════════════════════════════════════════════════════════════
 function renderGraph() {
+  NODE_R = getNodeR();
   svg.innerHTML = "";
   const W = svg.clientWidth  || window.innerWidth;
   const H = svg.clientHeight || (window.innerHeight - 46);
-  nodePositions = calcPositions(CU.people, W, H);
+  const layout = calcPositions(CU.people, W, H);
+  nodePositions = layout.positions;
 
   const defs = el('defs',{},svg);
   // glow filter
@@ -542,10 +558,8 @@ function renderGraph() {
   // generation labels (background)
   const genNames = ["曾祖辈","祖父辈","父母辈","子辈","孙辈"];
   const maxGen = Math.max(...CU.people.map(p=>p.gen));
-  const usableH = H - 120;
   for (let g=0; g<=maxGen; g++) {
-    const yFrac = maxGen<=0 ? 0.5 : g/maxGen;
-    const y = 60 + yFrac * usableH;
+    const y = layout.PAD_Y + g * layout.genStep;
     const lbl = el('text',{ x:'8', y:y, fill:'#3a2810', 'font-size':'11', 'font-weight':'600',
       'dominant-baseline':'middle', 'pointer-events':'none', 'user-select':'none' }, mainG);
     lbl.textContent = genNames[g] || `第${g}代`;
@@ -605,15 +619,19 @@ function renderNodes() {
     const g = el('g',{ class:'node-group', 'data-id':p.id,
       transform:`translate(${pos.x},${pos.y})` }, nodeG);
 
+    // invisible hit-area — ensures 44px touch target regardless of visual size
+    const hitR = Math.max(r, 22);
+    el('circle',{r:hitR, fill:'transparent', stroke:'none', 'pointer-events':'all'}, g);
+
     if (isGhost) {
       // ghost: dashed circle, muted
       el('circle',{r,fill:'#1a1005',stroke:'#4a3020','stroke-width':'1.5',
         'stroke-dasharray':'4,3',opacity:'0.7'},g);
       const av=el('text',{'text-anchor':'middle','dominant-baseline':'central',
-        'font-size':r*0.85,'pointer-events':'none'},g);
+        'font-size':Math.max(r*0.85, 9),'pointer-events':'none'},g);
       av.textContent=p.avatar;
-      const nm=el('text',{'text-anchor':'middle',y:r+fs+1,fill:'#6a5030',
-        'font-size':fs,'pointer-events':'none',class:'node-label'},g);
+      const nm=el('text',{'text-anchor':'middle',y:hitR+fs+1,fill:'#7a6040',
+        'font-size':Math.max(fs,9),'pointer-events':'none',class:'node-label'},g);
       nm.textContent=p.name;
     } else {
       // glow ring
@@ -630,7 +648,7 @@ function renderNodes() {
         'font-size':r*0.78,'pointer-events':'none'},g);
       av.textContent=p.avatar;
       // name
-      const nm=el('text',{'text-anchor':'middle',y:r+fs+2,fill:'#e8d5b7',
+      const nm=el('text',{'text-anchor':'middle',y:hitR+fs+2,fill:'#e8d5b7',
         'font-size':fs,'font-weight':isKey?'700':'400',
         'pointer-events':'none',class:'node-label'},g);
       nm.textContent=p.name;
@@ -639,7 +657,7 @@ function renderNodes() {
     g.addEventListener('mouseenter', ev => onHover(p.id, ev));
     g.addEventListener('mouseleave', onLeave);
     g.addEventListener('click', ev => { ev.stopPropagation(); onClick(p.id); });
-    g.addEventListener('touchend', ev => { ev.preventDefault(); onClick(p.id); });
+    g.addEventListener('touchend', ev => { ev.preventDefault(); if(!touchMoved) onClick(p.id); });
   });
 }
 
@@ -683,11 +701,8 @@ function updateVisibility() {
     const isDirect = activeId && (path.dataset.s===activeId||path.dataset.t===activeId);
     path.classList.toggle('faded', !isConn && !!activeId);
     path.classList.toggle('lit',   isConn);
-    if (isDirect) path.setAttribute('stroke-width', (parseFloat(path.getAttribute('stroke-width'))||1)*1.8);
-    else {
-      const st = EDGE_STYLE[path.dataset.type]||EDGE_STYLE.blood;
-      path.setAttribute('stroke-width', st.width);
-    }
+    const st = EDGE_STYLE[path.dataset.type]||EDGE_STYLE.blood;
+    path.setAttribute('stroke-width', isDirect ? st.width * 1.8 : st.width);
     if (lbls[i]) lbls[i].setAttribute('opacity', isDirect?'1':'0');
   });
 }
@@ -821,15 +836,19 @@ svg.addEventListener('wheel', ev=>{
   applyTransform();
 },{passive:false});
 
-let lastDist=0;
+let lastDist=0, touchMoved=false;
 svg.addEventListener('touchstart',ev=>{
+  touchMoved=false;
   if(ev.touches.length===1){ isPanning=true; panStart={x:ev.touches[0].clientX,y:ev.touches[0].clientY}; panOrigin={x:transform.x,y:transform.y}; }
   else if(ev.touches.length===2){ isPanning=false; const dx=ev.touches[1].clientX-ev.touches[0].clientX,dy=ev.touches[1].clientY-ev.touches[0].clientY; lastDist=Math.sqrt(dx*dx+dy*dy); }
 },{passive:true});
 svg.addEventListener('touchmove',ev=>{
   ev.preventDefault();
-  if(ev.touches.length===1&&isPanning){ transform.x=panOrigin.x+(ev.touches[0].clientX-panStart.x); transform.y=panOrigin.y+(ev.touches[0].clientY-panStart.y); applyTransform(); }
-  else if(ev.touches.length===2){ const dx=ev.touches[1].clientX-ev.touches[0].clientX,dy=ev.touches[1].clientY-ev.touches[0].clientY,dist=Math.sqrt(dx*dx+dy*dy),d=dist/(lastDist||dist); const mid={x:(ev.touches[0].clientX+ev.touches[1].clientX)/2,y:(ev.touches[0].clientY+ev.touches[1].clientY)/2}; const r=svg.getBoundingClientRect(),mx=mid.x-r.left,my=mid.y-r.top; transform.x=mx-(mx-transform.x)*d; transform.y=my-(my-transform.y)*d; transform.scale=Math.min(4,Math.max(0.25,transform.scale*d)); lastDist=dist; applyTransform(); }
+  if(ev.touches.length===1&&isPanning){
+    const dx=ev.touches[0].clientX-panStart.x, dy=ev.touches[0].clientY-panStart.y;
+    if(Math.sqrt(dx*dx+dy*dy)>5) touchMoved=true;
+    transform.x=panOrigin.x+dx; transform.y=panOrigin.y+dy; applyTransform();
+  } else if(ev.touches.length===2){ touchMoved=true; const dx=ev.touches[1].clientX-ev.touches[0].clientX,dy=ev.touches[1].clientY-ev.touches[0].clientY,dist=Math.sqrt(dx*dx+dy*dy),d=dist/(lastDist||dist); const mid={x:(ev.touches[0].clientX+ev.touches[1].clientX)/2,y:(ev.touches[0].clientY+ev.touches[1].clientY)/2}; const r=svg.getBoundingClientRect(),mx=mid.x-r.left,my=mid.y-r.top; transform.x=mx-(mx-transform.x)*d; transform.y=my-(my-transform.y)*d; transform.scale=Math.min(4,Math.max(0.25,transform.scale*d)); lastDist=dist; applyTransform(); }
 },{passive:false});
 svg.addEventListener('touchend',()=>{ isPanning=false; });
 

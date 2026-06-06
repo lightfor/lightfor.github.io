@@ -1,7 +1,31 @@
 [
     {
-        "series": "宝可梦",
+        "series": "宝可梦 / Pokémon",
         "games": [
+            {
+                "title": "Pokémon Green 宝可梦绿",
+                "year": 1996,
+                "platforms": [
+                    "GB"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
+                ]
+            },
+            {
+                "title": "Pokémon Blue 宝可梦蓝",
+                "year": 1996,
+                "platforms": [
+                    "GB"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
+                ]
+            },
             {
                 "title": "宝可梦 红 ポケットモンスター 赤",
                 "year": 1996,
@@ -21,6 +45,11 @@
                 "year": 1998,
                 "platforms": [
                     "GB"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             },
             {
@@ -43,6 +72,11 @@
                 "year": 1999,
                 "platforms": [
                     "GBC"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             },
             {
@@ -63,6 +97,23 @@
                 "year": 2002,
                 "platforms": [
                     "GBA"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
+                ]
+            },
+            {
+                "title": "Pokémon LeafGreen 宝可梦叶绿",
+                "year": 2004,
+                "platforms": [
+                    "GBA"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             },
             {
@@ -98,6 +149,11 @@
                 "year": 2006,
                 "platforms": [
                     "NDS"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             },
             {
@@ -105,6 +161,23 @@
                 "year": 2008,
                 "platforms": [
                     "NDS"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
+                ]
+            },
+            {
+                "title": "Pokémon SoulSilver 宝可梦魂银",
+                "year": 2009,
+                "platforms": [
+                    "DS"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             },
             {
@@ -126,6 +199,11 @@
                 "year": 2010,
                 "platforms": [
                     "NDS"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             },
             {
@@ -133,6 +211,23 @@
                 "year": 2012,
                 "platforms": [
                     "NDS"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
+                ]
+            },
+            {
+                "title": "Pokémon Y ポケットモンスター Y",
+                "year": 2013,
+                "platforms": [
+                    "3DS"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             },
             {
@@ -140,6 +235,18 @@
                 "year": 2013,
                 "detailLink": "https://www.douban.com/game/26392070/",
                 "posterUrl": "https://img3.doubanio.com/lpic/s28074597.jpg",
+                "platforms": [
+                    "3DS"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
+                ]
+            },
+            {
+                "title": "Pokémon Omega Ruby 宝可梦欧米伽红宝石",
+                "year": 2014,
                 "platforms": [
                     "3DS"
                 ],
@@ -166,6 +273,11 @@
                 "year": 2016,
                 "platforms": [
                     "3DS"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             },
             {
@@ -182,10 +294,39 @@
                 ]
             },
             {
+                "title": "Pokémon Ultra Moon 宝可梦究极之月",
+                "year": 2017,
+                "platforms": [
+                    "3DS"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
+                ]
+            },
+            {
+                "title": "Pokémon Let's Go, Pikachu! / Eevee! 宝可梦Let's Go！皮卡丘/伊布",
+                "year": 2018,
+                "platforms": [
+                    "Switch"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
+                ]
+            },
+            {
                 "title": "Pokémon Sword / Shield 宝可梦剑/盾",
                 "year": 2019,
                 "platforms": [
                     "Switch"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             },
             {
@@ -193,6 +334,11 @@
                 "year": 2021,
                 "platforms": [
                     "Switch"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             },
             {
@@ -200,6 +346,11 @@
                 "year": 2022,
                 "platforms": [
                     "Switch"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             },
             {
@@ -207,6 +358,11 @@
                 "year": 2022,
                 "platforms": [
                     "Switch"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             },
             {
@@ -215,10 +371,15 @@
                 "platforms": [
                     "Switch",
                     "Switch 2"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "冒险",
+                    "策略"
                 ]
             }
         ],
-        "totalCount": 22,
+        "totalCount": 30,
         "company": {
             "name": "Nintendo",
             "country": "Japan",
@@ -227,7 +388,7 @@
         }
     },
     {
-        "series": "合金弹头",
+        "series": "合金弹头 / Metal Slug",
         "games": [
             {
                 "title": "合金弹头 メタルスラッグ",
@@ -247,7 +408,6 @@
                     "NEO"
                 ],
                 "genre": [
-                    "车辆战斗",
                     "射击",
                     "动作"
                 ]
@@ -377,6 +537,10 @@
                 "platforms": [
                     "NDS",
                     "PSP"
+                ],
+                "genre": [
+                    "射击",
+                    "动作"
                 ]
             }
         ],
@@ -389,7 +553,7 @@
         }
     },
     {
-        "series": "仙剑奇侠传",
+        "series": "仙剑奇侠传 / Chinese Paladin",
         "games": [
             {
                 "title": "仙剑奇侠传 仙劍奇俠傳",
@@ -449,6 +613,9 @@
                 "year": 2003,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -468,6 +635,9 @@
                 "year": 2009,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -475,6 +645,9 @@
                 "year": 2011,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -482,6 +655,9 @@
                 "year": 2015,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -527,7 +703,7 @@
         }
     },
     {
-        "series": "逆转裁判",
+        "series": "逆转裁判 / Ace Attorney",
         "games": [
             {
                 "title": "逆转裁判 逆転裁判",
@@ -584,6 +760,30 @@
                     "PC",
                     "Switch",
                     "PS4"
+                ],
+                "genre": [
+                    "文字冒险"
+                ]
+            },
+            {
+                "title": "Ace Attorney Investigations: Miles Edgeworth 逆转检察官",
+                "year": 2009,
+                "platforms": [
+                    "NDS",
+                    "3DS"
+                ],
+                "genre": [
+                    "文字冒险"
+                ]
+            },
+            {
+                "title": "Ace Attorney Investigations 2 逆转检察官2",
+                "year": 2011,
+                "platforms": [
+                    "NDS"
+                ],
+                "genre": [
+                    "文字冒险"
                 ]
             },
             {
@@ -596,6 +796,9 @@
                     "PC",
                     "Switch",
                     "PS4"
+                ],
+                "genre": [
+                    "文字冒险"
                 ]
             },
             {
@@ -641,6 +844,9 @@
                     "PC",
                     "Switch",
                     "PS4"
+                ],
+                "genre": [
+                    "文字冒险"
                 ]
             },
             {
@@ -658,7 +864,7 @@
                 ]
             }
         ],
-        "totalCount": 9,
+        "totalCount": 11,
         "company": {
             "name": "Capcom",
             "country": "Japan",
@@ -667,13 +873,17 @@
         }
     },
     {
-        "series": "风色幻想",
+        "series": "风色幻想 / Fūshoku Gensō",
         "games": [
             {
                 "title": "风色幻想1 魔導聖戰",
                 "year": 1999,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "策略"
                 ]
             },
             {
@@ -695,6 +905,10 @@
                 "year": 2002,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "策略"
                 ]
             },
             {
@@ -767,7 +981,7 @@
         }
     },
     {
-        "series": "塞尔达传说",
+        "series": "塞尔达传说 / The Legend of Zelda",
         "games": [
             {
                 "title": "The Legend of Zelda 塞尔达传说1",
@@ -775,6 +989,10 @@
                 "platforms": [
                     "NES",
                     "FDS"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -783,6 +1001,10 @@
                 "platforms": [
                     "NES",
                     "FDS"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -790,6 +1012,10 @@
                 "year": 1991,
                 "platforms": [
                     "SNES"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -797,6 +1023,10 @@
                 "year": 1993,
                 "platforms": [
                     "GB"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -804,6 +1034,10 @@
                 "year": 1998,
                 "platforms": [
                     "N64"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -811,6 +1045,10 @@
                 "year": 2000,
                 "platforms": [
                     "N64"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -818,6 +1056,10 @@
                 "year": 2001,
                 "platforms": [
                     "GBC"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -825,6 +1067,10 @@
                 "year": 2002,
                 "platforms": [
                     "GameCube"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -832,6 +1078,10 @@
                 "year": 2004,
                 "platforms": [
                     "GBA"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -840,6 +1090,10 @@
                 "platforms": [
                     "Wii",
                     "GameCube"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -847,6 +1101,10 @@
                 "year": 2007,
                 "platforms": [
                     "NDS"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -854,6 +1112,10 @@
                 "year": 2009,
                 "platforms": [
                     "NDS"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -861,6 +1123,10 @@
                 "year": 2011,
                 "platforms": [
                     "Wii"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -868,6 +1134,10 @@
                 "year": 2013,
                 "platforms": [
                     "3DS"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -875,6 +1145,10 @@
                 "year": 2015,
                 "platforms": [
                     "3DS"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -937,6 +1211,10 @@
                 "year": 2024,
                 "platforms": [
                     "Switch"
+                ],
+                "genre": [
+                    "冒险",
+                    "动作"
                 ]
             }
         ],
@@ -949,7 +1227,7 @@
         }
     },
     {
-        "series": "雷顿教授",
+        "series": "雷顿教授 / Professor Layton",
         "games": [
             {
                 "title": "雷顿教授与恶魔之箱 レイトン教授と悪魔の箱",
@@ -1010,6 +1288,21 @@
                 "year": 2011,
                 "platforms": [
                     "3DS"
+                ],
+                "genre": [
+                    "益智",
+                    "冒险"
+                ]
+            },
+            {
+                "title": "Professor Layton vs. Phoenix Wright: Ace Attorney 教授与逆转裁判",
+                "year": 2012,
+                "platforms": [
+                    "3DS"
+                ],
+                "genre": [
+                    "益智",
+                    "冒险"
                 ]
             },
             {
@@ -1017,6 +1310,10 @@
                 "year": 2013,
                 "platforms": [
                     "3DS"
+                ],
+                "genre": [
+                    "益智",
+                    "冒险"
                 ]
             },
             {
@@ -1027,10 +1324,14 @@
                     "Switch 2",
                     "PS5",
                     "PC"
+                ],
+                "genre": [
+                    "益智",
+                    "冒险"
                 ]
             }
         ],
-        "totalCount": 7,
+        "totalCount": 8,
         "company": {
             "name": "Level-5",
             "country": "Japan",
@@ -1039,7 +1340,7 @@
         }
     },
     {
-        "series": "暗黑破坏神",
+        "series": "暗黑破坏神 / Diablo",
         "games": [
             {
                 "title": "暗黑破坏神 Diablo",
@@ -1104,6 +1405,12 @@
                     "PS4",
                     "Xbox One",
                     "Switch"
+                ],
+                "genre": [
+                    "乱斗",
+                    "清版",
+                    "角色扮演",
+                    "冒险"
                 ]
             },
             {
@@ -1135,6 +1442,12 @@
                     "PS5",
                     "Xbox One",
                     "Xbox Series X/S"
+                ],
+                "genre": [
+                    "乱斗",
+                    "清版",
+                    "角色扮演",
+                    "冒险"
                 ]
             }
         ],
@@ -1147,13 +1460,16 @@
         }
     },
     {
-        "series": "轩辕剑",
+        "series": "轩辕剑 / Xuanyuan Sword",
         "games": [
             {
                 "title": "轩辕剑一",
                 "year": 1990,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1161,6 +1477,9 @@
                 "year": 1994,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1182,6 +1501,9 @@
                 "year": 1999,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1205,6 +1527,9 @@
                 "year": 2002,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1224,6 +1549,9 @@
                 "year": 2006,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1243,6 +1571,9 @@
                 "year": 2013,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1251,6 +1582,9 @@
                 "platforms": [
                     "PC",
                     "PS4"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             }
         ],
@@ -1263,7 +1597,7 @@
         }
     },
     {
-        "series": "女神异闻录",
+        "series": "女神异闻录 / Persona",
         "games": [
             {
                 "title": "Persona 1 女神异闻录1",
@@ -1271,6 +1605,9 @@
                 "platforms": [
                     "PS1",
                     "PSP"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1279,6 +1616,9 @@
                 "platforms": [
                     "PS1",
                     "PSP"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1286,6 +1626,19 @@
                 "year": 2000,
                 "platforms": [
                     "PS1"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Persona 3 FES 女神异闻录3",
+                "year": 2006,
+                "platforms": [
+                    "PS2"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1293,6 +1646,9 @@
                 "year": 2008,
                 "platforms": [
                     "PS2"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1304,6 +1660,9 @@
                     "Switch",
                     "PS4",
                     "Xbox One"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1314,6 +1673,20 @@
                 "platforms": [
                     "PS4",
                     "PS3"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Persona 5 Royal 女神异闻录5皇家版",
+                "year": 2019,
+                "platforms": [
+                    "PS4",
+                    "Switch",
+                    "PC",
+                    "PS5",
+                    "Xbox One"
                 ],
                 "genre": [
                     "角色扮演"
@@ -1354,7 +1727,7 @@
                 ]
             }
         ],
-        "totalCount": 8,
+        "totalCount": 10,
         "company": {
             "name": "Atlus",
             "country": "Japan",
@@ -1363,7 +1736,7 @@
         }
     },
     {
-        "series": "无冬之夜",
+        "series": "无冬之夜 / Neverwinter Nights",
         "games": [
             {
                 "title": "无冬之夜 Neverwinter Nights",
@@ -1406,6 +1779,9 @@
                 "year": 2003,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1425,6 +1801,9 @@
                 "year": 2007,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -1432,6 +1811,9 @@
                 "year": 2008,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             }
         ],
@@ -1444,13 +1826,16 @@
         }
     },
     {
-        "series": "魔兽争霸",
+        "series": "魔兽争霸 / Warcraft",
         "games": [
             {
                 "title": "Warcraft: Orcs & Humans 魔兽争霸：兽人与人类",
                 "year": 1994,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "即时战略"
                 ]
             },
             {
@@ -1458,6 +1843,9 @@
                 "year": 1995,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "即时战略"
                 ]
             },
             {
@@ -1492,6 +1880,9 @@
                 "year": 2004,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "即时战略"
                 ]
             },
             {
@@ -1517,13 +1908,17 @@
         }
     },
     {
-        "series": "模拟人生",
+        "series": "模拟人生 / The Sims",
         "games": [
             {
                 "title": "The Sims 模拟人生1",
                 "year": 2000,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "模拟",
+                    "角色扮演"
                 ]
             },
             {
@@ -1591,7 +1986,7 @@
         }
     },
     {
-        "series": "命令与征服",
+        "series": "命令与征服 / Command & Conquer",
         "games": [
             {
                 "title": "Command & Conquer: Red Alert 命令与征服：红色警戒1",
@@ -1599,6 +1994,10 @@
                 "platforms": [
                     "PC",
                     "PS1"
+                ],
+                "genre": [
+                    "即时战略",
+                    "策略"
                 ]
             },
             {
@@ -1622,7 +2021,6 @@
                     "PC"
                 ],
                 "genre": [
-                    "益智",
                     "即时战略",
                     "策略"
                 ]
@@ -1648,6 +2046,10 @@
                     "PC",
                     "Xbox 360",
                     "PS3"
+                ],
+                "genre": [
+                    "即时战略",
+                    "策略"
                 ]
             }
         ],
@@ -1660,7 +2062,7 @@
         }
     },
     {
-        "series": "伊苏",
+        "series": "伊苏 / Ys",
         "games": [
             {
                 "title": "Ys I: Ancient Ys Vanished 伊苏1",
@@ -1670,6 +2072,11 @@
                     "PC",
                     "Switch",
                     "PS4"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "动作",
+                    "冒险"
                 ]
             },
             {
@@ -1680,6 +2087,11 @@
                     "PC",
                     "Switch",
                     "PS4"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "动作",
+                    "冒险"
                 ]
             },
             {
@@ -1689,6 +2101,11 @@
                     "PC-88",
                     "SNES",
                     "Genesis"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "动作",
+                    "冒险"
                 ]
             },
             {
@@ -1697,6 +2114,11 @@
                 "platforms": [
                     "SNES",
                     "PC Engine"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "动作",
+                    "冒险"
                 ]
             },
             {
@@ -1704,6 +2126,11 @@
                 "year": 1995,
                 "platforms": [
                     "SNES"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "动作",
+                    "冒险"
                 ]
             },
             {
@@ -1761,6 +2188,11 @@
                     "PC",
                     "Switch",
                     "PS4"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "动作",
+                    "冒险"
                 ]
             },
             {
@@ -1771,6 +2203,11 @@
                     "Switch",
                     "PC",
                     "PS Vita"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "动作",
+                    "冒险"
                 ]
             },
             {
@@ -1780,6 +2217,11 @@
                     "PS4",
                     "Switch",
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "动作",
+                    "冒险"
                 ]
             },
             {
@@ -1789,6 +2231,11 @@
                     "PS4",
                     "Switch",
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "动作",
+                    "冒险"
                 ]
             }
         ],
@@ -1801,7 +2248,7 @@
         }
     },
     {
-        "series": "反恐精英",
+        "series": "反恐精英 / Counter-Strike",
         "games": [
             {
                 "title": "反恐精英 Counter-Strike",
@@ -1859,6 +2306,10 @@
                     "PC",
                     "Xbox 360",
                     "PS3"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "动作"
                 ]
             },
             {
@@ -1866,6 +2317,10 @@
                 "year": 2023,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "动作"
                 ]
             }
         ],
@@ -1878,7 +2333,7 @@
         }
     },
     {
-        "series": "鬼泣",
+        "series": "鬼泣 / Devil May Cry",
         "games": [
             {
                 "title": "Devil May Cry 鬼泣1",
@@ -1889,6 +2344,9 @@
                     "PS4",
                     "Xbox One",
                     "Switch"
+                ],
+                "genre": [
+                    "动作"
                 ]
             },
             {
@@ -1898,6 +2356,9 @@
                     "PS2",
                     "PC",
                     "Switch"
+                ],
+                "genre": [
+                    "动作"
                 ]
             },
             {
@@ -1909,6 +2370,9 @@
                     "Switch",
                     "PS4",
                     "Xbox One"
+                ],
+                "genre": [
+                    "动作"
                 ]
             },
             {
@@ -1968,6 +2432,9 @@
                     "Xbox One",
                     "PS5",
                     "Xbox Series X/S"
+                ],
+                "genre": [
+                    "动作"
                 ]
             }
         ],
@@ -1980,13 +2447,18 @@
         }
     },
     {
-        "series": "使命召唤",
+        "series": "使命召唤 / Call of Duty",
         "games": [
             {
                 "title": "Call of Duty 使命召唤1",
                 "year": 2003,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -1995,6 +2467,11 @@
                 "platforms": [
                     "PC",
                     "Xbox 360"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2005,6 +2482,11 @@
                     "PS3",
                     "Xbox 360",
                     "Wii"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2034,6 +2516,11 @@
                     "PS3",
                     "Xbox 360",
                     "Wii"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2061,6 +2548,11 @@
                     "PS3",
                     "Xbox 360",
                     "Wii"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2091,6 +2583,11 @@
                     "PS3",
                     "Xbox 360",
                     "Wii U"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2102,6 +2599,11 @@
                     "PS4",
                     "Xbox 360",
                     "Xbox One"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2113,6 +2615,11 @@
                     "PS4",
                     "Xbox 360",
                     "Xbox One"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2124,6 +2631,11 @@
                     "PS4",
                     "Xbox 360",
                     "Xbox One"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2133,6 +2645,11 @@
                     "PC",
                     "PS4",
                     "Xbox One"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2142,6 +2659,11 @@
                     "PC",
                     "PS4",
                     "Xbox One"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2151,6 +2673,11 @@
                     "PC",
                     "PS4",
                     "Xbox One"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2160,6 +2687,11 @@
                     "PC",
                     "PS4",
                     "Xbox One"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2171,6 +2703,11 @@
                     "PS5",
                     "Xbox One",
                     "Xbox Series X/S"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2182,6 +2719,11 @@
                     "PS5",
                     "Xbox One",
                     "Xbox Series X/S"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2193,6 +2735,11 @@
                     "PS5",
                     "Xbox One",
                     "Xbox Series X/S"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2204,6 +2751,11 @@
                     "PS5",
                     "Xbox One",
                     "Xbox Series X/S"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2215,6 +2767,11 @@
                     "PS5",
                     "Xbox One",
                     "Xbox Series X/S"
+                ],
+                "genre": [
+                    "第一人称射击",
+                    "冒险",
+                    "动作"
                 ]
             }
         ],
@@ -2227,13 +2784,16 @@
         }
     },
     {
-        "series": "美少女万华镜",
+        "series": "美少女万华镜 / Bishoujo Mangekyou",
         "games": [
             {
                 "title": "美少女万华镜1：呪われし伝説の少女",
                 "year": 2011,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "文字冒险"
                 ]
             },
             {
@@ -2241,6 +2801,9 @@
                 "year": 2012,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "文字冒险"
                 ]
             },
             {
@@ -2289,7 +2852,7 @@
         }
     },
     {
-        "series": "谜画之塔",
+        "series": "谜画之塔 / Drawn",
         "games": [
             {
                 "title": "谜画之塔 Drawn: The Painted Tower",
@@ -2346,7 +2909,7 @@
         }
     },
     {
-        "series": "无双大蛇",
+        "series": "无双大蛇 / Warriors Orochi",
         "games": [
             {
                 "title": "Warriors Orochi 无双大蛇1",
@@ -2356,6 +2919,9 @@
                     "Xbox 360",
                     "PSP",
                     "PC"
+                ],
+                "genre": [
+                    "动作"
                 ]
             },
             {
@@ -2366,6 +2932,9 @@
                     "Xbox 360",
                     "PSP",
                     "PC"
+                ],
+                "genre": [
+                    "动作"
                 ]
             },
             {
@@ -2407,6 +2976,9 @@
                     "PS4",
                     "Xbox One",
                     "Switch"
+                ],
+                "genre": [
+                    "动作"
                 ]
             }
         ],
@@ -2419,7 +2991,7 @@
         }
     },
     {
-        "series": "三位一体",
+        "series": "三位一体 / Trine",
         "games": [
             {
                 "title": "三位一体 Trine",
@@ -2470,6 +3042,11 @@
                     "PC",
                     "PS4",
                     "Switch"
+                ],
+                "genre": [
+                    "横版过关",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2480,6 +3057,11 @@
                     "PS4",
                     "Xbox One",
                     "Switch"
+                ],
+                "genre": [
+                    "横版过关",
+                    "冒险",
+                    "动作"
                 ]
             },
             {
@@ -2492,6 +3074,11 @@
                     "Xbox One",
                     "Xbox Series X/S",
                     "Switch"
+                ],
+                "genre": [
+                    "横版过关",
+                    "冒险",
+                    "动作"
                 ]
             }
         ],
@@ -2504,13 +3091,16 @@
         }
     },
     {
-        "series": "真三国无双",
+        "series": "真三国无双 / Dynasty Warriors",
         "games": [
             {
                 "title": "Dynasty Warriors 2 真三国无双2",
                 "year": 2000,
                 "platforms": [
                     "PS2"
+                ],
+                "genre": [
+                    "动作"
                 ]
             },
             {
@@ -2520,6 +3110,9 @@
                     "PS2",
                     "Xbox",
                     "PC"
+                ],
+                "genre": [
+                    "动作"
                 ]
             },
             {
@@ -2560,6 +3153,9 @@
                     "PS2",
                     "Xbox",
                     "PC"
+                ],
+                "genre": [
+                    "动作"
                 ]
             },
             {
@@ -2570,6 +3166,9 @@
                     "Xbox 360",
                     "PC",
                     "PS2"
+                ],
+                "genre": [
+                    "动作"
                 ]
             },
             {
@@ -2579,6 +3178,9 @@
                     "PS3",
                     "Xbox 360",
                     "PC"
+                ],
+                "genre": [
+                    "动作"
                 ]
             },
             {
@@ -2590,6 +3192,9 @@
                     "PC",
                     "PS4",
                     "Switch"
+                ],
+                "genre": [
+                    "动作"
                 ]
             },
             {
@@ -2599,6 +3204,9 @@
                     "PC",
                     "PS4",
                     "Xbox One"
+                ],
+                "genre": [
+                    "动作"
                 ]
             },
             {
@@ -2608,6 +3216,9 @@
                     "PC",
                     "PS5",
                     "Xbox Series X/S"
+                ],
+                "genre": [
+                    "动作"
                 ]
             }
         ],
@@ -2620,7 +3231,7 @@
         }
     },
     {
-        "series": "求生之路",
+        "series": "求生之路 / Left 4 Dead",
         "games": [
             {
                 "title": "求生之路 Left 4 Dead",
@@ -2663,7 +3274,7 @@
         }
     },
     {
-        "series": "泰坦之旅",
+        "series": "泰坦之旅 / Titan Quest",
         "games": [
             {
                 "title": "泰坦之旅：不朽王座 Titan Quest: Immortal Throne",
@@ -2703,6 +3314,10 @@
                     "PC",
                     "PS4",
                     "Xbox One"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "动作"
                 ]
             },
             {
@@ -2712,6 +3327,10 @@
                     "PC",
                     "PS4",
                     "Xbox One"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "动作"
                 ]
             },
             {
@@ -2719,6 +3338,10 @@
                 "year": 2021,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演",
+                    "动作"
                 ]
             }
         ],
@@ -2731,13 +3354,17 @@
         }
     },
     {
-        "series": "帝国时代",
+        "series": "帝国时代 / Age of Empires",
         "games": [
             {
                 "title": "Age of Empires 帝国时代1",
                 "year": 1997,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "即时战略",
+                    "策略"
                 ]
             },
             {
@@ -2758,6 +3385,10 @@
                 "year": 2005,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "即时战略",
+                    "策略"
                 ]
             },
             {
@@ -2780,6 +3411,10 @@
                     "PC",
                     "Xbox One",
                     "Xbox Series X/S"
+                ],
+                "genre": [
+                    "即时战略",
+                    "策略"
                 ]
             }
         ],
@@ -2792,7 +3427,7 @@
         }
     },
     {
-        "series": "神话时代",
+        "series": "神话时代 / Age of Mythology",
         "games": [
             {
                 "title": "神话时代 Age of Mythology",
@@ -2828,6 +3463,10 @@
                     "PC",
                     "Xbox Series X/S",
                     "PS5"
+                ],
+                "genre": [
+                    "即时战略",
+                    "策略"
                 ]
             }
         ],
@@ -2840,7 +3479,7 @@
         }
     },
     {
-        "series": "极品飞车",
+        "series": "极品飞车 / Need for Speed",
         "games": [
             {
                 "title": "The Need for Speed 极品飞车1",
@@ -2850,6 +3489,9 @@
                     "3DO",
                     "PS1",
                     "Saturn"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -2858,6 +3500,9 @@
                 "platforms": [
                     "PC",
                     "PS1"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -2866,6 +3511,9 @@
                 "platforms": [
                     "PC",
                     "PS1"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -2874,6 +3522,9 @@
                 "platforms": [
                     "PC",
                     "PS1"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -2882,6 +3533,9 @@
                 "platforms": [
                     "PC",
                     "PS1"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -2892,6 +3546,9 @@
                     "PS2",
                     "Xbox",
                     "GameCube"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -2902,6 +3559,9 @@
                     "PS2",
                     "Xbox",
                     "GameCube"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -2912,6 +3572,9 @@
                     "PS2",
                     "Xbox",
                     "GameCube"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -2942,6 +3605,9 @@
                     "PS3",
                     "Xbox 360",
                     "Wii"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -2953,6 +3619,9 @@
                     "PS3",
                     "Xbox 360",
                     "Wii"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -2963,6 +3632,9 @@
                     "PS3",
                     "Xbox 360",
                     "Wii"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -2972,6 +3644,9 @@
                     "PC",
                     "PS3",
                     "Xbox 360"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -2987,6 +3662,18 @@
                 ]
             },
             {
+                "title": "Need for Speed: Shift 2 Unleashed 极品飞车15",
+                "year": 2011,
+                "platforms": [
+                    "PC",
+                    "PS3",
+                    "Xbox 360"
+                ],
+                "genre": [
+                    "竞速"
+                ]
+            },
+            {
                 "title": "Need for Speed: The Run 极品飞车16",
                 "year": 2011,
                 "platforms": [
@@ -2995,6 +3682,9 @@
                     "Xbox 360",
                     "Wii",
                     "3DS"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -3006,6 +3696,9 @@
                     "Xbox 360",
                     "Wii U",
                     "PS Vita"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -3017,6 +3710,9 @@
                     "PS4",
                     "Xbox 360",
                     "Xbox One"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -3026,6 +3722,9 @@
                     "PC",
                     "PS4",
                     "Xbox One"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -3035,6 +3734,9 @@
                     "PC",
                     "PS4",
                     "Xbox One"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -3044,6 +3746,9 @@
                     "PC",
                     "PS4",
                     "Xbox One"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             },
             {
@@ -3053,10 +3758,13 @@
                     "PC",
                     "PS5",
                     "Xbox Series X/S"
+                ],
+                "genre": [
+                    "竞速"
                 ]
             }
         ],
-        "totalCount": 21,
+        "totalCount": 22,
         "company": {
             "name": "EA (Electronic Arts)",
             "country": "USA",
@@ -3065,7 +3773,7 @@
         }
     },
     {
-        "series": "百战天虫",
+        "series": "百战天虫 / Worms",
         "games": [
             {
                 "title": "Worms 百战天虫1",
@@ -3076,6 +3784,10 @@
                     "PS1",
                     "Saturn",
                     "N64"
+                ],
+                "genre": [
+                    "策略",
+                    "动作"
                 ]
             },
             {
@@ -3083,6 +3795,10 @@
                 "year": 1997,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "策略",
+                    "动作"
                 ]
             },
             {
@@ -3094,6 +3810,10 @@
                     "N64",
                     "DC",
                     "GBC"
+                ],
+                "genre": [
+                    "策略",
+                    "动作"
                 ]
             },
             {
@@ -3121,6 +3841,10 @@
                     "PS2",
                     "Xbox",
                     "GameCube"
+                ],
+                "genre": [
+                    "策略",
+                    "动作"
                 ]
             },
             {
@@ -3130,6 +3854,10 @@
                     "PC",
                     "PS2",
                     "Xbox"
+                ],
+                "genre": [
+                    "策略",
+                    "动作"
                 ]
             },
             {
@@ -3138,6 +3866,10 @@
                 "platforms": [
                     "NDS",
                     "PSP"
+                ],
+                "genre": [
+                    "策略",
+                    "动作"
                 ]
             },
             {
@@ -3161,6 +3893,10 @@
                     "PC",
                     "PS3",
                     "Xbox 360"
+                ],
+                "genre": [
+                    "策略",
+                    "动作"
                 ]
             },
             {
@@ -3168,6 +3904,10 @@
                 "year": 2013,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "策略",
+                    "动作"
                 ]
             },
             {
@@ -3178,6 +3918,10 @@
                     "PS4",
                     "Xbox One",
                     "Switch"
+                ],
+                "genre": [
+                    "策略",
+                    "动作"
                 ]
             },
             {
@@ -3187,6 +3931,10 @@
                     "PC",
                     "PS4",
                     "PS5"
+                ],
+                "genre": [
+                    "策略",
+                    "动作"
                 ]
             }
         ],
@@ -3199,7 +3947,7 @@
         }
     },
     {
-        "series": "孢子",
+        "series": "孢子 / Spore",
         "games": [
             {
                 "title": "孢子 Spore",
@@ -3238,7 +3986,7 @@
         }
     },
     {
-        "series": "传送门",
+        "series": "传送门 / Portal",
         "games": [
             {
                 "title": "传送门 Portal",
@@ -3287,7 +4035,7 @@
         }
     },
     {
-        "series": "高桥名人冒险岛",
+        "series": "高桥名人冒险岛 / Adventure Island",
         "games": [
             {
                 "title": "高桥名人的冒险岛 高橋名人の冒険島",
@@ -3307,6 +4055,10 @@
                 "year": 1991,
                 "platforms": [
                     "NES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3326,6 +4078,10 @@
                 "year": 1992,
                 "platforms": [
                     "SNES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3333,6 +4089,10 @@
                 "year": 1992,
                 "platforms": [
                     "PC Engine"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3340,6 +4100,10 @@
                 "year": 1994,
                 "platforms": [
                     "NES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3347,6 +4111,10 @@
                 "year": 1995,
                 "platforms": [
                     "SNES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             }
         ],
@@ -3359,7 +4127,7 @@
         }
     },
     {
-        "series": "双截龙",
+        "series": "双截龙 / Double Dragon",
         "games": [
             {
                 "title": "双截龙 ダブルドラゴン",
@@ -3407,6 +4175,10 @@
                     "Arcade",
                     "NES",
                     "Sega Genesis"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3414,6 +4186,10 @@
                 "year": 1992,
                 "platforms": [
                     "SNES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3423,6 +4199,10 @@
                     "PC",
                     "PS4",
                     "Switch"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3435,6 +4215,10 @@
                     "Xbox One",
                     "Xbox Series X/S",
                     "Switch"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             }
         ],
@@ -3447,7 +4231,7 @@
         }
     },
     {
-        "series": "太鼓达人",
+        "series": "太鼓达人 / Taiko no Tatsujin",
         "games": [
             {
                 "title": "太鼓达人 太鼓の達人",
@@ -3467,6 +4251,9 @@
                 "year": 2018,
                 "platforms": [
                     "Switch"
+                ],
+                "genre": [
+                    "音乐"
                 ]
             },
             {
@@ -3493,6 +4280,9 @@
                     "PC",
                     "Xbox One",
                     "Xbox Series X/S"
+                ],
+                "genre": [
+                    "音乐"
                 ]
             }
         ],
@@ -3505,13 +4295,17 @@
         }
     },
     {
-        "series": "卡比",
+        "series": "卡比 / Kirby",
         "games": [
             {
                 "title": "Kirby's Dream Land 星之卡比1",
                 "year": 1992,
                 "platforms": [
                     "GB"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3519,6 +4313,10 @@
                 "year": 1993,
                 "platforms": [
                     "NES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3526,6 +4324,10 @@
                 "year": 1995,
                 "platforms": [
                     "GB"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3533,6 +4335,10 @@
                 "year": 1996,
                 "platforms": [
                     "SNES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3540,6 +4346,10 @@
                 "year": 1997,
                 "platforms": [
                     "SNES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3547,6 +4357,10 @@
                 "year": 2000,
                 "platforms": [
                     "N64"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3554,6 +4368,10 @@
                 "year": 2002,
                 "platforms": [
                     "GBA"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3561,6 +4379,10 @@
                 "year": 2004,
                 "platforms": [
                     "GBA"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3568,6 +4390,10 @@
                 "year": 2005,
                 "platforms": [
                     "NDS"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3575,6 +4401,10 @@
                 "year": 2006,
                 "platforms": [
                     "NDS"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3595,6 +4425,10 @@
                 "year": 2011,
                 "platforms": [
                     "Wii"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3617,6 +4451,10 @@
                 "year": 2015,
                 "platforms": [
                     "Wii U"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3624,6 +4462,10 @@
                 "year": 2016,
                 "platforms": [
                     "3DS"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3631,6 +4473,10 @@
                 "year": 2018,
                 "platforms": [
                     "Switch"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3638,6 +4484,10 @@
                 "year": 2022,
                 "platforms": [
                     "Switch"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             },
             {
@@ -3645,6 +4495,10 @@
                 "year": 2023,
                 "platforms": [
                     "Switch"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
                 ]
             }
         ],
@@ -3657,7 +4511,7 @@
         }
     },
     {
-        "series": "古剑奇谭",
+        "series": "古剑奇谭 / Gu Jian Qi Tan",
         "games": [
             {
                 "title": "古剑奇谭：琴心剑魄今何在",
@@ -3676,6 +4530,9 @@
                 "year": 2013,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "角色扮演"
                 ]
             },
             {
@@ -3701,7 +4558,7 @@
         }
     },
     {
-        "series": "侠客风云传",
+        "series": "侠客风云传 / Tale of Wuxia",
         "games": [
             {
                 "title": "侠客风云传",
@@ -3741,7 +4598,7 @@
         }
     },
     {
-        "series": "淘金者",
+        "series": "淘金者 / Lode Runner",
         "games": [
             {
                 "title": "淘金者 Lode Runner",
@@ -3787,6 +4644,10 @@
                 "year": 1995,
                 "platforms": [
                     "PC"
+                ],
+                "genre": [
+                    "益智",
+                    "动作"
                 ]
             },
             {
@@ -3794,6 +4655,10 @@
                 "year": 1999,
                 "platforms": [
                     "N64"
+                ],
+                "genre": [
+                    "益智",
+                    "动作"
                 ]
             },
             {
@@ -3804,6 +4669,10 @@
                     "iOS",
                     "Android",
                     "Switch"
+                ],
+                "genre": [
+                    "益智",
+                    "动作"
                 ]
             }
         ],
@@ -3816,7 +4685,7 @@
         }
     },
     {
-        "series": "小朋友齐打交",
+        "series": "小朋友齐打交 / Little Fighter",
         "games": [
             {
                 "title": "小朋友齐打交 Little Fighter",
@@ -3855,7 +4724,7 @@
         }
     },
     {
-        "series": "松鼠大作战",
+        "series": "松鼠大作战 / Chip 'n Dale Rescue Rangers",
         "games": [
             {
                 "title": "松鼠大作战 チップとデールの大作戦",
@@ -3894,46 +4763,209 @@
         }
     },
     {
-        "series": "Super Mario",
+        "series": "超级马力欧 / Super Mario",
         "games": [
             {
                 "title": "Super Mario Bros.",
                 "year": 1985,
-                "platforms": ["NES"],
-                "genre": ["横版过关", "动作"]
+                "platforms": [
+                    "NES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
+            },
+            {
+                "title": "Super Mario Bros. 2 超级马力欧2",
+                "year": 1988,
+                "platforms": [
+                    "NES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
             },
             {
                 "title": "Super Mario Bros. 3",
                 "year": 1988,
-                "platforms": ["NES"]
+                "platforms": [
+                    "NES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
+            },
+            {
+                "title": "Super Mario Land 超级马力欧乐园",
+                "year": 1989,
+                "platforms": [
+                    "GB"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
             },
             {
                 "title": "Super Mario World",
                 "year": 1990,
-                "platforms": ["SNES"]
+                "platforms": [
+                    "SNES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
+            },
+            {
+                "title": "Super Mario World 2: Yoshi's Island",
+                "year": 1995,
+                "platforms": [
+                    "SNES"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
             },
             {
                 "title": "Super Mario 64",
                 "year": 1996,
-                "platforms": ["N64"]
+                "platforms": [
+                    "N64"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
+            },
+            {
+                "title": "Super Mario 64 DS",
+                "year": 2004,
+                "platforms": [
+                    "NDS"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
+            },
+            {
+                "title": "New Super Mario Bros. 新超级马力欧",
+                "year": 2006,
+                "platforms": [
+                    "NDS"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
             },
             {
                 "title": "Super Mario Galaxy",
                 "year": 2007,
-                "platforms": ["Wii"]
+                "platforms": [
+                    "Wii"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
+            },
+            {
+                "title": "Super Mario Galaxy 2 超级马力欧银河2",
+                "year": 2010,
+                "platforms": [
+                    "Wii"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
+            },
+            {
+                "title": "Super Mario 3D Land",
+                "year": 2011,
+                "platforms": [
+                    "3DS"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
+            },
+            {
+                "title": "New Super Mario Bros. U",
+                "year": 2012,
+                "platforms": [
+                    "Wii U"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
+            },
+            {
+                "title": "Super Mario 3D World",
+                "year": 2013,
+                "platforms": [
+                    "Wii U",
+                    "Switch"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
+            },
+            {
+                "title": "Super Mario Maker 超级马力欧制作家",
+                "year": 2015,
+                "platforms": [
+                    "Wii U"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
             },
             {
                 "title": "Super Mario Odyssey",
                 "year": 2017,
-                "platforms": ["Switch"]
+                "platforms": [
+                    "Switch"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
+            },
+            {
+                "title": "Super Mario Maker 2",
+                "year": 2019,
+                "platforms": [
+                    "Switch"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
             },
             {
                 "title": "Super Mario Bros. Wonder",
                 "year": 2023,
-                "platforms": ["Switch"]
+                "platforms": [
+                    "Switch"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
             }
         ],
-        "totalCount": 7,
+        "totalCount": 18,
         "company": {
             "name": "Nintendo",
             "country": "Japan",
@@ -3942,31 +4974,130 @@
         }
     },
     {
-        "series": "Metroid",
+        "series": "银河战士 / Metroid",
         "games": [
             {
                 "title": "Metroid",
                 "year": 1986,
-                "platforms": ["NES"],
-                "genre": ["动作冒险"]
+                "platforms": [
+                    "NES"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Metroid II: Return of Samus 银河战士2",
+                "year": 1991,
+                "platforms": [
+                    "GB"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Super Metroid",
                 "year": 1994,
-                "platforms": ["SNES"]
+                "platforms": [
+                    "SNES"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Metroid Fusion 银河战士：融合",
+                "year": 2002,
+                "platforms": [
+                    "GBA"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Metroid Prime",
                 "year": 2002,
-                "platforms": ["GameCube"]
+                "platforms": [
+                    "GameCube"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Metroid: Zero Mission 银河战士：零点任务",
+                "year": 2004,
+                "platforms": [
+                    "GBA"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Metroid Prime 2: Echoes",
+                "year": 2004,
+                "platforms": [
+                    "GameCube"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Metroid Prime 3: Corruption",
+                "year": 2007,
+                "platforms": [
+                    "Wii"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Metroid: Other M 银河战士：另一个M",
+                "year": 2010,
+                "platforms": [
+                    "Wii"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Metroid: Samus Returns 银河战士：萨姆斯归来",
+                "year": 2017,
+                "platforms": [
+                    "3DS"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Metroid Dread",
                 "year": 2021,
-                "platforms": ["Switch"]
+                "platforms": [
+                    "Switch"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Metroid Prime Remastered",
+                "year": 2023,
+                "platforms": [
+                    "Switch"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             }
         ],
-        "totalCount": 4,
+        "totalCount": 12,
         "company": {
             "name": "Nintendo",
             "country": "Japan",
@@ -3975,31 +5106,132 @@
         }
     },
     {
-        "series": "Fire Emblem",
+        "series": "火焰纹章 / Fire Emblem",
         "games": [
+            {
+                "title": "Fire Emblem: Genealogy of the Holy War 圣火降魔录：圣战的系谱",
+                "year": 1996,
+                "platforms": [
+                    "SNES"
+                ],
+                "genre": [
+                    "策略",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Fire Emblem: The Binding Blade 圣火降魔录：封印之剑",
+                "year": 2002,
+                "platforms": [
+                    "GBA"
+                ],
+                "genre": [
+                    "策略",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Fire Emblem: The Blazing Blade 圣火降魔录：烈火之剑",
+                "year": 2003,
+                "platforms": [
+                    "GBA"
+                ],
+                "genre": [
+                    "策略",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Fire Emblem: The Sacred Stones 圣火降魔录：圣魔之光石",
+                "year": 2004,
+                "platforms": [
+                    "GBA"
+                ],
+                "genre": [
+                    "策略",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Fire Emblem: Path of Radiance 圣火降魔录：蓄势待发",
+                "year": 2005,
+                "platforms": [
+                    "GameCube"
+                ],
+                "genre": [
+                    "策略",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Fire Emblem: Radiant Dawn 圣火降魔录：晓之女神",
+                "year": 2007,
+                "platforms": [
+                    "Wii"
+                ],
+                "genre": [
+                    "策略",
+                    "角色扮演"
+                ]
+            },
             {
                 "title": "Fire Emblem Awakening",
                 "year": 2012,
-                "platforms": ["3DS"],
-                "genre": ["策略", "角色扮演"]
+                "platforms": [
+                    "3DS"
+                ],
+                "genre": [
+                    "策略",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Fire Emblem Fates",
                 "year": 2015,
-                "platforms": ["3DS"]
+                "platforms": [
+                    "3DS"
+                ],
+                "genre": [
+                    "策略",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Fire Emblem: Three Houses",
                 "year": 2019,
-                "platforms": ["Switch"]
+                "platforms": [
+                    "Switch"
+                ],
+                "genre": [
+                    "策略",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Fire Emblem Engage",
                 "year": 2023,
-                "platforms": ["Switch"]
+                "platforms": [
+                    "Switch"
+                ],
+                "genre": [
+                    "策略",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Fire Emblem Heroes 圣火降魔录英雄",
+                "year": 2017,
+                "platforms": [
+                    "iOS",
+                    "Android"
+                ],
+                "genre": [
+                    "策略",
+                    "角色扮演"
+                ]
             }
         ],
-        "totalCount": 4,
+        "totalCount": 11,
         "company": {
             "name": "Nintendo",
             "country": "Japan",
@@ -4008,41 +5240,162 @@
         }
     },
     {
-        "series": "Resident Evil",
+        "series": "生化危机 / Resident Evil",
         "games": [
             {
                 "title": "Resident Evil 生化危机1",
                 "year": 1996,
-                "platforms": ["PS1", "PC"],
-                "genre": ["生存恐怖", "动作冒险"]
+                "platforms": [
+                    "PS1",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Resident Evil 2 生化危机2",
                 "year": 1998,
-                "platforms": ["PS1", "PC"]
+                "platforms": [
+                    "PS1",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖",
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Resident Evil 3: Nemesis 生化危机3",
+                "year": 1999,
+                "platforms": [
+                    "PS1",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖",
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Resident Evil Code: Veronica 生化危机：代号维罗妮卡",
+                "year": 2000,
+                "platforms": [
+                    "DC",
+                    "PS2"
+                ],
+                "genre": [
+                    "生存恐怖",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Resident Evil 4 生化危机4",
                 "year": 2005,
-                "platforms": ["GameCube", "PS2", "PC"]
+                "platforms": [
+                    "GameCube",
+                    "PS2",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖",
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Resident Evil 5 生化危机5",
+                "year": 2009,
+                "platforms": [
+                    "PS3",
+                    "Xbox 360",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖",
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Resident Evil 6 生化危机6",
+                "year": 2012,
+                "platforms": [
+                    "PS3",
+                    "Xbox 360",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖",
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Resident Evil 2 Remake 生化危机2重制版",
+                "year": 2019,
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖",
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Resident Evil 3 Remake 生化危机3重制版",
+                "year": 2020,
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Resident Evil 7 生化危机7",
                 "year": 2017,
-                "platforms": ["PS4", "Xbox One", "PC"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Resident Evil Village 生化危机：村庄",
                 "year": 2021,
-                "platforms": ["PS5", "Xbox Series X/S", "PC"]
+                "platforms": [
+                    "PS5",
+                    "Xbox Series X/S",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Resident Evil 4 Remake 生化危机4重制版",
                 "year": 2023,
-                "platforms": ["PS5", "Xbox Series X/S", "PC"]
+                "platforms": [
+                    "PS5",
+                    "Xbox Series X/S",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖",
+                    "动作冒险"
+                ]
             }
         ],
-        "totalCount": 6,
+        "totalCount": 12,
         "company": {
             "name": "Capcom",
             "country": "Japan",
@@ -4051,41 +5404,116 @@
         }
     },
     {
-        "series": "Monster Hunter",
+        "series": "怪物猎人 / Monster Hunter",
         "games": [
             {
                 "title": "Monster Hunter 怪物猎人",
                 "year": 2004,
-                "platforms": ["PS2"],
-                "genre": ["动作", "角色扮演"]
+                "platforms": [
+                    "PS2"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Monster Hunter Freedom 2 怪物猎人自由2",
+                "year": 2007,
+                "platforms": [
+                    "PSP"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Monster Hunter Freedom Unite 怪物猎人自由2G",
                 "year": 2008,
-                "platforms": ["PSP"]
+                "platforms": [
+                    "PSP"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Monster Hunter 3 Ultimate 怪物猎人3G",
+                "year": 2011,
+                "platforms": [
+                    "Wii",
+                    "3DS"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Monster Hunter 4 Ultimate 怪物猎人4G",
                 "year": 2014,
-                "platforms": ["3DS"]
+                "platforms": [
+                    "3DS"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Monster Hunter Generations Ultimate 怪物猎人XX",
+                "year": 2017,
+                "platforms": [
+                    "3DS",
+                    "Switch"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Monster Hunter: World 怪物猎人：世界",
                 "year": 2018,
-                "platforms": ["PS4", "Xbox One", "PC"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Monster Hunter Rise 怪物猎人：崛起",
                 "year": 2021,
-                "platforms": ["Switch", "PC"]
+                "platforms": [
+                    "Switch",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Monster Hunter Wilds 怪物猎人：荒野",
                 "year": 2025,
-                "platforms": ["PS5", "Xbox Series X/S", "PC"]
+                "platforms": [
+                    "PS5",
+                    "Xbox Series X/S",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             }
         ],
-        "totalCount": 6,
+        "totalCount": 9,
         "company": {
             "name": "Capcom",
             "country": "Japan",
@@ -4094,36 +5522,91 @@
         }
     },
     {
-        "series": "Street Fighter",
+        "series": "街头霸王 / Street Fighter",
         "games": [
             {
                 "title": "Street Fighter II 街头霸王2",
                 "year": 1991,
-                "platforms": ["ARC", "SNES"],
-                "genre": ["格斗"]
+                "platforms": [
+                    "ARC",
+                    "SNES"
+                ],
+                "genre": [
+                    "格斗"
+                ]
+            },
+            {
+                "title": "Street Fighter II: Turbo 街头霸王2增强版",
+                "year": 1993,
+                "platforms": [
+                    "SNES",
+                    "ARC"
+                ],
+                "genre": [
+                    "格斗"
+                ]
+            },
+            {
+                "title": "Street Fighter Alpha 2 街头霸王Zero2",
+                "year": 1996,
+                "platforms": [
+                    "ARC",
+                    "PS1",
+                    "SNES"
+                ],
+                "genre": [
+                    "格斗"
+                ]
             },
             {
                 "title": "Street Fighter III: 3rd Strike",
                 "year": 1999,
-                "platforms": ["ARC", "DC"]
+                "platforms": [
+                    "ARC",
+                    "DC"
+                ],
+                "genre": [
+                    "格斗"
+                ]
             },
             {
                 "title": "Street Fighter IV 街头霸王4",
                 "year": 2008,
-                "platforms": ["ARC", "PS3", "Xbox 360", "PC"]
+                "platforms": [
+                    "ARC",
+                    "PS3",
+                    "Xbox 360",
+                    "PC"
+                ],
+                "genre": [
+                    "格斗"
+                ]
             },
             {
                 "title": "Street Fighter V 街头霸王5",
                 "year": 2016,
-                "platforms": ["PS4", "PC"]
+                "platforms": [
+                    "PS4",
+                    "PC"
+                ],
+                "genre": [
+                    "格斗"
+                ]
             },
             {
                 "title": "Street Fighter 6 街头霸王6",
                 "year": 2023,
-                "platforms": ["PS5", "Xbox Series X/S", "PC"]
+                "platforms": [
+                    "PS5",
+                    "Xbox Series X/S",
+                    "PC"
+                ],
+                "genre": [
+                    "格斗"
+                ]
             }
         ],
-        "totalCount": 5,
+        "totalCount": 7,
         "company": {
             "name": "Capcom",
             "country": "Japan",
@@ -4132,46 +5615,139 @@
         }
     },
     {
-        "series": "Final Fantasy",
+        "series": "最终幻想 / Final Fantasy",
         "games": [
+            {
+                "title": "Final Fantasy 最终幻想1",
+                "year": 1987,
+                "platforms": [
+                    "NES"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Final Fantasy IV 最终幻想4",
+                "year": 1991,
+                "platforms": [
+                    "SNES"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Final Fantasy V 最终幻想5",
+                "year": 1992,
+                "platforms": [
+                    "SNES"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
             {
                 "title": "Final Fantasy VI 最终幻想6",
                 "year": 1994,
-                "platforms": ["SNES"],
-                "genre": ["角色扮演"]
+                "platforms": [
+                    "SNES"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Final Fantasy VII 最终幻想7",
                 "year": 1997,
-                "platforms": ["PS1", "PC"]
+                "platforms": [
+                    "PS1",
+                    "PC"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Final Fantasy IX 最终幻想9",
                 "year": 2000,
-                "platforms": ["PS1"]
+                "platforms": [
+                    "PS1"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Final Fantasy X 最终幻想10",
                 "year": 2001,
-                "platforms": ["PS2"]
+                "platforms": [
+                    "PS2"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Final Fantasy XIV 最终幻想14",
                 "year": 2013,
-                "platforms": ["PC", "PS3", "PS4"]
+                "platforms": [
+                    "PC",
+                    "PS3",
+                    "PS4"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Final Fantasy XV 最终幻想15",
+                "year": 2016,
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Final Fantasy VII Remake 最终幻想7重制版",
+                "year": 2020,
+                "platforms": [
+                    "PS4",
+                    "PS5",
+                    "PC"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Final Fantasy XVI 最终幻想16",
                 "year": 2023,
-                "platforms": ["PS5", "PC"]
+                "platforms": [
+                    "PS5",
+                    "PC"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Final Fantasy VII Rebirth 最终幻想7重生",
                 "year": 2024,
-                "platforms": ["PS5", "PC"]
+                "platforms": [
+                    "PS5",
+                    "PC"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             }
         ],
-        "totalCount": 7,
+        "totalCount": 12,
         "company": {
             "name": "Square Enix",
             "country": "Japan",
@@ -4180,31 +5756,103 @@
         }
     },
     {
-        "series": "Dragon Quest",
+        "series": "勇者斗恶龙 / Dragon Quest",
         "games": [
+            {
+                "title": "Dragon Quest 勇者斗恶龙1",
+                "year": 1986,
+                "platforms": [
+                    "NES"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Dragon Quest II 勇者斗恶龙2",
+                "year": 1987,
+                "platforms": [
+                    "NES"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
             {
                 "title": "Dragon Quest III 勇者斗恶龙3",
                 "year": 1988,
-                "platforms": ["NES"],
-                "genre": ["角色扮演"]
+                "platforms": [
+                    "NES"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Dragon Quest IV 勇者斗恶龙4",
+                "year": 1992,
+                "platforms": [
+                    "NES"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Dragon Quest V 勇者斗恶龙5",
                 "year": 1992,
-                "platforms": ["SNES"]
+                "platforms": [
+                    "SNES"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Dragon Quest VI 勇者斗恶龙6",
+                "year": 1995,
+                "platforms": [
+                    "SNES"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Dragon Quest VIII 勇者斗恶龙8",
                 "year": 2004,
-                "platforms": ["PS2"]
+                "platforms": [
+                    "PS2"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Dragon Quest IX 勇者斗恶龙9",
+                "year": 2009,
+                "platforms": [
+                    "NDS"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Dragon Quest XI 勇者斗恶龙11",
                 "year": 2017,
-                "platforms": ["3DS", "PS4", "Switch", "PC"]
+                "platforms": [
+                    "3DS",
+                    "PS4",
+                    "Switch",
+                    "PC"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             }
         ],
-        "totalCount": 4,
+        "totalCount": 9,
         "company": {
             "name": "Square Enix",
             "country": "Japan",
@@ -4213,28 +5861,53 @@
         }
     },
     {
-        "series": "Kingdom Hearts",
+        "series": "王国之心 / Kingdom Hearts",
         "games": [
             {
                 "title": "Kingdom Hearts 王国之心1",
                 "year": 2002,
-                "platforms": ["PS2"],
-                "genre": ["动作", "角色扮演"]
+                "platforms": [
+                    "PS2"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Kingdom Hearts II 王国之心2",
                 "year": 2005,
-                "platforms": ["PS2"]
+                "platforms": [
+                    "PS2"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Kingdom Hearts Birth by Sleep 王国之心：诞生睡眠",
                 "year": 2010,
-                "platforms": ["PSP"]
+                "platforms": [
+                    "PSP"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Kingdom Hearts III 王国之心3",
                 "year": 2019,
-                "platforms": ["PS4", "Xbox One", "PC"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             }
         ],
         "totalCount": 4,
@@ -4246,23 +5919,46 @@
         }
     },
     {
-        "series": "Nier",
+        "series": "尼尔 / Nier",
         "games": [
             {
                 "title": "Nier",
                 "year": 2010,
-                "platforms": ["PS3", "Xbox 360"],
-                "genre": ["动作", "角色扮演"]
+                "platforms": [
+                    "PS3",
+                    "Xbox 360"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Nier: Automata 尼尔：机械纪元",
                 "year": 2017,
-                "platforms": ["PS4", "PC", "Xbox One", "Switch"]
+                "platforms": [
+                    "PS4",
+                    "PC",
+                    "Xbox One",
+                    "Switch"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Nier Replicant ver.1.22474487139...",
                 "year": 2021,
-                "platforms": ["PS4", "Xbox One", "PC"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             }
         ],
         "totalCount": 3,
@@ -4274,36 +5970,80 @@
         }
     },
     {
-        "series": "Half-Life",
+        "series": "半条命 / Half-Life",
         "games": [
             {
                 "title": "Half-Life 半条命",
                 "year": 1998,
-                "platforms": ["PC"],
-                "genre": ["第一人称射击"]
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
+            },
+            {
+                "title": "Half-Life: Opposing Force 半条命：抵抗力量",
+                "year": 1999,
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
+            },
+            {
+                "title": "Half-Life: Blue Shift 半条命：蓝色行动",
+                "year": 2001,
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
             },
             {
                 "title": "Half-Life 2 半条命2",
                 "year": 2004,
-                "platforms": ["PC"]
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
             },
             {
                 "title": "Half-Life 2: Episode One",
                 "year": 2006,
-                "platforms": ["PC"]
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
             },
             {
                 "title": "Half-Life 2: Episode Two",
                 "year": 2007,
-                "platforms": ["PC"]
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
             },
             {
                 "title": "Half-Life: Alyx 半条命：爱莉克斯",
                 "year": 2020,
-                "platforms": ["PC"]
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
             }
         ],
-        "totalCount": 5,
+        "totalCount": 7,
         "company": {
             "name": "Valve",
             "country": "USA",
@@ -4312,13 +6052,18 @@
         }
     },
     {
-        "series": "Dota",
+        "series": "刀塔 / Dota",
         "games": [
             {
                 "title": "Dota 2",
                 "year": 2013,
-                "platforms": ["PC"],
-                "genre": ["MOBA", "策略"]
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "MOBA",
+                    "策略"
+                ]
             }
         ],
         "totalCount": 1,
@@ -4330,33 +6075,183 @@
         }
     },
     {
-        "series": "Metal Gear",
+        "series": "合金装备 / Metal Gear",
         "games": [
+            {
+                "title": "Metal Gear 合金装备",
+                "year": 1987,
+                "platforms": [
+                    "MSX2",
+                    "NES"
+                ],
+                "genre": [
+                    "潜行",
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Metal Gear 2: Solid Snake",
+                "year": 1990,
+                "platforms": [
+                    "MSX2"
+                ],
+                "genre": [
+                    "潜行",
+                    "动作冒险"
+                ]
+            },
             {
                 "title": "Metal Gear Solid 合金装备",
                 "year": 1998,
-                "platforms": ["PS1", "PC"],
-                "genre": ["潜行", "动作冒险"]
+                "platforms": [
+                    "PS1",
+                    "PC"
+                ],
+                "genre": [
+                    "潜行",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Metal Gear Solid 2: Sons of Liberty",
                 "year": 2001,
-                "platforms": ["PS2", "PC"]
+                "platforms": [
+                    "PS2",
+                    "PC"
+                ],
+                "genre": [
+                    "潜行",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Metal Gear Solid 3: Snake Eater",
                 "year": 2004,
-                "platforms": ["PS2"]
+                "platforms": [
+                    "PS2"
+                ],
+                "genre": [
+                    "潜行",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Metal Gear Solid 4: Guns of the Patriots",
                 "year": 2008,
-                "platforms": ["PS3"]
+                "platforms": [
+                    "PS3"
+                ],
+                "genre": [
+                    "潜行",
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Metal Gear Solid: Peace Walker 合金装备：和平行者",
+                "year": 2010,
+                "platforms": [
+                    "PSP",
+                    "PS3"
+                ],
+                "genre": [
+                    "潜行",
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Metal Gear Solid V: Ground Zeroes",
+                "year": 2014,
+                "platforms": [
+                    "PS3",
+                    "PS4",
+                    "Xbox 360",
+                    "Xbox One"
+                ],
+                "genre": [
+                    "潜行",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Metal Gear Solid V: The Phantom Pain",
                 "year": 2015,
-                "platforms": ["PS4", "Xbox One", "PC"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "潜行",
+                    "动作冒险"
+                ]
+            }
+        ],
+        "totalCount": 9,
+        "company": {
+            "name": "Konami",
+            "country": "Japan",
+            "founded": 1969,
+            "logo": "🏯"
+        }
+    },
+    {
+        "series": "寂静岭 / Silent Hill",
+        "games": [
+            {
+                "title": "Silent Hill 寂静岭",
+                "year": 1999,
+                "platforms": [
+                    "PS1"
+                ],
+                "genre": [
+                    "生存恐怖"
+                ]
+            },
+            {
+                "title": "Silent Hill 2 寂静岭2",
+                "year": 2001,
+                "platforms": [
+                    "PS2",
+                    "Xbox",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖"
+                ]
+            },
+            {
+                "title": "Silent Hill 3 寂静岭3",
+                "year": 2003,
+                "platforms": [
+                    "PS2",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖"
+                ]
+            },
+            {
+                "title": "Silent Hill 4: The Room 寂静岭4：密室",
+                "year": 2004,
+                "platforms": [
+                    "PS2",
+                    "Xbox",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖"
+                ]
+            },
+            {
+                "title": "Silent Hill 2 Remake 寂静岭2重制版",
+                "year": 2024,
+                "platforms": [
+                    "PS5",
+                    "PC"
+                ],
+                "genre": [
+                    "生存恐怖"
+                ]
             }
         ],
         "totalCount": 5,
@@ -4368,64 +6263,102 @@
         }
     },
     {
-        "series": "Silent Hill",
-        "games": [
-            {
-                "title": "Silent Hill 寂静岭",
-                "year": 1999,
-                "platforms": ["PS1"],
-                "genre": ["生存恐怖"]
-            },
-            {
-                "title": "Silent Hill 2 寂静岭2",
-                "year": 2001,
-                "platforms": ["PS2", "Xbox", "PC"]
-            },
-            {
-                "title": "Silent Hill 3 寂静岭3",
-                "year": 2003,
-                "platforms": ["PS2", "PC"]
-            },
-            {
-                "title": "Silent Hill 2 Remake 寂静岭2重制版",
-                "year": 2024,
-                "platforms": ["PS5", "PC"]
-            }
-        ],
-        "totalCount": 4,
-        "company": {
-            "name": "Konami",
-            "country": "Japan",
-            "founded": 1969,
-            "logo": "🏯"
-        }
-    },
-    {
-        "series": "Castlevania",
+        "series": "恶魔城 / Castlevania",
         "games": [
             {
                 "title": "Castlevania 恶魔城",
                 "year": 1986,
-                "platforms": ["NES"],
-                "genre": ["动作冒险"]
+                "platforms": [
+                    "NES"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Simon's Quest 恶魔城II",
+                "year": 1987,
+                "platforms": [
+                    "NES"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Super Castlevania IV 超级恶魔城4",
+                "year": 1991,
+                "platforms": [
+                    "SNES"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Castlevania: Symphony of the Night 恶魔城：月下夜想曲",
                 "year": 1997,
-                "platforms": ["PS1"]
+                "platforms": [
+                    "PS1"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Castlevania: Aria of Sorrow 恶魔城：白夜协奏曲",
                 "year": 2003,
-                "platforms": ["GBA"]
+                "platforms": [
+                    "GBA"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Castlevania: Dawn of Sorrow 恶魔城：晓之哀曲",
+                "year": 2005,
+                "platforms": [
+                    "NDS"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Castlevania: Portrait of Ruin 恶魔城：被夺走的刻印II",
+                "year": 2006,
+                "platforms": [
+                    "NDS"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Castlevania: Order of Ecclesia 恶魔城：被夺走的刻印",
                 "year": 2008,
-                "platforms": ["NDS"]
+                "platforms": [
+                    "NDS"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
+            },
+            {
+                "title": "Castlevania: Lords of Shadow 恶魔城：暗影主宰",
+                "year": 2010,
+                "platforms": [
+                    "PS3",
+                    "Xbox 360",
+                    "PC"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             }
         ],
-        "totalCount": 4,
+        "totalCount": 9,
         "company": {
             "name": "Konami",
             "country": "Japan",
@@ -4434,31 +6367,74 @@
         }
     },
     {
-        "series": "StarCraft",
+        "series": "星际争霸 / StarCraft",
         "games": [
             {
                 "title": "StarCraft 星际争霸",
                 "year": 1998,
-                "platforms": ["PC"],
-                "genre": ["即时战略"]
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "即时战略"
+                ]
             },
             {
                 "title": "StarCraft: Brood War 星际争霸：母巢之战",
                 "year": 1998,
-                "platforms": ["PC"]
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "即时战略"
+                ]
             },
             {
                 "title": "StarCraft II: Wings of Liberty 星际争霸2：自由之翼",
                 "year": 2010,
-                "platforms": ["PC", "MAC"]
+                "platforms": [
+                    "PC",
+                    "MAC"
+                ],
+                "genre": [
+                    "即时战略"
+                ]
+            },
+            {
+                "title": "StarCraft II: Heart of the Swarm 星际争霸2：虫群之心",
+                "year": 2013,
+                "platforms": [
+                    "PC",
+                    "MAC"
+                ],
+                "genre": [
+                    "即时战略"
+                ]
+            },
+            {
+                "title": "StarCraft II: Legacy of the Void 星际争霸2：虚空之遗",
+                "year": 2015,
+                "platforms": [
+                    "PC",
+                    "MAC"
+                ],
+                "genre": [
+                    "即时战略"
+                ]
             },
             {
                 "title": "StarCraft Remastered 星际争霸重制版",
                 "year": 2017,
-                "platforms": ["PC", "MAC"]
+                "platforms": [
+                    "PC",
+                    "MAC"
+                ],
+                "genre": [
+                    "即时战略"
+                ]
             }
         ],
-        "totalCount": 4,
+        "totalCount": 6,
         "company": {
             "name": "Blizzard Entertainment",
             "country": "USA",
@@ -4467,18 +6443,32 @@
         }
     },
     {
-        "series": "Overwatch",
+        "series": "守望先锋 / Overwatch",
         "games": [
             {
                 "title": "Overwatch 守望先锋",
                 "year": 2016,
-                "platforms": ["PC", "PS4", "Xbox One"],
-                "genre": ["第一人称射击", "团队射击"]
+                "platforms": [
+                    "PC",
+                    "PS4",
+                    "Xbox One"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
             },
             {
                 "title": "Overwatch 2 守望先锋2",
                 "year": 2022,
-                "platforms": ["PC", "PS5", "Xbox Series X/S", "Switch"]
+                "platforms": [
+                    "PC",
+                    "PS5",
+                    "Xbox Series X/S",
+                    "Switch"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
             }
         ],
         "totalCount": 2,
@@ -4490,36 +6480,103 @@
         }
     },
     {
-        "series": "King of Fighters",
+        "series": "拳皇 / King of Fighters",
         "games": [
             {
                 "title": "The King of Fighters '94 拳皇94",
                 "year": 1994,
-                "platforms": ["ARC", "NEO"],
-                "genre": ["格斗"]
+                "platforms": [
+                    "ARC",
+                    "NEO"
+                ],
+                "genre": [
+                    "格斗"
+                ]
+            },
+            {
+                "title": "The King of Fighters '95 拳皇95",
+                "year": 1995,
+                "platforms": [
+                    "ARC",
+                    "NEO"
+                ],
+                "genre": [
+                    "格斗"
+                ]
+            },
+            {
+                "title": "The King of Fighters '97 拳皇97",
+                "year": 1997,
+                "platforms": [
+                    "ARC",
+                    "NEO"
+                ],
+                "genre": [
+                    "格斗"
+                ]
             },
             {
                 "title": "The King of Fighters '98 拳皇98",
                 "year": 1998,
-                "platforms": ["ARC", "NEO"]
+                "platforms": [
+                    "ARC",
+                    "NEO"
+                ],
+                "genre": [
+                    "格斗"
+                ]
             },
             {
                 "title": "The King of Fighters 2002 拳皇2002",
                 "year": 2002,
-                "platforms": ["ARC", "NEO"]
+                "platforms": [
+                    "ARC",
+                    "NEO"
+                ],
+                "genre": [
+                    "格斗"
+                ]
+            },
+            {
+                "title": "The King of Fighters 2003 拳皇2003",
+                "year": 2003,
+                "platforms": [
+                    "ARC",
+                    "NEO"
+                ],
+                "genre": [
+                    "格斗"
+                ]
             },
             {
                 "title": "The King of Fighters XIII 拳皇13",
                 "year": 2010,
-                "platforms": ["ARC", "PS3", "Xbox 360", "PC"]
+                "platforms": [
+                    "ARC",
+                    "PS3",
+                    "Xbox 360",
+                    "PC"
+                ],
+                "genre": [
+                    "格斗"
+                ]
             },
             {
                 "title": "The King of Fighters XV 拳皇15",
                 "year": 2022,
-                "platforms": ["PS4", "PS5", "Xbox One", "Xbox Series X/S", "PC"]
+                "platforms": [
+                    "PS4",
+                    "PS5",
+                    "Xbox One",
+                    "Xbox Series X/S",
+                    "PC"
+                ],
+                "genre": [
+                    "格斗"
+                ]
             }
         ],
-        "totalCount": 5,
+        "totalCount": 8,
         "company": {
             "name": "SNK",
             "country": "Japan",
@@ -4528,31 +6585,113 @@
         }
     },
     {
-        "series": "英雄传说",
+        "series": "英雄传说 / The Legend of Heroes",
         "games": [
             {
                 "title": "Trails in the Sky 空之轨迹",
                 "year": 2004,
-                "platforms": ["PC", "PSP"],
-                "genre": ["角色扮演"]
+                "platforms": [
+                    "PC",
+                    "PSP"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Trails in the Sky SC 空之轨迹SC",
+                "year": 2006,
+                "platforms": [
+                    "PSP",
+                    "PC"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Trails in the Sky the 3rd 空之轨迹3rd",
+                "year": 2007,
+                "platforms": [
+                    "PSP",
+                    "PC"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Trails of Cold Steel 闪之轨迹",
                 "year": 2013,
-                "platforms": ["PS3", "PS Vita"]
+                "platforms": [
+                    "PS3",
+                    "PS Vita"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Trails of Cold Steel II 闪之轨迹2",
+                "year": 2014,
+                "platforms": [
+                    "PS3",
+                    "PS Vita"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Trails of Cold Steel III 闪之轨迹3",
                 "year": 2017,
-                "platforms": ["PS4", "PC", "Switch"]
+                "platforms": [
+                    "PS4",
+                    "PC",
+                    "Switch"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Trails of Cold Steel IV 闪之轨迹4",
+                "year": 2018,
+                "platforms": [
+                    "PS4",
+                    "PC",
+                    "Switch"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Trails through Daybreak 黎之轨迹",
                 "year": 2022,
-                "platforms": ["PS4", "PC", "Switch"]
+                "platforms": [
+                    "PS4",
+                    "PC",
+                    "Switch"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Trails through Daybreak II 黎之轨迹2",
+                "year": 2023,
+                "platforms": [
+                    "PS4",
+                    "PC",
+                    "Switch"
+                ],
+                "genre": [
+                    "角色扮演"
+                ]
             }
         ],
-        "totalCount": 4,
+        "totalCount": 9,
         "company": {
             "name": "Nihon Falcom",
             "country": "Japan",
@@ -4561,31 +6700,74 @@
         }
     },
     {
-        "series": "Mass Effect",
+        "series": "质量效应 / Mass Effect",
         "games": [
             {
                 "title": "Mass Effect 质量效应",
                 "year": 2007,
-                "platforms": ["Xbox 360", "PC"],
-                "genre": ["动作", "角色扮演"]
+                "platforms": [
+                    "Xbox 360",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Mass Effect 2 质量效应2",
                 "year": 2010,
-                "platforms": ["Xbox 360", "PC", "PS3"]
+                "platforms": [
+                    "Xbox 360",
+                    "PC",
+                    "PS3"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Mass Effect 3 质量效应3",
                 "year": 2012,
-                "platforms": ["Xbox 360", "PC", "PS3"]
+                "platforms": [
+                    "Xbox 360",
+                    "PC",
+                    "PS3"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Mass Effect: Andromeda 质量效应：仙女座",
                 "year": 2017,
-                "platforms": ["PS4", "Xbox One", "PC"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Mass Effect: Legendary Edition 质量效应：传奇版",
+                "year": 2021,
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             }
         ],
-        "totalCount": 4,
+        "totalCount": 5,
         "company": {
             "name": "BioWare / Atari",
             "country": "Canada/USA",
@@ -4594,36 +6776,86 @@
         }
     },
     {
-        "series": "Dark Souls",
+        "series": "黑暗之魂 / Dark Souls",
         "games": [
             {
                 "title": "Demon's Souls 恶魔之魂",
                 "year": 2009,
-                "platforms": ["PS3"],
-                "genre": ["动作", "角色扮演"]
+                "platforms": [
+                    "PS3"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Dark Souls 黑暗之魂",
                 "year": 2011,
-                "platforms": ["PS3", "Xbox 360", "PC"]
+                "platforms": [
+                    "PS3",
+                    "Xbox 360",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Dark Souls II 黑暗之魂2",
                 "year": 2014,
-                "platforms": ["PS3", "Xbox 360", "PC"]
+                "platforms": [
+                    "PS3",
+                    "Xbox 360",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Dark Souls III 黑暗之魂3",
                 "year": 2016,
-                "platforms": ["PS4", "Xbox One", "PC"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Elden Ring 艾尔登法环",
                 "year": 2022,
-                "platforms": ["PS5", "Xbox Series X/S", "PC"]
+                "platforms": [
+                    "PS5",
+                    "Xbox Series X/S",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Elden Ring: Shadow of the Erdtree DLC 艾尔登法环：黄金树幽影",
+                "year": 2024,
+                "platforms": [
+                    "PS5",
+                    "Xbox Series X/S",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             }
         ],
-        "totalCount": 5,
+        "totalCount": 6,
         "company": {
             "name": "FromSoftware",
             "country": "Japan",
@@ -4632,28 +6864,51 @@
         }
     },
     {
-        "series": "Armored Core",
+        "series": "装甲核心 / Armored Core",
         "games": [
             {
                 "title": "Armored Core 装甲核心",
                 "year": 1997,
-                "platforms": ["PS1"],
-                "genre": ["动作", "机甲"]
+                "platforms": [
+                    "PS1"
+                ],
+                "genre": [
+                    "动作",
+                    "机甲"
+                ]
             },
             {
                 "title": "Armored Core 3",
                 "year": 2002,
-                "platforms": ["PS2"]
+                "platforms": [
+                    "PS2"
+                ],
+                "genre": [
+                    "动作"
+                ]
             },
             {
                 "title": "Armored Core: For Answer",
                 "year": 2008,
-                "platforms": ["PS3", "Xbox 360"]
+                "platforms": [
+                    "PS3",
+                    "Xbox 360"
+                ],
+                "genre": [
+                    "动作"
+                ]
             },
             {
                 "title": "Armored Core VI: Fires of Rubicon",
                 "year": 2023,
-                "platforms": ["PS5", "Xbox Series X/S", "PC"]
+                "platforms": [
+                    "PS5",
+                    "Xbox Series X/S",
+                    "PC"
+                ],
+                "genre": [
+                    "动作"
+                ]
             }
         ],
         "totalCount": 4,
@@ -4665,13 +6920,19 @@
         }
     },
     {
-        "series": "Sekiro",
+        "series": "只狼 / Sekiro",
         "games": [
             {
                 "title": "Sekiro: Shadows Die Twice 只狼：影逝二度",
                 "year": 2019,
-                "platforms": ["PS4", "Xbox One", "PC"],
-                "genre": ["动作冒险"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             }
         ],
         "totalCount": 1,
@@ -4683,18 +6944,29 @@
         }
     },
     {
-        "series": "Bloodborne",
+        "series": "血源诅咒 / Bloodborne",
         "games": [
             {
                 "title": "Bloodborne 血源诅咒",
                 "year": 2015,
-                "platforms": ["PS4"],
-                "genre": ["动作", "角色扮演"]
+                "platforms": [
+                    "PS4"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Bloodborne: The Old Hunters 血源诅咒：老猎人",
                 "year": 2015,
-                "platforms": ["PS4"]
+                "platforms": [
+                    "PS4"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             }
         ],
         "totalCount": 2,
@@ -4706,33 +6978,74 @@
         }
     },
     {
-        "series": "Grand Theft Auto",
+        "series": "侠盗猎车手 / Grand Theft Auto",
         "games": [
             {
                 "title": "GTA III 侠盗猎车手3",
                 "year": 2001,
-                "platforms": ["PS2", "PC"],
-                "genre": ["开放世界", "动作冒险"]
+                "platforms": [
+                    "PS2",
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "GTA: Vice City 侠盗猎车手：罪恶都市",
                 "year": 2002,
-                "platforms": ["PS2", "PC"]
+                "platforms": [
+                    "PS2",
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "GTA: San Andreas 侠盗猎车手：圣安地列斯",
                 "year": 2004,
-                "platforms": ["PS2", "Xbox", "PC"]
+                "platforms": [
+                    "PS2",
+                    "Xbox",
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "GTA IV 侠盗猎车手4",
                 "year": 2008,
-                "platforms": ["PS3", "Xbox 360", "PC"]
+                "platforms": [
+                    "PS3",
+                    "Xbox 360",
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "GTA V 侠盗猎车手5",
                 "year": 2013,
-                "platforms": ["PS3", "Xbox 360", "PS4", "Xbox One", "PC", "PS5", "Xbox Series X/S"]
+                "platforms": [
+                    "PS3",
+                    "Xbox 360",
+                    "PS4",
+                    "Xbox One",
+                    "PC",
+                    "PS5",
+                    "Xbox Series X/S"
+                ],
+                "genre": [
+                    "开放世界",
+                    "动作冒险"
+                ]
             }
         ],
         "totalCount": 5,
@@ -4744,23 +7057,44 @@
         }
     },
     {
-        "series": "Red Dead Redemption",
+        "series": "荒野大镖客 / Red Dead Redemption",
         "games": [
             {
                 "title": "Red Dead Revolver",
                 "year": 2004,
-                "platforms": ["PS2", "Xbox"],
-                "genre": ["开放世界", "动作冒险"]
+                "platforms": [
+                    "PS2",
+                    "Xbox"
+                ],
+                "genre": [
+                    "开放世界",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Red Dead Redemption 荒野大镖客",
                 "year": 2010,
-                "platforms": ["PS3", "Xbox 360"]
+                "platforms": [
+                    "PS3",
+                    "Xbox 360"
+                ],
+                "genre": [
+                    "开放世界",
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Red Dead Redemption 2 荒野大镖客2",
                 "year": 2018,
-                "platforms": ["PS4", "Xbox One", "PC"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "动作冒险"
+                ]
             }
         ],
         "totalCount": 3,
@@ -4772,23 +7106,46 @@
         }
     },
     {
-        "series": "Max Payne",
+        "series": "马克思·佩恩 / Max Payne",
         "games": [
             {
                 "title": "Max Payne 马克思·佩恩",
                 "year": 2001,
-                "platforms": ["PC", "PS2", "Xbox"],
-                "genre": ["第三人称射击", "动作"]
+                "platforms": [
+                    "PC",
+                    "PS2",
+                    "Xbox"
+                ],
+                "genre": [
+                    "第三人称射击",
+                    "动作"
+                ]
             },
             {
                 "title": "Max Payne 2: The Fall of Max Payne",
                 "year": 2003,
-                "platforms": ["PC", "PS2", "Xbox"]
+                "platforms": [
+                    "PC",
+                    "PS2",
+                    "Xbox"
+                ],
+                "genre": [
+                    "第三人称射击",
+                    "动作"
+                ]
             },
             {
                 "title": "Max Payne 3",
                 "year": 2012,
-                "platforms": ["PS3", "Xbox 360", "PC"]
+                "platforms": [
+                    "PS3",
+                    "Xbox 360",
+                    "PC"
+                ],
+                "genre": [
+                    "第三人称射击",
+                    "动作"
+                ]
             }
         ],
         "totalCount": 3,
@@ -4800,28 +7157,48 @@
         }
     },
     {
-        "series": "Uncharted",
+        "series": "神秘海域 / Uncharted",
         "games": [
             {
                 "title": "Uncharted: Drake's Fortune 神秘海域：德雷克的财富",
                 "year": 2007,
-                "platforms": ["PS3"],
-                "genre": ["动作冒险"]
+                "platforms": [
+                    "PS3"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Uncharted 2: Among Thieves 神秘海域2：纵横四海",
                 "year": 2009,
-                "platforms": ["PS3"]
+                "platforms": [
+                    "PS3"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Uncharted 3: Drake's Deception 神秘海域3：德雷克的骗局",
                 "year": 2011,
-                "platforms": ["PS3"]
+                "platforms": [
+                    "PS3"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             },
             {
                 "title": "Uncharted 4: A Thief's End 神秘海域4：盗贼末路",
                 "year": 2016,
-                "platforms": ["PS4", "PC"]
+                "platforms": [
+                    "PS4",
+                    "PC"
+                ],
+                "genre": [
+                    "动作冒险"
+                ]
             }
         ],
         "totalCount": 4,
@@ -4833,18 +7210,31 @@
         }
     },
     {
-        "series": "The Last of Us",
+        "series": "最后生还者 / The Last of Us",
         "games": [
             {
                 "title": "The Last of Us 最后生还者",
                 "year": 2013,
-                "platforms": ["PS3", "PS4"],
-                "genre": ["动作冒险", "生存"]
+                "platforms": [
+                    "PS3",
+                    "PS4"
+                ],
+                "genre": [
+                    "动作冒险",
+                    "生存"
+                ]
             },
             {
                 "title": "The Last of Us Part II 最后生还者2",
                 "year": 2020,
-                "platforms": ["PS4", "PS5"]
+                "platforms": [
+                    "PS4",
+                    "PS5"
+                ],
+                "genre": [
+                    "动作冒险",
+                    "生存"
+                ]
             }
         ],
         "totalCount": 2,
@@ -4856,23 +7246,40 @@
         }
     },
     {
-        "series": "Crash Bandicoot",
+        "series": "古惑狼 / Crash Bandicoot",
         "games": [
             {
                 "title": "Crash Bandicoot 古惑狼",
                 "year": 1996,
-                "platforms": ["PS1"],
-                "genre": ["横版过关", "动作"]
+                "platforms": [
+                    "PS1"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
             },
             {
                 "title": "Crash Bandicoot 2: Cortex Strikes Back",
                 "year": 1997,
-                "platforms": ["PS1"]
+                "platforms": [
+                    "PS1"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
             },
             {
                 "title": "Crash Bandicoot: Warped 古惑狼3",
                 "year": 1998,
-                "platforms": ["PS1"]
+                "platforms": [
+                    "PS1"
+                ],
+                "genre": [
+                    "横版过关",
+                    "动作"
+                ]
             }
         ],
         "totalCount": 3,
@@ -4884,28 +7291,57 @@
         }
     },
     {
-        "series": "The Witcher",
+        "series": "巫师 / The Witcher",
         "games": [
             {
                 "title": "The Witcher 巫师",
                 "year": 2007,
-                "platforms": ["PC"],
-                "genre": ["动作", "角色扮演"]
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "The Witcher 2: Assassins of Kings 巫师2：王国刺客",
                 "year": 2011,
-                "platforms": ["PC", "Xbox 360"]
+                "platforms": [
+                    "PC",
+                    "Xbox 360"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "The Witcher 3: Wild Hunt 巫师3：狂猎",
                 "year": 2015,
-                "platforms": ["PS4", "Xbox One", "PC", "Switch"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC",
+                    "Switch"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "The Witcher 3: Blood and Wine 巫师3：血与酒",
                 "year": 2016,
-                "platforms": ["PS4", "Xbox One", "PC"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "动作",
+                    "角色扮演"
+                ]
             }
         ],
         "totalCount": 4,
@@ -4917,18 +7353,35 @@
         }
     },
     {
-        "series": "Cyberpunk",
+        "series": "赛博朋克 / Cyberpunk",
         "games": [
             {
                 "title": "Cyberpunk 2077 赛博朋克2077",
                 "year": 2020,
-                "platforms": ["PS5", "Xbox Series X/S", "PC"],
-                "genre": ["开放世界", "动作", "角色扮演"]
+                "platforms": [
+                    "PS5",
+                    "Xbox Series X/S",
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "动作",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Cyberpunk 2077: Phantom Liberty",
                 "year": 2023,
-                "platforms": ["PS5", "Xbox Series X/S", "PC"]
+                "platforms": [
+                    "PS5",
+                    "Xbox Series X/S",
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "动作",
+                    "角色扮演"
+                ]
             }
         ],
         "totalCount": 2,
@@ -4940,26 +7393,73 @@
         }
     },
     {
-        "series": "The Elder Scrolls",
+        "series": "上古卷轴 / The Elder Scrolls",
         "games": [
+            {
+                "title": "The Elder Scrolls: Arena 上古卷轴1：竞技场",
+                "year": 1994,
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "The Elder Scrolls II: Daggerfall 上古卷轴2：匕首雨",
+                "year": 1996,
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "角色扮演"
+                ]
+            },
             {
                 "title": "The Elder Scrolls III: Morrowind 上古卷轴3：晨风",
                 "year": 2002,
-                "platforms": ["PC", "Xbox"],
-                "genre": ["开放世界", "角色扮演"]
+                "platforms": [
+                    "PC",
+                    "Xbox"
+                ],
+                "genre": [
+                    "开放世界",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "The Elder Scrolls IV: Oblivion 上古卷轴4：遗忘国度",
                 "year": 2006,
-                "platforms": ["PC", "Xbox 360", "PS3"]
+                "platforms": [
+                    "PC",
+                    "Xbox 360",
+                    "PS3"
+                ],
+                "genre": [
+                    "开放世界",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "The Elder Scrolls V: Skyrim 上古卷轴5：天际",
                 "year": 2011,
-                "platforms": ["PC", "PS3", "Xbox 360", "PS4", "Xbox One", "Switch"]
+                "platforms": [
+                    "PC",
+                    "PS3",
+                    "Xbox 360",
+                    "PS4",
+                    "Xbox One",
+                    "Switch"
+                ],
+                "genre": [
+                    "开放世界",
+                    "角色扮演"
+                ]
             }
         ],
-        "totalCount": 3,
+        "totalCount": 5,
         "company": {
             "name": "Bethesda",
             "country": "USA",
@@ -4968,31 +7468,84 @@
         }
     },
     {
-        "series": "Fallout",
+        "series": "辐射 / Fallout",
         "games": [
+            {
+                "title": "Fallout 辐射",
+                "year": 1997,
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "角色扮演"
+                ]
+            },
+            {
+                "title": "Fallout 2 辐射2",
+                "year": 1998,
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "角色扮演"
+                ]
+            },
             {
                 "title": "Fallout 3 辐射3",
                 "year": 2008,
-                "platforms": ["PC", "PS3", "Xbox 360"],
-                "genre": ["开放世界", "角色扮演"]
+                "platforms": [
+                    "PC",
+                    "PS3",
+                    "Xbox 360"
+                ],
+                "genre": [
+                    "开放世界",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Fallout: New Vegas 辐射：新维加斯",
                 "year": 2010,
-                "platforms": ["PC", "PS3", "Xbox 360"]
+                "platforms": [
+                    "PC",
+                    "PS3",
+                    "Xbox 360"
+                ],
+                "genre": [
+                    "开放世界",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Fallout 4 辐射4",
                 "year": 2015,
-                "platforms": ["PS4", "Xbox One", "PC"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "角色扮演"
+                ]
             },
             {
                 "title": "Fallout 76 辐射76",
                 "year": 2018,
-                "platforms": ["PS4", "Xbox One", "PC"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC"
+                ],
+                "genre": [
+                    "开放世界",
+                    "角色扮演"
+                ]
             }
         ],
-        "totalCount": 4,
+        "totalCount": 6,
         "company": {
             "name": "Bethesda",
             "country": "USA",
@@ -5001,28 +7554,53 @@
         }
     },
     {
-        "series": "Doom",
+        "series": "毁灭战士 / Doom",
         "games": [
             {
                 "title": "Doom 毁灭战士",
                 "year": 1993,
-                "platforms": ["PC"],
-                "genre": ["第一人称射击"]
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
             },
             {
                 "title": "Doom II 毁灭战士2",
                 "year": 1994,
-                "platforms": ["PC"]
+                "platforms": [
+                    "PC"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
             },
             {
                 "title": "Doom (2016) 毁灭战士2016",
                 "year": 2016,
-                "platforms": ["PS4", "Xbox One", "PC", "Switch"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC",
+                    "Switch"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
             },
             {
                 "title": "Doom Eternal 毁灭战士：永恒",
                 "year": 2020,
-                "platforms": ["PS4", "Xbox One", "PC", "Switch"]
+                "platforms": [
+                    "PS4",
+                    "Xbox One",
+                    "PC",
+                    "Switch"
+                ],
+                "genre": [
+                    "第一人称射击"
+                ]
             }
         ],
         "totalCount": 4,

@@ -7,169 +7,76 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="rankings.css">
     <style>
-        .series-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 20px;
+        /* ── Level 1: Company ── */
+        .company-list { display: flex; flex-direction: column; gap: 24px; }
+        .company-card { background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; }
+        .company-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white; padding: 18px 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; user-select: none;
         }
+        .company-header-left { display: flex; align-items: center; gap: 14px; }
+        .company-logo { font-size: 2rem; line-height: 1; }
+        .company-name { font-size: 1.3rem; font-weight: 800; margin: 0 0 4px; }
+        .company-info { font-size: 0.8rem; opacity: 0.75; display: flex; gap: 12px; flex-wrap: wrap; }
+        .company-badge { background: rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 14px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+        .company-toggle { font-size: 1.1rem; transition: transform 0.25s; flex-shrink: 0; }
+        .company-toggle.open { transform: rotate(180deg); }
+        .company-body { display: none; }
+        .company-body.open { display: block; }
 
-        .series-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            overflow: hidden;
-            transition: box-shadow 0.2s;
+        /* ── Level 2: Series ── */
+        .series-list { padding: 12px 16px; display: flex; flex-direction: column; gap: 10px; }
+        .series-item { border: 1.5px solid #e8eaf6; border-radius: 12px; overflow: hidden; }
+        .series-header {
+            background: linear-gradient(135deg, #f8f9ff 0%, #eef0ff 100%);
+            padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; user-select: none;
         }
+        .series-header:hover { background: linear-gradient(135deg, #eef0ff 0%, #e0e4ff 100%); }
+        .series-name { font-size: 1rem; font-weight: 700; color: #3949ab; margin: 0; }
+        .series-sub { font-size: 0.78rem; color: #7986cb; margin-top: 3px; }
+        .series-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+        .series-count { background: #e8eaf6; color: #3949ab; padding: 2px 10px; border-radius: 10px; font-size: 0.75rem; font-weight: 700; }
+        .series-toggle { font-size: 0.85rem; color: #9fa8da; transition: transform 0.25s; }
+        .series-toggle.open { transform: rotate(180deg); }
+        .series-body { display: none; }
+        .series-body.open { display: block; }
 
-        .series-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
-
-        .series-card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            user-select: none;
+        /* ── Level 3: Games (rich rows) ── */
+        .game-row {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 12px 16px; border-top: 1px solid #f0f0f0; transition: background 0.15s;
         }
-
-        .series-card-header h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 0;
+        .game-row:hover { background: #f8f9ff; }
+        .game-row.not-played { opacity: 0.55; }
+        .game-poster {
+            width: 48px; height: 64px; object-fit: cover;
+            border-radius: 6px; flex-shrink: 0; display: block; background: #e8eaf6;
         }
+        .game-poster-placeholder { width: 48px; height: 64px; border-radius: 6px; flex-shrink: 0; background: #e8eaf6; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: #aaa; }
+        .game-info { flex: 1; min-width: 0; }
+        .game-title { font-size: 0.88rem; font-weight: 600; color: #333; margin-bottom: 4px; word-break: break-word; }
+        .game-title a { color: #667eea; text-decoration: none; }
+        .game-title a:hover { text-decoration: underline; }
+        .game-meta { font-size: 0.75rem; color: #888; display: flex; flex-wrap: wrap; gap: 6px; }
+        .game-platform-badge { background: #f3f4f6; padding: 1px 7px; border-radius: 7px; }
+        .game-comment { font-size: 0.78rem; color: #666; margin-top: 4px; line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .game-num { width: 22px; height: 22px; border-radius: 50%; background: #e8eaf6; color: #5c6bc0; font-size: 0.7rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 20px; }
 
-        .series-meta {
-            display: flex;
-            gap: 12px;
-            font-size: 0.8rem;
-            opacity: 0.9;
-            align-items: center;
-            flex-wrap: wrap;
+        /* ── Filters ── */
+        .page-filters {
+            background: white; padding: 16px 20px; border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 20px;
+            display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
         }
-
-        .series-badge {
-            background: rgba(255,255,255,0.25);
-            padding: 3px 10px;
-            border-radius: 12px;
-            white-space: nowrap;
-        }
-
-        .series-toggle-icon {
-            font-size: 1rem;
-            transition: transform 0.25s;
-            margin-left: 8px;
-            flex-shrink: 0;
-        }
-
-        .series-toggle-icon.open { transform: rotate(180deg); }
-
-        .series-card-body {
-            display: none;
-            padding: 0;
-        }
-
-        .series-card-body.open { display: block; }
-
-        .series-game-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px 16px;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background 0.15s;
-        }
-
-        .series-game-row:last-child { border-bottom: none; }
-        .series-game-row:hover { background: #f8f9ff; }
-        .series-game-row.not-played { opacity: 0.5; }
-
-        .series-game-info { flex: 1; min-width: 0; }
-
-        .series-game-title {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 4px;
-            word-break: break-word;
-        }
-
-        .series-game-title a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        .series-game-title a:hover { text-decoration: underline; }
-
-        .series-game-meta {
-            font-size: 0.75rem;
-            color: #888;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .series-game-rating {
-            font-weight: bold;
-            color: #ff6b6b;
-        }
-
-        .series-game-played-badge {
-            background: #e8f5e9;
-            color: #2e7d32;
-            padding: 1px 7px;
-            border-radius: 8px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-
-        .series-game-comment {
-            font-size: 0.78rem;
-            color: #666;
-            margin-top: 4px;
-            line-height: 1.4;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-        .series-filters {
-            background: white;
-            padding: 20px 25px;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .series-filters input {
-            padding: 10px 14px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .series-filters input:focus { outline: none; border-color: #667eea; }
-
-        .series-sort-label { font-size: 0.85rem; color: #666; white-space: nowrap; }
-
-        .series-sort-select {
-            padding: 10px 14px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            cursor: pointer;
-        }
+        .page-filters input { padding: 10px 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 0.9rem; flex: 1; min-width: 200px; }
+        .page-filters input:focus { outline: none; border-color: #3949ab; }
 
         @media (max-width: 680px) {
-            .series-grid { grid-template-columns: 1fr; }
+            .game-poster, .game-poster-placeholder { width: 40px; height: 54px; }
+            .game-num { display: none; }
         }
     </style>
 </head>
@@ -185,128 +92,168 @@
     <div class="container">
         <div class="header">
             <h1>游戏系列</h1>
-            <p>按系列分组展示游戏记录，以及系列中未游玩的作品</p>
+            <p>顶级游戏公司 · 旗下系列 · 系列游戏</p>
         </div>
 
-        <div class="series-filters">
-            <input type="text" id="series-search" placeholder="搜索系列名称..." oninput="seriesPage.filter()">
-            <span class="series-sort-label">排序：</span>
-            <select class="series-sort-select" id="series-sort" onchange="seriesPage.filter()">
-                <option value="series">系列名称</option>
-                <option value="gameCount">游戏数量</option>
-            </select>
+        <div class="page-filters">
+            <input type="text" id="search" placeholder="搜索公司、系列或游戏名称..." oninput="page.filter()">
         </div>
 
         <div class="stats">
-            <div class="stat-item"><div class="stat-value" id="series-totalCount">0</div><div class="stat-label">总系列数</div></div>
-            <div class="stat-item"><div class="stat-value" id="series-filteredCount">0</div><div class="stat-label">显示系列数</div></div>
-            <div class="stat-item"><div class="stat-value" id="series-totalGames">0</div><div class="stat-label">系列内游戏总数</div></div>
+            <div class="stat-item"><div class="stat-value" id="stat-companies">0</div><div class="stat-label">公司数</div></div>
+            <div class="stat-item"><div class="stat-value" id="stat-series">0</div><div class="stat-label">系列数</div></div>
+            <div class="stat-item"><div class="stat-value" id="stat-games">0</div><div class="stat-label">游戏总数</div></div>
         </div>
 
-        <div class="series-grid" id="series-grid"></div>
+        <div class="company-list" id="company-list"></div>
     </div>
 
     <script>
-        const seriesPage = (() => {
-            let allSeries = [];
-            let filtered = [];
-            let loaded = false;
+    function esc(s) {
+        return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
 
-            function load() {
-                if (loaded) return;
-                loaded = true;
-                fetch('data/rankings/game-series.json')
-                    .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
-                    .then(data => { allSeries = data; filter(); })
-                    .catch(err => {
-                        document.getElementById('series-grid').innerHTML =
-                            `<p style="color:#999;padding:40px;text-align:center;">加载失败：${err.message}</p>`;
-                    });
-            }
+    const page = (() => {
+        let allSeries = [], ready = false;
 
-            function filter() {
-                const q = (document.getElementById('series-search')?.value || '').toLowerCase();
-                const sortKey = document.getElementById('series-sort')?.value || 'series';
-                filtered = allSeries.filter(s => !q || s.series.toLowerCase().includes(q));
-                filtered.sort((a, b) => {
-                    if (sortKey === 'gameCount') return b.games.length - a.games.length;
-                    return a.series.localeCompare(b.series);
+        function load() {
+            fetch('data/rankings/game-series.json')
+                .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+                .then(data => { allSeries = data; ready = true; filter(); })
+                .catch(err => {
+                    document.getElementById('company-list').innerHTML =
+                        `<p style="color:#999;padding:40px;text-align:center;">加载失败：${err.message}</p>`;
                 });
-                render();
+        }
+
+        // Group series by company, return array of company objects
+        function groupByCompany(seriesList) {
+            const map = new Map();
+            seriesList.forEach(s => {
+                const co = s.company || { name: '其他', country: '', founded: '', logo: '📦' };
+                if (!map.has(co.name)) map.set(co.name, { ...co, seriesList: [] });
+                map.get(co.name).seriesList.push(s);
+            });
+            return Array.from(map.values());
+        }
+
+        function filter() {
+            if (!ready) return;
+            const q = (document.getElementById('search')?.value || '').toLowerCase();
+
+            let filtered = allSeries;
+            if (q) {
+                filtered = allSeries.map(s => {
+                    const coName = (s.company?.name || '').toLowerCase();
+                    if (coName.includes(q) || s.series.toLowerCase().includes(q)) return s;
+                    const mg = s.games.filter(g => g.title.toLowerCase().includes(q));
+                    if (mg.length) return { ...s, games: mg };
+                    return null;
+                }).filter(Boolean);
             }
 
-            function render() {
-                const grid = document.getElementById('series-grid');
-                if (!grid) return;
+            const grouped = groupByCompany(filtered);
+            const totalGames = filtered.reduce((n, s) => n + s.games.length, 0);
+            document.getElementById('stat-companies').textContent = grouped.length;
+            document.getElementById('stat-series').textContent = filtered.length;
+            document.getElementById('stat-games').textContent = totalGames;
 
-                document.getElementById('series-totalCount').textContent = allSeries.length;
-                document.getElementById('series-filteredCount').textContent = filtered.length;
-                document.getElementById('series-totalGames').textContent =
-                    filtered.reduce((s, x) => s + x.games.length, 0);
+            _srIdx = 0;
+            const list = document.getElementById('company-list');
+            list.innerHTML = grouped.length
+                ? grouped.map(renderCo).join('')
+                : '<p style="color:#999;padding:40px;text-align:center;">没有找到匹配结果</p>';
+        }
 
-                if (filtered.length === 0) {
-                    grid.innerHTML = '<p style="color:#999;padding:40px;text-align:center;grid-column:1/-1;">没有找到匹配的系列</p>';
-                    return;
-                }
-                grid.innerHTML = filtered.map(s => renderSeriesCard(s)).join('');
-            }
-
-            function renderSeriesCard(s) {
-                const cardId = 'series-' + s.series.replace(/[^a-zA-Z0-9一-鿿]/g, '_');
-                const gamesHtml = s.games.map(g => {
-                    const rating = '';
-                    const playedBadge = '';
-                    const year = g.year ? `<span>${g.year}</span>` : '';
-                    const dateP = g.datePlayed ? `<span>${g.datePlayed}</span>` : '';
-                    const platforms = g.platforms && g.platforms.length
-                        ? `<span>${g.platforms.slice(0, 3).join('/')}</span>` : '';
-                    const commentHtml = g.comment ? `<div class="series-game-comment">${esc(g.comment)}</div>` : '';
-                    const titleHtml = g.detailLink
-                        ? `<a href="${g.detailLink}" target="_blank">${esc(g.title)}</a>`
-                        : esc(g.title);
-                    const poster = g.posterUrl
-                        ? `<img src="${g.posterUrl}" style="width:48px;height:64px;object-fit:cover;display:block;border-radius:6px;flex-shrink:0;" loading="lazy" onerror="this.outerHTML='<div style=\\'width:48px;height:64px;background:#ddd;border-radius:6px;flex-shrink:0;\\'></div>'">`
-                        : `<div style="width:48px;height:64px;background:#ddd;border-radius:6px;flex-shrink:0;"></div>`;
-                    return `<div class="series-game-row">
-                        ${poster}
-                        <div class="series-game-info">
-                            <div class="series-game-title">${titleHtml}</div>
-                            <div class="series-game-meta">${year}${rating}${playedBadge}${dateP}${platforms}</div>
-                            ${commentHtml}
-                        </div>
-                    </div>`;
-                }).join('');
-
-                return `<div class="series-card">
-                    <div class="series-card-header" onclick="seriesPage.toggle('${cardId}')">
+        /* ── L1: Company ── */
+        function renderCo(c) {
+            const id = 'co-' + c.name.replace(/[^a-zA-Z0-9]/g, '_');
+            const totalGames = c.seriesList.reduce((n, s) => n + s.games.length, 0);
+            return `<div class="company-card">
+                <div class="company-header" onclick="page.toggleCo('${id}')">
+                    <div class="company-header-left">
+                        <span class="company-logo">${esc(c.logo)}</span>
                         <div>
-                            <h3>${esc(s.series)}</h3>
-                            <div class="series-meta">
-                                <span class="series-badge">${s.games.length} 作</span>
+                            <div class="company-name">${esc(c.name)}</div>
+                            <div class="company-info">
+                                ${c.country ? `<span>${esc(c.country)}</span>` : ''}
+                                ${c.founded ? `<span>成立 ${c.founded}</span>` : ''}
                             </div>
                         </div>
-                        <span class="series-toggle-icon open" id="${cardId}-icon">▼</span>
                     </div>
-                    <div class="series-card-body open" id="${cardId}-body">${gamesHtml}</div>
-                </div>`;
-            }
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <span class="company-badge">${c.seriesList.length} 系列 · ${totalGames} 游戏</span>
+                        <span class="company-toggle open" id="${id}-icon">▼</span>
+                    </div>
+                </div>
+                <div class="company-body open" id="${id}-body">
+                    <div class="series-list">${c.seriesList.map(s => renderSr(id, s)).join('')}</div>
+                </div>
+            </div>`;
+        }
 
-            function toggle(cardId) {
-                const body = document.getElementById(cardId + '-body');
-                const icon = document.getElementById(cardId + '-icon');
-                if (!body) return;
-                const open = body.classList.toggle('open');
-                if (icon) icon.classList.toggle('open', open);
-            }
+        /* ── L2: Series ── */
+        let _srIdx = 0;
+        function renderSr(coId, s) {
+            const id = coId + '_sr' + (_srIdx++);
+            const genre = (s.games[0]?.genre || []).join(' / ') || '—';
+            return `<div class="series-item">
+                <div class="series-header" onclick="page.toggleSr('${id}')">
+                    <div>
+                        <div class="series-name">${esc(s.series)}</div>
+                        <div class="series-sub">${esc(genre)}</div>
+                    </div>
+                    <div class="series-right">
+                        <span class="series-count">${s.games.length} 作</span>
+                        <span class="series-toggle" id="${id}-icon">▼</span>
+                    </div>
+                </div>
+                <div class="series-body" id="${id}-body">
+                    ${s.games.map((g, i) => renderGame(g, i + 1)).join('')}
+                </div>
+            </div>`;
+        }
 
-            function esc(s) {
-                return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-            }
+        /* ── L3: Game row ── */
+        function renderGame(g, num) {
+            const poster = g.posterUrl
+                ? `<img class="game-poster" src="${esc(g.posterUrl)}" loading="lazy" onerror="this.outerHTML='<div class=\\'game-poster-placeholder\\'>🎮</div>'">`
+                : `<div class="game-poster-placeholder">🎮</div>`;
+            const titleHtml = g.detailLink
+                ? `<a href="${esc(g.detailLink)}" target="_blank">${esc(g.title)}</a>`
+                : esc(g.title);
+            const year = g.year ? `<span>${g.year}</span>` : '';
+            const platforms = (g.platforms || []).slice(0, 4).map(p => `<span class="game-platform-badge">${esc(p)}</span>`).join('');
+            const comment = g.comment ? `<div class="game-comment">${esc(g.comment)}</div>` : '';
+            return `<div class="game-row">
+                <span class="game-num">${num}</span>
+                ${poster}
+                <div class="game-info">
+                    <div class="game-title">${titleHtml}</div>
+                    <div class="game-meta">${year}${platforms}</div>
+                    ${comment}
+                </div>
+            </div>`;
+        }
 
-            return { load, filter, toggle };
-        })();
+        function toggleCo(id) {
+            const b = document.getElementById(id + '-body'), ic = document.getElementById(id + '-icon');
+            if (!b) return;
+            const open = b.classList.toggle('open');
+            if (ic) ic.classList.toggle('open', open);
+        }
 
-        seriesPage.load();
+        function toggleSr(id) {
+            const b = document.getElementById(id + '-body'), ic = document.getElementById(id + '-icon');
+            if (!b) return;
+            const open = b.classList.toggle('open');
+            if (ic) ic.classList.toggle('open', open);
+        }
+
+        return { load, filter, toggleCo, toggleSr };
+    })();
+
+    page.load();
     </script>
 </body>
 </html>

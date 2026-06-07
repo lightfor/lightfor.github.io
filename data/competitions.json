@@ -1,0 +1,1725 @@
+{
+  "competitions": [
+    {
+      "id": "worldcup2026",
+      "name": "FIFA 世界杯 2026",
+      "emblem": "🏆",
+      "dates": "2026年6月11日 — 7月19日",
+      "host": "美国 · 加拿大 · 墨西哥",
+      "teams_count": 48,
+      "matches_count": 104,
+      "groups": [
+        {
+          "group": "A",
+          "teams": [
+            {
+              "name": "墨西哥",
+              "flag": "mx"
+            },
+            {
+              "name": "南非",
+              "flag": "za"
+            },
+            {
+              "name": "韩国",
+              "flag": "kr"
+            },
+            {
+              "name": "捷克",
+              "flag": "cz"
+            }
+          ]
+        },
+        {
+          "group": "B",
+          "teams": [
+            {
+              "name": "加拿大",
+              "flag": "ca"
+            },
+            {
+              "name": "波斯尼亚和黑塞哥维那",
+              "flag": "ba"
+            },
+            {
+              "name": "卡塔尔",
+              "flag": "qa"
+            },
+            {
+              "name": "瑞士",
+              "flag": "ch"
+            }
+          ]
+        },
+        {
+          "group": "C",
+          "teams": [
+            {
+              "name": "巴西",
+              "flag": "br"
+            },
+            {
+              "name": "摩洛哥",
+              "flag": "ma"
+            },
+            {
+              "name": "海地",
+              "flag": "ht"
+            },
+            {
+              "name": "苏格兰",
+              "flag": "gb"
+            }
+          ]
+        },
+        {
+          "group": "D",
+          "teams": [
+            {
+              "name": "美国",
+              "flag": "us"
+            },
+            {
+              "name": "巴拉圭",
+              "flag": "py"
+            },
+            {
+              "name": "澳大利亚",
+              "flag": "au"
+            },
+            {
+              "name": "土耳其",
+              "flag": "tr"
+            }
+          ]
+        },
+        {
+          "group": "E",
+          "teams": [
+            {
+              "name": "德国",
+              "flag": "de"
+            },
+            {
+              "name": "库拉索",
+              "flag": "cw"
+            },
+            {
+              "name": "象牙海岸",
+              "flag": "ci"
+            },
+            {
+              "name": "厄瓜多尔",
+              "flag": "ec"
+            }
+          ]
+        },
+        {
+          "group": "F",
+          "teams": [
+            {
+              "name": "荷兰",
+              "flag": "nl"
+            },
+            {
+              "name": "日本",
+              "flag": "jp"
+            },
+            {
+              "name": "瑞典",
+              "flag": "se"
+            },
+            {
+              "name": "突尼斯",
+              "flag": "tn"
+            }
+          ]
+        },
+        {
+          "group": "G",
+          "teams": [
+            {
+              "name": "比利时",
+              "flag": "be"
+            },
+            {
+              "name": "埃及",
+              "flag": "eg"
+            },
+            {
+              "name": "伊朗",
+              "flag": "ir"
+            },
+            {
+              "name": "新西兰",
+              "flag": "nz"
+            }
+          ]
+        },
+        {
+          "group": "H",
+          "teams": [
+            {
+              "name": "西班牙",
+              "flag": "es"
+            },
+            {
+              "name": "佛得角",
+              "flag": "cv"
+            },
+            {
+              "name": "沙特阿拉伯",
+              "flag": "sa"
+            },
+            {
+              "name": "乌拉圭",
+              "flag": "uy"
+            }
+          ]
+        },
+        {
+          "group": "I",
+          "teams": [
+            {
+              "name": "法国",
+              "flag": "fr"
+            },
+            {
+              "name": "塞内加尔",
+              "flag": "sn"
+            },
+            {
+              "name": "伊拉克",
+              "flag": "iq"
+            },
+            {
+              "name": "挪威",
+              "flag": "no"
+            }
+          ]
+        },
+        {
+          "group": "J",
+          "teams": [
+            {
+              "name": "阿根廷",
+              "flag": "ar"
+            },
+            {
+              "name": "阿尔及利亚",
+              "flag": "dz"
+            },
+            {
+              "name": "奥地利",
+              "flag": "at"
+            },
+            {
+              "name": "约旦",
+              "flag": "jo"
+            }
+          ]
+        },
+        {
+          "group": "K",
+          "teams": [
+            {
+              "name": "葡萄牙",
+              "flag": "pt"
+            },
+            {
+              "name": "刚果民主共和国",
+              "flag": "cd"
+            },
+            {
+              "name": "乌兹别克斯坦",
+              "flag": "uz"
+            },
+            {
+              "name": "哥伦比亚",
+              "flag": "co"
+            }
+          ]
+        },
+        {
+          "group": "L",
+          "teams": [
+            {
+              "name": "英格兰",
+              "flag": "gb"
+            },
+            {
+              "name": "克罗地亚",
+              "flag": "hr"
+            },
+            {
+              "name": "加纳",
+              "flag": "gh"
+            },
+            {
+              "name": "巴拿马",
+              "flag": "pa"
+            }
+          ]
+        }
+      ],
+      "schedule": [
+        {
+          "stage": "A 组",
+          "time": "6月12日 03:00 · 开幕战",
+          "venue": "墨西哥城体育场",
+          "home": {
+            "name": "墨西哥",
+            "flag": "mx"
+          },
+          "away": {
+            "name": "南非",
+            "flag": "za"
+          },
+          "score": null
+        },
+        {
+          "stage": "A 组",
+          "time": "6月12日 10:00",
+          "venue": "瓜达拉哈拉体育场",
+          "home": {
+            "name": "韩国",
+            "flag": "kr"
+          },
+          "away": {
+            "name": "捷克",
+            "flag": "cz"
+          },
+          "score": null
+        },
+        {
+          "stage": "A 组",
+          "time": "6月19日 00:00",
+          "venue": "亚特兰大体育场",
+          "home": {
+            "name": "捷克",
+            "flag": "cz"
+          },
+          "away": {
+            "name": "南非",
+            "flag": "za"
+          },
+          "score": null
+        },
+        {
+          "stage": "A 组",
+          "time": "6月19日 09:00",
+          "venue": "瓜达拉哈拉体育场",
+          "home": {
+            "name": "墨西哥",
+            "flag": "mx"
+          },
+          "away": {
+            "name": "韩国",
+            "flag": "kr"
+          },
+          "score": null
+        },
+        {
+          "stage": "A 组",
+          "time": "6月25日 09:00",
+          "venue": "墨西哥城体育场",
+          "home": {
+            "name": "捷克",
+            "flag": "cz"
+          },
+          "away": {
+            "name": "墨西哥",
+            "flag": "mx"
+          },
+          "score": null
+        },
+        {
+          "stage": "A 组",
+          "time": "6月25日 09:00",
+          "venue": "蒙特雷体育场",
+          "home": {
+            "name": "南非",
+            "flag": "za"
+          },
+          "away": {
+            "name": "韩国",
+            "flag": "kr"
+          },
+          "score": null
+        },
+        {
+          "stage": "B 组",
+          "time": "6月13日 03:00",
+          "venue": "多伦多体育场",
+          "home": {
+            "name": "加拿大",
+            "flag": "ca"
+          },
+          "away": {
+            "name": "波黑",
+            "flag": "ba"
+          },
+          "score": null
+        },
+        {
+          "stage": "B 组",
+          "time": "6月14日 03:00",
+          "venue": "旧金山湾区体育场",
+          "home": {
+            "name": "卡塔尔",
+            "flag": "qa"
+          },
+          "away": {
+            "name": "瑞士",
+            "flag": "ch"
+          },
+          "score": null
+        },
+        {
+          "stage": "B 组",
+          "time": "6月19日 03:00",
+          "venue": "洛杉矶体育场",
+          "home": {
+            "name": "瑞士",
+            "flag": "ch"
+          },
+          "away": {
+            "name": "波黑",
+            "flag": "ba"
+          },
+          "score": null
+        },
+        {
+          "stage": "B 组",
+          "time": "6月19日 06:00",
+          "venue": "温哥华BC Place",
+          "home": {
+            "name": "加拿大",
+            "flag": "ca"
+          },
+          "away": {
+            "name": "卡塔尔",
+            "flag": "qa"
+          },
+          "score": null
+        },
+        {
+          "stage": "B 组",
+          "time": "6月25日 03:00",
+          "venue": "西雅图体育场",
+          "home": {
+            "name": "波黑",
+            "flag": "ba"
+          },
+          "away": {
+            "name": "卡塔尔",
+            "flag": "qa"
+          },
+          "score": null
+        },
+        {
+          "stage": "B 组",
+          "time": "6月25日 03:00",
+          "venue": "温哥华BC Place",
+          "home": {
+            "name": "瑞士",
+            "flag": "ch"
+          },
+          "away": {
+            "name": "加拿大",
+            "flag": "ca"
+          },
+          "score": null
+        },
+        {
+          "stage": "C 组",
+          "time": "6月14日 06:00",
+          "venue": "纽约新泽西体育场",
+          "home": {
+            "name": "巴西",
+            "flag": "br"
+          },
+          "away": {
+            "name": "摩洛哥",
+            "flag": "ma"
+          },
+          "score": null
+        },
+        {
+          "stage": "C 组",
+          "time": "6月14日 09:00",
+          "venue": "波士顿体育场",
+          "home": {
+            "name": "海地",
+            "flag": "ht"
+          },
+          "away": {
+            "name": "苏格兰",
+            "flag": "gb"
+          },
+          "score": null
+        },
+        {
+          "stage": "C 组",
+          "time": "6月20日 06:00",
+          "venue": "波士顿体育场",
+          "home": {
+            "name": "苏格兰",
+            "flag": "gb"
+          },
+          "away": {
+            "name": "摩洛哥",
+            "flag": "ma"
+          },
+          "score": null
+        },
+        {
+          "stage": "C 组",
+          "time": "6月20日 09:00",
+          "venue": "费城体育场",
+          "home": {
+            "name": "巴西",
+            "flag": "br"
+          },
+          "away": {
+            "name": "海地",
+            "flag": "ht"
+          },
+          "score": null
+        },
+        {
+          "stage": "C 组",
+          "time": "6月25日 06:00",
+          "venue": "亚特兰大体育场",
+          "home": {
+            "name": "摩洛哥",
+            "flag": "ma"
+          },
+          "away": {
+            "name": "海地",
+            "flag": "ht"
+          },
+          "score": null
+        },
+        {
+          "stage": "C 组",
+          "time": "6月25日 06:00",
+          "venue": "迈阿密体育场",
+          "home": {
+            "name": "苏格兰",
+            "flag": "gb"
+          },
+          "away": {
+            "name": "巴西",
+            "flag": "br"
+          },
+          "score": null
+        },
+        {
+          "stage": "D 组",
+          "time": "6月13日 09:00",
+          "venue": "洛杉矶体育场",
+          "home": {
+            "name": "美国",
+            "flag": "us"
+          },
+          "away": {
+            "name": "巴拉圭",
+            "flag": "py"
+          },
+          "score": null
+        },
+        {
+          "stage": "D 组",
+          "time": "6月14日 12:00",
+          "venue": "温哥华BC Place",
+          "home": {
+            "name": "澳大利亚",
+            "flag": "au"
+          },
+          "away": {
+            "name": "土耳其",
+            "flag": "tr"
+          },
+          "score": null
+        },
+        {
+          "stage": "D 组",
+          "time": "6月20日 03:00",
+          "venue": "西雅图体育场",
+          "home": {
+            "name": "美国",
+            "flag": "us"
+          },
+          "away": {
+            "name": "澳大利亚",
+            "flag": "au"
+          },
+          "score": null
+        },
+        {
+          "stage": "D 组",
+          "time": "6月20日 12:00",
+          "venue": "旧金山湾区体育场",
+          "home": {
+            "name": "土耳其",
+            "flag": "tr"
+          },
+          "away": {
+            "name": "巴拉圭",
+            "flag": "py"
+          },
+          "score": null
+        },
+        {
+          "stage": "D 组",
+          "time": "6月26日 10:00",
+          "venue": "旧金山湾区体育场",
+          "home": {
+            "name": "巴拉圭",
+            "flag": "py"
+          },
+          "away": {
+            "name": "澳大利亚",
+            "flag": "au"
+          },
+          "score": null
+        },
+        {
+          "stage": "D 组",
+          "time": "6月26日 10:00",
+          "venue": "洛杉矶体育场",
+          "home": {
+            "name": "土耳其",
+            "flag": "tr"
+          },
+          "away": {
+            "name": "美国",
+            "flag": "us"
+          },
+          "score": null
+        },
+        {
+          "stage": "E 组",
+          "time": "6月15日 01:00",
+          "venue": "休斯顿体育场",
+          "home": {
+            "name": "德国",
+            "flag": "de"
+          },
+          "away": {
+            "name": "库拉索",
+            "flag": "cw"
+          },
+          "score": null
+        },
+        {
+          "stage": "E 组",
+          "time": "6月15日 07:00",
+          "venue": "费城体育场",
+          "home": {
+            "name": "象牙海岸",
+            "flag": "ci"
+          },
+          "away": {
+            "name": "厄瓜多尔",
+            "flag": "ec"
+          },
+          "score": null
+        },
+        {
+          "stage": "E 组",
+          "time": "6月21日 04:00",
+          "venue": "多伦多体育场",
+          "home": {
+            "name": "德国",
+            "flag": "de"
+          },
+          "away": {
+            "name": "象牙海岸",
+            "flag": "ci"
+          },
+          "score": null
+        },
+        {
+          "stage": "E 组",
+          "time": "6月21日 08:00",
+          "venue": "堪萨斯城体育场",
+          "home": {
+            "name": "厄瓜多尔",
+            "flag": "ec"
+          },
+          "away": {
+            "name": "库拉索",
+            "flag": "cw"
+          },
+          "score": null
+        },
+        {
+          "stage": "E 组",
+          "time": "6月26日 04:00",
+          "venue": "费城体育场",
+          "home": {
+            "name": "库拉索",
+            "flag": "cw"
+          },
+          "away": {
+            "name": "象牙海岸",
+            "flag": "ci"
+          },
+          "score": null
+        },
+        {
+          "stage": "E 组",
+          "time": "6月26日 04:00",
+          "venue": "纽约新泽西体育场",
+          "home": {
+            "name": "厄瓜多尔",
+            "flag": "ec"
+          },
+          "away": {
+            "name": "德国",
+            "flag": "de"
+          },
+          "score": null
+        },
+        {
+          "stage": "F 组",
+          "time": "6月15日 04:00",
+          "venue": "达拉斯体育场",
+          "home": {
+            "name": "荷兰",
+            "flag": "nl"
+          },
+          "away": {
+            "name": "日本",
+            "flag": "jp"
+          },
+          "score": null
+        },
+        {
+          "stage": "F 组",
+          "time": "6月15日 10:00",
+          "venue": "蒙特雷体育场",
+          "home": {
+            "name": "瑞典",
+            "flag": "se"
+          },
+          "away": {
+            "name": "突尼斯",
+            "flag": "tn"
+          },
+          "score": null
+        },
+        {
+          "stage": "F 组",
+          "time": "6月21日 01:00",
+          "venue": "休斯顿体育场",
+          "home": {
+            "name": "荷兰",
+            "flag": "nl"
+          },
+          "away": {
+            "name": "瑞典",
+            "flag": "se"
+          },
+          "score": null
+        },
+        {
+          "stage": "F 组",
+          "time": "6月21日 12:00",
+          "venue": "蒙特雷体育场",
+          "home": {
+            "name": "突尼斯",
+            "flag": "tn"
+          },
+          "away": {
+            "name": "日本",
+            "flag": "jp"
+          },
+          "score": null
+        },
+        {
+          "stage": "F 组",
+          "time": "6月26日 07:00",
+          "venue": "达拉斯体育场",
+          "home": {
+            "name": "日本",
+            "flag": "jp"
+          },
+          "away": {
+            "name": "瑞典",
+            "flag": "se"
+          },
+          "score": null
+        },
+        {
+          "stage": "F 组",
+          "time": "6月26日 07:00",
+          "venue": "堪萨斯城体育场",
+          "home": {
+            "name": "突尼斯",
+            "flag": "tn"
+          },
+          "away": {
+            "name": "荷兰",
+            "flag": "nl"
+          },
+          "score": null
+        },
+        {
+          "stage": "G 组",
+          "time": "6月16日 03:00",
+          "venue": "西雅图体育场",
+          "home": {
+            "name": "比利时",
+            "flag": "be"
+          },
+          "away": {
+            "name": "埃及",
+            "flag": "eg"
+          },
+          "score": null
+        },
+        {
+          "stage": "G 组",
+          "time": "6月16日 09:00",
+          "venue": "洛杉矶体育场",
+          "home": {
+            "name": "伊朗",
+            "flag": "ir"
+          },
+          "away": {
+            "name": "新西兰",
+            "flag": "nz"
+          },
+          "score": null
+        },
+        {
+          "stage": "G 组",
+          "time": "6月22日 03:00",
+          "venue": "洛杉矶体育场",
+          "home": {
+            "name": "比利时",
+            "flag": "be"
+          },
+          "away": {
+            "name": "伊朗",
+            "flag": "ir"
+          },
+          "score": null
+        },
+        {
+          "stage": "G 组",
+          "time": "6月22日 09:00",
+          "venue": "温哥华BC Place",
+          "home": {
+            "name": "新西兰",
+            "flag": "nz"
+          },
+          "away": {
+            "name": "埃及",
+            "flag": "eg"
+          },
+          "score": null
+        },
+        {
+          "stage": "G 组",
+          "time": "6月27日 11:00",
+          "venue": "西雅图体育场",
+          "home": {
+            "name": "埃及",
+            "flag": "eg"
+          },
+          "away": {
+            "name": "伊朗",
+            "flag": "ir"
+          },
+          "score": null
+        },
+        {
+          "stage": "G 组",
+          "time": "6月27日 11:00",
+          "venue": "温哥华BC Place",
+          "home": {
+            "name": "新西兰",
+            "flag": "nz"
+          },
+          "away": {
+            "name": "比利时",
+            "flag": "be"
+          },
+          "score": null
+        },
+        {
+          "stage": "H 组",
+          "time": "6月16日 00:00",
+          "venue": "亚特兰大体育场",
+          "home": {
+            "name": "西班牙",
+            "flag": "es"
+          },
+          "away": {
+            "name": "佛得角",
+            "flag": "cv"
+          },
+          "score": null
+        },
+        {
+          "stage": "H 组",
+          "time": "6月16日 06:00",
+          "venue": "迈阿密体育场",
+          "home": {
+            "name": "沙特阿拉伯",
+            "flag": "sa"
+          },
+          "away": {
+            "name": "乌拉圭",
+            "flag": "uy"
+          },
+          "score": null
+        },
+        {
+          "stage": "H 组",
+          "time": "6月22日 00:00",
+          "venue": "亚特兰大体育场",
+          "home": {
+            "name": "西班牙",
+            "flag": "es"
+          },
+          "away": {
+            "name": "沙特阿拉伯",
+            "flag": "sa"
+          },
+          "score": null
+        },
+        {
+          "stage": "H 组",
+          "time": "6月22日 06:00",
+          "venue": "迈阿密体育场",
+          "home": {
+            "name": "乌拉圭",
+            "flag": "uy"
+          },
+          "away": {
+            "name": "佛得角",
+            "flag": "cv"
+          },
+          "score": null
+        },
+        {
+          "stage": "H 组",
+          "time": "6月27日 08:00",
+          "venue": "休斯顿体育场",
+          "home": {
+            "name": "佛得角",
+            "flag": "cv"
+          },
+          "away": {
+            "name": "沙特阿拉伯",
+            "flag": "sa"
+          },
+          "score": null
+        },
+        {
+          "stage": "H 组",
+          "time": "6月27日 08:00",
+          "venue": "瓜达拉哈拉体育场",
+          "home": {
+            "name": "乌拉圭",
+            "flag": "uy"
+          },
+          "away": {
+            "name": "西班牙",
+            "flag": "es"
+          },
+          "score": null
+        },
+        {
+          "stage": "I 组",
+          "time": "6月17日 03:00",
+          "venue": "纽约新泽西体育场",
+          "home": {
+            "name": "法国",
+            "flag": "fr"
+          },
+          "away": {
+            "name": "塞内加尔",
+            "flag": "sn"
+          },
+          "score": null
+        },
+        {
+          "stage": "I 组",
+          "time": "6月17日 06:00",
+          "venue": "波士顿体育场",
+          "home": {
+            "name": "伊拉克",
+            "flag": "iq"
+          },
+          "away": {
+            "name": "挪威",
+            "flag": "no"
+          },
+          "score": null
+        },
+        {
+          "stage": "I 组",
+          "time": "6月23日 05:00",
+          "venue": "费城体育场",
+          "home": {
+            "name": "法国",
+            "flag": "fr"
+          },
+          "away": {
+            "name": "伊拉克",
+            "flag": "iq"
+          },
+          "score": null
+        },
+        {
+          "stage": "I 组",
+          "time": "6月23日 08:00",
+          "venue": "纽约新泽西体育场",
+          "home": {
+            "name": "挪威",
+            "flag": "no"
+          },
+          "away": {
+            "name": "塞内加尔",
+            "flag": "sn"
+          },
+          "score": null
+        },
+        {
+          "stage": "I 组",
+          "time": "6月27日 03:00",
+          "venue": "波士顿体育场",
+          "home": {
+            "name": "挪威",
+            "flag": "no"
+          },
+          "away": {
+            "name": "法国",
+            "flag": "fr"
+          },
+          "score": null
+        },
+        {
+          "stage": "I 组",
+          "time": "6月27日 03:00",
+          "venue": "多伦多体育场",
+          "home": {
+            "name": "塞内加尔",
+            "flag": "sn"
+          },
+          "away": {
+            "name": "伊拉克",
+            "flag": "iq"
+          },
+          "score": null
+        },
+        {
+          "stage": "J 组",
+          "time": "6月17日 09:00",
+          "venue": "堪萨斯城体育场",
+          "home": {
+            "name": "阿根廷",
+            "flag": "ar"
+          },
+          "away": {
+            "name": "阿尔及利亚",
+            "flag": "dz"
+          },
+          "score": null
+        },
+        {
+          "stage": "J 组",
+          "time": "6月17日 12:00",
+          "venue": "旧金山湾区体育场",
+          "home": {
+            "name": "奥地利",
+            "flag": "at"
+          },
+          "away": {
+            "name": "约旦",
+            "flag": "jo"
+          },
+          "score": null
+        },
+        {
+          "stage": "J 组",
+          "time": "6月23日 01:00",
+          "venue": "达拉斯体育场",
+          "home": {
+            "name": "阿根廷",
+            "flag": "ar"
+          },
+          "away": {
+            "name": "奥地利",
+            "flag": "at"
+          },
+          "score": null
+        },
+        {
+          "stage": "J 组",
+          "time": "6月23日 11:00",
+          "venue": "旧金山湾区体育场",
+          "home": {
+            "name": "约旦",
+            "flag": "jo"
+          },
+          "away": {
+            "name": "阿尔及利亚",
+            "flag": "dz"
+          },
+          "score": null
+        },
+        {
+          "stage": "J 组",
+          "time": "6月28日 10:00",
+          "venue": "堪萨斯城体育场",
+          "home": {
+            "name": "阿尔及利亚",
+            "flag": "dz"
+          },
+          "away": {
+            "name": "奥地利",
+            "flag": "at"
+          },
+          "score": null
+        },
+        {
+          "stage": "J 组",
+          "time": "6月28日 10:00",
+          "venue": "达拉斯体育场",
+          "home": {
+            "name": "约旦",
+            "flag": "jo"
+          },
+          "away": {
+            "name": "阿根廷",
+            "flag": "ar"
+          },
+          "score": null
+        },
+        {
+          "stage": "K 组",
+          "time": "6月18日 01:00",
+          "venue": "休斯顿体育场",
+          "home": {
+            "name": "葡萄牙",
+            "flag": "pt"
+          },
+          "away": {
+            "name": "刚果(金)",
+            "flag": "cd"
+          },
+          "score": null
+        },
+        {
+          "stage": "K 组",
+          "time": "6月18日 10:00",
+          "venue": "墨西哥城体育场",
+          "home": {
+            "name": "乌兹别克斯坦",
+            "flag": "uz"
+          },
+          "away": {
+            "name": "哥伦比亚",
+            "flag": "co"
+          },
+          "score": null
+        },
+        {
+          "stage": "K 组",
+          "time": "6月24日 01:00",
+          "venue": "休斯顿体育场",
+          "home": {
+            "name": "葡萄牙",
+            "flag": "pt"
+          },
+          "away": {
+            "name": "乌兹别克斯坦",
+            "flag": "uz"
+          },
+          "score": null
+        },
+        {
+          "stage": "K 组",
+          "time": "6月24日 10:00",
+          "venue": "瓜达拉哈拉体育场",
+          "home": {
+            "name": "哥伦比亚",
+            "flag": "co"
+          },
+          "away": {
+            "name": "刚果(金)",
+            "flag": "cd"
+          },
+          "score": null
+        },
+        {
+          "stage": "K 组",
+          "time": "6月28日 07:30",
+          "venue": "迈阿密体育场",
+          "home": {
+            "name": "哥伦比亚",
+            "flag": "co"
+          },
+          "away": {
+            "name": "葡萄牙",
+            "flag": "pt"
+          },
+          "score": null
+        },
+        {
+          "stage": "K 组",
+          "time": "6月28日 07:30",
+          "venue": "亚特兰大体育场",
+          "home": {
+            "name": "刚果(金)",
+            "flag": "cd"
+          },
+          "away": {
+            "name": "乌兹别克斯坦",
+            "flag": "uz"
+          },
+          "score": null
+        },
+        {
+          "stage": "L 组",
+          "time": "6月18日 04:00",
+          "venue": "达拉斯体育场",
+          "home": {
+            "name": "英格兰",
+            "flag": "gb"
+          },
+          "away": {
+            "name": "克罗地亚",
+            "flag": "hr"
+          },
+          "score": null
+        },
+        {
+          "stage": "L 组",
+          "time": "6月18日 07:00",
+          "venue": "多伦多体育场",
+          "home": {
+            "name": "加纳",
+            "flag": "gh"
+          },
+          "away": {
+            "name": "巴拿马",
+            "flag": "pa"
+          },
+          "score": null
+        },
+        {
+          "stage": "L 组",
+          "time": "6月24日 04:00",
+          "venue": "波士顿体育场",
+          "home": {
+            "name": "英格兰",
+            "flag": "gb"
+          },
+          "away": {
+            "name": "加纳",
+            "flag": "gh"
+          },
+          "score": null
+        },
+        {
+          "stage": "L 组",
+          "time": "6月24日 07:00",
+          "venue": "多伦多体育场",
+          "home": {
+            "name": "巴拿马",
+            "flag": "pa"
+          },
+          "away": {
+            "name": "克罗地亚",
+            "flag": "hr"
+          },
+          "score": null
+        },
+        {
+          "stage": "L 组",
+          "time": "6月28日 05:00",
+          "venue": "费城体育场",
+          "home": {
+            "name": "克罗地亚",
+            "flag": "hr"
+          },
+          "away": {
+            "name": "加纳",
+            "flag": "gh"
+          },
+          "score": null
+        },
+        {
+          "stage": "L 组",
+          "time": "6月28日 05:00",
+          "venue": "纽约新泽西体育场",
+          "home": {
+            "name": "巴拿马",
+            "flag": "pa"
+          },
+          "away": {
+            "name": "英格兰",
+            "flag": "gb"
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "6月29日 03:00",
+          "venue": "洛杉矶体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "6月30日 01:00",
+          "venue": "休斯顿体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "6月30日 04:30",
+          "venue": "波士顿体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "6月30日 09:00",
+          "venue": "蒙特雷体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "6月31日 01:00",
+          "venue": "达拉斯体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "6月31日 05:00",
+          "venue": "纽约新泽西体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "7月1日 09:00",
+          "venue": "墨西哥城体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "7月2日 00:00",
+          "venue": "亚特兰大体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "7月2日 04:00",
+          "venue": "西雅图体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "7月2日 08:00",
+          "venue": "旧金山湾区体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "7月3日 03:00",
+          "venue": "洛杉矶体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "7月3日 07:00",
+          "venue": "多伦多体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "7月3日 11:00",
+          "venue": "温哥华BC Place",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "7月4日 02:00",
+          "venue": "达拉斯体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "7月4日 06:00",
+          "venue": "迈阿密体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "32强淘汰赛（6月28日 — 7月4日）",
+          "time": "7月4日 09:30",
+          "venue": "堪萨斯城体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "16强淘汰赛（7月4日 — 7月7日）",
+          "time": "7月5日 01:00",
+          "venue": "休斯顿体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "16强淘汰赛（7月4日 — 7月7日）",
+          "time": "7月5日 05:00",
+          "venue": "费城体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "16强淘汰赛（7月4日 — 7月7日）",
+          "time": "7月6日 03:00",
+          "venue": "纽约新泽西体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "16强淘汰赛（7月4日 — 7月7日）",
+          "time": "7月6日 08:00",
+          "venue": "墨西哥城体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "16强淘汰赛（7月4日 — 7月7日）",
+          "time": "7月7日 03:00",
+          "venue": "达拉斯体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "16强淘汰赛（7月4日 — 7月7日）",
+          "time": "7月7日 08:00",
+          "venue": "西雅图体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "16强淘汰赛（7月4日 — 7月7日）",
+          "time": "7月8日 00:00",
+          "venue": "亚特兰大体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "16强淘汰赛（7月4日 — 7月7日）",
+          "time": "7月8日 04:00",
+          "venue": "温哥华BC Place",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "八强（7月9日 — 7月12日）",
+          "time": "7月10日 04:00",
+          "venue": "波士顿体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "八强（7月9日 — 7月12日）",
+          "time": "7月11日 03:00",
+          "venue": "洛杉矶体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "八强（7月9日 — 7月12日）",
+          "time": "7月12日 05:00",
+          "venue": "迈阿密体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "八强（7月9日 — 7月12日）",
+          "time": "7月12日 09:00",
+          "venue": "堪萨斯城体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "四强（7月14日 — 7月15日）",
+          "time": "7月15日 03:00",
+          "venue": "达拉斯体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "四强（7月14日 — 7月15日）",
+          "time": "7月16日 03:00",
+          "venue": "亚特兰大体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "季军赛",
+          "time": "7月19日 05:00",
+          "venue": "迈阿密体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        },
+        {
+          "stage": "决赛",
+          "time": "7月20日 03:00",
+          "venue": "纽约新泽西体育场",
+          "home": {
+            "name": "待定",
+            "flag": ""
+          },
+          "away": {
+            "name": "待定",
+            "flag": ""
+          },
+          "score": null
+        }
+      ]
+    }
+  ]
+}

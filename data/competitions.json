@@ -275,7 +275,7 @@
             "name": "南非",
             "flag": "za"
           },
-          "score": null
+          "score": "2:0"
         },
         {
           "stage": "A 组",
@@ -289,7 +289,7 @@
             "name": "捷克",
             "flag": "cz"
           },
-          "score": null
+          "score": "2:1"
         },
         {
           "stage": "A 组",
@@ -303,7 +303,7 @@
             "name": "南非",
             "flag": "za"
           },
-          "score": null
+          "score": "1:1"
         },
         {
           "stage": "A 组",
@@ -317,7 +317,7 @@
             "name": "韩国",
             "flag": "kr"
           },
-          "score": null
+          "score": "1:0"
         },
         {
           "stage": "A 组",
@@ -359,7 +359,7 @@
             "name": "波黑",
             "flag": "ba"
           },
-          "score": null
+          "score": "1:1"
         },
         {
           "stage": "B 组",
@@ -373,7 +373,7 @@
             "name": "瑞士",
             "flag": "ch"
           },
-          "score": null
+          "score": "1:1"
         },
         {
           "stage": "B 组",
@@ -387,7 +387,7 @@
             "name": "波黑",
             "flag": "ba"
           },
-          "score": null
+          "score": "4:1"
         },
         {
           "stage": "B 组",
@@ -401,7 +401,7 @@
             "name": "卡塔尔",
             "flag": "qa"
           },
-          "score": null
+          "score": "6:0"
         },
         {
           "stage": "B 组",
@@ -443,7 +443,7 @@
             "name": "摩洛哥",
             "flag": "ma"
           },
-          "score": null
+          "score": "1:1"
         },
         {
           "stage": "C 组",
@@ -457,7 +457,7 @@
             "name": "苏格兰",
             "flag": "gb"
           },
-          "score": null
+          "score": "0:1"
         },
         {
           "stage": "C 组",
@@ -471,7 +471,7 @@
             "name": "摩洛哥",
             "flag": "ma"
           },
-          "score": null
+          "score": "0:1"
         },
         {
           "stage": "C 组",
@@ -485,7 +485,7 @@
             "name": "海地",
             "flag": "ht"
           },
-          "score": null
+          "score": "3:0"
         },
         {
           "stage": "C 组",
@@ -527,7 +527,7 @@
             "name": "巴拉圭",
             "flag": "py"
           },
-          "score": null
+          "score": "4:1"
         },
         {
           "stage": "D 组",
@@ -541,7 +541,7 @@
             "name": "土耳其",
             "flag": "tr"
           },
-          "score": null
+          "score": "2:0"
         },
         {
           "stage": "D 组",
@@ -555,7 +555,7 @@
             "name": "澳大利亚",
             "flag": "au"
           },
-          "score": null
+          "score": "2:0"
         },
         {
           "stage": "D 组",
@@ -569,7 +569,7 @@
             "name": "巴拉圭",
             "flag": "py"
           },
-          "score": null
+          "score": "0:1"
         },
         {
           "stage": "D 组",
@@ -611,7 +611,7 @@
             "name": "库拉索",
             "flag": "cw"
           },
-          "score": null
+          "score": "7:1"
         },
         {
           "stage": "E 组",
@@ -625,7 +625,7 @@
             "name": "厄瓜多尔",
             "flag": "ec"
           },
-          "score": null
+          "score": "1:0"
         },
         {
           "stage": "E 组",
@@ -639,7 +639,7 @@
             "name": "象牙海岸",
             "flag": "ci"
           },
-          "score": null
+          "score": "2:1"
         },
         {
           "stage": "E 组",
@@ -653,7 +653,7 @@
             "name": "库拉索",
             "flag": "cw"
           },
-          "score": null
+          "score": "0:0"
         },
         {
           "stage": "E 组",
@@ -695,7 +695,7 @@
             "name": "日本",
             "flag": "jp"
           },
-          "score": null
+          "score": "2:2"
         },
         {
           "stage": "F 组",
@@ -709,7 +709,7 @@
             "name": "突尼斯",
             "flag": "tn"
           },
-          "score": null
+          "score": "5:1"
         },
         {
           "stage": "F 组",
@@ -723,7 +723,7 @@
             "name": "瑞典",
             "flag": "se"
           },
-          "score": null
+          "score": "5:1"
         },
         {
           "stage": "F 组",
@@ -737,7 +737,7 @@
             "name": "日本",
             "flag": "jp"
           },
-          "score": null
+          "score": "0:4"
         },
         {
           "stage": "F 组",
@@ -779,7 +779,7 @@
             "name": "埃及",
             "flag": "eg"
           },
-          "score": null
+          "score": "1:1"
         },
         {
           "stage": "G 组",
@@ -793,7 +793,7 @@
             "name": "新西兰",
             "flag": "nz"
           },
-          "score": null
+          "score": "2:2"
         },
         {
           "stage": "G 组",
@@ -807,7 +807,7 @@
             "name": "伊朗",
             "flag": "ir"
           },
-          "score": null
+          "score": "0:0"
         },
         {
           "stage": "G 组",
@@ -821,7 +821,7 @@
             "name": "埃及",
             "flag": "eg"
           },
-          "score": null
+          "score": "1:3"
         },
         {
           "stage": "G 组",
@@ -863,7 +863,7 @@
             "name": "佛得角",
             "flag": "cv"
           },
-          "score": null
+          "score": "0:0"
         },
         {
           "stage": "H 组",
@@ -877,7 +877,7 @@
             "name": "乌拉圭",
             "flag": "uy"
           },
-          "score": null
+          "score": "1:1"
         },
         {
           "stage": "H 组",
@@ -891,7 +891,7 @@
             "name": "沙特阿拉伯",
             "flag": "sa"
           },
-          "score": null
+          "score": "4:0"
         },
         {
           "stage": "H 组",
@@ -905,7 +905,7 @@
             "name": "佛得角",
             "flag": "cv"
           },
-          "score": null
+          "score": "2:2"
         },
         {
           "stage": "H 组",
@@ -947,7 +947,7 @@
             "name": "塞内加尔",
             "flag": "sn"
           },
-          "score": null
+          "score": "3:1"
         },
         {
           "stage": "I 组",
@@ -961,7 +961,7 @@
             "name": "挪威",
             "flag": "no"
           },
-          "score": null
+          "score": "1:4"
         },
         {
           "stage": "I 组",
@@ -975,7 +975,7 @@
             "name": "伊拉克",
             "flag": "iq"
           },
-          "score": null
+          "score": "3:0"
         },
         {
           "stage": "I 组",
@@ -989,7 +989,7 @@
             "name": "塞内加尔",
             "flag": "sn"
           },
-          "score": null
+          "score": "3:2"
         },
         {
           "stage": "I 组",
@@ -1031,7 +1031,7 @@
             "name": "阿尔及利亚",
             "flag": "dz"
           },
-          "score": null
+          "score": "3:0"
         },
         {
           "stage": "J 组",
@@ -1045,7 +1045,7 @@
             "name": "约旦",
             "flag": "jo"
           },
-          "score": null
+          "score": "3:1"
         },
         {
           "stage": "J 组",
@@ -1059,7 +1059,7 @@
             "name": "奥地利",
             "flag": "at"
           },
-          "score": null
+          "score": "2:0"
         },
         {
           "stage": "J 组",
@@ -1073,7 +1073,7 @@
             "name": "阿尔及利亚",
             "flag": "dz"
           },
-          "score": null
+          "score": "1:2"
         },
         {
           "stage": "J 组",
@@ -1115,7 +1115,7 @@
             "name": "刚果(金)",
             "flag": "cd"
           },
-          "score": null
+          "score": "1:1"
         },
         {
           "stage": "K 组",
@@ -1129,7 +1129,7 @@
             "name": "哥伦比亚",
             "flag": "co"
           },
-          "score": null
+          "score": "1:3"
         },
         {
           "stage": "K 组",
@@ -1143,7 +1143,7 @@
             "name": "乌兹别克斯坦",
             "flag": "uz"
           },
-          "score": null
+          "score": "5:0"
         },
         {
           "stage": "K 组",
@@ -1157,7 +1157,7 @@
             "name": "刚果(金)",
             "flag": "cd"
           },
-          "score": null
+          "score": "1:0"
         },
         {
           "stage": "K 组",
@@ -1199,7 +1199,7 @@
             "name": "克罗地亚",
             "flag": "hr"
           },
-          "score": null
+          "score": "4:2"
         },
         {
           "stage": "L 组",
@@ -1213,7 +1213,7 @@
             "name": "巴拿马",
             "flag": "pa"
           },
-          "score": null
+          "score": "1:0"
         },
         {
           "stage": "L 组",
@@ -1227,7 +1227,7 @@
             "name": "加纳",
             "flag": "gh"
           },
-          "score": null
+          "score": "0:0"
         },
         {
           "stage": "L 组",
@@ -1241,7 +1241,7 @@
             "name": "克罗地亚",
             "flag": "hr"
           },
-          "score": null
+          "score": "0:1"
         },
         {
           "stage": "L 组",

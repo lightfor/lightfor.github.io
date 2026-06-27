@@ -1311,6 +1311,108 @@ const pages = {
                     return `<td class="comment-cell" data-full-text="${text.replace(/"/g, '&quot;')}">${display || '-'}</td>`;
                 }
             }
+        }),
+    'mc-switch2-games': createPage('mcswitch2', 'mc-switch2-games',
+        [
+            { key: 'title',         label: '游戏名称', sortable: true },
+            { key: 'year',          label: '年份',     sortable: true,  className: 'year' },
+            { key: 'releaseDate',   label: '发售日期', sortable: true },
+            { key: 'criticScore',   label: '媒体评分', sortable: true },
+            { key: 'criticReviews', label: '评论数',   sortable: true },
+            { key: 'sentiment',     label: '媒体口碑', sortable: true },
+            { key: 'userScore',     label: '用户评分', sortable: true },
+            { key: 'genres',        label: '类型',     sortable: false, className: 'genre' },
+            { key: 'esrbRating',    label: 'ESRB分级', sortable: true },
+            { key: 'description',   label: '简介',     sortable: false }
+        ],
+        'data/rankings/mc-switch2-games.json', 'MC Switch2独占榜单',
+        {
+            defaultSort: { col: 3, dir: 'desc' },
+            extraState: {
+                selectedCriticScores: [],
+                selectedUserScores: [],
+                selectedSentiments: [],
+                selectedEsrbs: []
+            },
+            resetExtra(state) {
+                state.selectedCriticScores = [];
+                state.selectedUserScores = [];
+                state.selectedSentiments = [];
+                state.selectedEsrbs = [];
+            },
+            buildStatic(source) {
+                const cs = { '90+': 0, '85+': 0, '80+': 0 };
+                const us = { '9.0+': 0, '8.5+': 0, '8.0+': 0 };
+                const yr = { '2026年及以后': 0, '2025年及以后': 0 };
+                source.forEach(m => {
+                    if ((m.criticScore || 0) >= 90) cs['90+']++;
+                    if ((m.criticScore || 0) >= 85) cs['85+']++;
+                    if ((m.criticScore || 0) >= 80) cs['80+']++;
+                    if ((m.userScore || 0) >= 9.0) us['9.0+']++;
+                    if ((m.userScore || 0) >= 8.5) us['8.5+']++;
+                    if ((m.userScore || 0) >= 8.0) us['8.0+']++;
+                    if (m.year >= 2026) yr['2026年及以后']++;
+                    if (m.year >= 2025) yr['2025年及以后']++;
+                });
+                return { rating: cs, userScore: us, year: yr, voteCount: {}, playable: {} };
+            },
+            computeDyn(source) {
+                const genre = {}, sentiment = {}, esrb = {};
+                source.forEach(m => {
+                    (m.genres || []).forEach(g => { genre[g] = (genre[g] || 0) + 1; });
+                    if (m.sentiment) sentiment[m.sentiment] = (sentiment[m.sentiment] || 0) + 1;
+                    if (m.esrbRating) esrb[m.esrbRating] = (esrb[m.esrbRating] || 0) + 1;
+                });
+                return { country: {}, genre, platform: {}, director: {}, starring: {}, sentiment, esrb };
+            },
+            renderExtra(state, id, renderCB, renderStaticCB) {
+                const dyn = this.computeDyn(state.filteredMovies);
+                const stat = this.buildStatic(state.filteredMovies);
+                renderStaticCB('criticScoreFilter', stat.rating, state.selectedCriticScores, 'criticScore');
+                renderStaticCB('userScoreFilter', stat.userScore, state.selectedUserScores, 'userScore');
+                renderCB('sentimentFilter', dyn.sentiment, state.selectedSentiments, 'sentiment');
+                renderCB('esrbFilter', dyn.esrb, state.selectedEsrbs, 'esrb');
+            },
+            filterExtra(item, state) {
+                const matchCS = !state.selectedCriticScores.length || state.selectedCriticScores.some(v => {
+                    if (v === '90+') return (item.criticScore || 0) >= 90;
+                    if (v === '85+') return (item.criticScore || 0) >= 85;
+                    if (v === '80+') return (item.criticScore || 0) >= 80;
+                    return true;
+                });
+                const matchUS = !state.selectedUserScores.length || state.selectedUserScores.some(v => {
+                    if (v === '9.0+') return (item.userScore || 0) >= 9.0;
+                    if (v === '8.5+') return (item.userScore || 0) >= 8.5;
+                    if (v === '8.0+') return (item.userScore || 0) >= 8.0;
+                    return true;
+                });
+                const matchSentiment = !state.selectedSentiments.length || state.selectedSentiments.includes(item.sentiment);
+                const matchEsrb = !state.selectedEsrbs.length || state.selectedEsrbs.includes(item.esrbRating);
+                const matchGenre = !state.selectedGenres.length || state.selectedGenres.some(g => (item.genres || []).includes(g));
+                return matchCS && matchUS && matchSentiment && matchEsrb && matchGenre;
+            },
+            renderCellFn(key, value, item) {
+                if (key === 'title') {
+                    const url = `https://www.metacritic.com/game/${item.slug}/`;
+                    return `<td><a href="${url}" target="_blank" class="movie-title-link">${value || '-'}</a></td>`;
+                }
+                if (key === 'criticScore') {
+                    const score = value;
+                    const color = score >= 90 ? '#00A65F' : score >= 75 ? '#fc0' : '#f44';
+                    return `<td><span style="font-weight:bold;color:${color}">${score ?? '-'}</span></td>`;
+                }
+                if (key === 'userScore') {
+                    return `<td class="rating">${value != null ? Number(value).toFixed(1) : '-'}</td>`;
+                }
+                if (key === 'genres') {
+                    return `<td class="genre">${(value || []).join(', ') || '-'}</td>`;
+                }
+                if (key === 'description') {
+                    const text = value || '';
+                    const display = text.length > 30 ? text.substring(0, 30) + '...' : text;
+                    return `<td class="comment-cell" data-full-text="${text.replace(/"/g, '&quot;')}">${display || '-'}</td>`;
+                }
+            }
         })
 };
 
@@ -1318,7 +1420,7 @@ const pages = {
 let currentView = 'home';
 
 const MOVIES_VIEWS = new Set(['top250', 'imdb-top250']);
-const GAMES_VIEWS = new Set(['mc-3ds-games', 'mc-nds-games', 'mc-gba-games', 'mc-psp-games', 'mc-ps1-games', 'mc-ps2-games']);
+const GAMES_VIEWS = new Set(['mc-3ds-games', 'mc-nds-games', 'mc-gba-games', 'mc-psp-games', 'mc-ps1-games', 'mc-ps2-games', 'mc-switch2-games']);
 const BOOKS_VIEWS = new Set(['best-books-ever']);
 const MUSIC_VIEWS = new Set(['billboard-global']);
 

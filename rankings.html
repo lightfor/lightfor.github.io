@@ -30,6 +30,7 @@
                 <button class="nav-dropdown-item" onclick="switchView('mc-psp-games'); closeAllDropdowns()">🎮 MC PSP</button>
                 <button class="nav-dropdown-item" onclick="switchView('mc-ps1-games'); closeAllDropdowns()">🕹️ MC PS1</button>
                 <button class="nav-dropdown-item" onclick="switchView('mc-ps2-games'); closeAllDropdowns()">🎮 MC PS2</button>
+                <button class="nav-dropdown-item" onclick="switchView('mc-switch2-games'); closeAllDropdowns()">🎮 MC Switch2独占</button>
             </div>
         </div>
         <div class="nav-dropdown" id="books-dropdown">
@@ -101,6 +102,12 @@
                     <div class="card-icon">🎮</div>
                     <h2>MC PS2榜单</h2>
                     <p>Metacritic PS2游戏榜单，含媒体评分、用户评分、类型、ESRB分级等详细信息</p>
+                    <span class="card-badge">查看榜单 →</span>
+                </div>
+                <div class="card" onclick="switchView('mc-switch2-games')">
+                    <div class="card-icon">🎮</div>
+                    <h2>MC Switch2独占榜单</h2>
+                    <p>Metacritic Switch 2平台独占游戏榜单，含媒体评分、用户评分、类型、ESRB分级等详细信息</p>
                     <span class="card-badge">查看榜单 →</span>
                 </div>
                 <div class="card" onclick="switchView('best-books-ever')">
@@ -630,6 +637,70 @@
             <div class="table-container">
                 <div class="table-wrapper">
                     <table><thead id="mcps2-tableHead"></thead><tbody id="mcps2-tableBody"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── MC Switch2 Games ── -->
+    <div id="view-mc-switch2-games" class="view">
+        <div class="container">
+            <div class="header">
+                <h1>Metacritic Switch 2 独占游戏榜单</h1>
+                <p>媒体评分、用户评分、类型、ESRB分级等多维度筛选 <a href="https://www.metacritic.com/browse/game/switch-2/" target="_blank">Metacritic Switch 2</a></p>
+            </div>
+            <div class="filters">
+                <div id="mcswitch2-activeFiltersInfo" class="active-filters" style="display:none;">
+                    <strong>当前筛选条件：</strong><span id="mcswitch2-activeFiltersText"></span>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">基本信息筛选</div>
+                    <div class="filter-row">
+                        <div class="filter-group" style="grid-column: span 2;">
+                            <label>游戏名称 <span class="count" id="mcswitch2-titleCount">0</span></label>
+                            <input type="text" id="mcswitch2-searchTitle" placeholder="搜索游戏名称...">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体评分筛选 <span class="count" id="mcswitch2-criticScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcswitch2-criticScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">用户评分筛选 <span class="count" id="mcswitch2-userScoreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcswitch2-userScoreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">媒体口碑筛选 <span class="count" id="mcswitch2-sentimentFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcswitch2-sentimentFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">年份筛选 <span class="count" id="mcswitch2-yearFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcswitch2-yearFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">类型筛选 <span class="count" id="mcswitch2-genreFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcswitch2-genreFilter"></div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-section-title">ESRB分级筛选 <span class="count" id="mcswitch2-esrbFilterCount" style="background:#28a745;">0</span></div>
+                    <div class="checkbox-filter" id="mcswitch2-esrbFilter"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="pages['mc-switch2-games'].applyFilters()">应用筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-switch2-games'].resetFilters()">重置筛选</button>
+                    <button class="btn btn-secondary" onclick="pages['mc-switch2-games'].exportFiltered()">导出CSV</button>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-value" id="mcswitch2-totalCount">0</div><div class="stat-label">总游戏数</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcswitch2-filteredCount">0</div><div class="stat-label">筛选结果</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcswitch2-avgRating">-</div><div class="stat-label">平均媒体评分</div></div>
+                <div class="stat-item"><div class="stat-value" id="mcswitch2-yearRange">-</div><div class="stat-label">年份范围</div></div>
+            </div>
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table><thead id="mcswitch2-tableHead"></thead><tbody id="mcswitch2-tableBody"></tbody></table>
                 </div>
             </div>
         </div>

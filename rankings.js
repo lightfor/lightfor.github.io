@@ -1315,6 +1315,7 @@ const pages = {
     'mc-switch2-games': createPage('mcswitch2', 'mc-switch2-games',
         [
             { key: 'title',         label: '游戏名称', sortable: true },
+            { key: 'titleZh',       label: '中文名称', sortable: true },
             { key: 'year',          label: '年份',     sortable: true,  className: 'year' },
             { key: 'releaseDate',   label: '发售日期', sortable: true },
             { key: 'criticScore',   label: '媒体评分', sortable: true },
@@ -1327,7 +1328,7 @@ const pages = {
         ],
         'data/rankings/mc-switch2-games.json', 'MC Switch2独占榜单',
         {
-            defaultSort: { col: 3, dir: 'desc' },
+            defaultSort: { col: 4, dir: 'desc' },
             extraState: {
                 selectedCriticScores: [],
                 selectedUserScores: [],

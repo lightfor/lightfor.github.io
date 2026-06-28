@@ -1,6 +1,7 @@
 [
   {
     "title": "Donkey Kong Bananza",
+    "titleZh": "大金刚 班纳扎",
     "slug": "donkey-kong-bananza",
     "year": 2025,
     "releaseDate": "2025-07-17",
@@ -14,6 +15,7 @@
   },
   {
     "title": "Pokemon Pokopia",
+    "titleZh": "宝可梦 波可比亚",
     "slug": "pokemon-pokopia",
     "year": 2026,
     "releaseDate": "2026-03-05",
@@ -27,6 +29,7 @@
   },
   {
     "title": "Mario Kart World",
+    "titleZh": "马力欧卡丁车 世界",
     "slug": "mario-kart-world",
     "year": 2025,
     "releaseDate": "2025-06-05",
@@ -40,6 +43,7 @@
   },
   {
     "title": "Yoshi and the Mysterious Book",
+    "titleZh": "耀西与神奇的书",
     "slug": "yoshi-and-the-mysterious-book",
     "year": 2026,
     "releaseDate": "2026-05-21",
@@ -53,6 +57,7 @@
   },
   {
     "title": "FAST Fusion",
+    "titleZh": "FAST Fusion 高速幻能",
     "slug": "fast-fusion",
     "year": 2025,
     "releaseDate": "2025-06-05",
@@ -66,6 +71,7 @@
   },
   {
     "title": "Hyrule Warriors: Age of Imprisonment",
+    "titleZh": "海拉鲁勇士：封印战记",
     "slug": "hyrule-warriors-age-of-imprisonment",
     "year": 2025,
     "releaseDate": "2025-11-06",
@@ -79,6 +85,7 @@
   },
   {
     "title": "Kirby Air Riders",
+    "titleZh": "星之卡比 飞行赛车",
     "slug": "kirby-air-riders",
     "year": 2025,
     "releaseDate": "2025-11-20",
@@ -92,6 +99,7 @@
   },
   {
     "title": "Mario Tennis Fever",
+    "titleZh": "马力欧网球 热力沸腾",
     "slug": "mario-tennis-fever",
     "year": 2026,
     "releaseDate": "2026-02-12",
@@ -105,6 +113,7 @@
   },
   {
     "title": "Survival Kids",
+    "titleZh": "求生小子",
     "slug": "survival-kids",
     "year": 2025,
     "releaseDate": "2025-06-05",
@@ -118,6 +127,7 @@
   },
   {
     "title": "Drag x Drive",
+    "titleZh": "竞速对决",
     "slug": "drag-x-drive",
     "year": 2025,
     "releaseDate": "2025-08-14",
@@ -128,5 +138,131 @@
     "esrbRating": "E",
     "genres": ["Basketball"],
     "description": "3v3 wheelchair basketball game using dual Joy-Con 2 motion controls to steer and shoot, showcasing Switch 2's mouse-style controls."
+  },
+  {
+    "title": "The Duskbloods",
+    "titleZh": "暮血之徒",
+    "slug": "the-duskbloods",
+    "year": null,
+    "releaseDate": "TBA",
+    "criticScore": null,
+    "criticReviews": null,
+    "sentiment": null,
+    "userScore": null,
+    "esrbRating": null,
+    "genres": ["Action RPG"],
+    "description": "FromSoftware's Switch 2 exclusive multiplayer action RPG blending Gothic horror with PvPvE combat across shifting maps."
+  },
+  {
+    "title": "Splatoon Raiders",
+    "titleZh": "斯普拉遁 突袭者",
+    "slug": "splatoon-raiders",
+    "year": 2026,
+    "releaseDate": "2026-07-23",
+    "criticScore": null,
+    "criticReviews": null,
+    "sentiment": null,
+    "userScore": null,
+    "esrbRating": null,
+    "genres": ["Third-Person Shooter"],
+    "description": "Switch 2 exclusive Splatoon spinoff where players join Deep Cut to raid the Spirhalite Islands against waves of Salmonids, solo or with up to three others."
+  },
+  {
+    "title": "The Legend of Zelda: Ocarina of Time",
+    "titleZh": "塞尔达传说 时光之笛",
+    "slug": "the-legend-of-zelda-ocarina-of-time-switch2",
+    "year": 2026,
+    "releaseDate": "TBA",
+    "criticScore": null,
+    "criticReviews": null,
+    "sentiment": null,
+    "userScore": null,
+    "esrbRating": null,
+    "genres": ["Action RPG"],
+    "description": "Switch 2 exclusive remake of the N64 classic featuring a new art style and voice acting, with no support announced for original Switch."
+  },
+  {
+    "title": "Orbitals",
+    "titleZh": "轨道双子星",
+    "slug": "orbitals",
+    "year": 2026,
+    "releaseDate": "2026-09-03",
+    "criticScore": null,
+    "criticReviews": null,
+    "sentiment": null,
+    "userScore": null,
+    "esrbRating": null,
+    "genres": ["Co-op Adventure"],
+    "description": "Kepler Interactive/Shapefarm's Switch 2 exclusive asymmetric co-op game with 80s anime visuals, casting two players as Maki and Omura aboard a collapsing space station."
+  },
+  {
+    "title": "Xenoblade Genesis",
+    "titleZh": "异度神剑 起源",
+    "slug": "xenoblade-genesis",
+    "year": 2027,
+    "releaseDate": "TBA",
+    "criticScore": null,
+    "criticReviews": null,
+    "sentiment": null,
+    "userScore": null,
+    "esrbRating": null,
+    "genres": ["JRPG"],
+    "description": "Monolith Soft's Switch 2 exclusive reinvention of the Xenoblade series with a high-fantasy aesthetic set inside a colossal inverted sphere world."
+  },
+  {
+    "title": "Ninjala 2: The Uncharted Planet",
+    "titleZh": "忍乱 2：未知星球",
+    "slug": "ninjala-2-the-uncharted-planet",
+    "year": 2027,
+    "releaseDate": "TBA",
+    "criticScore": null,
+    "criticReviews": null,
+    "sentiment": null,
+    "userScore": null,
+    "esrbRating": null,
+    "genres": ["Action Adventure"],
+    "description": "Switch 2 exclusive open-world sequel to Ninjala, the first chapter of a two-part saga with four-player local/online co-op against giant foes."
+  },
+  {
+    "title": "Pikuniku 2",
+    "titleZh": "皮克尼克 2",
+    "slug": "pikuniku-2",
+    "year": 2027,
+    "releaseDate": "TBA",
+    "criticScore": null,
+    "criticReviews": null,
+    "sentiment": null,
+    "userScore": null,
+    "esrbRating": null,
+    "genres": ["Adventure"],
+    "description": "Switch 2 exclusive sequel to the quirky physics-based adventure Pikuniku, now rendered in full 3D."
+  },
+  {
+    "title": "Pokemon Winds",
+    "titleZh": "宝可梦 疾风",
+    "slug": "pokemon-winds",
+    "year": 2027,
+    "releaseDate": "TBA",
+    "criticScore": null,
+    "criticReviews": null,
+    "sentiment": null,
+    "userScore": null,
+    "esrbRating": null,
+    "genres": ["RPG"],
+    "description": "Game Freak's Switch 2 exclusive open-world Pokemon entry set in a tropical archipelago region, releasing alongside its counterpart Pokemon Waves."
+  },
+  {
+    "title": "Pokemon Waves",
+    "titleZh": "宝可梦 碧波",
+    "slug": "pokemon-waves",
+    "year": 2027,
+    "releaseDate": "TBA",
+    "criticScore": null,
+    "criticReviews": null,
+    "sentiment": null,
+    "userScore": null,
+    "esrbRating": null,
+    "genres": ["RPG"],
+    "description": "Game Freak's Switch 2 exclusive open-world Pokemon entry with vast oceans and underwater areas, releasing alongside its counterpart Pokemon Winds."
   }
 ]

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经济数据 - LPR走势</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="shared.css">
+<style>
+  body { padding: 1.2rem 1rem 3rem; max-width: 900px; margin: 0 auto; }
+  header { margin-bottom: 1rem; }
+  header h1 { margin-bottom: 0.3rem; }
+  header p { color: #888; font-size: 0.85rem; }
+
+  .module-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 1.4rem; }
+  .module-nav button {
+    border: 1px solid #d8cfc4; background: #fff; color: #4a3728;
+    border-radius: 8px; padding: 0.5rem 0.9rem; font-size: 0.85rem;
+    cursor: pointer; min-height: 44px;
+  }
+  .module-nav button.active { background: #4a3728; color: #fff; border-color: #4a3728; }
+
+  .chart-card {
+    background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 1rem; margin-bottom: 1.2rem;
+  }
+  .chart-card h2 { font-size: 1.05rem; color: #4a3728; margin-bottom: 0.2rem; }
+  .chart-card .sub { font-size: 0.78rem; color: #999; margin-bottom: 0.8rem; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 0.6rem; font-size: 0.78rem; }
+  .legend span { display: inline-flex; align-items: center; gap: 0.3rem; }
+  .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+  #chartWrap { position: relative; width: 100%; overflow-x: auto; }
+  canvas { display: block; width: 100%; height: 360px; touch-action: pan-y; }
+
+  .tooltip {
+    position: absolute; pointer-events: none; background: #4a3728; color: #fff;
+    font-size: 0.75rem; padding: 4px 8px; border-radius: 6px; transform: translate(-50%, -110%);
+    white-space: nowrap; opacity: 0; transition: opacity 0.1s;
+  }
+
+  table.data-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  table.data-table th, table.data-table td { padding: 0.45rem 0.5rem; text-align: left; border-bottom: 1px solid #eee; }
+  table.data-table th { color: #4a3728; font-weight: 600; }
+
+  @media (max-width: 680px) {
+    table.data-table { display: none; }
+    .data-cards { display: flex; flex-direction: column; gap: 0.5rem; }
+  }
+  @media (min-width: 681px) {
+    .data-cards { display: none; }
+  }
+  .data-cards .row {
+    background: #faf7f3; border-radius: 8px; padding: 0.6rem 0.8rem;
+    display: flex; justify-content: space-between; font-size: 0.85rem;
+  }
+  .data-cards .row b { color: #4a3728; }
+
+  details { margin-top: 0.4rem; }
+  summary { cursor: pointer; font-size: 0.85rem; color: #4a3728; padding: 0.4rem 0; min-height: 44px; display: flex; align-items: center; }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">← 返回首页</a>
+<header>
+  <h1>📈 经济数据</h1>
+  <p>记录各类宏观经济数据走势</p>
+</header>
+
+<div class="module-nav">
+  <button class="active" data-module="lpr">中国 LPR / 基准利率 (2006-2026)</button>
+</div>
+
+<section id="module-lpr">
+  <div class="chart-card">
+    <h2>贷款市场报价利率 (LPR) 走势</h2>
+    <div class="sub">2006年至今，含2019年8月前的人民币贷款基准利率（1年期）作为历史参照</div>
+    <div class="legend">
+      <span><i style="background:#c0392b"></i>1年期基准/LPR</span>
+      <span><i style="background:#2980b9"></i>5年期以上LPR</span>
+    </div>
+    <div id="chartWrap">
+      <canvas id="lprChart"></canvas>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
+  </div>
+
+  <details>
+    <summary>查看原始数据表 ▾</summary>
+    <div class="chart-card">
+      <table class="data-table" id="dataTable">
+        <thead><tr><th>生效日期</th><th>1年期 (%)</th><th>5年期以上 (%)</th><th>说明</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="data-cards" id="dataCards"></div>
+    </div>
+  </details>
+</section>
+
+<script>
+// 1年期基准利率 (2006-2019-08-19)，PBOC金融机构人民币贷款基准利率
+const pbocBenchmarkRate = [
+  { date: "2006-04-28", rate: 5.85 },
+  { date: "2006-08-19", rate: 6.12 },
+  { date: "2007-03-18", rate: 6.39 },
+  { date: "2007-05-19", rate: 6.57 },
+  { date: "2007-07-21", rate: 6.84 },
+  { date: "2007-08-22", rate: 7.02 },
+  { date: "2007-09-15", rate: 7.29 },
+  { date: "2007-12-21", rate: 7.47 },
+  { date: "2008-09-16", rate: 7.20 },
+  { date: "2008-10-09", rate: 6.93 },
+  { date: "2008-10-30", rate: 6.66 },
+  { date: "2008-11-27", rate: 5.58 },
+  { date: "2008-12-23", rate: 5.31 },
+  { date: "2010-10-20", rate: 5.56 },
+  { date: "2010-12-26", rate: 5.81 },
+  { date: "2011-02-09", rate: 6.06 },
+  { date: "2011-04-06", rate: 6.31 },
+  { date: "2011-07-07", rate: 6.56 },
+  { date: "2012-06-08", rate: 6.31 },
+  { date: "2012-07-06", rate: 6.00 },
+  { date: "2014-11-22", rate: 5.60 },
+  { date: "2015-03-01", rate: 5.35 },
+  { date: "2015-05-11", rate: 5.10 },
+  { date: "2015-06-28", rate: 4.85 },
+  { date: "2015-08-26", rate: 4.60 },
+  { date: "2015-10-24", rate: 4.35 },
+];
+
+// 1年期LPR (2019-08-20起)，仅含利率变动节点
+const lpr1Year = [
+  { date: "2019-08-20", rate: 4.25 },
+  { date: "2019-09-20", rate: 4.20 },
+  { date: "2019-11-20", rate: 4.15 },
+  { date: "2020-02-20", rate: 4.05 },
+  { date: "2020-04-20", rate: 3.85 },
+  { date: "2021-12-20", rate: 3.80 },
+  { date: "2022-01-20", rate: 3.70 },
+  { date: "2022-08-22", rate: 3.65 },
+  { date: "2023-06-20", rate: 3.55 },
+  { date: "2023-08-21", rate: 3.45 },
+  { date: "2024-07-22", rate: 3.35 },
+  { date: "2024-10-21", rate: 3.10 },
+  { date: "2025-05-20", rate: 3.00 },
+];
+
+// 5年期以上LPR (2019-08-20起)，仅含利率变动节点
+const lpr5YearPlus = [
+  { date: "2019-08-20", rate: 4.85 },
+  { date: "2019-11-20", rate: 4.80 },
+  { date: "2020-02-20", rate: 4.75 },
+  { date: "2020-04-20", rate: 4.65 },
+  { date: "2022-01-20", rate: 4.60 },
+  { date: "2022-05-20", rate: 4.45 },
+  { date: "2022-08-22", rate: 4.30 },
+  { date: "2023-06-20", rate: 4.20 },
+  { date: "2024-02-20", rate: 3.95 },
+  { date: "2024-07-22", rate: 3.85 },
+  { date: "2024-10-21", rate: 3.60 },
+  { date: "2025-05-20", rate: 3.50 },
+];
+
+function toStepSeries(points, endDate) {
+  const out = [];
+  points.forEach((p, i) => {
+    out.push(p);
+    const next = points[i + 1] ? points[i + 1].date : endDate;
+    out.push({ date: next, rate: p.rate, _flat: true });
+  });
+  return out;
+}
+
+const TODAY = "2026-06-28";
+const series1y = toStepSeries(pbocBenchmarkRate.concat(lpr1Year), TODAY);
+const series5y = toStepSeries(lpr5YearPlus, TODAY);
+
+function parseDate(d) { return new Date(d + "T00:00:00Z").getTime(); }
+
+const allDates = series1y.map(p => parseDate(p.date));
+const minT = Math.min(...allDates);
+const maxT = parseDate(TODAY);
+
+const canvas = document.getElementById('lprChart');
+const tooltip = document.getElementById('tooltip');
+const ctx = canvas.getContext('2d');
+
+function draw() {
+  const wrap = document.getElementById('chartWrap');
+  const dpr = window.devicePixelRatio || 1;
+  const cssW = wrap.clientWidth;
+  const cssH = 360;
+  canvas.width = cssW * dpr;
+  canvas.height = cssH * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, cssW, cssH);
+
+  const padL = 38, padR = 8, padT = 16, padB = 26;
+  const w = cssW - padL - padR;
+  const h = cssH - padT - padB;
+
+  const rateMin = 0, rateMax = 8;
+
+  function x(t) { return padL + (t - minT) / (maxT - minT) * w; }
+  function y(r) { return padT + h - (r - rateMin) / (rateMax - rateMin) * h; }
+
+  // grid + y labels
+  ctx.strokeStyle = "#eee";
+  ctx.fillStyle = "#999";
+  ctx.font = "11px sans-serif";
+  ctx.textAlign = "right";
+  ctx.textBaseline = "middle";
+  for (let r = rateMin; r <= rateMax; r += 1) {
+    const yy = y(r);
+    ctx.beginPath();
+    ctx.moveTo(padL, yy);
+    ctx.lineTo(padL + w, yy);
+    ctx.stroke();
+    ctx.fillText(r + "%", padL - 6, yy);
+  }
+
+  // x labels (years)
+  ctx.textAlign = "center";
+  ctx.textBaseline = "top";
+  for (let year = 2006; year <= 2026; year += 4) {
+    const t = parseDate(year + "-01-01");
+    const xx = x(t);
+    ctx.fillText(year, xx, padT + h + 6);
+  }
+
+  function drawLine(series, color) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    series.forEach((p, i) => {
+      const xx = x(parseDate(p.date));
+      const yy = y(p.rate);
+      if (i === 0) ctx.moveTo(xx, yy);
+      else ctx.lineTo(xx, yy);
+    });
+    ctx.stroke();
+  }
+
+  drawLine(series1y, "#c0392b");
+  drawLine(series5y, "#2980b9");
+
+  canvas._plot = { x, y, padL, w, padT, h };
+}
+
+function findNearest(series, t) {
+  let best = series[0], bestDiff = Infinity;
+  series.forEach(p => {
+    const diff = Math.abs(parseDate(p.date) - t);
+    if (diff < bestDiff) { bestDiff = diff; best = p; }
+  });
+  return best;
+}
+
+function handleMove(clientX) {
+  const rect = canvas.getBoundingClientRect();
+  const relX = clientX - rect.left;
+  const { x: xs, padL, w } = canvas._plot;
+  const t = minT + (relX - padL) / w * (maxT - minT);
+  if (relX < padL || relX > padL + w) { tooltip.style.opacity = 0; return; }
+  const p1 = findNearest(series1y.filter(p => !p._flat), t);
+  const p5 = findNearest(series5y.filter(p => !p._flat), t);
+  tooltip.style.opacity = 1;
+  tooltip.style.left = relX + "px";
+  tooltip.style.top = "20px";
+  tooltip.textContent = `${p1.date}: 1年 ${p1.rate}% / 5年+ ${p5.rate}%`;
+}
+
+canvas.addEventListener('mousemove', e => handleMove(e.clientX));
+canvas.addEventListener('mouseleave', () => tooltip.style.opacity = 0);
+canvas.addEventListener('touchstart', e => handleMove(e.touches[0].clientX), { passive: true });
+canvas.addEventListener('touchmove', e => handleMove(e.touches[0].clientX), { passive: true });
+
+window.addEventListener('resize', draw);
+draw();
+
+// data table
+const tbody = document.querySelector('#dataTable tbody');
+const cardsWrap = document.getElementById('dataCards');
+const merged = [];
+pbocBenchmarkRate.forEach(p => merged.push({ date: p.date, r1: p.rate, r5: null, note: "基准利率" }));
+const lpr1Map = {}; lpr1Year.forEach(p => lpr1Map[p.date] = p.rate);
+const lpr5Map = {}; lpr5YearPlus.forEach(p => lpr5Map[p.date] = p.rate);
+const lprDates = Array.from(new Set([...Object.keys(lpr1Map), ...Object.keys(lpr5Map)])).sort();
+lprDates.forEach(d => merged.push({ date: d, r1: lpr1Map[d] ?? null, r5: lpr5Map[d] ?? null, note: "LPR" }));
+merged.sort((a, b) => a.date.localeCompare(b.date)).reverse();
+
+merged.forEach(row => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td>${row.date}</td><td>${row.r1 ?? '-'}</td><td>${row.r5 ?? '-'}</td><td>${row.note}</td>`;
+  tbody.appendChild(tr);
+
+  const div = document.createElement('div');
+  div.className = 'row';
+  div.innerHTML = `<span>${row.date} <small style="color:#aaa">${row.note}</small></span><b>1年 ${row.r1 ?? '-'}% / 5年+ ${row.r5 ?? '-'}%</b>`;
+  cardsWrap.appendChild(div);
+});
+</script>
+</body>
+</html>

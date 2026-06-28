@@ -1425,7 +1425,9 @@ const GAMES_VIEWS = new Set(['mc-3ds-games', 'mc-nds-games', 'mc-gba-games', 'mc
 const BOOKS_VIEWS = new Set(['best-books-ever']);
 const MUSIC_VIEWS = new Set(['billboard-global']);
 
-function switchView(view) {
+const ALL_VIEWS = new Set(['home', 'top250', 'imdb-top250', ...GAMES_VIEWS, ...BOOKS_VIEWS, ...MUSIC_VIEWS]);
+
+function switchView(view, skipHash) {
     document.getElementById('view-' + currentView)?.classList.remove('active');
     document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
 
@@ -1446,8 +1448,21 @@ function switchView(view) {
         });
     }
 
+    if (!skipHash) {
+        const hash = '#' + view;
+        if (location.hash !== hash) history.pushState(null, '', hash);
+    }
+
     if (pages[view]) pages[view].load();
 }
+
+function applyViewFromHash() {
+    const view = location.hash.slice(1);
+    switchView(ALL_VIEWS.has(view) ? view : 'home', true);
+}
+
+window.addEventListener('popstate', applyViewFromHash);
+document.addEventListener('DOMContentLoaded', applyViewFromHash);
 
 function toggleMoviesDropdown(e) {
     e.stopPropagation();

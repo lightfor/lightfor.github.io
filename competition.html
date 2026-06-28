@@ -58,8 +58,10 @@
   }
   .ring-edge-bg { fill: #2d6a9f; cursor: pointer; }
   .ring-edge-bg.draw { fill: #b0a89c; }
+  .ring-edge-bg.pending { fill: #cc8a1f; }
   .ring-edge-line { stroke: #2d6a9f; cursor: pointer; }
   .ring-edge-line.draw { stroke: #b0a89c; }
+  .ring-edge-line.pending { stroke: #cc8a1f; }
   .ring-divider { stroke: #e0d8ce; stroke-width: 1.5; stroke-dasharray: 4 3; }
   .ring-zone-label { font-size: 11px; fill: #aaa; text-transform: uppercase; letter-spacing: 0.05em; }
   .ring-tooltip {
@@ -91,6 +93,7 @@
   <span><i style="background:#27ae60"></i>圆环绿色 = 出线区前两名</span>
   <span>箭头指向 = 战胜对方（鼠标悬停/点击连线查看时间场地）</span>
   <span><i style="background:#b0a89c"></i>平局（无箭头实线）</span>
+  <span><i style="background:#cc8a1f"></i>虚线 = 待定（未出比分）</span>
 </div>
 <div id="panels"></div>
 <div id="tooltip" class="ring-tooltip" style="display:none"></div>
@@ -107,8 +110,14 @@ function computeGroupStats(g, schedule) {
   const stageTag = `${g.group} 组`;
   const matches = (schedule || []).filter(m => m.stage === stageTag);
   const h2h = {};
+  const pending = {};
   for (const m of matches) {
-    if (!m.score) continue;
+    if (!m.score) {
+      if (!m.home.name || !m.away.name) continue;
+      pending[`${m.home.name}|${m.away.name}`] = { time: m.time, venue: m.venue };
+      pending[`${m.away.name}|${m.home.name}`] = { time: m.time, venue: m.venue };
+      continue;
+    }
     const [hs, as] = m.score.split(':').map(Number);
     const home = stats[m.home.name], away = stats[m.away.name];
     if (!home || !away) continue;
@@ -122,11 +131,11 @@ function computeGroupStats(g, schedule) {
     h2h[`${m.away.name}|${m.home.name}`] = { score: `${as}:${hs}`, time: m.time, venue: m.venue };
   }
   const ranked = Object.values(stats).sort((a, b) => b.pts - a.pts || (b.gf - b.ga) - (a.gf - a.ga) || b.gf - a.gf);
-  return { ranked, h2h };
+  return { ranked, h2h, pending };
 }
 
 function renderStandings(g, schedule) {
-  const { ranked, h2h } = computeGroupStats(g, schedule);
+  const { ranked, h2h, pending } = computeGroupStats(g, schedule);
   const n = ranked.length;
   const w = 420, h = 480;
   // top row = qualifying spots (rank 1-2), bottom row = eliminated (rank 3-4)
@@ -153,9 +162,8 @@ function renderStandings(g, schedule) {
     for (let j = i + 1; j < n; j++) {
       const a = ranked[i], b = ranked[j];
       const info = h2h[`${a.team.name}|${b.team.name}`];
-      if (!info) { pairIdx++; continue; }
-      const [as, bs] = info.score.split(':').map(Number);
-      const isDraw = as === bs;
+      const pend = pending[`${a.team.name}|${b.team.name}`];
+      if (!info && !pend) { pairIdx++; continue; }
       const dx = pos[j].x - pos[i].x, dy = pos[j].y - pos[i].y;
       const dist = Math.sqrt(dx * dx + dy * dy);
       const pad = 33;
@@ -166,6 +174,19 @@ function renderStandings(g, schedule) {
       const nx = -dy / dist, ny = dx / dist;
       const cx1 = (x1 + x2) / 2 + nx * bow, cy1 = (y1 + y2) / 2 + ny * bow;
       const mx = (x1 + x2) / 2 + shiftX + nx * bow, my = (y1 + y2) / 2 + shiftY + ny * bow;
+      if (!info) {
+        const tip = `${pend.time} · ${pend.venue} · 待定`.replace(/"/g, '&quot;');
+        const pathD = bow ? `M${x1},${y1} Q${cx1},${cy1} ${x2},${y2}` : null;
+        edges += pathD
+          ? `<path class="ring-edge-line pending" data-tip="${tip}" d="${pathD}" fill="none" stroke-width="3" stroke-dasharray="5 5"/>`
+          : `<line class="ring-edge-line pending" data-tip="${tip}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke-width="3" stroke-dasharray="5 5"/>`;
+        edges += `<rect class="ring-edge-bg pending" data-tip="${tip}" x="${mx - 22}" y="${my - 13}" width="44" height="26" rx="6"/>`;
+        edges += `<text class="ring-edge-label" x="${mx}" y="${my + 1}">待定</text>`;
+        pairIdx++;
+        continue;
+      }
+      const [as, bs] = info.score.split(':').map(Number);
+      const isDraw = as === bs;
       const tip = `${info.time} · ${info.venue}`.replace(/"/g, '&quot;');
       const pathD = bow ? `M${x1},${y1} Q${cx1},${cy1} ${x2},${y2}` : null;
       const pathDRev = bow ? `M${x2},${y2} Q${cx1},${cy1} ${x1},${y1}` : null;

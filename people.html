@@ -150,276 +150,15 @@ svg#graph.panning { cursor:grabbing; }
 
 <script>
 // ═══════════════════════════════════════════════════════════════
-//  DATA  — gen = generation row (0 = oldest), col = x-slot
-//          branch = family cluster for x-grouping
+//  DATA — loaded from data/people.json at runtime (see init() below)
+//  gen = generation row (0 = oldest), branch = x-group / radial sector
 //  Edge types:
 //    blood    = parent→child (solid gold, no arrow)
 //    marriage = spouse (dashed red, bidirectional)
 //    love     = romantic non-marriage (dotted pink)
 //    servant  = master→servant (thin dashed teal)
 // ═══════════════════════════════════════════════════════════════
-const UNIVERSES = [{
-  id:"hlm", name:"红楼梦",
-  people: [
-    // ── Generation 0: 贾代善 & 史太君 ──────────────────────────
-    { id:"jdaishan", name:"贾代善", alias:"荣国公", avatar:"🏛️", gen:0, branch:"jia-rong", ghost:true,
-      tags:[{l:"荣国府",c:"tg-gold"},{l:"男",c:"tg-blue"}],
-      brief:"荣国公，贾母之夫，贾赦贾政之父，早逝。",
-      detail:"荣国府第一代当家人，官至一品，死后由子孙袭爵。" },
-    { id:"jmu",      name:"贾母",   alias:"史太君·老祖宗", avatar:"👵", gen:0, branch:"jia-rong",
-      tags:[{l:"荣国府",c:"tg-gold"},{l:"长辈",c:"tg-gray"}],
-      brief:"荣国府最高权威，史家出身，疼爱宝玉与黛玉，晚年家道渐衰。",
-      detail:"荣国公贾代善之妻，史家出身。贾赦、贾政之母，林黛玉外祖母。地位尊崇，极爱宝玉。" },
-
-    // ── Generation 0: 宁国府 ─────────────────────────────────
-    { id:"jdaihua", name:"贾代化", alias:"宁国公", avatar:"🏯", gen:0, branch:"jia-ning", ghost:true,
-      tags:[{l:"宁国府",c:"tg-gold"},{l:"男",c:"tg-blue"}],
-      brief:"宁国公，宁国府第一代，贾敷贾敬之父，早逝。",
-      detail:"宁国府创始人，官至一品，世袭爵位传至贾敬。" },
-
-    // ── Generation 0: 史家 ────────────────────────────────────
-    { id:"shifu",   name:"史家先祖", alias:"保龄侯", avatar:"⚔️", gen:0, branch:"shi", ghost:true,
-      tags:[{l:"史家",c:"tg-gray"}],
-      brief:"史湘云家族先祖。",
-      detail:"保龄侯史家。" },
-
-    // ── Generation 0: 王家 ────────────────────────────────────
-    { id:"wangfu",  name:"王家先祖", alias:"王家", avatar:"📜", gen:0, branch:"wang", ghost:true,
-      tags:[{l:"王家",c:"tg-gray"}],
-      brief:"王夫人、薛姨妈、王熙凤出自王家。",
-      detail:"四大家族之一王家，王夫人与薛姨妈为其后人，王熙凤亦出此族。" },
-
-    // ── Generation 1: 荣国府第二代 ──────────────────────────
-    { id:"jjing",   name:"贾赦",   alias:"大老爷·恩侯", avatar:"🎭", gen:1, branch:"jia-she",
-      tags:[{l:"荣国府",c:"tg-gold"},{l:"男",c:"tg-blue"}],
-      brief:"贾母长子，袭一等将军，好色贪财，人品低劣。",
-      detail:"贾母之长子，袭父荣国府爵位为一等将军。好色纳妾，曾强索鸳鸯为妾未果，与贾政不睦。" },
-    { id:"jzheng",  name:"贾政",   alias:"二老爷·存周", avatar:"📖", gen:1, branch:"jia-zheng",
-      tags:[{l:"荣国府",c:"tg-gold"},{l:"男",c:"tg-blue"}],
-      brief:"贾母次子，工部员外郎，严肃迂腐，对宝玉期望甚高。",
-      detail:"贾母之次子，工部员外郎。性格严肃迂腐，信奉儒家，对宝玉寄予厚望却关系疏离，曾多次打骂宝玉。" },
-    { id:"wfuren",  name:"王夫人", alias:"二太太", avatar:"🙏", gen:1, branch:"jia-zheng",
-      tags:[{l:"荣国府",c:"tg-gold"},{l:"女",c:"tg-pink"},{l:"王家",c:"tg-gray"}],
-      brief:"贾政之妻，王家出身，表面慈善内心冷酷，驱逐晴雯，压制黛玉。",
-      detail:"王家出身，薛姨妈之姐。贾政嫡妻，生贾元春、贾珠、贾宝玉。驱逐晴雯，支持金玉良缘。" },
-    { id:"zhayiniang",name:"赵姨娘",alias:"赵姨娘", avatar:"😤", gen:1, branch:"jia-zheng",
-      tags:[{l:"荣国府",c:"tg-gold"},{l:"姨娘",c:"tg-gray"}],
-      brief:"贾政之妾，贾探春、贾环之母，心胸狭窄，常行阴谋。",
-      detail:"贾政之妾，生贾探春、贾环。心胸狭隘，与王夫人不和，多次暗中使绊。" },
-    { id:"jmin",    name:"贾敏",   alias:"林姑太太", avatar:"🌿", gen:1, branch:"jia-zheng", ghost:true,
-      tags:[{l:"荣国府",c:"tg-gold"},{l:"女",c:"tg-pink"}],
-      brief:"贾母幼女，嫁林如海，黛玉之母，早逝。",
-      detail:"贾母之幼女，嫁扬州巡盐御史林如海，生林黛玉后病逝。" },
-
-    // ── Generation 1: 宁国府第二代 ──────────────────────────
-    { id:"jjing2",  name:"贾敬",   alias:"贾敬", avatar:"🧘", gen:1, branch:"jia-ning",
-      tags:[{l:"宁国府",c:"tg-gold"},{l:"男",c:"tg-blue"}],
-      brief:"宁国府之主，中进士后弃官修道，不问家事，最终服丹药暴毙。",
-      detail:"宁国公之孙，进士出身，后弃官入道，寄居道观，家务交由贾珍打理，最终因服食丹药暴毙。" },
-
-    // ── Generation 1: 史家第二代 ─────────────────────────────
-    { id:"shinai",  name:"史鼐",   alias:"保龄侯", avatar:"🛡️", gen:1, branch:"shi", ghost:true,
-      tags:[{l:"史家",c:"tg-gray"},{l:"男",c:"tg-blue"}],
-      brief:"史湘云的叔父，史湘云寄养于此。",
-      detail:"保龄侯，史湘云父亲早逝后由他抚养湘云。" },
-
-    // ── Generation 1: 林家 ────────────────────────────────────
-    { id:"lruhao",  name:"林如海", alias:"探花·巡盐御史", avatar:"🖋️", gen:1, branch:"lin", ghost:true,
-      tags:[{l:"林家",c:"tg-gray"},{l:"男",c:"tg-blue"}],
-      brief:"探花出身，官至扬州巡盐御史，贾敏之夫，黛玉之父，黛玉入府后病逝。",
-      detail:"书香门第，探花及第，官至兰台寺大夫、扬州巡盐御史。娶贾敏，生黛玉，妻逝后将黛玉托付贾母，不久亦逝。" },
-
-    // ── Generation 1: 薛家 ────────────────────────────────────
-    { id:"xuefu",   name:"薛父",   alias:"薛家老爷", avatar:"💰", gen:1, branch:"xue", ghost:true,
-      tags:[{l:"薛家",c:"tg-gray"}],
-      brief:"薛蟠、宝钗之父，早逝，遗下皇商薛家。",
-      detail:"薛家皇商之主，早逝后家业由薛蟠继承，家道渐衰。" },
-    { id:"xueyi",   name:"薛姨妈", alias:"薛姨妈", avatar:"🌸", gen:1, branch:"xue",
-      tags:[{l:"薛家",c:"tg-gray"},{l:"女",c:"tg-pink"},{l:"王家",c:"tg-gray"}],
-      brief:"王夫人之妹，薛蟠、宝钗之母，随子女入住贾府梨香院。",
-      detail:"王家出身，嫁薛家。王夫人之妹，薛蟠、宝钗之母。薛父逝后随子女进京投靠贾府，住梨香院。" },
-
-    // ── Generation 1: 王家分支 ────────────────────────────────
-    { id:"wangzu",  name:"王子腾", alias:"王子腾", avatar:"⚜️", gen:1, branch:"wang",
-      tags:[{l:"王家",c:"tg-gray"},{l:"男",c:"tg-blue"}],
-      brief:"王夫人之兄，官至九省统制，是贾家重要外援，后暴毙。",
-      detail:"王家族长，王夫人、薛姨妈之兄，王熙凤之叔父。官至九省统制，在朝势力雄厚，是贾家重要靠山，后暴毙。" },
-
-    // ── Generation 2: 荣国府第三代（贾赦支） ───────────────
-    { id:"jlian",   name:"贾琏",   alias:"琏二爷", avatar:"😏", gen:2, branch:"jia-she",
-      tags:[{l:"荣国府",c:"tg-gold"},{l:"男",c:"tg-blue"}],
-      brief:"贾赦之子，王熙凤之夫，风流好色，管家事务多赖凤姐。",
-      detail:"贾赦之子，捐同知官职。娶王熙凤，又偷纳尤二姐为妾，被凤姐害死。家务实由凤姐主持。" },
-    { id:"wxifeng",  name:"王熙凤", alias:"凤姐·琏二奶奶", avatar:"🦚", gen:2, branch:"jia-she",
-      tags:[{l:"十二钗",c:"tg-pink"},{l:"荣国府",c:"tg-gold"},{l:"王家",c:"tg-gray"}],
-      brief:"荣国府实际掌权者，精明强干，心狠手辣，机关算尽，聪明反被聪明误。",
-      detail:"王子腾之侄女，嫁贾琏。协理宁国府，实际掌管荣国府。泼辣狡黠，暗中放高利贷，包揽诉讼，后身败名裂。" },
-    { id:"pinger",   name:"平儿",   alias:"平姑娘", avatar:"🌻", gen:2, branch:"jia-she",
-      tags:[{l:"丫鬟",c:"tg-teal"},{l:"荣国府",c:"tg-gold"}],
-      brief:"王熙凤陪房丫鬟，后为贾琏之妾，秉公持正，人品出众。",
-      detail:"王熙凤陪房，后为贾琏之妾。做事公道，常在凤姐刁难与贾琏风流间保持良心，深得众人好感。" },
-
-    // ── Generation 2: 荣国府第三代（贾政支） ───────────────
-    { id:"jyuanchun",name:"贾元春",alias:"元妃·贤德妃", avatar:"👑", gen:2, branch:"jia-zheng",
-      tags:[{l:"十二钗",c:"tg-pink"},{l:"贤德妃",c:"tg-gold"}],
-      brief:"贾政长女，入宫封贤德妃，省亲大观园风光一时，深宫薨逝后家族失靠山。",
-      detail:"贾政与王夫人长女，宝玉之姐，曾为宝玉启蒙。入宫为女史，晋封贤德妃。元妃省亲修建大观园，后病逝宫中。" },
-    { id:"jbaoyu",   name:"贾宝玉", alias:"怡红公子", avatar:"🪨", gen:2, branch:"jia-zheng",
-      tags:[{l:"主角",c:"tg-red"},{l:"荣国府",c:"tg-gold"},{l:"男",c:"tg-blue"}],
-      brief:"衔玉而生，厌恶仕途，钟情诗词。与黛玉木石前盟，因金玉良缘娶宝钗，终出家为僧。",
-      detail:"贾政与王夫人之子，衔玉出生。住怡红院。天性纯良，蔑视功名，与林黛玉两情相悦，因家族安排娶薛宝钗，黛玉含恨而逝，宝玉最终出家。" },
-    { id:"jtanchun", name:"贾探春", alias:"蕉下客·三姑娘", avatar:"🌴", gen:2, branch:"jia-zheng",
-      tags:[{l:"十二钗",c:"tg-pink"},{l:"庶出",c:"tg-gray"}],
-      brief:"庶出，志气高远，管家才能出众，曾短暂代凤姐理家，最终远嫁和亲。",
-      detail:"贾政庶女，赵姨娘所生。性格刚烈，有治家之才，曾代凤姐管理大观园推行改革，最终远嫁他乡。" },
-    { id:"jhuan",    name:"贾环",   alias:"贾环", avatar:"😈", gen:2, branch:"jia-zheng",
-      tags:[{l:"荣国府",c:"tg-gold"},{l:"庶出",c:"tg-gray"}],
-      brief:"贾政庶子，赵姨娘所生，性格阴险，忌恨宝玉，曾烫伤宝玉眼睛。",
-      detail:"贾政之庶子，赵姨娘所生，宝玉之弟。性格阴险，品行不端，时常与宝玉争风，与赵姨娘相互扶持。" },
-
-    // ── Generation 2: 宁国府第三代 ──────────────────────────
-    { id:"jzhen",    name:"贾珍",   alias:"珍大爷", avatar:"🎪", gen:2, branch:"jia-ning",
-      tags:[{l:"宁国府",c:"tg-gold"},{l:"男",c:"tg-blue"}],
-      brief:"宁国府当家人，贾敬之子，生活放荡，与儿媳秦可卿有染，大办秦氏葬礼。",
-      detail:"贾敬之子，袭三品爵威烈将军。掌管宁国府，生活荒淫，与儿媳秦可卿关系暧昧，为其大操大办葬礼。" },
-    { id:"yourong",  name:"尤氏",   alias:"珍大奶奶", avatar:"🌾", gen:2, branch:"jia-ning",
-      tags:[{l:"宁国府",c:"tg-gold"},{l:"女",c:"tg-pink"}],
-      brief:"贾珍之妻，性格懦弱，对贾珍放荡行为无力阻止。",
-      detail:"贾珍之妻，有两个继妹尤二姐、尤三姐。性格软弱，家中诸事被贾珍把持，无能为力。" },
-
-    // ── Generation 2: 史家第三代 ─────────────────────────────
-    { id:"sxiangyun",name:"史湘云",alias:"枕霞旧友·云丫头", avatar:"🌊", gen:2, branch:"shi",
-      tags:[{l:"十二钗",c:"tg-pink"},{l:"史家",c:"tg-gray"}],
-      brief:"豪爽爱笑，常着男装，诗才出众。父母早逝，寄养叔父家，嫁卫若兰，丈夫早逝。",
-      detail:"史鼐之侄女，父母双亡，寄养于叔父家。性格开朗豪迈，不拘小节，诗才出众，与宝玉交好，嫁卫若兰，丈夫早逝。" },
-
-    // ── Generation 2: 林家第三代 ─────────────────────────────
-    { id:"ldaiyu",   name:"林黛玉", alias:"潇湘妃子·颦颦", avatar:"🌸", gen:2, branch:"lin",
-      tags:[{l:"主角",c:"tg-red"},{l:"十二钗",c:"tg-pink"},{l:"女",c:"tg-pink"}],
-      brief:"绛珠仙草转世，才情横溢，敏感多愁。与宝玉木石前盟，泪尽而逝。",
-      detail:"林如海与贾敏之女，幼年丧母寄居荣国府，住潇湘馆。诗词冠绝大观园，体弱多病，与贾宝玉两情相悦，含恨离世。" },
-
-    // ── Generation 2: 薛家第三代 ─────────────────────────────
-    { id:"xueban",   name:"薛蟠",   alias:"呆霸王", avatar:"🐷", gen:2, branch:"xue",
-      tags:[{l:"薛家",c:"tg-gray"},{l:"男",c:"tg-blue"}],
-      brief:"薛家长子，纨绔子弟，打死冯渊，因宝钗入京贾府，游手好闲，惹事不断。",
-      detail:"薛姨妈之子，宝钗之兄。纨绔子弟，因争买香菱打死冯渊，得贾雨村徇私了结。随母妹入住贾府梨香院。" },
-    { id:"xbaochai", name:"薛宝钗", alias:"蘅芜君·宝姐姐", avatar:"🌿", gen:2, branch:"xue",
-      tags:[{l:"主角",c:"tg-red"},{l:"十二钗",c:"tg-pink"},{l:"女",c:"tg-pink"}],
-      brief:"端庄贤淑，博学多才。金锁与宝玉玉石相配，成就金玉良缘，宝玉出家后独守空闺。",
-      detail:"薛姨妈之女，薛蟠之妹。住蘅芜苑，性格稳重大方，处世圆滑，深得王夫人赏识。最终嫁予贾宝玉，宝玉出家，独守空闺。" },
-
-    // ── Generation 3: 宁国府第四代 ──────────────────────────
-    { id:"jrong",    name:"贾蓉",   alias:"贾蓉", avatar:"🌀", gen:3, branch:"jia-ning",
-      tags:[{l:"宁国府",c:"tg-gold"},{l:"男",c:"tg-blue"}],
-      brief:"贾珍之子，秦可卿之夫，捐龙禁尉，秦氏死后再娶。",
-      detail:"贾珍之子，秦可卿之夫。捐龙禁尉，秦可卿死后再娶许氏。性格软弱，唯父命是从。" },
-    { id:"qkeqing",  name:"秦可卿", alias:"兼美·可儿", avatar:"🌙", gen:3, branch:"jia-ning",
-      tags:[{l:"十二钗",c:"tg-pink"},{l:"宁国府",c:"tg-gold"}],
-      brief:"宁国府贾蓉之妻，美貌体弱，临终托梦王熙凤警示家族命运，病逝引发隆重葬礼。",
-      detail:"贾蓉之妻，外貌兼具黛玉袅娜与宝钗丰满之美，号\"兼美\"。临终托梦王熙凤，嘱其未雨绸缪，预言贾家衰败。" },
-
-    // ── Generation 3: 宝玉房中 ────────────────────────────────
-    { id:"xiren",    name:"袭人",   alias:"花袭人·珍珠", avatar:"🌺", gen:3, branch:"jia-zheng",
-      tags:[{l:"丫鬟",c:"tg-teal"},{l:"怡红院",c:"tg-gold"}],
-      brief:"宝玉首席大丫鬟，温柔稳重。宝玉出家后嫁蒋玉菡。",
-      detail:"原名珍珠，宝玉取名袭人（花气袭人知昼暖）。温婉体贴，曾向王夫人进言管教宝玉。宝玉出家后嫁蒋玉菡，得以善终。" },
-    { id:"qingwen",  name:"晴雯",   alias:"晴雯儿", avatar:"⚡", gen:3, branch:"jia-zheng",
-      tags:[{l:"丫鬟",c:"tg-teal"},{l:"怡红院",c:"tg-gold"}],
-      brief:"容貌出众，性格刚烈。遭王夫人以狐媚之名撵出，含冤病逝，宝玉作《芙蓉女儿诔》祭之。",
-      detail:"怡红院丫鬟，容貌风流，针线活出色，病中补孔雀裘。性格直爽高傲，被王夫人驱逐，贫病中死去。宝玉以芙蓉花神祭之。" },
-
-    // ── Generation 3: 黛玉房中 ────────────────────────────────
-    { id:"zijuan",   name:"紫鹃",   alias:"鹦哥", avatar:"🪺", gen:3, branch:"lin",
-      tags:[{l:"丫鬟",c:"tg-teal"},{l:"潇湘馆",c:"tg-gold"}],
-      brief:"黛玉贴身丫鬟，情同姐妹，忠心护主，屡次为黛玉宝玉之情奔走。",
-      detail:"原贾母房中丫鬟鹦哥，后拨给黛玉改名紫鹃。与黛玉情同姐妹，对黛玉一片忠心，黛玉逝后命运凄凉。" },
-
-    // ── Generation 3: 宝钗房中 ────────────────────────────────
-    { id:"yinger",   name:"莺儿",   alias:"黄金莺", avatar:"🐦", gen:3, branch:"xue",
-      tags:[{l:"丫鬟",c:"tg-teal"},{l:"蘅芜苑",c:"tg-gold"}],
-      brief:"薛宝钗贴身丫鬟，编络子手艺出色，心灵手巧。",
-      detail:"薛宝钗贴身侍女，心灵手巧，尤善编络子，性格温顺，随宝钗入贾府住蘅芜苑。" },
-
-    // ── Generation 3: 独立人物 ─────────────────────────────────
-    { id:"miaoyu",   name:"妙玉",   alias:"槛外人", avatar:"⛩️", gen:2, branch:"miao",
-      tags:[{l:"十二钗",c:"tg-pink"},{l:"出家人",c:"tg-gray"}],
-      brief:"带发修行，孤傲清高，寄居栊翠庵。洁癖极重，对宝玉暗藏情愫，贾府败落后被掳走。",
-      detail:"官宦之女，因病出家，寄居大观园栊翠庵。性格孤僻清高，对宝玉态度特殊，曾以珍藏杯给宝玉用茶。" },
-  ],
-
-  // ── Edges ────────────────────────────────────────────────────
-  // Only: blood (parent→child), marriage (spouse↔spouse), love (romantic), servant (master→servant)
-  // NO inferred edges (grandparent, cousin, etc.)
-  edges: [
-    // ── 荣国府血脉 ───────────────────────────────────────────
-    { s:"jdaishan", t:"jjing",      type:"blood",    label:"父子" },
-    { s:"jmu",      t:"jjing",      type:"blood",    label:"母子" },
-    { s:"jdaishan", t:"jzheng",     type:"blood",    label:"父子" },
-    { s:"jmu",      t:"jzheng",     type:"blood",    label:"母子" },
-    { s:"jdaishan", t:"jmin",       type:"blood",    label:"父女" },
-    { s:"jmu",      t:"jmin",       type:"blood",    label:"母女" },
-    { s:"jdaishan", t:"jmu",        type:"marriage", label:"夫妻" },
-
-    // 贾赦支
-    { s:"jjing",    t:"jlian",      type:"blood",    label:"父子" },
-
-    // 贾政支
-    { s:"jzheng",   t:"jyuanchun",  type:"blood",    label:"父女" },
-    { s:"wfuren",   t:"jyuanchun",  type:"blood",    label:"母女" },
-    { s:"jzheng",   t:"jbaoyu",     type:"blood",    label:"父子" },
-    { s:"wfuren",   t:"jbaoyu",     type:"blood",    label:"母子" },
-    { s:"jzheng",   t:"jtanchun",   type:"blood",    label:"父女" },
-    { s:"zhayiniang",t:"jtanchun",  type:"blood",    label:"母女" },
-    { s:"jzheng",   t:"jhuan",      type:"blood",    label:"父子" },
-    { s:"zhayiniang",t:"jhuan",     type:"blood",    label:"母子" },
-    { s:"jzheng",   t:"wfuren",     type:"marriage", label:"夫妻" },
-    { s:"jzheng",   t:"zhayiniang", type:"marriage", label:"夫妾" },
-
-    // 林家
-    { s:"jmin",     t:"ldaiyu",     type:"blood",    label:"母女" },
-    { s:"lruhao",   t:"ldaiyu",     type:"blood",    label:"父女" },
-    { s:"lruhao",   t:"jmin",       type:"marriage", label:"夫妻" },
-
-    // 宁国府血脉
-    { s:"jdaihua",  t:"jjing2",     type:"blood",    label:"父子" },
-    { s:"jjing2",   t:"jzhen",      type:"blood",    label:"父子" },
-    { s:"jzhen",    t:"jrong",      type:"blood",    label:"父子" },
-    { s:"jzhen",    t:"yourong",    type:"marriage", label:"夫妻" },
-    { s:"jrong",    t:"qkeqing",    type:"marriage", label:"夫妻" },
-
-    // 史家
-    { s:"shifu",    t:"shinai",     type:"blood",    label:"父子" },
-    { s:"shinai",   t:"sxiangyun",  type:"blood",    label:"叔侄女" },
-
-    // 薛家
-    { s:"xuefu",    t:"xueban",     type:"blood",    label:"父子" },
-    { s:"xueyi",    t:"xueban",     type:"blood",    label:"母子" },
-    { s:"xuefu",    t:"xbaochai",   type:"blood",    label:"父女" },
-    { s:"xueyi",    t:"xbaochai",   type:"blood",    label:"母女" },
-    { s:"xuefu",    t:"xueyi",      type:"marriage", label:"夫妻" },
-
-    // 王家
-    { s:"wangfu",   t:"wfuren",     type:"blood",    label:"族人" },
-    { s:"wangfu",   t:"xueyi",      type:"blood",    label:"族人" },
-    { s:"wangfu",   t:"wxifeng",    type:"blood",    label:"族人" },
-    { s:"wangfu",   t:"wangzu",     type:"blood",    label:"族人" },
-
-    // 婚配跨家族
-    { s:"jlian",    t:"wxifeng",    type:"marriage", label:"夫妻" },
-
-    // 情感（非婚）
-    { s:"jbaoyu",   t:"ldaiyu",     type:"love",     label:"木石前盟" },
-    { s:"jbaoyu",   t:"xbaochai",   type:"marriage", label:"金玉良缘·夫妻" },
-
-    // 主仆
-    { s:"jbaoyu",   t:"xiren",      type:"servant",  label:"主仆" },
-    { s:"jbaoyu",   t:"qingwen",    type:"servant",  label:"主仆" },
-    { s:"ldaiyu",   t:"zijuan",     type:"servant",  label:"主仆" },
-    { s:"xbaochai", t:"yinger",     type:"servant",  label:"主仆" },
-    { s:"wxifeng",  t:"pinger",     type:"servant",  label:"主仆" },
-  ]
-}];
+let UNIVERSES = [];
 
 // ═══════════════════════════════════════════════════════════════
 //  LAYOUT
@@ -428,7 +167,8 @@ const UNIVERSES = [{
 // ═══════════════════════════════════════════════════════════════
 
 // Branch order (left to right)
-const BRANCH_ORDER = ["jia-ning","jia-she","jia-zheng","jia-rong","lin","shi","miao","wang","xue"];
+const BRANCH_ORDER = ["jia-ning","jia-she","jia-zheng","jia-rong","lin","shi","miao","wang","xue",
+  "core","village","huangfeng","xinghai1","luoyun","dajin","zhuimo","xinghai2","lingjie","xianjie"];
 const GEN_Y_FRAC   = [0.07, 0.22, 0.42, 0.65, 0.83]; // up to gen 4
 function getNodeR() {
   return window.innerWidth <= 680
@@ -438,7 +178,8 @@ function getNodeR() {
 let NODE_R = getNodeR();
 
 // Key people (larger nodes)
-const KEY_PEOPLE = new Set(["jbaoyu","ldaiyu","xbaochai","wxifeng","jmu","sxiangyun","qkeqing"]);
+const KEY_PEOPLE = new Set(["jbaoyu","ldaiyu","xbaochai","wxifeng","jmu","sxiangyun","qkeqing",
+  "hanli","nangongwan","yuanyao","ziling","yinyue","mudafu","xiangzhili","yuancha"]);
 
 function calcPositions(people, W, H) {
   // group by branch then gen
@@ -499,7 +240,83 @@ function calcPositions(people, W, H) {
     const y = PAD_Y + p.gen * genStep;
     positions[p.id] = { x, y };
   });
-  return { positions, PAD_Y, genStep };
+
+  // branch bounding bands (only for branches that actually have people)
+  const branchBounds = {};
+  Object.keys(branchGen).forEach(b => {
+    const bw = Math.max(branchWidth[b]||0, 1) * slotW;
+    branchBounds[b] = { x0: branchStartX[b], x1: branchStartX[b] + bw };
+  });
+
+  return { positions, PAD_Y, genStep, branchBounds, maxGen };
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  RADIAL LAYOUT — center person (gen 0) in the middle, everyone
+//  else arranged in rings around them, grouped into branch sectors.
+// ═══════════════════════════════════════════════════════════════
+function calcRadialPositions(people, W, H) {
+  const centerPerson = people.find(p => p.gen === 0) || people[0];
+  const others = people.filter(p => p.id !== centerPerson.id);
+
+  // group by branch, preserving BRANCH_ORDER for consistent (= timeline) sector order
+  const byBranch = {};
+  others.forEach(p => {
+    const b = p.branch || "other";
+    if (!byBranch[b]) byBranch[b] = [];
+    byBranch[b].push(p);
+  });
+  const branches = BRANCH_ORDER.filter(b => byBranch[b] && byBranch[b].length);
+  Object.keys(byBranch).forEach(b => { if (!branches.includes(b)) branches.push(b); });
+
+  const cx = 0, cy = 0;
+  const positions = { [centerPerson.id]: { x: cx, y: cy } };
+  const sectorBounds = {}; // branch -> {a0, a1, rOuter}
+  const TWO_PI = Math.PI * 2;
+  const totalPeople = others.length || 1;
+  const baseRingR = Math.max(NODE_R.key * 2 + 340, 380);
+  const ringRFor = n => baseRingR + Math.max(n - 5, 0) * 22;
+  // minimum angular gap per person so nodes/labels never overlap, regardless of sector size
+  const minAnglePerPerson = (NODE_R.key * 2 + 64) / baseRingR; // radians
+  let angleCursor = -Math.PI / 2; // start at top, proceed clockwise = timeline order
+
+  branches.forEach(b => {
+    const list = byBranch[b];
+    const proportional = TWO_PI * (list.length / totalPeople);
+    const sectorAngle = Math.max(proportional, minAnglePerPerson * list.length);
+    const a0 = angleCursor, a1 = angleCursor + sectorAngle;
+    // single ring per sector — people spread along the arc, never stacked radially
+    const ringR = ringRFor(list.length);
+    list.forEach((p, i) => {
+      const a = a0 + (sectorAngle * (i + 0.5) / list.length);
+      positions[p.id] = { x: cx + Math.cos(a) * ringR, y: cy + Math.sin(a) * ringR };
+    });
+    sectorBounds[b] = { a0, a1, rOuter: ringR + 90 };
+    angleCursor = a1;
+  });
+
+  // angles may now sum to more than 2π once the minimum-gap floor kicks in;
+  // rescale every sector's angle proportionally so the circle closes cleanly
+  const totalAngle = angleCursor - (-Math.PI / 2);
+  if (totalAngle > TWO_PI) {
+    const scale = TWO_PI / totalAngle;
+    let cursor2 = -Math.PI / 2;
+    branches.forEach(b => {
+      const list = byBranch[b];
+      const old = sectorBounds[b];
+      const span = (old.a1 - old.a0) * scale;
+      const a0 = cursor2, a1 = cursor2 + span;
+      const ringR = ringRFor(list.length);
+      list.forEach((p, i) => {
+        const a = a0 + (span * (i + 0.5) / list.length);
+        positions[p.id] = { x: cx + Math.cos(a) * ringR, y: cy + Math.sin(a) * ringR };
+      });
+      sectorBounds[b] = { a0, a1, rOuter: ringR + 90 };
+      cursor2 = a1;
+    });
+  }
+
+  return { positions, sectorBounds, centerId: centerPerson.id };
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -515,7 +332,7 @@ const EDGE_STYLE = {
 // ═══════════════════════════════════════════════════════════════
 //  STATE
 // ═══════════════════════════════════════════════════════════════
-let CU = UNIVERSES[0];
+let CU = null;
 let hoveredId = null, selectedId = null, searchQ = "";
 let transform = { x:0, y:0, scale:1 };
 let nodePositions = {};
@@ -540,7 +357,8 @@ function renderGraph() {
   svg.innerHTML = "";
   const W = svg.clientWidth  || window.innerWidth;
   const H = svg.clientHeight || (window.innerHeight - 46);
-  const layout = calcPositions(CU.people, W, H);
+  const isRadial = CU.layout === "radial";
+  const layout = isRadial ? calcRadialPositions(CU.people, W, H) : calcPositions(CU.people, W, H);
   nodePositions = layout.positions;
 
   const defs = el('defs',{},svg);
@@ -552,25 +370,102 @@ function renderGraph() {
 
   mainG = el('g',{id:'mainG'},svg);
   applyTransform();
+
+  // background decoration — must be appended before edgeG/nodeG so it renders underneath them
+  if (isRadial && CU.branchLabels) {
+    const wedgeColors = ["#1c1208","#15100a"];
+    let wi = 0;
+    Object.entries(layout.sectorBounds).forEach(([b, sec]) => {
+      if (!CU.branchLabels[b]) return;
+      const rOuter = sec.rOuter;
+      const x0 = Math.cos(sec.a0)*rOuter, y0 = Math.sin(sec.a0)*rOuter;
+      const x1 = Math.cos(sec.a1)*rOuter, y1 = Math.sin(sec.a1)*rOuter;
+      const largeArc = (sec.a1 - sec.a0) > Math.PI ? 1 : 0;
+      el('path',{
+        d:`M0,0 L${x0},${y0} A${rOuter},${rOuter} 0 ${largeArc} 1 ${x1},${y1} Z`,
+        fill:wedgeColors[wi%2], stroke:'#3a2010', 'stroke-width':'1',
+        'pointer-events':'none'
+      }, mainG);
+      const midA = (sec.a0+sec.a1)/2;
+      const lblR = rOuter + 22;
+      const lbl = el('text',{ x:Math.cos(midA)*lblR, y:Math.sin(midA)*lblR, 'text-anchor':'middle',
+        fill:'#d0a030', 'font-size':'13', 'font-weight':'700',
+        'pointer-events':'none', 'user-select':'none' }, mainG);
+      lbl.textContent = CU.branchLabels[b];
+      wi++;
+    });
+    // start/end seam marker — radial dashed line at the top (-90°) so the
+    // timeline's beginning is visually distinct from a closed loop
+    const firstSector = Object.values(layout.sectorBounds)[0];
+    const seamR = firstSector ? firstSector.rOuter : 300;
+    el('line',{ x1:0, y1:0, x2:0, y2:-seamR, stroke:'#e8a840', 'stroke-width':'2',
+      'stroke-dasharray':'2,5', opacity:'0.6', 'pointer-events':'none' }, mainG);
+    const startLbl = el('text',{ x:10, y:-seamR+34, fill:'#e8a840', 'font-size':'11',
+      'font-weight':'700', 'pointer-events':'none', 'user-select':'none' }, mainG);
+    startLbl.textContent = '◤ 起点·顺时针为时间线';
+  } else if (CU.branchLabels) {
+    const bandTop = layout.PAD_Y - layout.genStep * 0.5;
+    const bandH   = layout.genStep * (layout.maxGen + 1);
+    const bandColors = ["#1c1208","#15100a"];
+    let bi = 0;
+    BRANCH_ORDER.forEach(b => {
+      const bounds = layout.branchBounds[b];
+      if (!bounds || !CU.branchLabels[b]) return;
+      const padBand = 10;
+      el('rect',{ x:bounds.x0-padBand, y:bandTop, width:(bounds.x1-bounds.x0)+padBand*2, height:bandH,
+        fill:bandColors[bi%2], stroke:'#3a2010', 'stroke-width':'1', rx:'10',
+        'pointer-events':'none' }, mainG);
+      const lbl = el('text',{ x:(bounds.x0+bounds.x1)/2, y:bandTop+18, 'text-anchor':'middle',
+        fill:'#d0a030', 'font-size':'13', 'font-weight':'700',
+        'pointer-events':'none', 'user-select':'none' }, mainG);
+      lbl.textContent = CU.branchLabels[b];
+      bi++;
+    });
+  }
+
   edgeG = el('g',{id:'edgeG'},mainG);
   nodeG = el('g',{id:'nodeG'},mainG);
 
-  // generation labels (background)
-  const genNames = ["曾祖辈","祖父辈","父母辈","子辈","孙辈"];
-  const maxGen = Math.max(...CU.people.map(p=>p.gen));
-  for (let g=0; g<=maxGen; g++) {
-    const y = layout.PAD_Y + g * layout.genStep;
-    const lbl = el('text',{ x:'8', y:y, fill:'#3a2810', 'font-size':'11', 'font-weight':'600',
-      'dominant-baseline':'middle', 'pointer-events':'none', 'user-select':'none' }, mainG);
-    lbl.textContent = genNames[g] || `第${g}代`;
-    // horizontal rule
-    el('line',{ x1:'0', y1:y, x2:W*10, y2:y, stroke:'#2a1808', 'stroke-width':'1',
-      'pointer-events':'none' }, mainG);
+  // generation labels (background) — grid layout only
+  if (!isRadial) {
+    const genNames = CU.genLabels || [];
+    const maxGen = Math.max(...CU.people.map(p=>p.gen));
+    for (let g=0; g<=maxGen; g++) {
+      const y = layout.PAD_Y + g * layout.genStep;
+      const lbl = el('text',{ x:'8', y:y, fill:'#3a2810', 'font-size':'11', 'font-weight':'600',
+        'dominant-baseline':'middle', 'pointer-events':'none', 'user-select':'none' }, mainG);
+      lbl.textContent = genNames[g] || `第${g}代`;
+      // horizontal rule
+      el('line',{ x1:'0', y1:y, x2:W*10, y2:y, stroke:'#2a1808', 'stroke-width':'1',
+        'pointer-events':'none' }, mainG);
+    }
   }
 
   renderEdges();
   renderNodes();
   updateVisibility();
+  fitToContent(layout, W, H);
+}
+
+function fitToContent(layout, W, H) {
+  const xs = Object.values(layout.positions).map(p=>p.x);
+  const ys = Object.values(layout.positions).map(p=>p.y);
+  if (!xs.length) return;
+  // radial layout: the sector wedges/labels can extend past the outermost node,
+  // so pad using rOuter (plus room for the start-seam label) instead of a flat margin
+  let pad = 60;
+  if (layout.sectorBounds) {
+    const maxROuter = Math.max(...Object.values(layout.sectorBounds).map(s=>s.rOuter));
+    pad = Math.max(pad, maxROuter - Math.max(...xs.map(Math.abs), ...ys.map(Math.abs)) + 40, 60);
+  }
+  const minX = Math.min(...xs) - pad, maxX = Math.max(...xs) + pad;
+  const minY = Math.min(...ys) - pad, maxY = Math.max(...ys) + pad;
+  const contentW = maxX - minX, contentH = maxY - minY;
+  const scale = Math.min(W / contentW, H / contentH, 1);
+  transform.scale = scale;
+  transform.x = W/2 - (minX+maxX)/2 * scale;
+  transform.y = H/2 - (minY+maxY)/2 * scale;
+  applyTransform();
 }
 
 function renderEdges() {
@@ -861,19 +756,27 @@ document.getElementById('searchBox').addEventListener('input',ev=>{ searchQ=ev.t
 document.getElementById('btnReset').addEventListener('click',()=>{ transform={x:0,y:0,scale:1}; applyTransform(true); });
 
 const uTabs=document.getElementById('uTabs');
-UNIVERSES.forEach(u=>{
-  const btn=document.createElement('button');
-  btn.className='u-tab'+(u.id===UNIVERSES[0].id?' active':'');
-  btn.textContent=u.name;
-  btn.addEventListener('click',()=>{
-    CU=u; uTabs.querySelectorAll('.u-tab').forEach(b=>b.classList.toggle('active',b===btn));
-    transform={x:0,y:0,scale:1}; hoveredId=selectedId=null; closeDetail(); renderGraph();
-  });
-  uTabs.appendChild(btn);
-});
 
-window.addEventListener('resize',()=>renderGraph());
-renderGraph();
+async function init() {
+  const res = await fetch('data/people.json');
+  UNIVERSES = await res.json();
+  CU = UNIVERSES[0];
+
+  UNIVERSES.forEach(u=>{
+    const btn=document.createElement('button');
+    btn.className='u-tab'+(u.id===UNIVERSES[0].id?' active':'');
+    btn.textContent=u.name;
+    btn.addEventListener('click',()=>{
+      CU=u; uTabs.querySelectorAll('.u-tab').forEach(b=>b.classList.toggle('active',b===btn));
+      transform={x:0,y:0,scale:1}; hoveredId=selectedId=null; closeDetail(); renderGraph();
+    });
+    uTabs.appendChild(btn);
+  });
+
+  window.addEventListener('resize',()=>renderGraph());
+  renderGraph();
+}
+init();
 </script>
 </body>
 </html>
